@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>!!asdasdasdasdadssd
 <!--[if IE 6]>
 <html id="ie6" dir="ltr" lang="en-US">
 <![endif]-->
