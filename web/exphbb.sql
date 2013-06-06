@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 04-06-2013 a las 11:30:33
+-- Tiempo de generación: 06-06-2013 a las 11:29:08
 -- Versión del servidor: 5.5.31
 -- Versión de PHP: 5.4.6-1ubuntu1.2
 
@@ -59,8 +59,8 @@ CREATE TABLE IF NOT EXISTS `marquee` (
 --
 
 INSERT INTO `marquee` (`id`, `title`, `small_image`, `big_image`, `queue`, `description`, `status`) VALUES
-(001, 'Test 2', 'upload_images/afb5b84858004ebc39ff9c078c30f0a3.jpg', 'upload_images/5a3aff6a9dbccb6889a6ebea6f06ddd1.jpg', 003, '<h2 style="font-style:italic">Titulo</h2>\r\n\r\n<p>bla bla bla</p>\r\n\r\n<ul>\r\n	<li>bulet</li>\r\n	<li>bulet</li>\r\n	<li>bulet</li>\r\n</ul>\r\n', 'Publicado'),
-(006, 'Test', 'upload_images/9a3ff23d40da8f68dd996625d2eb6d21.jpg', 'upload_images/d4d12022c1aa0411bc58420cad6468bb.jpg', 001, '<h1><strong>Test</strong></h1>\r\n\r\n<h3>esto es un test</h3>\r\n\r\n<ul>\r\n	<li>test 1</li>\r\n	<li>test 2</li>\r\n	<li>test 3</li>\r\n</ul>\r\n', 'Publicado');
+(001, 'Test 2', 'upload_images/ddfd1bfecbe5a0ddb59480b68283d05e.jpg', 'upload_images/0019200a3a236fd492f0b5c2f5df4ff4.jpg', 003, '<h2 style="font-style:italic">Titulo</h2>\r\n\r\n<p>bla bla bla</p>\r\n\r\n<ul>\r\n	<li>bulet</li>\r\n	<li>bulet</li>\r\n	<li>bulet</li>\r\n</ul>\r\n', 'Publicado'),
+(006, 'Test', 'upload_images/4c29ebeac862b8fd4c3c7fd889270a1a.jpg', 'upload_images/f10521c13fa3de864f801888e2318cd3.jpg', 001, '<h1><strong>Test</strong></h1>\r\n\r\n<h3>esto es un test</h3>\r\n\r\n<ul>\r\n	<li>test 1</li>\r\n	<li>test 2</li>\r\n	<li>test 3</li>\r\n</ul>\r\n', 'Publicado');
 
 -- --------------------------------------------------------
 
