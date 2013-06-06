@@ -1,7 +1,8 @@
 <?php
   include_once 'includes.php';
-  $listado_marquee = new Marquee();
-  $marquees = $listado_marquee->viewMarquee();
+
+  $preview_marquee = new Marquee();
+  $marquee = $preview_marquee->previewMarquee($_POST['id']);
 ?>
 <div class="clear">
 	<!-- uBillboard 3.1.1 ID:0 Name:billboard -->			
@@ -23,12 +24,12 @@
 			</div>
 			<div class='uds-bb-thumbnails modern right inside'>
 				<div class='uds-bb-thumbnail-container'>
-					<?php print $marquees['preview']; ?>
+					<?php print $marquee['preview']; ?>
 				</div>
 			</div>
 		</div>
 		<div class='uds-bb-slides'>
-			<?php print $marquees['view']; ?>
+			<?php print $marquee['view']; ?>
 			<div>
 				<a href='#' class='uds-bb-link'>
 					<img src='ctgrande/promo.jpg' alt='' class='uds-bb-bg-image' width="921"/>			

@@ -151,6 +151,12 @@ class Marquee
 					$rows .= '<td class="statusM">'.$marquee['status'].'</td>';
 				}
 				$rows .= '<td>';
+					$rows .= '<form id="marquee_ver" action="ver_marquee.php" method="POST">';
+						$rows .= '<input type="hidden" name="id" value="'.$marquee['id'].'"/>';
+						$rows .= '<input id="btn_marquee_ver" class="btn-classic" type="submit" value="Ver" name="btn_marquee_ver" />';
+					$rows .= '</form>';
+				$rows .= '</td>';
+				$rows .= '<td>';
 					$rows .= '<form id="marquee_editar" action="editar_marquee.php" method="POST">';
 						$rows .= '<input type="hidden" name="id" value="'.$marquee['id'].'"/>';
 						$rows .= '<input id="btn_marquee_editar" class="btn-classic" type="submit" value="Editar" name="btn_marquee_editar" />';
@@ -293,6 +299,7 @@ class Marquee
 		$mysqli->close();
 		return $this->formatViewMarquee($marquees);
   }
+
   private function formatViewMarquee($marquees){
   	$preview = '';
   	$view = '';
@@ -314,6 +321,53 @@ class Marquee
 		$marquees['preview'] = $preview;
 		$marquees['view'] = $view;
 		return $marquees;
+  }
+
+  public function previewMarquee($idMarquee){
+  	$mysqli = DataBase::connex();
+		$query = '
+			SELECT * FROM 
+				marquee
+			WHERE 
+				marquee.id = "' . $idMarquee . '"
+			ORDER BY 
+				queue
+		';
+		$result = $mysqli->query($query);
+		while ($row = $result->fetch_assoc()) 
+		{
+			$marquee['id'] = $row['id'];
+			$marquee['title'] = $row['title'];
+			$marquee['small_image'] = $row['small_image'];
+			$marquee['big_image'] = $row['big_image'];
+			$marquee['queue'] = $row['queue'];	
+			$marquee['description'] = $row['description'];
+			$marquee['status'] = $row['status'];
+		}
+		$result->free();
+		$mysqli->close();
+		return $this->formatPreviewMarquee($marquee);
+  }
+
+  private function formatPreviewMarquee($marquee){
+  	$preview = '';
+  	$view = '';
+		$preview .= '<div class="uds-bb-thumb">';
+			$preview .=	'<img src="'.$marquee['small_image'].'" alt="'.$marquee['title'].'" width="80" height="60" />';
+		$preview .= '</div>';
+		$view .= '<div class="uds-bb-slide">';
+			$view .= '<a href="#" class="uds-bb-link">';
+				$view .= '<img src="'.$marquee['big_image'].'" alt="'.$marquee['title'].'" class="uds-bb-bg-image" width="921" />';
+			$view .= '</a>';
+			$view .= '<div class="uds-bb-description uds-transparent" style="top:68px;left:45px;width:480px;height:238px;">';
+				$view .= '<div class="uds-bb-description-inside">';
+					$view .= $marquee['description'];
+				$view .= '</div>';
+			$view .= '</div>';
+		$view .= '</div>';
+		$previewMarquee['preview'] = $preview;
+		$previewMarquee['view'] = $view;
+		return $previewMarquee;
   }
 }
 ?>

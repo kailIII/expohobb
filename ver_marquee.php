@@ -15,7 +15,8 @@
       </nav>  
     </header>
     <div id="cont-all"> 
-      <div id="cont-section"> 
+      <div class="cont-slider">
+        <?php include('slider/preview.php'); ?>
       </div>
     </div>          
     <footer>

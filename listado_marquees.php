@@ -22,6 +22,7 @@
             <td class="tbtitulos">Titulo</td>
             <td class="tbtitulos">Pocicion</td>
             <td class="tbtitulos">Estado</td>
+            <td class="tbtitulos">Ver</td>
             <td class="tbtitulos">Editar</td>
             <td class="tbtitulos">Borrar</td>
           </tr>
