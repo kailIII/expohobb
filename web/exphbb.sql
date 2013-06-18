@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-06-2013 a las 11:29:08
+-- Tiempo de generación: 18-06-2013 a las 11:09:53
 -- Versión del servidor: 5.5.31
 -- Versión de PHP: 5.4.6-1ubuntu1.2
 
@@ -88,16 +88,16 @@ CREATE TABLE IF NOT EXISTS `revistas` (
   `edition` date DEFAULT NULL,
   `pdf` varchar(150) DEFAULT NULL,
   `swf` varchar(150) DEFAULT NULL,
+  `status` varchar(15) CHARACTER SET latin1 COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `revistas`
 --
 
-INSERT INTO `revistas` (`id`, `title`, `image`, `description`, `edition`, `pdf`, `swf`) VALUES
-(002, 'Test2', 'upload_images/c4f6017c39091ed6345d80c91d3a0dc7.jpg', '<h2 style="font-style:italic">Titulo</h2>\r\n\r\n<p>bla bla bla</p>\r\n\r\n<ul>\r\n	<li>bulet</li>\r\n	<li>bulet</li>\r\n	<li>bulet</li>\r\n</ul>\r\n', '2013-05-16', 'upload_revistas_pdf/d2130dc855eeb29f5fe302ed20c6fc49.pdf', 'qweqweqw'),
-(003, 'Test Revista', 'upload_images/0d8000c52bb15cdd34c499f9117f83a5.jpg', '<p>asddsa</p>\r\n', '2013-05-15', 'upload_revistas_pdf/0d8000c52bb15cdd34c499f9117f83a5.pdf', 'asddsaasd');
+INSERT INTO `revistas` (`id`, `title`, `image`, `description`, `edition`, `pdf`, `swf`, `status`) VALUES
+(007, 'Test 1', 'upload_images/0b01bbd4acb7e550cf8848fc070d4409.jpg', '<p>asdsad</p>\r\n', '2013-06-08', 'upload_revistas_pdf/a8732939cd62674b7c5f5a865c21123f.pdf', 'upload_revistas_swf/a8732939cd62674b7c5f5a865c21123f.swf', 'Despublicado');
 
 -- --------------------------------------------------------
 
