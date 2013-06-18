@@ -16,13 +16,14 @@
     </header>
     <div id="cont-all"> 
       <div id="cont-section"> 
-        <a title="Agregar Revista" href="agregar_revista.php">+ Agregar Revista</a>
-        <table border="1">
+        <a class="bnt-ver Cmarg" title="Agregar Revista" href="agregar_revista.php">+ Agregar Revista</a>
+        <table class="tb" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td>Titulo</td>
-            <td>Edicion</td>
-            <td>Editar</td>
-            <td>Borrar</td>
+            <td class="tbtitulos">Titulo</td>
+            <td class="tbtitulos">Edicion</td>
+            <td class="tbtitulos">Estado</td>
+            <td class="tbtitulos">Editar</td>
+            <td class="tbtitulos">Borrar</td>
           </tr>
           <?php
             include_once 'includes.php';

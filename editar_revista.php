@@ -55,7 +55,21 @@
           </div>
           <div class="input_wapper">
             <label>HTML SWF</label>
-           <input id="html_swf" value="<?php echo $newRevista['swf'];?>" type="text" onblur="" name="html_swf" required="required" class="input_text_revista input_text" />
+            <div>
+              <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10.0.0.0" width="550" height="400">
+                <param name="quality" value="high" />
+                <embed src="<?php echo $newRevista['swf'];?>" quality="high" type="application/x-shockwave-flash" width="550" height="400" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
+              </object>
+            </div>
+            <input type="hidden" name="name_swf" value="<?php echo $newRevista['swf'];?>" />
+            <input id="html_swf" type="file" name="html_swf" required="required" class="input_file_revista input_file" />
+          </div>
+          <div class="input_wapper">
+            <label>Estado</label>
+            <select id="status" class="label_reg" required="required" name="status">
+              <option <?php if($newRevista['status'] == 'Despublicado'){ echo 'selected'; }?> value="Despublicado">Despublicado</option>
+              <option <?php if($newRevista['status'] == 'Publicado'){ echo 'selected'; }?> value="Publicado">Publicado</option>
+            </select>
           </div>
           <div class="input_wapper">
             <input id="editar_revista" class="btn_general btn-classic2" type="submit" value="Guardar" name="editar_revista" />

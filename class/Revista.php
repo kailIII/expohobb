@@ -12,6 +12,7 @@ include_once 'DataBase.php';
 * @property string $edition
 * @property string $pdf
 * @property string $swf
+* @property string $status
 * 
 */
 
@@ -24,9 +25,9 @@ class Revista
 	********************************************************/
 	public function insetRevista($revista, $files)
 	{
-		
 		$pathIgame = $this->uploadImage($files['image']);
-		$pathPDF = $this->uploadPDF($files['pdf']);
+		$pathFile = $this->uploadFile($files['pdf']);
+		$pathSWF = $this->uploadFile($files['html_swf']);
 		$mysqli = DataBase::connex();
 		$query = '
 			INSERT INTO 
@@ -37,8 +38,9 @@ class Revista
 				revistas.image = "'. mysql_real_escape_string($pathIgame) .'",
 				revistas.description = "'. mysql_real_escape_string($revista['descripcion']) .'",
 				revistas.edition = "'. mysql_real_escape_string(date($revista['edicion'])) .'",
-				revistas.pdf = "'. mysql_real_escape_string($pathPDF).'",
-				revistas.swf = "'. mysql_real_escape_string($revista['html_swf']).'"
+				revistas.pdf = "'. mysql_real_escape_string($pathFile).'",
+				revistas.swf = "'. mysql_real_escape_string($pathSWF).'",
+				revistas.status = "'. mysql_real_escape_string($revista['status']).'"
 			';
 		$mysqli->query($query);
 		$mysqli->close();
@@ -84,11 +86,11 @@ class Revista
 	/********************************************************
 	Este metodo devuelve genera las imagenes del revista
 	********************************************************/
-	private function uploadPDF($pdf){
-		$newPDF = $pdf['tmp_name'] ;
-		$nombre_original = $pdf['name'];
-		$explode_name_pdf = explode( '.' , $nombre_original );
-		$extension = array_pop($explode_name_pdf);
+	private function uploadFile($file){
+		$newFile = $file['tmp_name'] ;
+		$nombre_original = $file['name'];
+		$explode_name_file = explode( '.' , $nombre_original );
+		$extension = array_pop($explode_name_file);
 
 		switch( $extension ) {
 			case 'pdf':
@@ -97,12 +99,25 @@ class Revista
 				$name = md5(date("YmdHms")) . '.pdf';
 				$uploadfile = $uploaddir . basename($name);
 
-				if (move_uploaded_file($newPDF, $uploadfile)) {
-					$pathPDF = $uploaddir . $name;
+				if (move_uploaded_file($newFile, $uploadfile)) {
+					$pathFile = $uploaddir . $name;
 				} else {
 				 	return false;
 				}
-				return $pathPDF;
+				return $pathFile;
+			break;
+			case 'swf':
+			case 'SWF':
+				$uploaddir = 'upload_revistas_swf/';
+				$name = md5(date("YmdHms")) . '.swf';
+				$uploadfile = $uploaddir . basename($name);
+
+				if (move_uploaded_file($newFile, $uploadfile)) {
+					$pathFile = $uploaddir . $name;
+				} else {
+				 	return false;
+				}
+				return $pathFile;
 			break;
 			default:
 				return false;
@@ -121,21 +136,26 @@ class Revista
 				revistas
 		';
 		$result = $mysqli->query($query);
-		while ($row = $result->fetch_assoc()) 
-		{
-			$revista['id'] = $row['id'];
-			$revista['title'] = $row['title'];
-			$revista['image'] = $row['image'];
-			$revista['description'] = $row['description'];
-			$revista['edition'] = $row['edition'];	
-			$revista['pdf'] = $row['pdf'];
-			$revista['swf'] = $row['swf'];
-			$revistas[] = $revista;
+		if($result->num_rows > 0){
+			while ($row = $result->fetch_assoc()) 
+			{
+				$revista['id'] = $row['id'];
+				$revista['title'] = $row['title'];
+				$revista['image'] = $row['image'];
+				$revista['description'] = $row['description'];
+				$revista['edition'] = $row['edition'];	
+				$revista['pdf'] = $row['pdf'];
+				$revista['swf'] = $row['swf'];
+				$revista['status'] = $row['status'];
+				$revistas[] = $revista;
+			}
+			$result->free();
+			$mysqli->close();
+			$rows = $this->format_list_revistas($revistas);
+	    return $rows;
+		}else{
+			return false;
 		}
-		$result->free();
-		$mysqli->close();
-		$rows = $this->format_list_revistas($revistas);
-    return $rows;
 	}
 
 	private function format_list_revistas($list){
@@ -144,16 +164,21 @@ class Revista
 			$rows .= '<tr>';
 				$rows .= '<td>'.$revista['title'].'</td>';
 				$rows .= '<td>'.$revista['edition'].'</td>';
+				if($revista['status']=="Publicado"){
+						$rows .= '<td class="statusB">'.$revista['status'].'</td>';
+				}else{
+					$rows .= '<td class="statusM">'.$revista['status'].'</td>';
+				}
 				$rows .= '<td>';
 					$rows .= '<form id="revista_editar" action="editar_revista.php" method="POST">';
 						$rows .= '<input type="hidden" name="id" value="'.$revista['id'].'"/>';
-						$rows .= '<input id="btn_revista_editar" class="btn_general" type="submit" value="Editar" name="btn_revista_editar" />';
+						$rows .= '<input id="btn_revista_editar" class="btn-classic" type="submit" value="Editar" name="btn_revista_editar" />';
 					$rows .= '</form>';
 				$rows .= '</td>';
 				$rows .= '<td>';
 					$rows .= '<form id="revista_eliminar" action="controllers.php" method="POST">';
 						$rows .= '<input type="hidden" name="id" value="'.$revista['id'].'"/>';
-						$rows .= '<input id="btn_revista_eliminar" class="btn_general" type="submit" value="Eliminar" name="btn_revista_eliminar" />';
+						$rows .= '<input id="btn_revista_eliminar" class="btn-classic" type="submit" value="Eliminar" name="btn_revista_eliminar" />';
 					$rows .= '</form>';
 				$rows .= '</td>';
 			$rows .= '</tr>';
@@ -183,6 +208,7 @@ class Revista
 			$revista['edition'] = $row['edition'];	
 			$revista['pdf'] = $row['pdf'];
 			$revista['swf'] = $row['swf'];
+			$revista['status'] = $row['status'];
 		}
 		$result->free();
 		$mysqli->close();
@@ -200,9 +226,14 @@ class Revista
   		$pathImage = $revista['name_image'];
   	}
   	if($files['pdf']['name'] != ''){
-  		$pathPDF = $this->updatePDF($files['pdf'], $revista['name_pdf']);
+  		$pathPDF = $this->updateFile($files['pdf'], $revista['name_pdf']);
   	} else {
   		$pathPDF = $revista['name_pdf'];
+  	}
+  	if($files['html_swf']['name'] != ''){
+  		$pathSWF = $this->updateFile($files['html_swf'], $revista['name_swf']);
+  	} else {
+  		$pathSWF = $revista['name_swf'];
   	}
   	$mysqli = DataBase::connex();
   	$q = '
@@ -214,7 +245,8 @@ class Revista
 			revistas.description = "'. mysql_real_escape_string($revista['descripcion']) .'",
 			revistas.edition = "'. mysql_real_escape_string(date($revista['edicion'])) .'",
 			revistas.pdf = "'. mysql_real_escape_string($pathPDF).'",
-			revistas.swf = "'. mysql_real_escape_string($revista['html_swf']).'"
+			revistas.swf = "'. mysql_real_escape_string($pathSWF).'",
+			revistas.status = "'. mysql_real_escape_string($revista['status']).'"
   		WHERE 
   			revistas.id = "' . $revista['revistaid'] . '" 
   		LIMIT 1
@@ -270,16 +302,16 @@ class Revista
 	/********************************************************
 	Este metodo devuelve genera el PDF de la revista
 	********************************************************/
-	private function updatePDF($oldPDF, $rmPDF){
+	private function updateFile($oldFile, $rmFile){
 		echo '<pre>';
-		print_r($oldPDF);
-		print_r($rmPDF);
+		print_r($oldFile);
+		print_r($rmFile);
 		echo '</pre>';
 		
-		$pdf = $oldPDF['tmp_name'] ;
-		$nombre_original = $oldPDF['name'];
-		$explode_name_pdf = explode( '.' , $nombre_original );
-		$extension = array_pop( $explode_name_pdf);
+		$newFile = $oldFile['tmp_name'] ;
+		$nombre_original = $oldFile['name'];
+		$explode_name_file = explode( '.' , $nombre_original );
+		$extension = array_pop( $explode_name_file);
 
 		switch( $extension ) {
 			case 'pdf':
@@ -287,23 +319,29 @@ class Revista
 				$uploaddir = 'upload_revistas_pdf/';
 				$name = md5(date("YmdHms")) . '.pdf';
 				$uploadfile = $uploaddir . basename($name);
-
-				if (move_uploaded_file($pdf, $uploadfile)) {
-					$pathPDF = $uploaddir . $name;
-				} else {
-				 	return false;
-				}
+			break;
+			case 'swf':
+			case 'SWF':
+				$uploaddir = 'upload_revistas_swf/';
+				$name = md5(date("YmdHms")) . '.swf';
+				$uploadfile = $uploaddir . basename($name);
 			break;
 			default:
 				return false;
 			break;
 		}
-
-		if($rmPDF != ''){
-			unlink($rmPDF);
+		
+		if (move_uploaded_file($newFile, $uploadfile)) {
+			$pathFile = $uploaddir . $name;
+		} else {
+		 	return false;
 		}
-		echo '<br />'. $pathPDF;
-		return $pathPDF;
+
+		if($rmFile != ''){
+			unlink($rmFile);
+		}
+		echo '<br />'. $pathFile;
+		return $pathFile;
 	}
 	/********************************************************
 	Este metodo elimina una Revista especifica

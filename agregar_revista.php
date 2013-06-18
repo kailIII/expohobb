@@ -38,7 +38,14 @@
           </div>
           <div class="input_wapper">
             <label>HTML SWF</label>
-           <input id="html_swf" type="text" onblur="" name="html_swf" required="required" class="input_text_revista input_text" />
+            <input id="html_swf" type="file" name="html_swf" required="required" class="input_file_revista input_file" />
+          </div>
+          <div class="input_wapper">
+            <label>Estado</label>
+            <select id="status" class="label_reg" required="required" name="status">
+              <option value="Despublicado">Despublicado</option>
+              <option value="Publicado">Publicado</option>
+            </select>
           </div>
           <div class="input_wapper">
             <input id="agregar_revista" class="btn_general" type="submit" value="Guardar" name="agregar_revista" />

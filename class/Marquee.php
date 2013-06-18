@@ -11,6 +11,7 @@ include_once 'DataBase.php';
 * @property string $big_image
 * @property int $queue
 * @property string $descripcion
+* @property string $status
 * 
 */
 
@@ -122,21 +123,25 @@ class Marquee
 				queue
 		';
 		$result = $mysqli->query($query);
-		while ($row = $result->fetch_assoc()) 
-		{
-			$marquee['id'] = $row['id'];
-			$marquee['title'] = $row['title'];
-			$marquee['small_image'] = $row['small_image'];
-			$marquee['big_image'] = $row['big_image'];
-			$marquee['queue'] = $row['queue'];	
-			$marquee['description'] = $row['description'];
-			$marquee['status'] = $row['status'];
-			$marquees[] = $marquee;
+		if($result->num_rows > 0){
+			while ($row = $result->fetch_assoc()) 
+			{
+				$marquee['id'] = $row['id'];
+				$marquee['title'] = $row['title'];
+				$marquee['small_image'] = $row['small_image'];
+				$marquee['big_image'] = $row['big_image'];
+				$marquee['queue'] = $row['queue'];	
+				$marquee['description'] = $row['description'];
+				$marquee['status'] = $row['status'];
+				$marquees[] = $marquee;
+			}
+			$result->free();
+			$mysqli->close();
+			$rows = $this->format_list_marquee($marquees);
+	    return $rows;
+		}else{
+			return false;
 		}
-		$result->free();
-		$mysqli->close();
-		$rows = $this->format_list_marquee($marquees);
-    return $rows;
 	}
 
 	private function format_list_marquee($list){
