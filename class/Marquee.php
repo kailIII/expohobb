@@ -23,7 +23,12 @@ class Marquee
 	********************************************************/
 	public function insetMarquee($marquee, $images)
 	{
-		$pathIgame = $this->uploadImage($images);
+		$pathIgame = $this->uploadImage($images);	
+		
+		if($marquee['type_marquee'] != 'imagen'){
+			$pathIgame['big_image'] = $marquee['type_marquee'];
+		}
+
 		$mysqli = DataBase::connex();
 		$query = '
 			INSERT INTO 
@@ -35,6 +40,7 @@ class Marquee
 				marquee.big_image = "'. mysql_real_escape_string($pathIgame['big_image']) .'",
 				marquee.queue = "'. mysql_real_escape_string($marquee['queue']) .'",
 				marquee.description = "'. mysql_real_escape_string($marquee['descripcion']).'",
+				marquee.type_marquee = "'. mysql_real_escape_string($marquee['type_marquee']).'",
 				marquee.status = "'. mysql_real_escape_string($marquee['status']).'"
 			';
 		$mysqli->query($query);
@@ -104,6 +110,7 @@ class Marquee
 			$marquee['big_image'] = $row['big_image'];
 			$marquee['queue'] = $row['queue'];	
 			$marquee['description'] = $row['description'];
+			$marquee['type_marquee'] = $row['type_marquee'];
 			$marquee['status'] = $row['status'];
 		}
 		$result->free();
@@ -132,6 +139,7 @@ class Marquee
 				$marquee['big_image'] = $row['big_image'];
 				$marquee['queue'] = $row['queue'];	
 				$marquee['description'] = $row['description'];
+				$marquee['type_marquee'] = $row['type_marquee'];
 				$marquee['status'] = $row['status'];
 				$marquees[] = $marquee;
 			}
@@ -196,11 +204,17 @@ class Marquee
     	} else {
     		$pathImageSmall = $marquee['name_small_image'];
     	}
-    	if($images['big_image']['name'] != ''){
-    		$pathImageBig = $this->updateImage($images['big_image'], $marquee['name_big_image']);
-    	} else {
-    		$pathImageBig = $marquee['name_big_image'];
+    	
+    	if($marquee['type_marquee'] == 'imagen'){
+	    	if($images['big_image']['name'] != ''){
+	    		$pathImageBig = $this->updateImage($images['big_image'], $marquee['name_big_image']);
+	    	} else {
+	    		$pathImageBig = $marquee['name_big_image'];
+	    	}
+    	}else{
+    		$pathImageBig = $marquee['big_image'];
     	}
+    	
     	$mysqli = DataBase::connex();
     	$q = '
     		UPDATE 
@@ -211,6 +225,7 @@ class Marquee
 				marquee.big_image = "'. mysql_real_escape_string($pathImageBig) .'",
 				marquee.queue = "'. mysql_real_escape_string($marquee['queue']) .'",
 				marquee.description = "'. mysql_real_escape_string($marquee['descripcion']).'",
+				marquee.type_marquee = "'. mysql_real_escape_string($marquee['type_marquee']).'",
 				marquee.status = "'. mysql_real_escape_string($marquee['status']).'"
     		WHERE 
     			marquee.id = "' . $marquee['marqueeid'] . '" 
@@ -297,6 +312,7 @@ class Marquee
 			$marquee['big_image'] = $row['big_image'];
 			$marquee['queue'] = $row['queue'];	
 			$marquee['description'] = $row['description'];
+			$marquee['type_marquee'] = $row['type_marquee'];
 			$marquee['status'] = $row['status'];
 			$marquees[] = $marquee;
 		}
@@ -308,11 +324,14 @@ class Marquee
   private function formatViewMarquee($marquees){
   	$preview = '';
   	$view = '';
+  	$count = 0;
+  	$js = '';
 		foreach ($marquees as $marquee) {
 			$preview .= '<div class="uds-bb-thumb">';
 				$preview .=	'<img src="'.$marquee['small_image'].'" alt="'.$marquee['title'].'" width="80" height="60" />';
 			$preview .= '</div>';
 			$view .= '<div class="uds-bb-slide">';
+			if($marquee['type_marquee'] == 'imagen'){	
 				$view .= '<a href="#" class="uds-bb-link">';
 					$view .= '<img src="'.$marquee['big_image'].'" alt="'.$marquee['title'].'" class="uds-bb-bg-image" width="921" />';
 				$view .= '</a>';
@@ -321,10 +340,37 @@ class Marquee
 						$view .= $marquee['description'];
 					$view .= '</div>';
 				$view .= '</div>';
+				$js .= $count.':{
+									linkTarget: "",
+									delay: 10000,
+									transition: "fade",
+									direction: "bottom",
+									bgColor: "transparent",
+									repeat: "repeat",
+									stop: false,
+									autoplayVideo: true
+								}, 
+									';
+			} else {
+				$view .= '<iframe width="921" height="380" src="'.$marquee['big_image'].'" frameborder="0" allowfullscreen ></iframe>';
+				$js .= $count.':{
+									linkTarget: "",
+									delay: 5000,
+									transition: "none",
+									direction: "none",
+									bgColor: "#0F0F0F",
+									repeat: "repeat",
+									stop: false,
+									autoplayVideo: false
+								}, 
+									';
+			}
 			$view .= '</div>';
+			$count++;
 		}
 		$marquees['preview'] = $preview;
 		$marquees['view'] = $view;
+		$marquees['js'] = $js;
 		return $marquees;
   }
 
@@ -347,6 +393,7 @@ class Marquee
 			$marquee['big_image'] = $row['big_image'];
 			$marquee['queue'] = $row['queue'];	
 			$marquee['description'] = $row['description'];
+			$marquee['type_marquee'] = $row['type_marquee'];
 			$marquee['status'] = $row['status'];
 		}
 		$result->free();
@@ -357,10 +404,13 @@ class Marquee
   private function formatPreviewMarquee($marquee){
   	$preview = '';
   	$view = '';
+  	$count = 0;
+  	$js = '';
 		$preview .= '<div class="uds-bb-thumb">';
 			$preview .=	'<img src="'.$marquee['small_image'].'" alt="'.$marquee['title'].'" width="80" height="60" />';
 		$preview .= '</div>';
 		$view .= '<div class="uds-bb-slide">';
+		if($marquee['type_marquee'] == 'imagen'){
 			$view .= '<a href="#" class="uds-bb-link">';
 				$view .= '<img src="'.$marquee['big_image'].'" alt="'.$marquee['title'].'" class="uds-bb-bg-image" width="921" />';
 			$view .= '</a>';
@@ -369,9 +419,35 @@ class Marquee
 					$view .= $marquee['description'];
 				$view .= '</div>';
 			$view .= '</div>';
+			$js .= $count.':{
+								linkTarget: "",
+								delay: 10000,
+								transition: "fade",
+								direction: "bottom",
+								bgColor: "transparent",
+								repeat: "repeat",
+								stop: false,
+								autoplayVideo: true
+							}, 
+								';
+		} else {
+			$view .= '<iframe width="921" height="380" src="'.$marquee['big_image'].'" frameborder="0" allowfullscreen ></iframe>';
+			$js .= $count.':{
+								linkTarget: "",
+								delay: 5000,
+								transition: "none",
+								direction: "none",
+								bgColor: "#0F0F0F",
+								repeat: "repeat",
+								stop: false,
+								autoplayVideo: false
+							}, 
+								';
+		}
 		$view .= '</div>';
 		$previewMarquee['preview'] = $preview;
 		$previewMarquee['view'] = $view;
+		$previewMarquee['js'] = $js;
 		return $previewMarquee;
   }
 }

@@ -5,9 +5,7 @@
   </head>
   <body>
     <header>
-      <div class="logoexhohobby">
-        <h1><a href="#"><span>Expohobby</span></a></h1>
-      </div> 
+      <?php include_once 'logo.php'; ?>
       <nav>
         <ul>
           <?php include_once 'admin_menu.php'; ?>
@@ -31,6 +29,13 @@
             <input id="small_image" type="file" name="small_image" required="required" class="input_file_marquee input_file" />
           </div>
           <div class="input_wapper">
+            <label>Tipo</label>
+            <select id="type_marquee" class="label_reg" required="required" name="type_marquee">
+              <option value="imagen">Imagen</option>
+              <option value="video">Video</option>
+            </select>
+          </div>
+          <div id="wrapper_type_marquee" class="input_wapper">
             <label>Imagen Grande</label>
            <input id="big_image" type="file" name="big_image" required="required" class="input_file_marquee input_file" />
           </div>

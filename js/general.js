@@ -18,6 +18,15 @@
     });
   }
   function initPuginsForms(){
+    $('#type_marquee').change(function(){
+      if($(this).val() == 'imagen'){
+        var newHTML = '<label>Imagen Grande</label><input id="big_image" type="file" name="big_image" required="required" class="input_file_marquee input_file" />';
+        $('#wrapper_type_marquee').html(newHTML);
+      }else if($(this).val() == 'video'){
+        var newHTML = '<label>URL del Video</label><input id="big_image" name="big_image" type="text" required="required" class="input_text_revista input_text" />';
+        $('#wrapper_type_marquee').html(newHTML);
+      }
+    });
     $(function() {
       $("#edicion").datepicker();
       $("#edicion").datepicker( "option", "dateFormat", "yy-mm-dd");

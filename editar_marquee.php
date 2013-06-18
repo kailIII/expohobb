@@ -5,9 +5,7 @@
   </head><?php include_once 'footer.php'; ?>
   <body>
     <header>
-      <div class="logoexhohobby">
-        <h1><a href="#"><span>Expohobby</span></a></h1>
-      </div> 
+      <?php include_once 'logo.php'; ?>
       <nav>
         <ul>
           <?php include_once 'admin_menu.php'; ?>
@@ -39,10 +37,27 @@
             <input id="small_image_marquee" type="file" name="small_image" class="input_file_marquee input_file" />
           </div>
           <div class="input_wapper">
-            <label>Imagen Grande</label>
-            <div id="preview_big_image"><img alt="<?php echo $newMarquee['title'];?>" title="<?php echo $newMarquee['title'];?>" src="<?php echo $newMarquee['big_image'];?>"/></div>
-            <input type="hidden" name="name_big_image" value="<?php echo $newMarquee['big_image'];?>" />
-           <input id="big_image_marquee" type="file" name="big_image" class="input_file_marquee input_file" />
+            <label>Tipo</label>
+            <select id="type_marquee" class="label_reg" required="required" name="type_marquee">
+              <option <?php if($newMarquee['type_marquee'] == 'imagen'){ echo 'selected'; }?> value="imagen">Imagen</option>
+              <option <?php if($newMarquee['type_marquee'] == 'video'){ echo 'selected'; }?> value="video">Video</option>
+            </select>
+          </div>
+          <div id="wrapper_type_marquee" class="input_wapper">
+            <?php
+              if($newMarquee['type_marquee'] == 'imagen'){
+                echo '<label>Imagen Grande</label>';
+                echo '<div id="preview_big_image"><img alt="' . $newMarquee['title'] . '" title="' . $newMarquee['title'] . '" src="' . $newMarquee['big_image'] . '"/></div>';
+                echo '<input type="hidden" name="name_big_image" value="' . $newMarquee['big_image'] . '" />';
+                echo '<input id="big_image_marquee" type="file" name="big_image" class="input_file_marquee input_file" />';
+              }
+              if($newMarquee['type_marquee'] == 'video'){ 
+                echo '<label>URL del Video</label>'; 
+                echo '<iframe width="900" height="380" src="'.$newMarquee['big_image'].'" frameborder="0" allowfullscreen ></iframe>'; 
+                echo '<input type="hidden" name="name_big_image" value="' . $newMarquee['big_image'] . '" />';
+                echo '<input id="big_image" name="big_image" type="text" required="required" class="input_text_revista input_text" />';
+              }
+            ?>
           </div>
           <div class="input_wapper">
             <label>Descripcion</label>

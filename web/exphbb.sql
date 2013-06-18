@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-06-2013 a las 11:09:53
+-- Tiempo de generación: 18-06-2013 a las 14:57:43
 -- Versión del servidor: 5.5.31
 -- Versión de PHP: 5.4.6-1ubuntu1.2
 
@@ -51,16 +51,18 @@ CREATE TABLE IF NOT EXISTS `marquee` (
   `queue` smallint(3) unsigned zerofill DEFAULT NULL,
   `description` mediumtext,
   `status` varchar(15) DEFAULT NULL,
+  `type_marquee` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `marquee`
 --
 
-INSERT INTO `marquee` (`id`, `title`, `small_image`, `big_image`, `queue`, `description`, `status`) VALUES
-(001, 'Test 2', 'upload_images/ddfd1bfecbe5a0ddb59480b68283d05e.jpg', 'upload_images/0019200a3a236fd492f0b5c2f5df4ff4.jpg', 003, '<h2 style="font-style:italic">Titulo</h2>\r\n\r\n<p>bla bla bla</p>\r\n\r\n<ul>\r\n	<li>bulet</li>\r\n	<li>bulet</li>\r\n	<li>bulet</li>\r\n</ul>\r\n', 'Publicado'),
-(006, 'Test', 'upload_images/4c29ebeac862b8fd4c3c7fd889270a1a.jpg', 'upload_images/f10521c13fa3de864f801888e2318cd3.jpg', 001, '<h1><strong>Test</strong></h1>\r\n\r\n<h3>esto es un test</h3>\r\n\r\n<ul>\r\n	<li>test 1</li>\r\n	<li>test 2</li>\r\n	<li>test 3</li>\r\n</ul>\r\n', 'Publicado');
+INSERT INTO `marquee` (`id`, `title`, `small_image`, `big_image`, `queue`, `description`, `status`, `type_marquee`) VALUES
+(001, 'Test 2', 'upload_images/ddfd1bfecbe5a0ddb59480b68283d05e.jpg', 'http://www.youtube.com/embed/xjm80oTTfoA', 003, '<h2 style="font-style:italic">Titulo</h2>\r\n\r\n<p>bla bla bla</p>\r\n\r\n<ul>\r\n	<li>bulet</li>\r\n	<li>bulet</li>\r\n	<li>bulet</li>\r\n</ul>\r\n', 'Publicado', 'video'),
+(006, 'Test', 'upload_images/4c29ebeac862b8fd4c3c7fd889270a1a.jpg', 'upload_images/57a41ae504af2029d667d1502489bfe6.jpg', 001, '<h1><strong>Test</strong></h1>\r\n\r\n<h3>esto es un test</h3>\r\n\r\n<ul>\r\n	<li>test 1</li>\r\n	<li>test 2</li>\r\n	<li>test 3</li>\r\n</ul>\r\n', 'Publicado', 'imagen'),
+(007, 'Otro Test', 'upload_images/85815592615ffc3cb5f40ebbc4886781.jpg', 'upload_images/ccc3b7cc62f25b5ba47a491eacfa97ea.jpg', 004, '<h2 style="font-style:italic">Titulo</h2>\r\n\r\n<p>bla bla bla</p>\r\n\r\n<ul>\r\n	<li>bulet</li>\r\n	<li>bulet</li>\r\n	<li>bulet</li>\r\n</ul>\r\n', 'Publicado', 'imagen');
 
 -- --------------------------------------------------------
 

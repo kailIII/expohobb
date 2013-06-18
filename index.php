@@ -15,13 +15,7 @@
   }(document, 'script', 'facebook-jssdk'));
   </script>
   <header>
-    <div class="logoexhohobby">
-      <h1>
-        <a href="#">
-          <span>Expohobby</span>
-        </a>
-      </h1>
-    </div>
+    <?php include_once 'logo.php'; ?>
     <nav>
       <ul>
         <li>
