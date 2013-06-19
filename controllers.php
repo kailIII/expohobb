@@ -1,6 +1,20 @@
 <?php
 	include_once 'includes.php';
 	
+	if(isset($_POST['ingresar']))
+	{
+		$user = new Usuario();
+		if(isset($_POST['recordar']) && $_POST['recordar'] == 'ok')
+		{
+			$recordar = $_POST['recordar'];
+		}
+		else
+		{
+			$recordar = 'no';
+		}
+		$user->login($_POST['mail'], $_POST['pass'], $recordar);
+	}
+
 	if(isset($_POST['agregar_marquee']))
 	{
 		$marquee = new Marquee();

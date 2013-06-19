@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-06-2013 a las 14:57:43
+-- Tiempo de generación: 19-06-2013 a las 12:06:04
 -- Versión del servidor: 5.5.31
 -- Versión de PHP: 5.4.6-1ubuntu1.2
 
@@ -104,16 +104,23 @@ INSERT INTO `revistas` (`id`, `title`, `image`, `description`, `edition`, `pdf`,
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE IF NOT EXISTS `usuario` (
-  `id` smallint(3) unsigned zerofill NOT NULL AUTO_INCREMENT,
-  `user` varchar(60) DEFAULT NULL,
-  `pass` varchar(150) DEFAULT NULL,
-  `mail` varchar(150) DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `id` int(5) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `mail` varchar(30) DEFAULT NULL,
+  `pass` varchar(140) DEFAULT NULL,
+  `token` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `mail`, `pass`, `token`) VALUES
+(00003, 'admin@expohobby.com.ar', '704b037a97fa9b25522b7c014c300f8a', 'bacca93b8f5323e00ac3800f6fd3e389');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

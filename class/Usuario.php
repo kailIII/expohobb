@@ -5,9 +5,7 @@ include_once 'DataBase.php';
 class Usuario 
 {
 
-	public function login($mail, $pwd, $recordar="")
-	{
-		
+	public function login($mail, $pwd, $recordar="") {
 		$mysqli = DataBase::connex();
 		
 		$query = '
@@ -28,25 +26,24 @@ class Usuario
 		
 		if(isset($user['mail']) && $user['mail'] == $mail)
 		{
-			
+			session_start();
 			$_SESSION['usuario'] = $user['id'];
 			$_SESSION['token'] = $user['token'];
-			if($recordar == 'ok')
-			{
+			if($recordar == 'ok') {
 				$valoresDeCookie ='000000000.000000000.' . $_SESSION['usuario'] . '.%&ki;kr.' . $_SESSION['token'];
-				setcookie('animenotochi', $valoresDeCookie,time()+60*60*24*360);
+				setcookie('expohobby', $valoresDeCookie,time()+60*60*24*360);
 			}
 			$result->free();
 			$mysqli->close();
-			header("Location: muro.php");
+			header("Location: listado_marquees.php");
 		}
 		else
 		{
 			$result->free();
 			$mysqli->close();
-			header("Location: index.php?error='log_error'");
+			header("Location: ingresar.php?error='log_error'");
 		}
 		
 	}
-
+}
 ?>
