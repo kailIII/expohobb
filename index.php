@@ -62,28 +62,30 @@
           </div>
         </article>
         <article class="exposiciones">
-          <a href="#" >
-            <img alt="imag"  border="0px" width="144" height="173" src="imagenes/none.jpg"></a>
-          <header>
-            <h2>
-              <a href="#">Titulo de la exposicion</a>
-            </h2>
-          </header>
-          <section>
-            <p class="subtitulo">
-              Edición
-              <strong>25 de julio 2013</strong>
-            </p>
-            <div class="descripcion">
-              <p>
-                Hola este es el texto descriptivo para saber que va aca tanto sea una revista o una exposicion por eso esto va aca. Hola este es el texto descriptivo para saber que va aca tanto sea una revista o una exposicion por eso esto va aca
-              </p>
-            </div>
-            <a href="#" class="btn-classic2">
-              Ver todas las
-              <span class="color-inst">Expohobby's</span>
-            </a>
-          </section>
+        	<div class="cont-art">
+              <a href="#" >
+                <img alt="imag"  border="0px" width="144" height="173" src="imagenes/none.jpg"></a>
+              <header>
+                <h2>
+                  <a href="#">Titulo de la exposicion</a>
+                </h2>
+              </header>
+              <section>
+                <p class="subtitulo">
+                  Edición
+                  <strong>25 de julio 2013</strong>
+                </p>
+                <div class="descripcion">
+                  <p>
+                    Hola este es el texto descriptivo para saber que va aca tanto sea una revista o una exposicion por eso esto va aca. Hola este es el texto descriptivo para saber que va aca tanto sea una revista o una exposicion por eso esto va aca
+                  </p>
+                </div>
+                <a href="#" class="btn-classic2">
+                  Ver todas las
+                  <span class="color-inst">Expohobby's</span>
+                </a>
+              </section>
+            </div>  
         </article>
       </section>
       <aside class="facebook">
