@@ -128,12 +128,22 @@ class Revista
 	/********************************************************
 	Este metodo devuelve todas las Revistas de la base de datos
 	********************************************************/
-	public function getRevistas()
+	public function getRevistas($format)
 	{
 		$mysqli = DataBase::connex();
 		$query = '
 			SELECT * FROM 
 				revistas
+		';
+		if($format == 'normal_list') {
+			$query .= '
+				WHERE
+					revistas.status = "Publicado"
+			';
+		}
+		$query .= '
+			ORDER BY
+				edition
 		';
 		$result = $mysqli->query($query);
 		if($result->num_rows > 0){
@@ -151,39 +161,78 @@ class Revista
 			}
 			$result->free();
 			$mysqli->close();
-			$rows = $this->format_list_revistas($revistas);
+			$rows = $this->format_list_revistas($format, $revistas);
 	    return $rows;
 		}else{
 			return false;
 		}
 	}
 
-	private function format_list_revistas($list){
+	private function format_list_revistas($format, $list){
 		$rows = '';
-		foreach ($list as $revista) {
-			$rows .= '<tr>';
-				$rows .= '<td>'.$revista['title'].'</td>';
-				$rows .= '<td>'.$revista['edition'].'</td>';
-				if($revista['status']=="Publicado"){
-						$rows .= '<td class="statusB">'.$revista['status'].'</td>';
-				}else{
-					$rows .= '<td class="statusM">'.$revista['status'].'</td>';
-				}
-				$rows .= '<td>';
-					$rows .= '<form id="revista_editar" action="editar_revista.php" method="POST">';
-						$rows .= '<input type="hidden" name="id" value="'.$revista['id'].'"/>';
-						$rows .= '<input id="btn_revista_editar" class="btn-classic" type="submit" value="Editar" name="btn_revista_editar" />';
-					$rows .= '</form>';
-				$rows .= '</td>';
-				$rows .= '<td>';
-					$rows .= '<form id="revista_eliminar" action="controllers.php" method="POST">';
-						$rows .= '<input type="hidden" name="id" value="'.$revista['id'].'"/>';
-						$rows .= '<input id="btn_revista_eliminar" class="btn-classic" type="submit" value="Eliminar" name="btn_revista_eliminar" />';
-					$rows .= '</form>';
-				$rows .= '</td>';
-			$rows .= '</tr>';
+		if($format == 'admin_list'){
+			foreach ($list as $revista) {
+				$rows .= '<tr>';
+					$rows .= '<td>'.$revista['title'].'</td>';
+					$rows .= '<td>'.$revista['edition'].'</td>';
+					if($revista['status']=="Publicado"){
+							$rows .= '<td class="statusB">'.$revista['status'].'</td>';
+					}else{
+						$rows .= '<td class="statusM">'.$revista['status'].'</td>';
+					}
+					$rows .= '<td>';
+						$rows .= '<form id="revista_editar" action="editar_revista.php" method="POST">';
+							$rows .= '<input type="hidden" name="id" value="'.$revista['id'].'"/>';
+							$rows .= '<input id="btn_revista_editar" class="btn-classic" type="submit" value="Editar" name="btn_revista_editar" />';
+						$rows .= '</form>';
+					$rows .= '</td>';
+					$rows .= '<td>';
+						$rows .= '<form id="revista_eliminar" action="controllers.php" method="POST">';
+							$rows .= '<input type="hidden" name="id" value="'.$revista['id'].'"/>';
+							$rows .= '<input id="btn_revista_eliminar" class="btn-classic" type="submit" value="Eliminar" name="btn_revista_eliminar" />';
+						$rows .= '</form>';
+					$rows .= '</td>';
+				$rows .= '</tr>';
+			}
+		} else if($format == 'normal_list'){
+			foreach ($list as $revista) {
+				$edition = $this->format_edition($revista['edition']);
+				$rows .= '<article class="contHover">';
+					$rows .= '<div class="ContMult">';
+						$rows .= '<div class="cont-art">';
+							$rows .= '<header>';
+								$rows .= '<h2>'.$revista['title'].'</h2>';
+								$rows .= '<p class="subtitulo">'.$edition.'</p>';
+							$rows .= '</header>';
+							$rows .= '<section>';
+								$rows .= '<a title="'.$revista['title'].'" href="#"><img  alt="'.$revista['title'].'" title="'.$revista['title'].'" border="0px"  src="'.$revista['image'].'"></a>';
+							$rows .= '</section>';
+						$rows .= '</div>';
+					$rows .= '</div>';
+
+					$rows .= '<div class="clsContenedorAll">';
+						$rows .= '<div class="clsContenidoAll">';
+							$rows .= '<a class="bnt-verAll" href="#">"'.$revista['title'].'"</a>';
+							$rows .= '<div class="clsTituloAll">';
+								$rows .= '<h3>'.$revista['edition'].'</h3>';
+							$rows .= '</div>';
+							$rows .= '<div class="descripcion">';
+								$rows .= $revista['description'];
+							$rows .= '</div>';
+						$rows .= '</div>';
+					$rows .= '</div>';
+					$rows .= '<div class="sombra"></div>';
+				$rows .= '</article>';
+			}
 		}
 		return $rows;
+	}
+
+	private function format_edition($edition){
+		$meses = array('01' => 'Enero','02' => 'Febrero','03' => 'Marzo','04' => 'Abril','05' => 'Mayo','06' => 'Junio','07' => 'Julio','08' => 'Agosto','09' => 'Septiembre','10' => 'Octubre','11' => 'Noviembre','12' => 'Diciembre');
+		$fecha = explode('-', $edition);
+		$mes = $meses[$fecha[1]];
+		return $mes . ' ' . $fecha[0];
 	}
 	/********************************************************
 	Este metodo devuelve todas las Revistas de la base de datos

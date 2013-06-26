@@ -70,7 +70,7 @@
               </object>
             </div>
             <input type="hidden" name="name_swf" value="<?php echo $newRevista['swf'];?>" />
-            <input id="html_swf" type="file" name="html_swf" required="required" class="input_file_revista input_file" />
+            <input id="html_swf" type="file" name="html_swf" class="input_file_revista input_file" />
           </div>
           <div class="input_wapper">
             <label>Estado</label>

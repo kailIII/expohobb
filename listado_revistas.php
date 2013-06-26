@@ -36,7 +36,7 @@
           <?php
             include_once 'includes.php';
             $listado_revistas = new Revista();
-            print $listado_revistas->getRevistas();
+            print $listado_revistas->getRevistas('admin_list');
           ?>
         </table>
       </div>

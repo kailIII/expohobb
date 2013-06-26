@@ -28,40 +28,11 @@
     <div id="cont-section">
       <div class="separdor"></div>
       <section>
-      <?php for ($i = 1; $i <= 10; $i++){?>
-		<article class="contHover">
-        <div class="ContMult">
-          <div class="cont-art">
-         
-            <header>
-              <h2>Todo el arte en un solo lugar</h2>
-              <p class="subtitulo">
-            	Septiembre 2013
-              </p>
-            </header>
-            <section>
-            <a title="revista" href="#"><img  alt="imag" border="0px"  src="upload_images/revista.jpg"></a>
-            </section>
-          </div>
-        </div>
-	  
-        <div class="clsContenedorAll">
-           
-            <div class="clsContenidoAll">
-              <a class="bnt-verAll" href="#">"Todo el arte en un solo lugar"</a>
-               <div class="clsTituloAll">
-              	<h3>Septiembre 2013</h3>
-           	 </div>
-              <div class="descripcion">
-                <p>
-                  Hola este es el texto descriptivo para saber que va aca tanto sea una revista o una exposicion por eso esto va aca. 
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="sombra"></div>
-       </article> 
-	 <?php } ?>
+      <?php
+        include_once 'includes.php';
+        $listado_revistas = new Revista();
+        print $listado_revistas->getRevistas('normal_list');
+      ?>
       <div class="separdor"></div>
       <aside class="publicidad">
         <div class="cont-img-publ">

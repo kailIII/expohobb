@@ -7,7 +7,7 @@
       <a title="Exposiciones" href="#">Exposiciones</a>
     </li>
     <li>
-      <a title="Revista" href="#">Revista</a>
+      <a title="Revista" href="revistas.php">Revista</a>
     </li>
     <li>
       <a title="Empresa" href="#">Empresa</a>

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.11.1deb1
+-- version 3.3.9
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-06-2013 a las 12:06:04
--- Versión del servidor: 5.5.31
--- Versión de PHP: 5.4.6-1ubuntu1.2
+-- Tiempo de generación: 26-06-2013 a las 18:52:16
+-- Versión del servidor: 5.1.53
+-- Versión de PHP: 5.3.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -37,6 +36,11 @@ CREATE TABLE IF NOT EXISTS `expo` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `expo`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -56,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `marquee` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
--- Volcado de datos para la tabla `marquee`
+-- Volcar la base de datos para la tabla `marquee`
 --
 
 INSERT INTO `marquee` (`id`, `title`, `small_image`, `big_image`, `queue`, `description`, `status`, `type_marquee`) VALUES
@@ -76,6 +80,11 @@ CREATE TABLE IF NOT EXISTS `registro` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `registro`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -92,14 +101,15 @@ CREATE TABLE IF NOT EXISTS `revistas` (
   `swf` varchar(150) DEFAULT NULL,
   `status` varchar(15) CHARACTER SET latin1 COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Volcado de datos para la tabla `revistas`
+-- Volcar la base de datos para la tabla `revistas`
 --
 
 INSERT INTO `revistas` (`id`, `title`, `image`, `description`, `edition`, `pdf`, `swf`, `status`) VALUES
-(007, 'Test 1', 'upload_images/0b01bbd4acb7e550cf8848fc070d4409.jpg', '<p>asdsad</p>\r\n', '2013-06-08', 'upload_revistas_pdf/a8732939cd62674b7c5f5a865c21123f.pdf', 'upload_revistas_swf/a8732939cd62674b7c5f5a865c21123f.swf', 'Despublicado');
+(007, 'Test 1', 'upload_images/0b01bbd4acb7e550cf8848fc070d4409.jpg', '<p>asdsad</p>\r\n', '2013-06-08', 'upload_revistas_pdf/a8732939cd62674b7c5f5a865c21123f.pdf', 'upload_revistas_swf/a8732939cd62674b7c5f5a865c21123f.swf', 'Publicado'),
+(008, 'Test 2', 'upload_images/0b01bbd4acb7e550cf8848fc070d4409.jpg', '<p>asdsad 2</p>\r\n', '2013-05-08', 'upload_revistas_pdf/a8732939cd62674b7c5f5a865c21123f.pdf', 'upload_revistas_swf/a8732939cd62674b7c5f5a865c21123f.swf', 'Publicado');
 
 -- --------------------------------------------------------
 
@@ -116,12 +126,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Volcar la base de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `mail`, `pass`, `token`) VALUES
 (00003, 'admin@expohobby.com.ar', '704b037a97fa9b25522b7c014c300f8a', 'bacca93b8f5323e00ac3800f6fd3e389');
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
