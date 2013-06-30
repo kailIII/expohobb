@@ -5,7 +5,60 @@
     initPuginsForms();
     removePreviewImages();  
     initModals();
+    //$.removeCookie('expohobby_revista');
+    set_cookie(); 
   });
+
+  function set_cookie(){
+    if($.cookie('expohobby_revista')){
+      $("a.ver-revista").click(function(){
+        id = $(this).attr('id').split("_");
+        window.location = "ver_revista.php?q="+id[1];
+      });
+    }else{
+      registro_mail();
+      $('.ver-revista').magnificPopup({
+        type: 'inline',
+        fixedBgPos: true,
+        overflowY: 'auto',
+        closeBtnInside: true,
+        preloader: false,   
+        midClick: true,
+        removalDelay: 300,
+        mainClass: 'my-mfp-slide-bottom',
+        alignTop: true,
+        fixedContentPos: true,
+        callbacks: {
+          close: function() {
+            if($('#estado_registro').val() == 'fin'){
+              location.reload();
+            }
+          }
+        }
+      });
+    }
+  }
+
+  function registro_mail(){
+    $('#btn_registrar_mail').click(function(){
+      var mail = $('#registration_mail').val();
+      $.ajax({
+        type: "POST",
+        url: "controllers.php",
+        data: { registration_mail: mail }
+      }).done(function( msg ) {
+        if(msg == 'ok'){
+          text = '<h3>Revista Expohobby</h3>';
+          text += '<p>Gracais Por registrarse, ya puede acceder nuestros contenidos</p>';
+          text += '<input type="hidden" id="estado_registro" value="fin" />';
+          text += '<button title="Close (Esc)" type="button" class="mfp-close">×</button></div>';
+          $('div#modal_registration').html(text);
+          $.cookie('expohobby_revista', mail);
+        }
+      });
+    });
+  }
+
   function removePreviewImages(){
     $('#small_image_marquee').change(function (){ 
       $('#preview_small_image').remove();
@@ -17,6 +70,7 @@
      $('#preview_image').remove();
     });
   }
+
   function initPuginsForms(){
     $('#type_marquee').change(function(){
       if($(this).val() == 'imagen'){
@@ -59,7 +113,20 @@
   }
 
   function initModals(){
-    $('#eliminar_marquee').magnificPopup({
+    $('.eliminar_marquee').magnificPopup({
+      type: 'inline',
+      fixedBgPos: true,
+      overflowY: 'auto',
+      closeBtnInside: true,
+      preloader: false,   
+      midClick: true,
+      removalDelay: 300,
+      mainClass: 'my-mfp-slide-bottom',
+      alignTop: true,
+      fixedContentPos: true
+    });
+
+    $('.eliminar_revista').magnificPopup({
       type: 'inline',
       fixedBgPos: true,
       overflowY: 'auto',

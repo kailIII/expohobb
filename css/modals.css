@@ -9,7 +9,8 @@
 	position: relative;
 }
 
-#modal_confirmation {
+.modal_confirmation,
+.modal_registration {
 	background: #FFF;
 	margin: 40px auto;
 	padding: 20px 30px;

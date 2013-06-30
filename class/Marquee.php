@@ -176,8 +176,8 @@ class Marquee
 					$rows .= '</form>';
 				$rows .= '</td>';
 				$rows .= '<td>';
-				$rows .= '<a href="#modal_confirmation" class="btn-classic" id="eliminar_marquee">Eliminar</a>';
-					$rows .= '<div id="modal_confirmation" class="zoom-anim-dialog mfp-hide">';
+				$rows .= '<a href="#modal_confirmation_'.$marquee['id'].'" class="btn-classic eliminar_marquee">Eliminar</a>';
+					$rows .= '<div id="modal_confirmation_'.$marquee['id'].'" class="zoom-anim-dialog mfp-hide modal_confirmation">';
 						$rows .= '<h3>Eliminar Marquee</h3>';
 						$rows .= '<p>Estas seguro que deceas elimiar este Marquee?</p>';
 						$rows .= '<form id="marquee_eliminar" action="controllers.php" method="POST">';

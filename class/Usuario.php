@@ -43,7 +43,36 @@ class Usuario
 			$mysqli->close();
 			header("Location: ingresar.php?error='log_error'");
 		}
+	}
+
+	public function verificar_mail_repetido($mail) {
+		$mysqli = DataBase::connex();
+		$query = '
+			SELECT * FROM 
+				registro
+			WHERE 
+				mail = "' . $mysqli->real_escape_string($mail) . '"
+		';
+		$result = $mysqli->query($query);
 		
+		if($result->num_rows == 0){
+			$this->registrar_mail($mail);
+		}else{
+			echo 'ok';
+		}
+	}
+
+	public function registrar_mail($mail) {
+		$mysqli = DataBase::connex();
+		$query = '
+			INSERT INTO 
+				registro 
+			SET
+				registro.id = NULL,
+				registro.mail = "'. mysql_real_escape_string($mail) .'"
+			';
+		$result = $mysqli->query($query);
+		echo 'ok';
 	}
 }
 ?>

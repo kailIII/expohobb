@@ -187,10 +187,16 @@ class Revista
 						$rows .= '</form>';
 					$rows .= '</td>';
 					$rows .= '<td>';
-						$rows .= '<form id="revista_eliminar" action="controllers.php" method="POST">';
-							$rows .= '<input type="hidden" name="id" value="'.$revista['id'].'"/>';
-							$rows .= '<input id="btn_revista_eliminar" class="btn-classic" type="submit" value="Eliminar" name="btn_revista_eliminar" />';
-						$rows .= '</form>';
+					$rows .= '<a href="#modal_confirmation_'.$revista['id'].'" class="btn-classic eliminar_revista">Eliminar</a>';
+						$rows .= '<div id="modal_confirmation_'.$revista['id'].'" class="zoom-anim-dialog mfp-hide modal_confirmation">';
+							$rows .= '<h3>Eliminar Revista</h3>';
+							$rows .= '<p>Estas seguro que deceas elimiar esta Revista?</p>';
+							$rows .= '<form id="revista_eliminar" action="controllers.php" method="POST">';
+								$rows .= '<input type="hidden" name="id" value="'.$revista['id'].'"/>';
+								$rows .= '<input id="btn_cancelar" class="btn-classic" type="button" value="Cancelar" name="btn_cancelar" />'; 
+								$rows .= '<input id="btn_revista_eliminar" class="btn-classic" type="submit" value="Eliminar" name="btn_revista_eliminar" />';
+							$rows .= '</form>';
+						$rows .= '</div>';
 					$rows .= '</td>';
 				$rows .= '</tr>';
 			}
@@ -205,14 +211,14 @@ class Revista
 								$rows .= '<p class="subtitulo">'.$edition.'</p>';
 							$rows .= '</header>';
 							$rows .= '<section>';
-								$rows .= '<a title="'.$revista['title'].'" href="#"><img  alt="'.$revista['title'].'" title="'.$revista['title'].'" border="0px"  src="'.$revista['image'].'"></a>';
+								$rows .= '<a title="'.$revista['title'].'" href="#modal_registration" ><img  alt="'.$revista['title'].'" title="'.$revista['title'].'" border="0px"  src="'.$revista['image'].'"></a>';
 							$rows .= '</section>';
 						$rows .= '</div>';
 					$rows .= '</div>';
 
 					$rows .= '<div class="clsContenedorAll">';
 						$rows .= '<div class="clsContenidoAll">';
-							$rows .= '<a class="bnt-verAll" href="#">"'.$revista['title'].'"</a>';
+							$rows .= '<a id="revista_'.$revista['id'].'" class="bnt-verAll ver-revista" href="#modal_registration" >"'.$revista['title'].'"</a>';
 							$rows .= '<div class="clsTituloAll">';
 								$rows .= '<h3>'.$revista['edition'].'</h3>';
 							$rows .= '</div>';

@@ -33,6 +33,15 @@
         $listado_revistas = new Revista();
         print $listado_revistas->getRevistas('normal_list');
       ?>
+      <div id="modal_registration" class="zoom-anim-dialog mfp-hide modal_registration">
+        <h3>Revista Expohobby</h3>
+        <p>Para poder acceder a nuestras revistas usted debera estar ingresar un mail valido</p>
+        <input type="hidden" id="estado_registro" value="inicio" />
+        <div id="form_registro_email">
+          <input id="registration_mail" type="email" onblur="" name="registration_mail" required="required" class="input_text_mail input_text" />
+          <input id="btn_registrar_mail" class="btn-classic" type="submit" value="Enviar" name="btn_registrar_mail" />
+        </div>
+      </div>
       <div class="separdor"></div>
       <aside class="publicidad">
         <div class="cont-img-publ">

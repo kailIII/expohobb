@@ -15,5 +15,6 @@
 <script type='text/javascript' src="js/jquery.ui.widget.js"></script>
 <script type='text/javascript' src="js/magnific-popup.js"></script>
 <script type='text/javascript' src="js/jquery.ui.datepicker.js"></script>
+<script type='text/javascript' src="js/jquery.cookie.js"></script>
 <script src="ckeditor/ckeditor.js"></script>
 <!-- JS -->

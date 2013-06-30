@@ -52,6 +52,11 @@
 		$revista->deleteRevista($_POST['id']);
 		header("Location: listado_revistas.php");
 	}
+	if(isset($_POST['registration_mail']))
+	{
+		$user = new Usuario();
+		$user->verificar_mail_repetido($_POST['registration_mail']);
+	}
 
 
 
