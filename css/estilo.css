@@ -443,7 +443,7 @@ display: inline-block;
 	text-decoration:none;
 	border:none;
 }
-nav{
+header nav{
 	width:935px;
 	background: #eae9e9; /* Old browsers */
 	background: -moz-linear-gradient(top,  #eae9e9 0%, #eae9e9 50%, #cac9c9 51%, #cac9c9 100%); /* FF3.6+ */
@@ -1132,4 +1132,101 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#539b9e', end
 	width:246px;
 	height:12px;
 	display:block;
+}
+.con-swf{
+	display:block;
+	background:#333 !important;
+	border:#FFF solid thin;
+	padding:15px;
+	 height: auto;
+
+}
+
+
+.con-swf section {
+	margin:0px auto !important;
+	float:none !important;
+    width:800px !important;
+	display:block  !important;
+}
+.con-swf header h2{
+	margin-bottom:0px;
+	float:left;
+	display:block;
+}
+.con-swf header .cont-redes{
+	float:right;
+	margin-top:29px;
+	margin-right:15px;
+	width:145px;
+}
+.con-swf header {
+    background: none repeat scroll 0 0 transparent;
+	margin:0px auto !important;
+    float: none !important;
+    width:800px;
+	display:table !important;
+	color:#14ADAF;
+}
+.descripcion-swf span{
+	color:#FFF !important;
+	font-size:12px !important;
+}
+.descripcion-swf p{
+	margin-bottom:5px;
+	margin-left:5px;
+}
+.descripcion-swf{
+	color:#FFF !important;
+	font-size:16px;
+	
+}
+.cont-arch{
+	text-align:center;
+	background:#FFF;
+	border:#CCC solid thin;
+	padding:10px;
+	margin-top:15px;
+}
+.cont-btn-pdf{
+	text-align:right;
+	margin-top:10px;
+	display:block;
+}
+footer{
+	color:#FFF;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:10px;
+	text-align:center;
+	margin-top:15px;
+	
+}
+footer a{
+	color:#CCC;
+	text-decoration:none;
+}
+	  
+footer p{
+	margin:2px 0px;
+}
+footer .dat nav{
+	background:none !important;
+	text-align:right;
+	 margin-bottom:0px !important ;
+    padding-left:0px !important;
+    width: 509px !important;
+	margin-right:17px !important;
+	float:right !important;
+}
+footer .dat nav ul{
+	float:right !important;
+	margin-top:5px !important;
+}
+footer .dat nav p{
+	float:left;
+}
+.dat{
+	display:inline-block;
+	margin:3px;
+	width:100%;
 }

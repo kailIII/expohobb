@@ -33,6 +33,9 @@
 <script src="ckeditor/ckeditor.js"></script>
 <script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
 <!-- JS -->
+<meta property="og:title" content="<?php echo $revista['title'];?> | Expohobby" />
+<meta property="og:description" content="<?php echo $revista['edition'];?>, <?php echo $revista['description'];?>. " />
+<meta property="og:image" content="<?php echo $revista['image'];?>" />
 </head>
 <body>
  <div id="fb-root"></div>
@@ -51,19 +54,34 @@
   </header>
   <div id="cont-all">
   	<div id="cont-section">
-<article>
-         	<div class="cont-redes">
-            </div>
+		<article class="con-swf">
+         	
             <header>
               <h2><?php echo $revista['title'];?></h2>
+              <div class="cont-redes">
+            	<!-- AddThis Button BEGIN -->
+                <div class="addthis_toolbox addthis_default_style ">
+                <a class="addthis_button_preferred_1"></a>
+                <a class="addthis_button_preferred_2"></a>
+                <a class="addthis_button_preferred_3"></a>
+                <a class="addthis_button_preferred_4"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+                </div>
+                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-51d0a20b5fc67a28"></script>
+                <!-- AddThis Button END -->
+            </div>
             </header>
             <section>
-            	<div class="descripcion">
+            	<div class="descripcion-swf">
                     <p>
+                      <span><?php echo $revista['edition'];?></span>
+                     </p>
+                     
                       <?php echo $revista['description'];?>
-                    </p>
+                    
               	</div>
-                <div class="cont-swf">
+                <div class="cont-arch">
                 	<object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="580" height="456">
                 	  <param name="movie" value="<?php echo $revista['swf']; ?>">
                 	  <param name="quality" value="high">
@@ -90,6 +108,9 @@
                 	  <!--<![endif]-->
               	  </object>
 
+                </div>
+                <div class="cont-btn-pdf">
+                 <a class="btn-classic" href="<?php echo $revista['pdf'];?>" target="_blank" title="Descargar <?php echo $revista['title'];?> en formato PDF"> Descargar <?php echo $revista['title'];?> en formato PDF</a>
                 </div>
             </section>
           
