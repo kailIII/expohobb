@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 26-06-2013 a las 18:52:16
--- Versión del servidor: 5.1.53
--- Versión de PHP: 5.3.4
+-- Tiempo de generación: 30-06-2013 a las 23:19:34
+-- Versión del servidor: 5.5.8
+-- Versión de PHP: 5.3.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -77,13 +77,18 @@ INSERT INTO `marquee` (`id`, `title`, `small_image`, `big_image`, `queue`, `desc
 CREATE TABLE IF NOT EXISTS `registro` (
   `id` smallint(3) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `mail` varchar(60) DEFAULT NULL,
+  `estado` varchar(15) NOT NULL,
+  `codigo` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcar la base de datos para la tabla `registro`
 --
 
+INSERT INTO `registro` (`id`, `mail`, `estado`, `codigo`) VALUES
+(001, 'asdasdasd', '', ''),
+(002, 'sendfiel@hotmail.com', 'valido', 'de915ab427bd6bfc81ff1cab05980646');
 
 -- --------------------------------------------------------
 
@@ -101,15 +106,14 @@ CREATE TABLE IF NOT EXISTS `revistas` (
   `swf` varchar(150) DEFAULT NULL,
   `status` varchar(15) CHARACTER SET latin1 COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Volcar la base de datos para la tabla `revistas`
 --
 
 INSERT INTO `revistas` (`id`, `title`, `image`, `description`, `edition`, `pdf`, `swf`, `status`) VALUES
-(007, 'Test 1', 'upload_images/0b01bbd4acb7e550cf8848fc070d4409.jpg', '<p>asdsad</p>\r\n', '2013-06-08', 'upload_revistas_pdf/a8732939cd62674b7c5f5a865c21123f.pdf', 'upload_revistas_swf/a8732939cd62674b7c5f5a865c21123f.swf', 'Publicado'),
-(008, 'Test 2', 'upload_images/0b01bbd4acb7e550cf8848fc070d4409.jpg', '<p>asdsad 2</p>\r\n', '2013-05-08', 'upload_revistas_pdf/a8732939cd62674b7c5f5a865c21123f.pdf', 'upload_revistas_swf/a8732939cd62674b7c5f5a865c21123f.swf', 'Publicado');
+(007, 'Test 1', 'upload_images/f0bb1a7ff4a69cf0e29e3f63f6e066c3.jpg', '<p>asdsad</p>\r\n', '2013-06-08', 'upload_revistas_pdf/a8732939cd62674b7c5f5a865c21123f.pdf', 'upload_revistas_swf/a8732939cd62674b7c5f5a865c21123f.swf', 'Publicado');
 
 -- --------------------------------------------------------
 
@@ -130,4 +134,4 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `mail`, `pass`, `token`) VALUES
-(00003, 'admin@expohobby.com.ar', '704b037a97fa9b25522b7c014c300f8a', 'bacca93b8f5323e00ac3800f6fd3e389');
+(00003, 'admin@expohobby.net', '704b037a97fa9b25522b7c014c300f8a', 'bacca93b8f5323e00ac3800f6fd3e389');
