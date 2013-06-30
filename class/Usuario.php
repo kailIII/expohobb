@@ -46,6 +46,7 @@ class Usuario
 	}
 
 	public function verificar_mail_repetido($mail) {
+		
 		$mysqli = DataBase::connex();
 		$query = '
 			SELECT * FROM 
@@ -58,7 +59,9 @@ class Usuario
 		if($result->num_rows == 0){
 			$this->registrar_mail($mail);
 		}else{
-			echo 'ok';
+			session_start();
+			$_SESSION['mail'] = $mail;
+			echo 'ok_verificacion';
 		}
 	}
 
@@ -72,7 +75,9 @@ class Usuario
 				registro.mail = "'. mysql_real_escape_string($mail) .'"
 			';
 		$result = $mysqli->query($query);
-		echo 'ok';
+		session_start();
+		$_SESSION['mail'] = $mail;
+		echo 'ok_registro';
 	}
 }
 ?>

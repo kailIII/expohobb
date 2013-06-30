@@ -3,10 +3,11 @@
     deplegableMenuEfects();
     initSocialNetworks();
     initPuginsForms();
-    removePreviewImages();  
+    removePreviewImages();
     initModals();
-    //$.removeCookie('expohobby_revista');
-    set_cookie(); 
+    $.removeCookie('expohobby_revista');
+    set_cookie();
+    validar_mail();
   });
 
   function set_cookie(){
@@ -47,13 +48,19 @@
         url: "controllers.php",
         data: { registration_mail: mail }
       }).done(function( msg ) {
-        if(msg == 'ok'){
+        if(msg == 'ok_registro'){
           text = '<h3>Revista Expohobby</h3>';
           text += '<p>Gracais Por registrarse, ya puede acceder nuestros contenidos</p>';
           text += '<input type="hidden" id="estado_registro" value="fin" />';
           text += '<button title="Close (Esc)" type="button" class="mfp-close">×</button></div>';
           $('div#modal_registration').html(text);
           $.cookie('expohobby_revista', mail);
+        }else if(msg == 'ok_verificacion'){
+          text = '<h3>Revista Expohobby</h3>';
+          text += '<p>Gracais Por ingresar, ya puede acceder nuestros contenidos</p>';
+          text += '<input type="hidden" id="estado_registro" value="fin" />';
+          text += '<button title="Close (Esc)" type="button" class="mfp-close">×</button></div>';
+          $('div#modal_registration').html(text);
         }
       });
     });
@@ -142,5 +149,28 @@
     $('#btn_cancelar').live('click',function(){
       $.magnificPopup.close();
     });
+  }
+
+  function validar_mail() {
+    $('#btn_registrar_mail').prop("disabled", true);
+    $('#registration_mail').keyup(function(){
+      validar = $('#registration_mail').val();
+      regex = /^[^0-9][A-z0-9_]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_]+)*[.][A-z]{2,4}$/;
+      resultado = regex.test(validar);
+      if (resultado) {
+        $('#registration_mail').css('border-color','green');
+        $('#registration_mail').css('border-radius','5px');
+        $('#registration_mail').attr('title','Mail valido');
+        $('#btn_registrar_mail').prop("disabled", false);
+
+      }
+      else
+      {
+        $('#registration_mail').css('border-color','red');
+        $('#registration_mail').css('border-radius','5px');
+        $('#registration_mail').attr('title','Mail invalido');
+        $('#btn_registrar_mail').prop("disabled", true);
+      }
+    })
   }
 })(jQuery);
