@@ -343,8 +343,8 @@ class Marquee
 				$js .= $count.':{
 									linkTarget: "",
 									delay: 10000,
-									transition: "fade",
-									direction: "bottom",
+									transition: "slide",
+									direction: "left",
 									bgColor: "transparent",
 									repeat: "repeat",
 									stop: false,
