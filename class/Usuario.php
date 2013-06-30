@@ -46,13 +46,15 @@ class Usuario
 	}
 
 	public function verificar_mail_repetido($mail) {
-		
+
 		$mysqli = DataBase::connex();
 		$query = '
 			SELECT * FROM 
 				registro
 			WHERE 
-				mail = "' . $mysqli->real_escape_string($mail) . '"
+				registro.mail = "' . $mysqli->real_escape_string($mail) . '"
+			AND
+				registro.estado = "valido"
 		';
 		$result = $mysqli->query($query);
 		
@@ -65,19 +67,147 @@ class Usuario
 		}
 	}
 
-	public function registrar_mail($mail) {
+	private function registrar_mail($mail) {
 		$mysqli = DataBase::connex();
+		$codigo = md5($mail);
 		$query = '
 			INSERT INTO 
 				registro 
 			SET
 				registro.id = NULL,
-				registro.mail = "'. mysql_real_escape_string($mail) .'"
+				registro.mail = "'. mysql_real_escape_string($mail) .'",
+				registro.estado = "no_validado",
+				registro.codigo = "'. $codigo .'"
 			';
 		$result = $mysqli->query($query);
-		session_start();
-		$_SESSION['mail'] = $mail;
+		$this->enviar_mail_validacion($mail, $codigo);
 		echo 'ok_registro';
+	}
+
+	private function enviar_mail_validacion($email, $codigo) {
+		require("PHPmailer.php");
+		$mysqli = DataBase::connex();
+		$classMail = new PHPMailer(); 
+		
+		//Con la propiedad Mailer le indicamos que vamos a usar un 
+		//servidor smtp
+		$classMail->Mailer = "smtp";
+		 
+		//Luego tenemos que iniciar la validación por SMTP: 
+		$classMail->IsSMTP(); 
+		$classMail->SMTPAuth = true; // True para que verifique autentificación de la cuenta o de lo contrario False 
+		$classMail->Username = "marketing@expohobby.net"; // Cuenta de e-mail 
+		$classMail->Password = "hugo0714"; // Password  
+		 
+		$classMail->Host = "mail.expohobby.net"; 
+
+		$classMail->From = "marketing@expohobby.net"; 
+		$classMail->FromName = "Expohobby"; 
+		$classMail->Subject = "Expohobby Validacion de e-mail"; 
+		$classMail->AddAddress("$email");
+		$classMail->Port = 25;
+		$classMail->WordWrap =200; 
+		 
+		$body  = "
+			<html> 
+				<head> 
+					<style type='text/css'>
+					<!--
+						#todomens{
+							margin:5px auto;
+							height:auto;
+							width:715px;
+							border:#c1c2c3 solid thin;
+							background:#f2f2f3;
+						}
+						h1{
+							text-align:center;
+							font-family:Verdana, Geneva, sans-serif;
+							color:#FFF;
+							font-size:18px;
+							background:#906;
+							padding:5px;
+							
+						}
+						#contentrada{
+							margin-top:30px 0px 21px 0px;
+							height:auto;
+							width:613px;
+							border:#b4b4b5 dashed thin;
+							padding:22px;
+							text-align: left;
+
+						}
+						#entrada{
+
+							width:600px;
+							height:201px;
+							margin:5px auto;					
+						}
+						#contnf{
+							padding:10px;
+							font-family:Verdana, Geneva, sans-serif;
+							font-size:14px;
+							margin-top:15px;
+							color:#3a3a3a;					
+						}
+						.link{
+							font-family:Verdana, Geneva, sans-serif;
+							color:#909;
+							font-size:16px;
+								font-weight:bold;
+								font-style:none;
+								text-decoration:none;
+								background:#FFF;
+								border:#903 solid thin;
+								padding:12px;
+								margin:10px;
+						}
+						-->
+					</style>
+					<title>Ultimo paso para el registro</title> 
+				</head> 
+				<body> 
+					<center>
+						<div id='todomens'>
+							<div id='titulo'><h1>Registro Expohobby</h1></div> 
+							<div id='contentrada'>
+								<div id='contnf'>
+									<p>
+										<a class='link' href='http://localhost/expohobb/validar_mail.php?mail=$email&codigo=$codigo'>Haga click</a><br><br>
+									</p>
+								</div>
+							</div>
+						</div>
+						<p>Lo saluda atentamente <strong>Coordinadores de EXPOHOBBY 2013 </strong>info@expohobby.net<br><br></p>
+					</center>
+				</body>
+			</html>
+		"; 
+		$classMail->Body = $body; 
+	 	$classMail->Send();
+	}
+	public function validar_mail($mail, $codigo){
+		
+		$mysqli = DataBase::connex();
+		
+		$query = '
+			UPDATE 
+	  			registro
+	  		SET
+				registro.estado = "valido"
+	  		WHERE 
+	  			registro.mail = "' . $mail . '" 
+	  		AND
+	  			registro.codigo = "'. $codigo .'"
+	  		LIMIT 1
+	  	';
+	  	
+	  	$mysqli->query($query);
+		
+		if($mysqli->query($query)) {
+			return 'ok';
+		}
 	}
 }
 ?>
