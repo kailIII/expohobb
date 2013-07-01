@@ -5,7 +5,7 @@
     initPuginsForms();
     removePreviewImages();
     initModals();
-    $.removeCookie('expohobby_revista');
+    //$.removeCookie('expohobby_revista');
     set_cookie();
     validar_mail();
     registro_mail();
