@@ -5,7 +5,7 @@
     initPuginsForms();
     removePreviewImages();
     initModals();
-    //$.removeCookie('expohobby_revista');
+    $.removeCookie('expohobby_revista');
     set_cookie();
     validar_mail();
     registro_mail();
@@ -67,6 +67,12 @@
           text += '<button title="Close (Esc)" type="button" class="mfp-close">×</button></div>';
           $('div.modal_registration').html(text);
           $.cookie('expohobby_revista', mail);
+        } else if(msg == 'a_verificar'){
+          text = '<h3>Revista Expohobby</h3>';
+          text += '<p>Usted ya esta registrado, para terminar debe acceder a su mail y validar la misma.<br /><br />Desde ya muchas gracias.</p>';
+          text += '<input type="hidden" id="estado_registro" value="medio" />';
+          text += '<button title="Close (Esc)" type="button" class="mfp-close">×</button></div>';
+          $('div.modal_registration').html(text);
         }
       });
     });

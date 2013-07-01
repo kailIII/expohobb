@@ -53,17 +53,19 @@ class Usuario
 				registro
 			WHERE 
 				registro.mail = "' . $mysqli->real_escape_string($mail) . '"
-			AND
-				registro.estado = "valido"
 		';
 		$result = $mysqli->query($query);
-		
 		if($result->num_rows == 0){
 			$this->registrar_mail($mail, $id);
 		}else{
-			session_start();
-			$_SESSION['mail'] = $mail;
-			echo 'ok_verificacion';
+			$user = $result->fetch_assoc();
+			if($user['estado'] == 'valido'){
+				session_start();
+				$_SESSION['mail'] = $mail;
+				echo 'ok_verificacion';
+			}else{
+				echo 'a_verificar';
+			}
 		}
 	}
 
