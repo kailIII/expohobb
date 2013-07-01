@@ -31,19 +31,11 @@
         $user = new Usuario();
         if($user->validar_mail($_GET['mail'], $_GET['codigo']) == 'ok'){
           $_SESSION['mail'] = $_GET['mail'];
-          echo '
-            <script>
-              (function ($) {
-                $.cookie("expohobby_revista", ' . $_GET['mail'] . ');
-              })(jQuery);
-            </script>
-          ';
-        	 echo '<div class="cont_val"><div class="cont-tex-val"><h3>Enhorabuena!</h3>';
-       		 echo '<p>Ya puedes  acceder a todas nuestras revistas.</p>';
-    		echo '<a  class="bnt-ver" href="revistas.php" title="Ir a revistas">Ir a Revistas</a></div><span class="correcto"></span></div>';
-	   
+        	echo '<div class="cont_val"><div class="cont-tex-val"><h3>Enhorabuena!</h3>';
+       		echo '<p>Ya puedes  acceder a todas nuestras revistas.</p>';
+    		  echo '<a  class="bnt-ver" href="ver_revista.php?q=' . $_GET['id'] . '" title="Ir a revistas">Ir a Revistas</a></div><span class="correcto"></span></div>';
         } else {
-         echo '<div class="cont_val"><div class="cont-tex-val"><h3>Error!</h3>';
+          echo '<div class="cont_val"><div class="cont-tex-val"><h3>Error!</h3>';
           echo '<p>Error en la validacion, vuelva a intantarlo.</p></div><span class="error"></span></div>';
         }
       ?>

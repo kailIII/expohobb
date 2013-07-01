@@ -18,6 +18,9 @@
 			setcookie('expohobby','borrar cookie',time()-315360000);
 		}
 	}
+	if(isset($_COOKIE['expohobby_revista'])){
+		$_SESSION['mail'] = $_COOKIE['expohobby_revista'];
+	}
 	/* valida que haya un usuario setiado*/
 	if(!isset($_SESSION['usuario']))
 	{

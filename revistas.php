@@ -39,6 +39,7 @@
         <input type="hidden" id="estado_registro" value="inicio" />
         <div id="form_registro_email">
           <input id="registration_mail" type="email" onblur="" name="registration_mail" required="required" class="input_text_mail input_text" />
+          <input id="revista_id" type="hidden" name="revista_id" class="input_text_mail input_text" />
           <input id="btn_registrar_mail" class="btn-classic" type="submit" value="Enviar" name="btn_registrar_mail" />
         </div>
       </div>

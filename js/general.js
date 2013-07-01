@@ -8,6 +8,7 @@
     //$.removeCookie('expohobby_revista');
     set_cookie();
     validar_mail();
+    registro_mail();
   });
 
   function set_cookie(){
@@ -17,7 +18,11 @@
         window.location = "ver_revista.php?q="+id[1];
       });
     }else{
-      registro_mail();
+      
+      $("a.ver-revista").click(function(){
+        id = $(this).attr('id').split("_");
+        $('#revista_id').val(id[1]);
+      });
       $('.ver-revista').magnificPopup({
         type: 'inline',
         fixedBgPos: true,
@@ -32,7 +37,7 @@
         callbacks: {
           close: function() {
             if($('#estado_registro').val() == 'fin'){
-              location.reload();
+              window.location = "ver_revista.php?q=" + $('#revista_id').val();
             }
           }
         }
@@ -46,20 +51,21 @@
       $.ajax({
         type: "POST",
         url: "controllers.php",
-        data: { registration_mail: mail }
+        data: { registration_mail: mail, revista_id: $('#revista_id').val()}
       }).done(function( msg ) {
         if(msg == 'ok_registro'){
           text = '<h3>Revista Expohobby</h3>';
           text += '<p>Gracias Por registrarse, para terminar debe acceder a su mail y validar la misma.<br /><br />Desde ya muchas gracias.</p>';
           text += '<input type="hidden" id="estado_registro" value="medio" />';
           text += '<button title="Close (Esc)" type="button" class="mfp-close">×</button></div>';
-          $('div#modal_registration').html(text);
+          $('div.modal_registration').html(text);
         }else if(msg == 'ok_verificacion'){
           text = '<h3>Revista Expohobby</h3>';
           text += '<p>Gracias Por ingresar, ya puede acceder nuestros contenidos</p>';
           text += '<input type="hidden" id="estado_registro" value="fin" />';
+          text += '<input type="hidden" id="revista_id" value="' + $('#revista_id').val() + '" />';
           text += '<button title="Close (Esc)" type="button" class="mfp-close">×</button></div>';
-          $('div#modal_registration').html(text);
+          $('div.modal_registration').html(text);
           $.cookie('expohobby_revista', mail);
         }
       });

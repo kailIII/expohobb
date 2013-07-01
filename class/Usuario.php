@@ -45,7 +45,7 @@ class Usuario
 		}
 	}
 
-	public function verificar_mail_repetido($mail) {
+	public function verificar_mail_repetido($mail, $id) {
 
 		$mysqli = DataBase::connex();
 		$query = '
@@ -59,7 +59,7 @@ class Usuario
 		$result = $mysqli->query($query);
 		
 		if($result->num_rows == 0){
-			$this->registrar_mail($mail);
+			$this->registrar_mail($mail, $id);
 		}else{
 			session_start();
 			$_SESSION['mail'] = $mail;
@@ -67,7 +67,7 @@ class Usuario
 		}
 	}
 
-	private function registrar_mail($mail) {
+	private function registrar_mail($mail, $id) {
 		$mysqli = DataBase::connex();
 		$codigo = md5($mail);
 		$query = '
@@ -80,11 +80,11 @@ class Usuario
 				registro.codigo = "'. $codigo .'"
 			';
 		$result = $mysqli->query($query);
-		$this->enviar_mail_validacion($mail, $codigo);
+		$this->enviar_mail_validacion($mail, $codigo, $id);
 		echo 'ok_registro';
 	}
 
-	private function enviar_mail_validacion($email, $codigo) {
+	private function enviar_mail_validacion($email, $codigo, $id) {
 		require("PHPmailer.php");
 		$mysqli = DataBase::connex();
 		$classMail = new PHPMailer(); 
@@ -174,7 +174,7 @@ class Usuario
 							<div id='contentrada'>
 								<div id='contnf'>
 									<p>
-										<a class='link' href='http://localhost/expohobb/validar_mail.php?mail=$email&codigo=$codigo'>Haga click</a><br><br>
+										<a class='link' href='http://localhost/expohobb/validar_mail.php?mail=$email&codigo=$codigo&id=$id'>Haga click</a><br><br>
 									</p>
 								</div>
 							</div>

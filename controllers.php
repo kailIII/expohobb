@@ -56,7 +56,7 @@
 	{
 		if(preg_match("/^[^0-9][A-z0-9_]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_]+)*[.][A-z]{2,4}$/i", $_POST['registration_mail'])) {
 			$user = new Usuario();
-			$user->verificar_mail_repetido($_POST['registration_mail']);
+			$user->verificar_mail_repetido($_POST['registration_mail'], $_POST['revista_id']);
 		} else {
 			header("Location: revistas.php");
 		}
