@@ -21,13 +21,11 @@
   </header>
   <div id="cont-all">
 
-    <div class="cont-slider">
-      <?php include('slider/fotosprincipales.php'); ?>
-    </div>
+  
 
     <div id="cont-section">
-      <div class="separdor"></div>
-      <section>
+      
+      <section class="val">
       <?php
         include_once 'includes.php';
         $user = new Usuario();
@@ -40,35 +38,16 @@
               })(jQuery);
             </script>
           ';
-          echo '<h3>Gracias</h3>';
-          echo '<p>Ya puede acceder nuestros contenidos.</p>';
-          echo '<a href="revistas.php" title="Ir a revistas">Ir a Revistas</a>';
+        	 echo '<div class="cont_val"><div class="cont-tex-val"><h3>Enhorabuena!</h3>';
+       		 echo '<p>Ya puedes  acceder a todas nuestras revistas.</p>';
+    		echo '<a  class="bnt-ver" href="revistas.php" title="Ir a revistas">Ir a Revistas</a></div><span class="correcto"></span></div>';
+	   
         } else {
-          echo '<h3>Error</h3>';
-          echo '<p>Error en la validacion, vuelva a intantarlo.</p>';
+         echo '<div class="cont_val"><div class="cont-tex-val"><h3>Error!</h3>';
+          echo '<p>Error en la validacion, vuelva a intantarlo.</p></div><span class="error"></span></div>';
         }
       ?>
-      <div class="separdor"></div>
-      <aside class="publicidad">
-        <div class="cont-img-publ">
-          <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139"></div>
-        <div class="cont-img-publ">
-          <a href="#">
-            <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139"></a>
-        </div>
-        <div class="cont-img-publ">
-          <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139"></div>
-        <div class="cont-img-publ">
-          <a href="#">
-            <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139"></a>
-        </div>
-        <div class="cont-img-publ">
-          <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139" height="83"></div>
-        <div class="cont-img-publ">
-          <a href="#">
-            <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139"></a>
-        </div>
-      </aside>
+     
 
     </div>
   </div>

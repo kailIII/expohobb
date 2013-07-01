@@ -1230,3 +1230,51 @@ footer .dat nav p{
 	margin:3px;
 	width:100%;
 }
+.cont_val .correcto{
+	background:url(../imagenes/Check.png) no-repeat -16px 0px;
+	display: block;
+    height: 271px;
+    width: 253px;
+	float:right;
+	
+}
+.val{
+	display:table !important; 
+	width:550px;
+	margin:10px auto;
+	padding:15px;
+	
+	
+}
+.cont_val h3{
+	color:#03d5cd !important;
+	font-size:40px;
+	float:left;
+	margin:0px;
+}
+.cont_val p{
+float:left;
+	margin:15px 0px 0px;
+}
+.cont_val .bnt-ver{
+float:left;
+	margin:15px;
+	text-decoration:none;
+	position: static !important;
+}
+.cont-tex-val{
+	margin-top:59px;
+	float:left;
+	display:block;
+	width:262px;
+	
+}
+
+.cont_val .error{
+	background:url(../imagenes/Check.png) no-repeat -282px 0px;
+	display: block;
+    height: 271px;
+    width: 253px;
+	float:right;
+	
+}
