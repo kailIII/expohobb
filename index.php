@@ -24,9 +24,12 @@
     <div class="cont-slider">
       <?php include('slider/fotosprincipales.php'); ?>
     </div>
+    
 
     <div id="cont-section">
+    <div class="sombra2"></div>
       <div class="separdor"></div>
+      
       <section>
 
         <article class="revista">
@@ -85,32 +88,69 @@
                   <span class="color-inst">Expohobby's</span>
                 </a>
               </section>
-            </div>  
+            </div>
+          
         </article>
+       <div class="sombra3"></div>  
       </section>
+      <div style="width: 278px; float: right; display:block;">
       <aside class="facebook">
         <div class="fb-like-box" data-href="http://www.facebook.com/pages/EXPOHOBBY/130321180395748" data-width="256" data-height="382" data-show-faces="false" data-stream="true" data-header="false"></div>
       </aside>
+      <div class="sombra4"></div> 
+      </div>
       <div class="separdor"></div>
+      
       <aside class="publicidad">
-        <div class="cont-img-publ">
-          <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139"></div>
-        <div class="cont-img-publ">
-          <a href="#">
-            <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139"></a>
+      	<div style="float:left; display:block;">
+			<div class="cont-img-publ">
+                <a href="#">
+                    <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139">
+                 </a>
+          </div>
+          <div class="sombra5"></div> 
         </div>
-        <div class="cont-img-publ">
-          <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139"></div>
-        <div class="cont-img-publ">
-          <a href="#">
-            <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139"></a>
+          <div style="float:left; display:block;">
+			<div class="cont-img-publ">
+                <a href="#">
+                    <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139">
+                 </a>
+          </div>
+          <div class="sombra5"></div> 
         </div>
-        <div class="cont-img-publ">
-          <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139" height="83"></div>
-        <div class="cont-img-publ">
-          <a href="#">
-            <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139"></a>
+        <div style="float:left; display:block;">
+			<div class="cont-img-publ">
+                <a href="#">
+                    <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139">
+                 </a>
+          </div>
+          <div class="sombra5"></div> 
         </div>
+        <div style="float:left; display:block; ">
+			<div class="cont-img-publ">
+                <a href="#">
+                    <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139">
+                 </a>
+          </div>
+          <div class="sombra5"></div> 
+        </div>
+        <div style="float:left; display:block; ">
+			<div class="cont-img-publ">
+                <a href="#">
+                    <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139">
+                 </a>
+          </div>
+          <div class="sombra5"></div> 
+        </div>
+        <div style="float:left; display:block; ">
+			<div class="cont-img-publ">
+                <a href="#">
+                    <img alt="imag" border="0" src="imagenes/imgnone.jpg" width="139">
+                 </a>
+          </div>
+          <div class="sombra5"></div> 
+        </div>
+       
       </aside>
 
     </div>
