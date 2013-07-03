@@ -34,13 +34,13 @@ class Revista
 				revistas 
 			SET
 				revistas.id = NULL,
-				revistas.title = "'. mysql_real_escape_string($revista['titulo']) .'",
-				revistas.image = "'. mysql_real_escape_string($pathIgame) .'",
-				revistas.description = "'. mysql_real_escape_string($revista['descripcion']) .'",
-				revistas.edition = "'. mysql_real_escape_string(date($revista['edicion'])) .'",
-				revistas.pdf = "'. mysql_real_escape_string($pathFile).'",
-				revistas.swf = "'. mysql_real_escape_string($pathSWF).'",
-				revistas.status = "'. mysql_real_escape_string($revista['status']).'"
+				revistas.title = "'. $mysqli->real_escape_string($revista['titulo']) .'",
+				revistas.image = "'. $mysqli->real_escape_string($pathIgame) .'",
+				revistas.description = "'. $mysqli->real_escape_string($revista['descripcion']) .'",
+				revistas.edition = "'. $mysqli->real_escape_string(date($revista['edicion'])) .'",
+				revistas.pdf = "'. $mysqli->real_escape_string($pathFile).'",
+				revistas.swf = "'. $mysqli->real_escape_string($pathSWF).'",
+				revistas.status = "'. $mysqli->real_escape_string($revista['status']).'"
 			';
 		$mysqli->query($query);
 		$mysqli->close();
@@ -246,13 +246,25 @@ class Revista
 	public function getRevista($revistaId)
 	{
 		$mysqli = DataBase::connex();
-		$query = '
-			SELECT * FROM 
-				revistas
-			WHERE
-				revistas.id = "' . $revistaId . '" 
-			LIMIT 1
-		';
+		if($revistaId != ''){
+			$query = '
+				SELECT * FROM 
+					revistas
+				WHERE
+					revistas.id = "' . $revistaId . '" 
+				LIMIT 1
+			';
+		}else{
+			$query = '
+				SELECT * FROM 
+					revistas
+				WHERE
+					revistas.status = "Publicado" 
+				ORDER BY 
+					edition DESC
+				LIMIT 1
+			';
+		}
 		$result = $mysqli->query($query);
 		while ($row = $result->fetch_assoc()) 
 		{
@@ -295,13 +307,13 @@ class Revista
   		UPDATE 
   			revistas
   		SET
-			revistas.title = "'. mysql_real_escape_string($revista['titulo']) .'",
-			revistas.image = "'. mysql_real_escape_string($pathImage) .'",
-			revistas.description = "'. mysql_real_escape_string($revista['descripcion']) .'",
-			revistas.edition = "'. mysql_real_escape_string(date($revista['edicion'])) .'",
-			revistas.pdf = "'. mysql_real_escape_string($pathPDF).'",
-			revistas.swf = "'. mysql_real_escape_string($pathSWF).'",
-			revistas.status = "'. mysql_real_escape_string($revista['status']).'"
+			revistas.title = "'. $mysqli->real_escape_string($revista['titulo']) .'",
+			revistas.image = "'. $mysqli->real_escape_string($pathImage) .'",
+			revistas.description = "'. $mysqli->real_escape_string($revista['descripcion']) .'",
+			revistas.edition = "'. $mysqli->real_escape_string(date($revista['edicion'])) .'",
+			revistas.pdf = "'. $mysqli->real_escape_string($pathPDF).'",
+			revistas.swf = "'. $mysqli->real_escape_string($pathSWF).'",
+			revistas.status = "'. $mysqli->real_escape_string($revista['status']).'"
   		WHERE 
   			revistas.id = "' . $revista['revistaid'] . '" 
   		LIMIT 1

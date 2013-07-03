@@ -77,7 +77,7 @@ class Usuario
 				registro 
 			SET
 				registro.id = NULL,
-				registro.mail = "'. mysql_real_escape_string($mail) .'",
+				registro.mail = "'. $mysqli->real_escape_string($mail) .'",
 				registro.estado = "no_validado",
 				registro.codigo = "'. $codigo .'"
 			';
@@ -199,7 +199,7 @@ class Usuario
 	  		SET
 				registro.estado = "valido"
 	  		WHERE 
-	  			registro.mail = "' . $mail . '" 
+	  			registro.mail = "' . $mysqli->real_escape_string($mail) . '" 
 	  		AND
 	  			registro.codigo = "'. $codigo .'"
 	  		LIMIT 1

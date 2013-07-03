@@ -12,7 +12,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <?php include_once 'head.php'; ?>
-  </head><?php include_once 'footer.php'; ?>
+  </head>
   <body>
     <header>
       <?php include_once 'logo.php'; ?>

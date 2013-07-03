@@ -33,33 +33,34 @@
       <section>
 
         <article class="revista">
+          <?php 
+            $revista = new Revista();
+            $revista = $revista->getRevista('');
+          ?>
           <div class="cont-art">
-            <a href="#" >
-              <img  alt="imag" border="0px" width="144" height="173" src="imagenes/one.jpg"></a>
+            <a href="ver_revista.php?q=<?php echo $revista['id'];?>" >
+              <img  alt="<?php echo $revista['title'];?>" title="<?php echo $revista['title'];?>" border="0px" width="144" height="173" src="<?php echo $revista['image'];?>"></a>
             <header>
-              <h2>Titulo de la ultima revista</h2>
+              <h2><?php echo $revista['title'];?></h2>
             </header>
             <section>
               <p class="subtitulo">
                 Edición
-                <strong>25 de julio 2013</strong>
+                <strong><?php echo $revista['edition'];?></strong>
               </p>
               <div class="descripcion">
-                <p>
-                  Hola este es el texto descriptivo para saber que va aca tanto sea una revista o una exposicion por eso esto va aca. Hola este es el texto descriptivo para saber que va aca tanto sea una revista o una exposicion por eso esto va aca
-                </p>
+                <?php echo $revista['description'];?>
               </div>
             </section>
           </div>
           <div class="clsContenedor">
             <div class="clsTitulo">
-              <h2>Titulo de la revisata</h2>
+              <h2><?php echo $revista['title'];?></h2>
             </div>
             <div class="clsContenido">
-              <a class="bnt-ver" href="#">Ver</a>
+              <a class="bnt-ver" href="ver_revista.php?q=<?php echo $revista['id'];?>">Ver</a>
               <div class="contbtn">
-                <a  class="btn-classic" href="#">Suscribirse a la revista</a>
-                <a class="btn-classic" href="#">Ver todas las revistas</a>
+                <a class="btn-classic" href="revistas.php">Ver todas las revistas</a>
               </div>
             </div>
           </div>

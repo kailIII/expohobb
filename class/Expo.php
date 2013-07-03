@@ -32,13 +32,13 @@ class Expo
 				expo 
 			SET
 				expo.id = NULL,
-				expo.titulo = "'. mysql_real_escape_string($expo['title']) .'",
-				expo.image = "'. mysql_real_escape_string($expo['image']) .'",
-				expo.teaser = "'. mysql_real_escape_string($expo['teaser']) .'",
-				expo.body = "'. mysql_real_escape_string($expo['body']) .'",
-				expo.fecha_inicio = "'. mysql_real_escape_string($expo['fecha_inicio']).'",
-				expo.dias_vigente = "'. mysql_real_escape_string($expo['dias_vigente']).'",
-				expo.publish = "'. mysql_real_escape_string($expo['publish']).'"
+				expo.titulo = "'. $mysqli->real_escape_string($expo['title']) .'",
+				expo.image = "'. $mysqli->real_escape_string($expo['image']) .'",
+				expo.teaser = "'. $mysqli->real_escape_string($expo['teaser']) .'",
+				expo.body = "'. $mysqli->real_escape_string($expo['body']) .'",
+				expo.fecha_inicio = "'. $mysqli->real_escape_string($expo['fecha_inicio']).'",
+				expo.dias_vigente = "'. $mysqli->real_escape_string($expo['dias_vigente']).'",
+				expo.publish = "'. $mysqli->real_escape_string($expo['publish']).'"
 			';
 		$mysqli->query($query);
 		$mysqli->close();
@@ -114,13 +114,13 @@ class Expo
     		UPDATE 
     			expo 
     		SET
-    			expo.titulo = "'. mysql_real_escape_string($expo['title']) .'",
-				expo.image = "'. mysql_real_escape_string($expo['image']) .'",
-				expo.teaser = "'. mysql_real_escape_string($expo['teaser']) .'",
-				expo.body = "'. mysql_real_escape_string($expo['body']) .'",
-				expo.fecha_inicio = "'. mysql_real_escape_string($expo['fecha_inicio']).'",
-				expo.dias_vigente = "'. mysql_real_escape_string($expo['dias_vigente']).'",
-				expo.publish = "'. mysql_real_escape_string($expo['publish']).'"		
+    			expo.titulo = "'. $mysqli->real_escape_string($expo['title']) .'",
+					expo.image = "'. $mysqli->real_escape_string($expo['image']) .'",
+					expo.teaser = "'. $mysqli->real_escape_string($expo['teaser']) .'",
+					expo.body = "'. $mysqli->real_escape_string($expo['body']) .'",
+					expo.fecha_inicio = "'. $mysqli->real_escape_string($expo['fecha_inicio']).'",
+					expo.dias_vigente = "'. $mysqli->real_escape_string($expo['dias_vigente']).'",
+					expo.publish = "'. $mysqli->real_escape_string($expo['publish']).'"		
     			expo.header_coord = "' . $portada['coor'] . '"
     		WHERE 
     			expo.id = "' . $expoId . '" 
