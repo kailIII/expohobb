@@ -35,13 +35,13 @@ class Marquee
 				marquee 
 			SET
 				marquee.id = NULL,
-				marquee.title = "'. mysql_real_escape_string($marquee['titulo']) .'",
-				marquee.small_image = "'. mysql_real_escape_string($pathIgame['small_image']) .'",
-				marquee.big_image = "'. mysql_real_escape_string($pathIgame['big_image']) .'",
-				marquee.queue = "'. mysql_real_escape_string($marquee['queue']) .'",
-				marquee.description = "'. mysql_real_escape_string($marquee['descripcion']).'",
-				marquee.type_marquee = "'. mysql_real_escape_string($marquee['type_marquee']).'",
-				marquee.status = "'. mysql_real_escape_string($marquee['status']).'"
+				marquee.title = "'. $mysqli->real_escape_string($marquee['titulo']) .'",
+				marquee.small_image = "'. $mysqli->real_escape_string($pathIgame['small_image']) .'",
+				marquee.big_image = "'. $mysqli->real_escape_string($pathIgame['big_image']) .'",
+				marquee.queue = "'. $mysqli->real_escape_string($marquee['queue']) .'",
+				marquee.description = "'. $mysqli->real_escape_string($marquee['descripcion']).'",
+				marquee.type_marquee = "'. $mysqli->real_escape_string($marquee['type_marquee']).'",
+				marquee.status = "'. $mysqli->real_escape_string($marquee['status']).'"
 			';
 		$mysqli->query($query);
 		$mysqli->close();
@@ -220,13 +220,13 @@ class Marquee
     		UPDATE 
     			marquee 
     		SET
-				marquee.title = "'. mysql_real_escape_string($marquee['titulo']) .'",
-				marquee.small_image = "'. mysql_real_escape_string($pathImageSmall) .'",
-				marquee.big_image = "'. mysql_real_escape_string($pathImageBig) .'",
-				marquee.queue = "'. mysql_real_escape_string($marquee['queue']) .'",
-				marquee.description = "'. mysql_real_escape_string($marquee['descripcion']).'",
-				marquee.type_marquee = "'. mysql_real_escape_string($marquee['type_marquee']).'",
-				marquee.status = "'. mysql_real_escape_string($marquee['status']).'"
+				marquee.title = "'. $mysqli->real_escape_string($marquee['titulo']) .'",
+				marquee.small_image = "'. $mysqli->real_escape_string($pathImageSmall) .'",
+				marquee.big_image = "'. $mysqli->real_escape_string($pathImageBig) .'",
+				marquee.queue = "'. $mysqli->real_escape_string($marquee['queue']) .'",
+				marquee.description = "'. $mysqli->real_escape_string($marquee['descripcion']).'",
+				marquee.type_marquee = "'. $mysqli->real_escape_string($marquee['type_marquee']).'",
+				marquee.status = "'. $mysqli->real_escape_string($marquee['status']).'"
     		WHERE 
     			marquee.id = "' . $marquee['marqueeid'] . '" 
     		LIMIT 1
