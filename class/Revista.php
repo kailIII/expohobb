@@ -190,7 +190,7 @@ class Revista
 					$rows .= '<a href="#modal_confirmation_'.$revista['id'].'" class="btn-classic eliminar_revista">Eliminar</a>';
 						$rows .= '<div id="modal_confirmation_'.$revista['id'].'" class="zoom-anim-dialog mfp-hide modal_confirmation">';
 							$rows .= '<h3>Eliminar Revista</h3>';
-							$rows .= '<p>Estas seguro que deceas elimiar esta Revista?</p>';
+							$rows .= '<p>Estas seguro que deceas eliminar esta Revista?</p>';
 							$rows .= '<form id="revista_eliminar" action="controllers.php" method="POST">';
 								$rows .= '<input type="hidden" name="id" value="'.$revista['id'].'"/>';
 								$rows .= '<input id="btn_cancelar" class="btn-classic" type="button" value="Cancelar" name="btn_cancelar" />'; 
@@ -413,8 +413,8 @@ class Revista
 	/********************************************************
 	Este metodo elimina una Revista especifica
 	********************************************************/
-  public function deleteRevista($id){
-   	$mysqli = DataBase::connex();
+ 	public function deleteRevista($id){
+	   	$mysqli = DataBase::connex();
 		$query = '
 			DELETE FROM 
 				exphbb.revistas 
@@ -425,6 +425,6 @@ class Revista
 		';
 		$mysqli->query($query);
 		$mysqli->close();
-  }
+	}
 }
 ?>

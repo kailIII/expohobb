@@ -211,5 +211,77 @@ class Usuario
 			return 'ok';
 		}
 	}
+	/********************************************************
+	Este metodo devuelve todos los Usuarios de la base de datos
+	********************************************************/
+	public function getUsuarios()
+	{
+		$mysqli = DataBase::connex();
+		$query = '
+			SELECT * FROM 
+				registro
+		';
+		$result = $mysqli->query($query);
+		if($result->num_rows > 0){
+			while ($row = $result->fetch_assoc()) 
+			{
+				$usuario['id'] = $row['id'];
+				$usuario['mail'] = $row['mail'];
+				$usuario['estado'] = $row['estado'];
+				$usuario['fecha'] = $row['fecha'];
+				$usuarios[] = $usuario;
+			}
+			$result->free();
+			$mysqli->close();
+			$rows = $this->format_list_usuarios($usuarios);
+	    return $rows;
+		}else{
+			return false;
+		}
+	}
+
+	private function format_list_usuarios($list){
+		$rows = '';
+		foreach ($list as $usuario) {
+			$rows .= '<tr>';
+				$rows .= '<td>'.$usuario['mail'].'</td>';
+				$rows .= '<td>'.$usuario['fecha'].'</td>';
+				if($usuario['estado']=="valido"){
+						$rows .= '<td class="statusB">'.$usuario['estado'].'</td>';
+				}else{
+					$rows .= '<td class="statusM">'.$usuario['estado'].'</td>';
+				}
+				$rows .= '<td>';
+				$rows .= '<a href="#modal_confirmation_'.$usuario['id'].'" class="btn-classic eliminar_revista">Eliminar</a>';
+					$rows .= '<div id="modal_confirmation_'.$usuario['id'].'" class="zoom-anim-dialog mfp-hide modal_confirmation">';
+						$rows .= '<h3>Eliminar Usuario</h3>';
+						$rows .= '<p>Estas seguro que deceas eliminar este Usuario?</p>';
+						$rows .= '<form id="usuario_eliminar" action="controllers.php" method="POST">';
+							$rows .= '<input type="hidden" name="id" value="'.$usuario['id'].'"/>';
+							$rows .= '<input id="btn_cancelar" class="btn-classic" type="button" value="Cancelar" name="btn_cancelar" />'; 
+							$rows .= '<input id="btn_usuario_eliminar" class="btn-classic" type="submit" value="Eliminar" name="btn_usuario_eliminar" />';
+						$rows .= '</form>';
+					$rows .= '</div>';
+				$rows .= '</td>';
+			$rows .= '</tr>';
+		}
+		return $rows;
+	}
+	/********************************************************
+	Este metodo elimina un Usuario especifico
+	********************************************************/
+ 	public function deleteUsuario($id){
+	   	$mysqli = DataBase::connex();
+		$query = '
+			DELETE FROM 
+				exphbb.registro 
+			WHERE 
+				registro.id = '.$id.'
+			LIMIT
+				1
+		';
+		$mysqli->query($query);
+		$mysqli->close();
+	}
 }
 ?>
