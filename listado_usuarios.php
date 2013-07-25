@@ -24,6 +24,7 @@
     </header>
     <div id="cont-all"> 
       <div id="cont-section"> 
+      <div id="seleccion">Seleccionar mails</div>
         <?php
           include_once 'includes.php';
           $usuarios = new Usuario();
@@ -35,6 +36,16 @@
           $listado_usuarios = $usuarios->getUsuarios($page);
           print $listado_usuarios['pager'];
         ?>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#seleccion").click(function(){
+				var str = $(".copymail").text();
+				alert(str);
+				});
+			});
+		</script>
+        
         <table class="tb" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="tbtitulos">Mail</td>

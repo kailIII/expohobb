@@ -303,7 +303,7 @@ class Usuario
 		$rows = '';
 		foreach ($list as $usuario) {
 			$rows .= '<tr>';
-				$rows .= '<td>'.$usuario['mail'].'</td>';
+				$rows .= '<td class="copymail">'.$usuario['mail'].'; </td>';
 				$rows .= '<td>'.$usuario['fecha'].'</td>';
 				if($usuario['estado']=="valido"){
 						$rows .= '<td class="statusB">'.$usuario['estado'].'</td>';
