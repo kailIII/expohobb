@@ -24,6 +24,17 @@
     </header>
     <div id="cont-all"> 
       <div id="cont-section"> 
+        <?php
+          include_once 'includes.php';
+          $usuarios = new Usuario();
+          if(isset($_POST['selector_pagina'])){
+            $page = $_POST['selector_pagina'];
+          }else{
+            $page = 1;
+          }
+          $listado_usuarios = $usuarios->getUsuarios($page);
+          print $listado_usuarios['pager'];
+        ?>
         <table class="tb" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="tbtitulos">Mail</td>
@@ -32,9 +43,7 @@
             <td class="tbtitulos">Borrar</td>
           </tr>
           <?php
-            include_once 'includes.php';
-            $listado_usuarios = new Usuario();
-            print $listado_usuarios->getUsuarios();
+            print $listado_usuarios['list'];
           ?>
         </table>
       </div>

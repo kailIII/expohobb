@@ -211,16 +211,75 @@ class Usuario
 			return 'ok';
 		}
 	}
+
+	private function getPager($page)
+	{
+		$mysqli = DataBase::connex();
+		$query = '
+			SELECT COUNT(*) as registros FROM 
+				registro
+		';
+		$result = $mysqli->query($query);
+		if($result->num_rows > 0){
+			while ($row = $result->fetch_assoc()) 
+			{
+				$registros = $row['registros'];
+			}
+			$result->free();
+			$mysqli->close();
+			$paginas = $registros / 100;
+			$form = $this->makeSelect(floor($paginas), $page);
+		}else{
+			return false;
+		}
+		return $form;
+	}
+
+	private function makeSelect($pages, $page)
+	{
+		$options = '';
+		for ($i=1; $i <= $pages; $i++) { 
+			$options .= '<option value="'.$i.'"';
+			if($i==$page){
+				$options .= ' selected ';
+			}
+			 $options .= '>'.$i.'</option>';
+		}
+		$form = '<form id="form_reg" action="listado_usuarios.php" method="POST" enctype="multipart/form-data">
+          <div class="input_wapper">
+          	<select id="selector_pagina" name="selector_pagina">';
+			  $form .= $options;
+			$form .='
+			</select>
+            <input id="pagina_ir" class="btn_general btn-classic2" type="submit" value="IR" name="pagina_ir" />
+          </div>
+        </form>
+        ';
+        return $form;
+	}
+
 	/********************************************************
 	Este metodo devuelve todos los Usuarios de la base de datos
 	********************************************************/
-	public function getUsuarios()
+	public function getUsuarios($page)
 	{
+		if($page == 1){
+			$start = 1;
+			$end = 100;
+		}else{
+			$start = $page * 100 + 1;
+			$end = $page * 100 + 100;
+		}
+
+		$rows['pager'] = $this->getPager($page);
+
 		$mysqli = DataBase::connex();
 		$query = '
 			SELECT * FROM 
 				registro
-		';
+			ORDER BY fecha DESC
+			LIMIT '.$start.' , '. $end
+		;
 		$result = $mysqli->query($query);
 		if($result->num_rows > 0){
 			while ($row = $result->fetch_assoc()) 
@@ -233,7 +292,7 @@ class Usuario
 			}
 			$result->free();
 			$mysqli->close();
-			$rows = $this->format_list_usuarios($usuarios);
+			$rows['list'] = $this->format_list_usuarios($usuarios);
 	    return $rows;
 		}else{
 			return false;
