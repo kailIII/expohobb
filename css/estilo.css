@@ -1,6 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
-
+.uds-bb-description-inside a{
+	color:#FFF;
+}
+.uds-bb-description-inside a:hover{
+	color:#14ADAF;
+}
 article header{
 	width:419px;
 	float:right;

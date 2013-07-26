@@ -335,11 +335,13 @@ class Marquee
 				$view .= '<a href="#" class="uds-bb-link">';
 					$view .= '<img src="'.$marquee['big_image'].'" alt="'.$marquee['title'].'" class="uds-bb-bg-image" width="921" />';
 				$view .= '</a>';
-				$view .= '<div class="uds-bb-description uds-transparent" style="top:68px;left:45px;width:480px;height:238px;">';
+				if($marquee["description"]!=""){
+				$view .= '<div class="uds-bb-description uds-transparent" style="top:68px;left:45px;width:480px;height:238px;">';				
 					$view .= '<div class="uds-bb-description-inside">';
 						$view .= $marquee['description'];
-					$view .= '</div>';
+					$view .= '</div>';					
 				$view .= '</div>';
+				}
 				$js .= $count.':{
 									linkTarget: "",
 									delay: 10000,
