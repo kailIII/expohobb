@@ -24,7 +24,10 @@
     </header>
     <div id="cont-all"> 
       <div id="cont-section"> 
-      <div id="seleccion">Seleccionar mails</div>
+     		 
+      		<div id="modal_confirmation_ver" class="zoom-anim-dialog mfp-hide modal_confirmation">
+				
+			</div>
         <?php
           include_once 'includes.php';
           $usuarios = new Usuario();
@@ -41,7 +44,8 @@
 			$(document).ready(function(){
 				$("#seleccion").click(function(){
 				var str = $(".copymail").text();
-				alert(str);
+				
+				$('#modal_confirmation_ver').html('<p>'+ str +'</p><br/><br/><div style="margin:0px auto; width:422px;"><p><a id="btn_cancelar" name="btn_cancelar" class="btn-classic2" href="#btn_cancelar">Cerrar</a><p></div>');
 				});
 			});
 		</script>

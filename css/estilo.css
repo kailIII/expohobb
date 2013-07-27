@@ -173,6 +173,7 @@ margin-top:10px;
 .descripcion p{
 	font-size:13px;
 	margin-bottom:0px;
+	padding:0px !important;
 	
 }
 section{
@@ -193,7 +194,7 @@ border-radius: 5px;
  width: 256px;
 }
 .clsContenedor{
-background: rgba(0, 0, 0, 0.8);
+background: url(../imagenes/bg.png) repeat;
     box-shadow: 0 0 2px #000000;
     color: #FFFFFF;
     height: 179px;
@@ -250,18 +251,31 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#46cace', end
 	border-radius: 4px;
 	border:#2fe8ee solid thin;
 	color:#FFF;
-	padding: 7px 25px;
+	padding: 1px 25px;
 	text-decoration:none;
 	font-weight:400;
 	margin:2px auto;
 	text-shadow: 0.5px 0.5px #0F4A55 ;
-	font-size: 23px !important;
+	font-size: 17px !important;
 	display:inline-block;
 	  /* Firefox */
 	position:relative;
-	left:174px;
+	
  
  
+
+}
+.descrphover p{
+	margin:0px !important;
+	font-size:12px;
+	
+}
+.descrphover{
+	width:425px;
+	height:86px;
+	overflow:hidden;
+	padding:0px 10px;
+	margin-top:5px;
 
 }
 .bnt-ver:hover{
@@ -369,8 +383,8 @@ cursor:pointer;
 	
 }
 .contbtn{
-	width:326px;
-	margin:33px auto 0px;
+	width:410px;
+	margin:5px auto 0px;
 	
 }
 .cont-slider{
@@ -1054,10 +1068,11 @@ border-radius: 3px;
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:11.7px;
 	color:#FFF;
-	margin:25px 35px 0px;
+	margin:0px 20px 0px;
 }
 .clsTituloAll{
 	margin-top:20px;
+	text-align:center;
 	
 }
 .clsTituloAll h3{
@@ -1066,6 +1081,7 @@ border-radius: 3px;
 	color:#FFF;
 	text-align:center;
 	font-size:12.7px;
+	margin-bottom:5px;
 	
 }
 .clsContenidoAll .bnt-verAll{
@@ -1087,8 +1103,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#46cace', end
 	padding: 5px 11px;
 	text-decoration:none;
 	font-weight:bold;
-	margin:45px 15px 5px;
+	margin:25px 15px 5px;
 	display:block;
+	text-align:center;
 	
 	font-size: 12px !important;
 }
@@ -1214,6 +1231,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#539b9e', end
 	border:#CCC solid thin;
 	padding:10px;
 	margin-top:15px;
+	box-shadow: 0 0 2px #000000;
 }
 .cont-btn-pdf{
 	text-align:right;
@@ -1329,4 +1347,9 @@ float:left;
 background:url(../imagenes/bg.png) repeat !important;
 z-index:1;
 }
-	
+#cargador{
+	background:url(../imagenes/carga.gif) 355px 4px #fff no-repeat;
+	width:892px;
+	height:40px;	
+	margin:0px auto;
+}

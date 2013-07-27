@@ -45,7 +45,7 @@
   ?>
 </nav>
 
-<div class="deplegablemenu">
+<div class="deplegablemenu" style="display:none;">
   <div class="pico"></div>
   <div class="cont-listado">
     <div class="list">

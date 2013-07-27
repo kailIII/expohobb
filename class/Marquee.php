@@ -284,7 +284,7 @@ class Marquee
    	$mysqli = DataBase::connex();
 		$query = '
 			DELETE FROM 
-				exphbb.marquee 
+				marquee 
 			WHERE 
 				marquee.id = '.$id.'
 			LIMIT

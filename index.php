@@ -54,13 +54,11 @@
             </section>
           </div>
           <div class="clsContenedor">
-            <div class="clsTitulo">
-              <h2><?php echo $revista['title'];?></h2>
-            </div>
             <div class="clsContenido">
-              <a class="bnt-ver" href="ver_revista.php?q=<?php echo $revista['id'];?>">Ver</a>
+              <div style="margin:0px auto; text-align:center;"><a class="bnt-ver" href="ver_revista.php?q=<?php echo $revista['id'];?>">Ver <?php echo $revista['title'];?></a></div>
+              <div class="descrphover"><?php echo $revista['description'];?></div>
               <div class="contbtn">
-                <a class="btn-classic" href="revistas.php">Ver todas las revistas</a>
+                <a class="btn-classic2" href="revistas.php">Ver todas las revistas</a>
               </div>
             </div>
           </div>

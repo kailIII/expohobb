@@ -10,7 +10,7 @@
     validar_mail();
     registro_mail();
   });
-
+   
   function set_cookie(){
     if($.cookie('expohobby_revista')){
       $("a.ver-revista").click(function(){
@@ -157,6 +157,18 @@
       alignTop: true,
       fixedContentPos: true
     });
+	$('.seleccionar_us').magnificPopup({
+      type: 'inline',
+      fixedBgPos: true,
+      overflowY: 'auto',
+      closeBtnInside: true,
+      preloader: false,   
+      midClick: true,
+      removalDelay: 300,
+      mainClass: 'my-mfp-slide-bottom',
+      alignTop: true,
+      fixedContentPos: true
+    });
 
     $('#btn_cancelar').live('click',function(){
       $.magnificPopup.close();
@@ -185,4 +197,11 @@
       }
     })
   }
+  $(document).ready(function(){
+				$("#editar_marquee").click(function(){
+					$("#editar_marquee").hide("slow");
+					$("#cargador").show("slow");
+	});  
+  });
+  
 })(jQuery);

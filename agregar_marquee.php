@@ -62,6 +62,7 @@
           </div>
           <div class="input_wapper">
             <input id="agregar_marquee" class="btn_general btn-classic2" type="submit" value="Guardar" name="agregar_marquee" />
+            <div id="cargador" style="display:none"></div>
           </div>
         </form>
       </div>

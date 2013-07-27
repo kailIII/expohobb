@@ -220,7 +220,7 @@ class Revista
 						$rows .= '<div class="clsContenidoAll">';
 							$rows .= '<a id="revista_'.$revista['id'].'" class="bnt-verAll ver-revista" href="#modal_registration" >"'.$revista['title'].'"</a>';
 							$rows .= '<div class="clsTituloAll">';
-								$rows .= '<h3>'.$revista['edition'].'</h3>';
+								$rows .= '<h3>'.$edition.'</h3>';
 							$rows .= '</div>';
 							$rows .= '<div class="descripcion">';
 								$rows .= $revista['description'];
@@ -417,7 +417,7 @@ class Revista
 	   	$mysqli = DataBase::connex();
 		$query = '
 			DELETE FROM 
-				exphbb.revistas 
+				revistas 
 			WHERE 
 				revistas.id = '.$id.'
 			LIMIT
