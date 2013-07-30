@@ -212,12 +212,14 @@ class Usuario
 		}
 	}
 
-	private function getPager($page)
+	private function getPager($page, $fechaFinal)
 	{
 		$mysqli = DataBase::connex();
 		$query = '
 			SELECT COUNT(*) as registros FROM 
 				registro
+			WHERE
+				fecha = "' . $mysqli->real_escape_string(date($fechaFinal)) . '"
 		';
 		$result = $mysqli->query($query);
 		if($result->num_rows > 0){
@@ -228,11 +230,14 @@ class Usuario
 			$result->free();
 			$mysqli->close();
 			$paginas = $registros / 100;
-			$form = $this->makeSelect(floor($paginas), $page);
+			if($registros > 100){
+				$form = $this->makeSelect(floor($paginas), $page);
+				return $form;
+			}
+			return false;
 		}else{
 			return false;
 		}
-		return $form;
 	}
 
 	private function makeSelect($pages, $page)
@@ -245,41 +250,33 @@ class Usuario
 			}
 			 $options .= '>'.$i.'</option>';
 		}
-		$form = '<form id="form_reg" action="listado_usuarios.php" method="POST" enctype="multipart/form-data">
-          <div class="input_wapper" >
-		  	<div style="margin:0px auto; width:282px;">
-				Pagina <select id="selector_pagina" name="selector_pagina">';
-				  $form .= $options;
-				$form .='
-				</select>
-				<input id="pagina_ir" class="btn_general btn-classic" type="submit" value="IR" name="pagina_ir" style="display:inline-block !important;"/>
-				<a href="#modal_confirmation_ver" class="btn-classic seleccionar_us" id="seleccion" style="display:inline-block !important;">Seleccionar mails</a>
-          	</div>
-		  </div>
-        </form>
-        ';
+		$form = 'Pagina <select id="selector_pagina" name="selector_pagina">';
+			$form .= $options;
+		$form .='</select>';
         return $form;
 	}
 
 	/********************************************************
 	Este metodo devuelve todos los Usuarios de la base de datos
 	********************************************************/
-	public function getUsuarios($page)
+	public function getUsuarios($page, $fecha)
 	{
 		if($page == 1){
-			$start = 1;
+			$start = 0;
 			$end = 100;
 		}else{
 			$start = $page * 100 + 1;
 			$end = $page * 100 + 100;
 		}
-
-		$rows['pager'] = $this->getPager($page);
-
+		$fechaFinal = explode('/', $fecha);
+		$fechaFinal = $fechaFinal[2] . '-' . $fechaFinal[0] . '-' . $fechaFinal[1];
+		$rows['pager'] = $this->getPager($page, $fechaFinal);
 		$mysqli = DataBase::connex();
 		$query = '
 			SELECT * FROM 
 				registro
+			WHERE
+				fecha = "' . $mysqli->real_escape_string(date($fechaFinal)) . '"
 			ORDER BY fecha DESC
 			LIMIT '.$start.' , '. $end
 		;

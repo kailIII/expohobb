@@ -36,19 +36,41 @@
           }else{
             $page = 1;
           }
-          $listado_usuarios = $usuarios->getUsuarios($page);
-          print $listado_usuarios['pager'];
+          if(isset($_POST['fecha'])){
+            $fecha = $_POST['fecha'];
+          }else{
+            $fecha = date("Y-m-d");
+          }
+          $listado_usuarios = $usuarios->getUsuarios($page, $fecha);
         ?>
+        <form id="form_reg" action="listado_usuarios.php" method="POST" enctype="multipart/form-data">
+          <div class="input_wapper" >
+            <div style="margin:0px auto; width:282px;">
+            <?php print $listado_usuarios['pager']; ?>
+              <div class="input_wapper">
+                <label>Fecha</label>
+               <input id="fecha" value="" type="text" onblur="" name="fecha" required="required" class="input_text_revista input_text" />
+              </div>
+              <script>
+                (function ($) {
+                  $("#fecha").datepicker();
+                })(jQuery);
+              </script>
+              <input id="pagina_ir" class="btn_general btn-classic" type="submit" value="IR" name="pagina_ir" style="display:inline-block !important;"/>
+              <a href="#modal_confirmation_ver" class="btn-classic seleccionar_us" id="seleccion" style="display:inline-block !important;">Seleccionar mails</a>
+            </div>
+          </div>
+        </form>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function(){
-				$("#seleccion").click(function(){
-				var str = $(".copymail").text();
-				
-				$('#modal_confirmation_ver').html('<p>'+ str +'</p><br/><br/><div style="margin:0px auto; width:422px;"><p><a id="btn_cancelar" name="btn_cancelar" class="btn-classic2" href="#btn_cancelar">Cerrar</a><p></div>');
-				});
-			});
-		</script>
+    		<script type="text/javascript">
+    			$(document).ready(function(){
+    				$("#seleccion").click(function(){
+    				var str = $(".copymail").text();
+    				
+    				$('#modal_confirmation_ver').html('<p>'+ str +'</p><br/><br/><div style="margin:0px auto; width:422px;"><p><a id="btn_cancelar" name="btn_cancelar" class="btn-classic2" href="#btn_cancelar">Cerrar</a><p></div>');
+    				});
+    			});
+    		</script>
         
         <table class="tb" border="0" cellpadding="0" cellspacing="0">
           <tr>
