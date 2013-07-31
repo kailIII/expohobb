@@ -268,8 +268,12 @@ class Usuario
 			$start = $page * 100 + 1;
 			$end = $page * 100 + 100;
 		}
-		$fechaFinal = explode('/', $fecha);
-		$fechaFinal = $fechaFinal[2] . '-' . $fechaFinal[0] . '-' . $fechaFinal[1];
+		if(strpos($fecha, '/')){
+			$fechaFinal = explode('/', $fecha);
+			$fechaFinal = $fechaFinal[2] . '-' . $fechaFinal[0] . '-' . $fechaFinal[1];
+		}else{
+			$fechaFinal = $fecha;
+		}
 		$rows['pager'] = $this->getPager($page, $fechaFinal);
 		$mysqli = DataBase::connex();
 		$query = '
