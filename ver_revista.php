@@ -34,6 +34,20 @@
 <meta property="og:title" content="<?php echo $revista['title'];?> | Expohobby" />
 <meta property="og:description" content="<?php echo $revista['edition'];?>, <?php echo $revista['description'];?>. " />
 <meta property="og:image" content="<?php echo $revista['image'];?>" />
+<meta http-equiv="title" content="<?php echo $revista['title'];?>"> 
+    <meta name="DC.Creator" content="www.emafilms.com.ar"> 
+    <meta name="keywords" content="revista, Revistas, digital, paso a paso ">
+    <meta http-equiv="keywords" content="revista, Revistas, digital, paso a paso ">
+    <meta name="description" content="<?php echo $revista['description'];?>">
+    <meta http-equiv="description" content="<?php echo $revista['description'];?>"> 
+    <meta http-equiv="DC.Description" content="<?php echo $revista['description'];?>"> 
+    <meta name="author" content="Expohobby">
+    <meta name="DC.Creator" content="Estudio multimedia EB "> 
+    <meta name="vw96.objectype" content="Document">
+    <meta name="resource-type" content="Document"> 
+    <meta name="distribution" content="all"> 
+    <meta name="robots" content="all"> 
+    <meta name="revisit" content="30 days">
 </head>
 <body>
  <div id="fb-root"></div>

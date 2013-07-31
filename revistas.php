@@ -7,7 +7,24 @@
     <meta property="og:title" content="Aquí encontraras todas las revistas Expohobby digital" />
     <meta property="og:description" content="En esta sección encontraras  todas las ediciones de la revista Expohobby digital.
 Te esperamos y que las disfrutes!" />
-    <meta property="og:image" content="/upload_images/revista.jpg" />  
+    <meta property="og:image" content="/upload_images/revista.jpg" />
+    <meta http-equiv="title" content="Revista expohobby digital"> 
+    <meta name="DC.Creator" content="www.emafilms.com.ar"> 
+    <meta name="keywords" content="revista, Revistas, digital, paso a paso ">
+    <meta http-equiv="keywords" content="revista, Revistas, digital, paso a paso ">
+    <meta name="description" content="En esta sección encontraras  todas las ediciones de la revista Expohobby digital.
+Te esperamos y que las disfrutes!">
+    <meta http-equiv="description" content="En esta sección encontraras  todas las ediciones de la revista Expohobby digital.
+Te esperamos y que las disfrutes!"> 
+    <meta http-equiv="DC.Description" content="En esta sección encontraras  todas las ediciones de la revista Expohobby digital.
+Te esperamos y que las disfrutes!"> 
+    <meta name="author" content="Expohobby">
+    <meta name="DC.Creator" content="Estudio multimedia EB"> 
+    <meta name="vw96.objectype" content="Document">
+    <meta name="resource-type" content="Document"> 
+    <meta name="distribution" content="all"> 
+    <meta name="robots" content="all"> 
+    <meta name="revisit" content="30 days">  
 </head>
 <body>
   <div id="fb-root"></div>

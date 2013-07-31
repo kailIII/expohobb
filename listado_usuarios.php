@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<?php include_once 'sesion.php'; ?>
-<?php 
+<?php include_once 'sesion.php'; 
   if(isset($_SESSION['usuario'])){
     if($validador->cookieValidator($_SESSION['usuario'],$_SESSION['token']) != 'ok'){
       header("Location: index.php");
@@ -9,6 +7,7 @@
     header("Location: index.php");
   }
 ?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <?php include_once 'head.php'; ?>
@@ -45,19 +44,20 @@
         ?>
         <form id="form_reg" action="listado_usuarios.php" method="POST" enctype="multipart/form-data">
           <div class="input_wapper" >
-            <div style="margin:0px auto; width:282px;">
+            <div style="margin:0px auto; width:218px;">
             <?php print $listado_usuarios['pager']; ?>
               <div class="input_wapper">
                 <label>Fecha</label>
                <input id="fecha" value="" type="text" onblur="" name="fecha" required="required" class="input_text_revista input_text" />
+               <input id="pagina_ir" class="btn_general btn-classic" type="submit" value="IR" name="pagina_ir" style="display:inline-block !important;"/>
               </div>
               <script>
                 (function ($) {
                   $("#fecha").datepicker();
                 })(jQuery);
               </script>
-              <input id="pagina_ir" class="btn_general btn-classic" type="submit" value="IR" name="pagina_ir" style="display:inline-block !important;"/>
-              <a href="#modal_confirmation_ver" class="btn-classic seleccionar_us" id="seleccion" style="display:inline-block !important;">Seleccionar mails</a>
+             
+              <a href="#modal_confirmation_ver" class="btn-classic seleccionar_us" id="seleccion" style="display:inline-block !important; margin:8px 48px  !important;">Seleccionar mails</a>
             </div>
           </div>
         </form>
