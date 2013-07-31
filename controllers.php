@@ -67,4 +67,34 @@
 		$user->deleteUsuario($_POST['id']);
 		header("Location: listado_usuarios.php");
 	}
+	if(isset($_POST['enviar_contacto']))
+	{
+		require("class/PHPmailer.php");
+		$mysqli = DataBase::connex();
+		$classMail = new PHPMailer(); 
+		
+		//Con la propiedad Mailer le indicamos que vamos a usar un 
+		//servidor smtp
+		$classMail->Mailer = "smtp";
+		 
+		//Luego tenemos que iniciar la validación por SMTP: 
+		$classMail->IsSMTP(); 
+		$classMail->SMTPAuth = true; // True para que verifique autentificación de la cuenta o de lo contrario False 
+		$classMail->Username = "marketing@expohobby.net"; // Cuenta de e-mail 
+		$classMail->Password = "hugo0714"; // Password  
+		 
+		$classMail->Host = "mail.expohobby.net"; 
+
+		$classMail->From = $_POST['mail']; 
+		$classMail->FromName = "Expohobby"; 
+		$classMail->Subject = "Contacto de Expohobby"; 
+		$classMail->AddAddress("info@expohobby.net");
+		$classMail->Port = 25;
+		$classMail->WordWrap =200; 
+		 
+		$classMail->Body =  $_POST['comentario'];
+	 	$classMail->Send();
+	 	//Ahi abajo mete el nombre de la nueva pagina
+	 	//header("Location: listado_usuarios.php");
+	}
 ?>
