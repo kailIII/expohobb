@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php include_once 'sesion.php'; ?>
 <?php 
   if(isset($_SESSION['usuario'])){
@@ -9,6 +8,7 @@
     header("Location: index.php");
   }
 ?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <?php include_once 'head.php'; ?>
