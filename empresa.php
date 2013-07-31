@@ -4,9 +4,23 @@
 <head>
     <title>Empresa | Expohobby</title>
     <?php include_once 'head.php'; ?>
-    <meta property="og:title" content="Qué es Expohobby?" />
-    <meta property="og:description" content="Es una empresa dedicada a la difusión  del mundo del arte y la decoración, desarrollando distintas actividades como exposiciones, cursos, revistas, newsletteria y demás herramientas que promueven las obras de los mas diversos y reconocidos exponentes del rubro. . El objetivo de expohobby es seguir en el camino de la expansión para poder dar a conocer los trabajos de pequeños artesanos como así también de grandes empresas." />
-    <meta property="og:image" content="/upload_images/revista.jpg" />  
+    <meta property="og:title" content="Que es Expohobby?" />
+    <meta property="og:description" content="Es una empresa dedicada a la difusion  del mundo del arte y la decoracion, desarrollando distintas actividades como exposiciones, cursos, revistas, newsletteria y demas herramientas que promueven las obras de los mas diversos y reconocidos exponentes del rubro. El objetivo de expohobby es seguir en el camino de la expansión para poder dar a conocer los trabajos de pequeños artesanos como así también de grandes empresas." />
+    <meta property="og:image" content="/upload_images/revista.jpg" /> 
+    <meta http-equiv="title" content="Que es Expohobby?"> 
+    <meta name="DC.Creator" content="www.emafilms.com.ar"> 
+    <meta name="keywords" content="expo,  manualidades,  manual,  arte, decoración, fiesta, decoupage, vintage, country, scrap, decoración de tortas, demostraciones, clases paso a paso">
+    <meta http-equiv="keywords" content="expo,  manualidades,  manual,  arte, decoración, fiesta, decoupage, vintage, country, scrap, decoración de tortas, demostraciones, clases paso a paso ">
+    <meta name="description" content="Es una empresa dedicada a la difusion  del mundo del arte y la decoracion, desarrollando distintas actividades como exposiciones, cursos, revistas, newsletteria y demas herramientas que promueven las obras de los mas diversos y reconocidos exponentes del rubro.">
+    <meta http-equiv="description" content="Es una empresa dedicada a la difusion  del mundo del arte y la decoracion, desarrollando distintas actividades como exposiciones, cursos, revistas, newsletteria y demas herramientas que promueven las obras de los mas diversos y reconocidos exponentes del rubro."> 
+    <meta http-equiv="DC.Description" content="Es una empresa dedicada a la difusion  del mundo del arte y la decoracion, desarrollando distintas actividades como exposiciones, cursos, revistas, newsletteria y demas herramientas que promueven las obras de los mas diversos y reconocidos exponentes del rubro."> 
+    <meta name="author" content="Expohobby">
+    <meta name="DC.Creator" content=" Expohobby "> 
+    <meta name="vw96.objectype" content="Document">
+    <meta name="resource-type" content="Document"> 
+    <meta name="distribution" content="all"> 
+    <meta name="robots" content="all"> 
+    <meta name="revisit" content="30 days">  
 </head>
 <body>
   <div id="fb-root"></div>

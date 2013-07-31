@@ -6,7 +6,24 @@
     <?php include_once 'head.php'; ?>
     <meta property="og:title" content="Sitio oficial Expohobby" />
     <meta property="og:description" content="Sitio oficial de expohobby, aquí encontraras todas las novedades de las próximas exposiciones y todo sobre las ediciones de expohobby digital!" />
-    <meta property="og:image" content="/upload_images/revista.jpg" />  
+    <meta property="og:image" content="/upload_images/revista.jpg" />
+    <meta name="title" content=" Expohobby, empresa destinada a la difusion de actividades referidas al Arte y la Decoracion">
+    <meta name="DC.Title" content=" Expohobby, empresa destinada a la difusion de actividades referidas al Arte y la Decoracion "> 
+    <meta http-equiv="title" content=" Expohobby, empresa destinada a la difusion de actividades referidas al Arte y la Decoracion "> 
+    <meta name="DC.Creator" content="www.emafilms.com.ar"> 
+    <meta name="keywords" content="expo,  manualidades,  manual,  arte, decoración, fiesta, decoupage, vintage, country, scrap, decoración de tortas, demostraciones, clases paso a paso">
+    <meta http-equiv="keywords" content="expo,  manualidades,  manual,  arte, decoración, fiesta, decoupage, vintage, country, scrap, decoración de tortas, demostraciones, clases paso a paso ">
+    <meta name="description" content="Expohobby sitio oficial, en este sitio encontraras diversas oportunidades para la difusión de productos y actividades referentes al Arte y la Decoración. ">
+    <meta http-equiv="description" content="Expohobby sitio oficial, en este sitio encontraras diversas oportunidades para la difusión de productos y actividades referentes al Arte y la Decoración "> 
+    <meta http-equiv="DC.Description" content="Expohobby sitio oficial, en este sitio encontraras diversas oportunidades para la difusión de productos y actividades referentes al Arte y la Decoración "> 
+    <meta name="author" content="Expohobby">
+    <meta name="DC.Creator" content="Estudio multimedia EB "> 
+    <meta name="vw96.objectype" content="Document">
+    <meta name="resource-type" content="Document"> 
+    <meta name="distribution" content="all"> 
+    <meta name="robots" content="all"> 
+    <meta name="revisit" content="30 days"> 
+  
 </head>
 <body>
   <div id="fb-root"></div>
