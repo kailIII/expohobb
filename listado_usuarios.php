@@ -44,7 +44,7 @@
         ?>
         <form id="form_reg" action="listado_usuarios.php" method="POST" enctype="multipart/form-data">
           <div class="input_wapper" >
-            <div style="margin:0px auto; width:218px;">
+            <div style="margin:0px auto; width:220px;">
             <?php print $listado_usuarios['pager']; ?>
               <div class="input_wapper">
                 <label>Fecha</label>

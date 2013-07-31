@@ -1400,6 +1400,89 @@ border-radius: 5px;
  margin:0px auto;
 	
 }
+.contac{
+	background:#FFF;
+	border:#c3c1c2 solid thin;
+	padding:10px;
+	
+	display:block;
+	-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+ height: 382px;
+ width: 762px;
+ margin:0px auto;
+	
+}
+.contac section{
+	width:639px;
+	padding:5px;
+	margin: 0px 61px;
+	
+}
+.input_wappers{
+	 display:inline-block;
+    margin: 0px auto;
+    padding: 7px;
+    width: 307px;
+	
+}
+.contac section form{
+	width:328px;
+	margin:0px auto;
+	display:block;
+	float:right;
+	
+}
+.pcontc a{
+	color:#14ADAF;
+}
+.pcontc{
+	display:block;
+	float:left;
+	margin-top: 7px;
+}
+.pcontc p span{
+	background:url(../imagenes/list.png) no-repeat;
+	width:20px;
+	height:34px;
+	
+}
+.pcontc p{
+	font-size:14px;
+	width:222px;
+	color:#333;
+	
+}
+.input_wappers textarea {
+	float:right;
+	width:199px;
+	 height: 134px;
+	  resize: none;
+}
+.contac header h2{
+color:#14ADAF;
+    font-size: 26px !important;
+	font-weight: 100 !important;
+	font-family:Verdana, Geneva, sans-serif;
+}
+.contac header{
+ width:535px;
+	padding:5px;
+	margin: 0px 102px;
+	text-align:center;
+	
+	
+}
+.input_wappers label{
+	float:left;
+	color:#930C7E;
+}
+.input_wappers input{
+	float:right;
+	width:199px;
+	
+}
 .empresa{
 	width:923px;
 	height:auto;
@@ -1450,6 +1533,9 @@ border-radius: 5px;
 	display:block;
 	
 }
+.active{
+ background: none repeat scroll 0 0 rgba(8, 184, 190, 0.8);
+}
 .contredesysecc{
 	display:block;
 	width:auto;
@@ -1463,6 +1549,8 @@ border-radius: 5px;
 	float: right;
 	margin-right:25px;
 	display:block;
+	width: 145px;
+	
 	
 }
 .des_emp p .expspan{

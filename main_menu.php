@@ -1,19 +1,19 @@
 <nav>
   <ul>
     <li>
-      <a title="Inicio" href="index.php">Inicio</a>
+      <a title="Inicio" id="inicio" href="index.php">Inicio</a>
     </li>
     <li>
-      <a title="Exposiciones" href="#">Exposiciones</a>
+      <a title="Exposiciones" id="exposiciones" href="#">Exposiciones</a>
     </li>
     <li>
-      <a title="Revista" href="revistas.php">Revista</a>
+      <a title="Revista" id="revista" href="revistas.php">Revista</a>
     </li>
     <li>
-      <a title="Empresa" href="empresa.php">Empresa</a>
+      <a title="Empresa" id="empresa" href="empresa.php">Empresa</a>
     </li>
     <li>
-      <a title="Contacto" href="concatenos.php">Contacto</a>
+      <a title="Contacto" id="contacto" href="concatenos.php">Contacto</a>
     </li>
   </ul>
 
