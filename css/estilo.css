@@ -100,6 +100,22 @@ background:url(../imagenes/blue_blue_puff.jpg) no-repeat scroll 0 0 #000;
 	
 	
 }
+#cont-section2{
+	background:#eae9e9;
+	-moz-box-shadow: 0px -3px 0px 3px #FFF;
+  -webkit-box-shadow: 0px -3px 0px 3px #FFF;
+  box-shadow: inset 0px -3px 0px 3px #FFF;
+	border-bottom::#afadad solid thin;
+	border-left:#afadad solid thin;
+	border-right:#afadad solid thin;
+	padding:5px;
+	position:relative;
+   display:block;
+	z-index:100;
+
+	
+	
+}
 #cont-all{
 	border:#7b7b7b solid thin;
 	background: rgba(62, 61, 61, 0.4);
@@ -395,6 +411,17 @@ cursor:pointer;
 	border-left:#afadad solid thin;
 	border-right:#afadad solid thin;
 }
+.separdorC{
+	border-bottom:#FFF solid thin;
+	-moz-box-shadow: 2px -3px 0 -2px #C4C4C4;
+    -webkit-box-shadow: 2px -3px 0 -2px #C4C4C4;
+    box-shadow: inset 2px -3px 0 -2px #C4C4C4;
+    margin: 0px 0px 25px;
+    padding: 1px;
+    width: 919px;
+	float:left;
+	
+}
 .separdor{
 	border-bottom:#FFF solid thin;
 	-moz-box-shadow: 2px -3px 0 -2px #C4C4C4;
@@ -470,10 +497,14 @@ header nav{
 	background: -ms-linear-gradient(top,  #eae9e9 0%,#eae9e9 50%,#cac9c9 51%,#cac9c9 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #eae9e9 0%,#eae9e9 50%,#cac9c9 51%,#cac9c9 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eae9e9', endColorstr='#cac9c9',GradientType=0 ); /* IE6-9 */
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 
-	padding-left:19px;
+	padding-left:2px;
 	display:inline-block;
 	margin-bottom:5px;
+	padding-top:1px;
 }
 nav ul{
 	list-style:none;
@@ -1165,7 +1196,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#539b9e', end
 	height:10px;
 	display:block;
 }
-.sombra4{
+.sombra6{
 	background: url(../imagenes/sombra4.jpg) no-repeat;
 	 width:276px;
 	height:10px;
@@ -1183,6 +1214,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#539b9e', end
 	border:#FFF solid thin;
 	padding:15px;
 	 height: auto;
+	 margin:0px auto;
 
 }
 
@@ -1192,6 +1224,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#539b9e', end
 	float:none !important;
     width:800px !important;
 	display:block  !important;
+	
 }
 .con-swf header h2{
 	margin-bottom:0px;
@@ -1351,5 +1384,110 @@ z-index:1;
 	background:url(../imagenes/carga.gif) 355px 4px #fff no-repeat;
 	width:892px;
 	height:40px;	
+	margin:0px auto;
+}
+.artempres{
+	background:#FFF;
+	border:#c3c1c2 solid thin;
+	padding:10px;
+	
+	display:block;
+	-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+ height: 382px;
+ width: 762px;
+ margin:0px auto;
+	
+}
+.empresa{
+	width:923px;
+	height:auto;
+	float:left;
+	display:block;
+	
+}
+.artempres header{
+	float:none !important;
+	margin:0px auto;
+}
+.artempres header h2{
+	color:#333;
+	font-family:Verdana, Geneva, sans-serif;
+	text-align:center;
+	font-size:20px;
+	font-weight:100;
+	
+}
+.artempres header h2 span{
+	color:#14ADAF;
+	font-size:26px;
+}
+.des_emp{
+	margin:45px auto;
+	width:auto;
+	
+}
+.des_emp p{
+	
+	font-size:13px;
+	line-height:27.5px;
+	margin:15px 25px 0px 10px;
+	padding:0px !important;
+	float:none !important;
+	
+}
+.artempres section{
+	width:461px !important;
+	
+}
+.Cseccion{
+	font-size:12px;
+	margin:0px;
+	padding-left:25px;
+	text-shadow: 1px 1px #fff;
+	float:left;
+	display:block;
+	
+}
+.contredesysecc{
+	display:block;
+	width:auto;
+	margin:2px;
+	padding:1px;
+	height:20px;
+	
+	
+}
+.contredesysecc .cont-redes{
+	float: right;
+	margin-right:25px;
+	display:block;
+	
+}
+.des_emp p .expspan{
+	font-size:13px !important;
+	color:#14ADAF !important;
+	
+}
+.imgEmpre{
+	
+	width:210px !important;
+	height:auto !important;
+	margin-left:25px !important;
+	margin-top:29px !important;
+}
+
+.des_emp p span{
+	color:#930c7e !important;
+	font-size:48px;
+	font-family: Tahoma, Geneva, sans-serif;
+	
+}
+.sombra4{
+	background: url(../imagenes/sombraprin.jpg) no-repeat;
+	width:924px;
+	height:11px;
+	display:block;
 	margin:0px auto;
 }

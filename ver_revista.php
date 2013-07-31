@@ -51,7 +51,7 @@
     <?php include_once 'main_menu.php'; ?>
   </header>
   <div id="cont-all">
-  	<div id="cont-section">
+  	<div id="cont-section2">
 		<article class="con-swf">
             <header>
               <h2><?php echo $revista['title'];?></h2>

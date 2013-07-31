@@ -2,10 +2,10 @@
 <?php include_once 'sesion.php'; ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Expohobby</title>
+    <title>Empresa | Expohobby</title>
     <?php include_once 'head.php'; ?>
-    <meta property="og:title" content="Sitio oficial Expohobby" />
-    <meta property="og:description" content="Sitio oficial de expohobby, aquí encontraras todas las novedades de las próximas exposiciones y todo sobre las ediciones de expohobby digital!" />
+    <meta property="og:title" content="Qué es Expohobby?" />
+    <meta property="og:description" content="Es una empresa dedicada a la difusión  del mundo del arte y la decoración, desarrollando distintas actividades como exposiciones, cursos, revistas, newsletteria y demás herramientas que promueven las obras de los mas diversos y reconocidos exponentes del rubro. . El objetivo de expohobby es seguir en el camino de la expansión para poder dar a conocer los trabajos de pequeños artesanos como así también de grandes empresas." />
     <meta property="og:image" content="/upload_images/revista.jpg" />  
 </head>
 <body>
@@ -32,8 +32,8 @@
 
     <div id="cont-section">
     <div class="sombra2"></div>
-     <div class="contredesysecc">
-   		<p class="Cseccion"> Estas en > Inicio</p>
+    <div class="contredesysecc">
+   		<p class="Cseccion"> Estas en > Empresa</p>
          <div class="cont-redes">
                 <!-- AddThis Button BEGIN -->
                 <div class="addthis_toolbox addthis_default_style ">
@@ -50,74 +50,23 @@
        </div>
       <div class="separdorC"></div>
       
-      <section>
+      <section class="empresa">
 
-        <article class="revista">
-          <?php 
-            $revista = new Revista();
-            $revista = $revista->getRevista('');
-          ?>
-          <div class="cont-art">
-            <a href="ver_revista.php?q=<?php echo $revista['id'];?>" >
-              <img  alt="<?php echo $revista['title'];?>" title="<?php echo $revista['title'];?>" border="0px" width="144" height="173" src="<?php echo $revista['image'];?>"></a>
+        <article class="artempres">
             <header>
-              <h2><?php echo $revista['title'];?></h2>
+              <h2>Qu&eacute; es <span>Expohobby</span>?</h2>
             </header>
+            <img class="imgEmpre" alt="expohobby" src="upload_images/revista.jpg">
             <section>
-              <p class="subtitulo">
-                Edición
-                <strong><?php echo $revista['edition'];?></strong>
-              </p>
-              <div class="descripcion">
-                <?php echo $revista['description'];?>
+              <div class="des_emp">
+              
+                <p><span>E</span>s una empresa dedicada a la difusión  del mundo del arte y la decoración, desarrollando distintas actividades como exposiciones, cursos, revistas, newsletteria y demás herramientas que promueven las obras de los mas diversos y reconocidos exponentes del rubro. El objetivo de <span class="expspan">expohobby</span> es seguir en el camino de la expansión para poder dar a conocer los trabajos de pequeños artesanos como así también de grandes empresas.</p>
               </div>
             </section>
-          </div>
-          <div class="clsContenedor">
-            <div class="clsContenido">
-              <div style="margin:0px auto; text-align:center;"><a class="bnt-ver" href="ver_revista.php?q=<?php echo $revista['id'];?>">Ver <?php echo $revista['title'];?></a></div>
-              <div class="descrphover"><?php echo $revista['description'];?></div>
-              <div class="contbtn">
-                <a class="btn-classic2" href="revistas.php">Ver todas las revistas</a>
-              </div>
-            </div>
-          </div>
         </article>
-        <article class="exposiciones">
-        	<div class="cont-art">
-              <a href="#" >
-                <img alt="imag"  border="0px" width="144" height="173" src="upload_images/fiesta.jpg"></a>
-              <header>
-                <h2>
-                  <a href="#">"Expohobby" Fiesta y decoración </a>
-                </h2>
-              </header>
-              <section>
-                <p class="subtitulo">
-                  Expo: <strong>Septiembre 2013</strong> V, S, D de 13:00hs a 20:00hs
-                  
-                </p>
-                <div class="descripcion">
-                  <p>
-                    Los mejores exponentes de la decoración de fiestas, decoración de tortas, modelado en porcelana fría, souvenirs, desayunos y mucho más... Te esperamos desde el viernes 13 al domingo 15 de septiembre en Sarmiento 1867 C. de Buenos Aires de 13 a 20hs
-                  </p>
-                </div>
-                <a href="#" class="btn-classic2">
-                  Ver todas las
-                  <span class="color-inst">Expohobby's</span>
-                </a>
-              </section>
-            </div>
-          
-        </article>
-       <div class="sombra3"></div>  
+        <div class="sombra4"></div> 
       </section>
-      <div style="width: 278px; float: right; display:block;">
-      <aside class="facebook">
-        <div class="fb-like-box" data-href="http://www.facebook.com/pages/EXPOHOBBY/130321180395748" data-width="256" data-height="382" data-show-faces="false" data-stream="true" data-header="false"></div>
-      </aside>
-      <div class="sombra6"></div> 
-      </div>
+     
       <div class="separdor"></div>
       
       <aside class="publicidad">

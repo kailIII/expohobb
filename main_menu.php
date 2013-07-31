@@ -1,7 +1,7 @@
 <nav>
   <ul>
     <li>
-      <a title="Inicio" href="#">Inicio</a>
+      <a title="Inicio" href="index.php">Inicio</a>
     </li>
     <li>
       <a title="Exposiciones" href="#">Exposiciones</a>
@@ -10,10 +10,10 @@
       <a title="Revista" href="revistas.php">Revista</a>
     </li>
     <li>
-      <a title="Empresa" href="#">Empresa</a>
+      <a title="Empresa" href="empresa.php">Empresa</a>
     </li>
     <li>
-      <a title="Contacto" href="#">Contacto</a>
+      <a title="Contacto" href="contacto.php">Contacto</a>
     </li>
   </ul>
 

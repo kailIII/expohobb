@@ -1,4 +1,3 @@
-<title>Expohobby</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <!-- CSS -->
