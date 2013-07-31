@@ -13,7 +13,7 @@
       <a title="Empresa" href="empresa.php">Empresa</a>
     </li>
     <li>
-      <a title="Contacto" href="contacto.php">Contacto</a>
+      <a title="Contacto" href="concatenos.php">Contacto</a>
     </li>
   </ul>
 
