@@ -102,11 +102,11 @@
         </article>
         <article class="exposiciones">
         	<div class="cont-art">
-              <a href="#" >
+              <a href="expos.html" >
                 <img alt="imag"  border="0px" width="144" height="173" src="upload_images/fiesta.jpg"></a>
               <header>
                 <h2>
-                  <a href="#">"Expohobby" Fiesta y decoración </a>
+                  <a href="expos.html">"Expohobby" Fiesta y decoración </a>
                 </h2>
               </header>
               <section>
@@ -119,7 +119,7 @@
                     Los mejores exponentes de la decoración de fiestas, decoración de tortas, modelado en porcelana fría, souvenirs, desayunos y mucho más... Te esperamos desde el viernes 13 al domingo 15 de septiembre en Sarmiento 1867 C. de Buenos Aires de 13 a 20hs
                   </p>
                 </div>
-                <a href="#" class="btn-classic2">
+                <a href="#" title="Link no disponible" class="btn-classic2">
                   Ver todas las
                   <span class="color-inst">Expohobby's</span>
                 </a>
