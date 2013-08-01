@@ -88,8 +88,8 @@
 
 		$classMail->From = $_POST['mail']; 
 		$classMail->FromName = "Expohobby"; 
-		$classMail->Subject = "Contacto de Expohobby";
-		$classMail->AddAddress("mgrusconi@gmail.com");
+		$classMail->Subject = "Contacto de Expohobby"; 
+		$classMail->AddAddress("info@expohobby.net");
 		$classMail->Port = 25;
 		$classMail->WordWrap =200; 
 		 
