@@ -203,5 +203,17 @@
 					$("#cargador").show("slow");
 	});  
   });
+   $(document).ready(function(){
+				$("#enviar_contacto").click(function(){
+					var mail=$("#registration_mail").attr('title');
+					var nombre=$("#nombre").attr('value');
+					var comentario=$("#comentario").attr('value');
+					if(mail=="Mail valido" && nombre!="" && comentario!=""){
+					$("#enviar_contacto").hide("slow");
+					$("#cargador2").show("slow");
+					 }
+					
+	});  
+  });
   
 })(jQuery);

@@ -1486,8 +1486,8 @@ color:#14ADAF;
 .empresa{
 	width:923px;
 	height:auto;
-	float:left;
 	display:block;
+	margin:30px 0px 0px;
 	
 }
 .artempres header{
@@ -1578,4 +1578,62 @@ color:#14ADAF;
 	height:11px;
 	display:block;
 	margin:0px auto;
+}
+.mail_gracias{
+	color: #333333;
+    display: block;
+    float: right;
+    height: auto;
+    text-align: center;
+    width: 407px;
+	margin-top:4px;
+	
+}
+.mail_gracias p{
+	margin:0px !important;
+}
+.mail_gracias h3{
+	margin:2px !important;
+}
+.mail_gracias span{
+	background:url(../imagenes/Check2.png) no-repeat;
+ display: block;
+   height: 195px;
+    margin-left:113px;
+    width: 196px;
+	margin-top:4px;
+	
+}
+#cargador2{
+	 width: 388px !important; 
+	 float:left !important;
+	 background:url("../imagenes/carga.gif") no-repeat scroll 121px 4px #FFFFFF;
+	  height: 40px;
+    margin: 0 auto;
+	
+}
+.mail_error{
+	color: #333333;
+    display: block;
+    float: right;
+    height: auto;
+    text-align: center;
+    width: 407px;
+	margin-top:4px;
+	
+}
+.mail_error p{
+	margin:0px !important;
+}
+.mail_error h3{
+	margin:2px !important;
+}
+.mail_error span{
+	background:url(../imagenes/Check2.png) -190px 0px no-repeat;
+ display: block;
+   height: 195px;
+    margin-left:113px;
+    width: 196px;
+	margin-top:4px;
+	
 }

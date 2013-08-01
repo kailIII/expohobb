@@ -2,7 +2,7 @@
 <?php include_once 'sesion.php'; ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Empresa | Expohobby</title>
+    <title>Contacto | Expohobby</title>
     <?php include_once 'head.php'; ?>
     <meta property="og:title" content="Que es Expohobby?" />
     <meta property="og:description" content="Es una empresa dedicada a la difusion  del mundo del arte y la decoracion, desarrollando distintas actividades como exposiciones, cursos, revistas, newsletteria y demas herramientas que promueven las obras de los mas diversos y reconocidos exponentes del rubro. El objetivo de expohobby es seguir en el camino de la expansión para poder dar a conocer los trabajos de pequeños artesanos como así también de grandes empresas." />
@@ -88,23 +88,24 @@
                 </div>
                 <div class="input_wappers">
                   <label>Comentario</label>
-                  <textarea id="comentario" name="comentario" class="comentario"></textarea>
+                  <textarea id="comentario" name="comentario" required="required" class="comentario"></textarea>
                 </div>
                 <div class="input_wappers">
                   <input id="enviar_contacto" class="btn_general btn-classic2" type="submit" value="Enviar" name="enviar_contacto" />
-                  <div id="cargador" style="display:none"></div>
+                  <div id="cargador2" style="display:none; "></div>
                 </div>
               </form>
             <?php else: ?>
               <?php if ($_SESSION['mail_expo'] == 'ok'): ?>
                 <div class="mail_gracias">
-                  <h3>Gracias</h3>
+                  <h3>Gracias!!</h3>
                   <p>A la brevedad nos comunicaremos con usted.</p>
+                  <span></span>
                 </div>
               <?php else: ?>
                 <div class="mail_error">
-                  <h3>Error</h3>
-                  <p>Por favor intente nuevamente mas trade.</p>
+                  <h3>Error!</h3>
+                  <p>Por favor intente nuevamente. </p>
                 </div>
               <?php endif; ?>
               <?php unset($_SESSION['mail_expo']); ?>

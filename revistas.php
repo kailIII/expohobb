@@ -3,20 +3,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Revistas | Expohobby</title>
-    <?php include_once 'head.php'; ?>
-    <meta property="og:title" content="Aquí encontraras todas las revistas Expohobby digital" />
+    <?php include_once 'head.php'; ?> 
+
+    <meta property="og:title" content="Aquí encontraras todas las revistas  EXPOHOBBY Deco Digital" />
     <meta property="og:description" content="En esta sección encontraras  todas las ediciones de la revista Expohobby digital.
 Te esperamos y que las disfrutes!" />
     <meta property="og:image" content="/upload_images/revista.jpg" />
     <meta http-equiv="title" content="Revista expohobby digital"> 
     <meta name="DC.Creator" content="www.emafilms.com.ar"> 
-    <meta name="keywords" content="revista, Revistas, digital, paso a paso ">
-    <meta http-equiv="keywords" content="revista, Revistas, digital, paso a paso ">
-    <meta name="description" content="En esta sección encontraras  todas las ediciones de la revista Expohobby digital.
+    <meta name="keywords" content="revista, Revistas, digital, paso a paso, EXPOHOBBY Deco Digital ">
+    <meta http-equiv="keywords" content="revista, Revistas, digital, paso a paso, EXPOHOBBY Deco Digital ">
+    <meta name="description" content="En esta sección encontraras  todas las ediciones de la revista EXPOHOBBY Deco Digital. Los más destacados profesores del Arte y la Decoración reunidos para copmpratir todo su talento y originalidad.
 Te esperamos y que las disfrutes!">
-    <meta http-equiv="description" content="En esta sección encontraras  todas las ediciones de la revista Expohobby digital.
+    <meta http-equiv="description" content="En esta sección encontraras  todas las ediciones de la revista EXPOHOBBY Deco Digital. Los más destacados profesores del Arte y la Decoración reunidos para copmpratir todo su talento y originalidad.
 Te esperamos y que las disfrutes!"> 
-    <meta http-equiv="DC.Description" content="En esta sección encontraras  todas las ediciones de la revista Expohobby digital.
+    <meta http-equiv="DC.Description" content="En esta sección encontraras  todas las ediciones de la revista EXPOHOBBY Deco Digital. Los más destacados profesores del Arte y la Decoración reunidos para copmpratir todo su talento y originalidad.
 Te esperamos y que las disfrutes!"> 
     <meta name="author" content="Expohobby">
     <meta name="DC.Creator" content="Estudio multimedia EB"> 

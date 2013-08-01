@@ -36,8 +36,8 @@
 <meta property="og:image" content="<?php echo $revista['image'];?>" />
 <meta http-equiv="title" content="<?php echo $revista['title'];?>"> 
     <meta name="DC.Creator" content="www.emafilms.com.ar"> 
-    <meta name="keywords" content="revista, Revistas, digital, paso a paso ">
-    <meta http-equiv="keywords" content="revista, Revistas, digital, paso a paso ">
+    <meta name="keywords" content="revista, Revistas, digital, paso a paso, EXPOHOBBY Deco Digital ">
+    <meta http-equiv="keywords" content="revista, Revistas, digital, paso a paso, EXPOHOBBY Deco Digital ">
     <meta name="description" content="<?php echo $revista['description'];?>">
     <meta http-equiv="description" content="<?php echo $revista['description'];?>"> 
     <meta http-equiv="DC.Description" content="<?php echo $revista['description'];?>"> 

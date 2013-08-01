@@ -87,14 +87,14 @@
 		$classMail->Host = "mail.expohobby.net"; 
 
 		$classMail->From = $_POST['mail']; 
-		$classMail->FromName = "Expohobby"; 
+		$classMail->FromName = $_POST['nombre'].' | Comento en la web '; 
 		$classMail->Subject = "Contacto de Expohobby"; 
-		$classMail->AddAddress("sendfiel@hotmail.com");
+		$classMail->AddAddress("info@expohobby.net");
 		$classMail->Port = 25;
 		$classMail->WordWrap =200; 
 		 
-		$classMail->Body =  $_POST['comentario'];
-	 	$classMail->Body = $_POST['comentario'];
+		$classMail->Body = 'nombre= '.$_POST['nombre'].'<br> mail= '.$_POST['mail'].'<br> comentario= '.$_POST['comentario'];
+	 	
 	 	if($classMail->Send()){
 	 		$_SESSION['mail_expo'] = 'ok';
 	 	}else{

@@ -81,7 +81,7 @@
             </select>
           </div>
           <div class="input_wapper">
-            <input id="editar_marquee" class="btn_general btn-classic2" type="submit" value="Guardar" name="editar_marquee" />
+            <input id="editar_marquee" class="btn_general btn-classic2" type="submit" value="Guardar"  name="editar_marquee" />
             <div id="cargador" style="display:none"></div>
           </div>
         </form>
