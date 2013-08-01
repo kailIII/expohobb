@@ -68,7 +68,8 @@
 		header("Location: listado_usuarios.php");
 	}
 	if(isset($_POST['enviar_contacto']))
-	{
+	{	
+		session_start();
 		require("class/PHPmailer.php");
 		$mysqli = DataBase::connex();
 		$classMail = new PHPMailer(); 
@@ -93,8 +94,12 @@
 		$classMail->WordWrap =200; 
 		 
 		$classMail->Body =  $_POST['comentario'];
-	 	$classMail->Send();
-	 	//Ahi abajo mete el nombre de la nueva pagina
-	 	//header("Location: listado_usuarios.php");
+	 	$classMail->Body = $_POST['comentario'];
+	 	if($classMail->Send()){
+	 		$_SESSION['mail_expo'] = 'ok';
+	 	}else{
+	 		$_SESSION['mail_expo'] = 'error';
+	 	}
+		header("Location: concatenos.php");
 	}
 ?>

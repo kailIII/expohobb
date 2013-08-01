@@ -65,44 +65,55 @@
       <div class="separdorC"></div>
       
       <section class="empresa">
-
         <article class="contac">
-            <header>
-              <h2>Contactenos </h2>
-            </header>
-            <section>
+          <header>
+            <h2>Contactenos </h2>
+          </header>
+          <section>
             <div class="pcontc">
             	<p>Tambien puedes encontranos en:</p>
-            	
-            	<p><a href="http://www.facebook.com/pages/EXPOHOBBY/130321180395748" target="_blank" title="Facebook">Facebook</a></p>
-                <p><a href="https://twitter.com/EXPOHOBBY" target="_blank"title="Twitter">Twitter</a></p>
-                <p><a href="http://www.youtube.com/user/ExpoHobby" target="_blank" title="Youtube">Youtube</a></p>
+              <p><a href="http://www.facebook.com/pages/EXPOHOBBY/130321180395748" target="_blank" title="Facebook">Facebook</a></p>
+              <p><a href="https://twitter.com/EXPOHOBBY" target="_blank"title="Twitter">Twitter</a></p>
+              <p><a href="http://www.youtube.com/user/ExpoHobby" target="_blank" title="Youtube">Youtube</a></p>
+            </div>
+            <?php if (!isset($_SESSION['mail_expo'])): ?>
+              <form id="form_reg" action="controllers.php" method="POST" enctype="multipart/form-data">
+                <div class="input_wappers">
+                  <label>Nombre</label>
+                 <input id="nombre" type="text" onblur="" name="nombre" required="required" class="input_text_marquee input_text" />
                 </div>
-           <form id="form_reg" action="controllers.php" method="POST" enctype="multipart/form-data">
-          <div class="input_wappers">
-            <label>Nombre</label>
-           <input id="nombre" type="text" onblur="" name="nombre" required="required" class="input_text_marquee input_text" />
-          </div>
-          <div class="input_wappers">
-            <label>Mail</label>
-           <input id="registration_mail" type="email" onblur="" name="mail" required="required" class="input_text_mail input_text" />
-          </div>
-          <div class="input_wappers">
-            <label>Comentario</label>
-            <textarea id="comentario" name="comentario" class="comentario"></textarea>
-          </div>
-          <div class="input_wappers">
-            <input id="enviar_contacto" class="btn_general btn-classic2" type="submit" value="Enviar" name="enviar_contacto" />
-            <div id="cargador" style="display:none"></div>
-          </div>
-        </form>
-            </section>
+                <div class="input_wappers">
+                  <label>Mail</label>
+                 <input id="registration_mail" type="email" onblur="" name="mail" required="required" class="input_text_mail input_text" />
+                </div>
+                <div class="input_wappers">
+                  <label>Comentario</label>
+                  <textarea id="comentario" name="comentario" class="comentario"></textarea>
+                </div>
+                <div class="input_wappers">
+                  <input id="enviar_contacto" class="btn_general btn-classic2" type="submit" value="Enviar" name="enviar_contacto" />
+                  <div id="cargador" style="display:none"></div>
+                </div>
+              </form>
+            <?php else: ?>
+              <?php if ($_SESSION['mail_expo'] == 'ok'): ?>
+                <div class="mail_gracias">
+                  <h3>Gracias</h3>
+                  <p>A la brevedad nos comunicaremos con usted.</p>
+                </div>
+              <?php else: ?>
+                <div class="mail_error">
+                  <h3>Error</h3>
+                  <p>Por favor intente nuevamente mas trade.</p>
+                </div>
+              <?php endif; ?>
+              <?php unset($_SESSION['mail_expo']); ?>
+            <?php endif; ?>
+          </section>
         </article>
         <div class="sombra4"></div> 
-      </section>
-     
+      </section>    
       <div class="separdor"></div>
-      
       <aside class="publicidad">
       	<div style="float:left; display:block;">
 			<div class="cont-img-publ">
