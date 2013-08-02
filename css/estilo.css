@@ -3,6 +3,11 @@
 .uds-bb-description-inside a{
 	color:#FFF;
 }
+.uds-bb-description-inside p{
+	margin:2px;
+	padding:0px;
+	
+}
 .uds-bb-description-inside a:hover{
 	color:#14ADAF;
 }
