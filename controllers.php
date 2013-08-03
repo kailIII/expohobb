@@ -67,6 +67,33 @@
 		$user->deleteUsuario($_POST['id']);
 		header("Location: listado_usuarios.php");
 	}
+	if(isset($_POST['agregar_publicidad']))
+	{
+		$publicidad = new Publicidad();
+		$publicidad->insetPublicidad($_POST, $_FILES);
+		header("Location: listado_publicidad.php");
+	}
+	if(isset($_POST['editar_publicidad']))
+	{
+		$publicidad = new Publicidad();
+		$publicidad->updatePublicidad($_POST, $_FILES);
+		header("Location: listado_publicidad.php");
+	}
+	if(isset($_POST['btn_publicidad_eliminar']))
+	{
+		$publicidad = new Publicidad();
+		$publicidad->deletePublicidad($_POST['id']);
+		header("Location: listado_publicidad.php");
+	}
+
+
+
+
+
+
+
+
+
 	if(isset($_POST['enviar_contacto']))
 	{	
 		session_start();

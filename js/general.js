@@ -88,6 +88,9 @@
     $('#image_revista').change(function (){ 
      $('#preview_image').remove();
     });
+    $('#image_publicidad').change(function (){
+     $('#preview_image').remove();
+    });
   }
 
   function initPuginsForms(){
@@ -157,6 +160,20 @@
       alignTop: true,
       fixedContentPos: true
     });
+
+    $('.eliminar_publicidad').magnificPopup({
+      type: 'inline',
+      fixedBgPos: true,
+      overflowY: 'auto',
+      closeBtnInside: true,
+      preloader: false,   
+      midClick: true,
+      removalDelay: 300,
+      mainClass: 'my-mfp-slide-bottom',
+      alignTop: true,
+      fixedContentPos: true
+    });
+    
 	$('.seleccionar_us').magnificPopup({
       type: 'inline',
       fixedBgPos: true,
