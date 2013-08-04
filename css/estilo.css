@@ -486,6 +486,9 @@ display: inline-block;
 	border:#c5c5c5 solid thin;
 	display:block;
 	width:139px !important;
+	height:83px !important;
+	overflow:hidden;
+	
 }
 .cont-img-publ a{
 	display:block;
@@ -1640,5 +1643,15 @@ color:#14ADAF;
     margin-left:113px;
     width: 196px;
 	margin-top:4px;
+	
+}
+.tb td img{
+	width: 139px !important;
+height: 83px !important;
+	
+}
+#preview_image img{
+		width: 139px !important;
+height: 83px !important;
 	
 }
