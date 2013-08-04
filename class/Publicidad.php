@@ -65,11 +65,18 @@ class Publicidad
 			break;
 		}
 		
+		$ancho = imagesx( $original );
+		$alto = imagesy( $original );
+		$ancho_nuevo = 139; 
+		$alto_nuevo = 83;
+		$copia = imagecreatetruecolor( $ancho_nuevo , $alto_nuevo );
+		imagecopyresampled( $copia , $original , 0, 0, 0, 0, $ancho_nuevo, $alto_nuevo, $ancho,$alto);
 
 		$uploaddir = 'upload_images/';
 		$name = md5($image['name'] . date("YmdHms")) . '.jpg';
 		$uploadfile = $uploaddir . basename($name);
-		if (move_uploaded_file($foto, $uploadfile)) {
+		
+		if (imagejpeg($copia , $uploadfile, 200)) {
 			$pathIgame = $uploaddir . $name;
 		} else {
 		 	return false;
@@ -226,11 +233,18 @@ class Publicidad
 			break;
 		}
 
+		$ancho = imagesx( $original );
+		$alto = imagesy( $original );
+		$ancho_nuevo = 139; 
+		$alto_nuevo = 83;
+		$copia = imagecreatetruecolor( $ancho_nuevo , $alto_nuevo );
+		imagecopyresampled( $copia , $original , 0, 0, 0, 0, $ancho_nuevo, $alto_nuevo, $ancho,$alto);
+
 		$uploaddir = 'upload_images/';
 		$name = md5($image['name'] . date("YmdHms")) . '.jpg';
-		$uploadfile = $uploaddir . basename($name);
+		$uploadfile = $uploaddir . $name;
 
-		if (move_uploaded_file($foto, $uploadfile)) {
+		if (imagejpeg($copia , $uploadfile, 200)) {
 			$pathImage = $uploaddir . $name;
 		} else {
 		 	return false;
