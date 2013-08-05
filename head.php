@@ -5,6 +5,7 @@
 <link href="css/modals.css" type="text/css" rel="stylesheet">
 <link href="css/jquery.ui.all.css" type="text/css" rel="stylesheet">
 <link rel='stylesheet' id='uds-billboard-css'  href='slider/css/billboard.min.css?ver=3.1.1' type='text/css' media='screen' />
+<link rel="shortcut icon" type="image/x-icon" href="imagenes/favicon.ico">
 <!-- CSS -->
 <!-- JS -->
 <script type='text/javascript' src='slider/js/comment-reply.js?ver=20090102'></script>
