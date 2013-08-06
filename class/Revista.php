@@ -27,7 +27,6 @@ class Revista
 	{
 		$pathIgame = $this->uploadImage($files['image']);
 		$pathFile = $this->uploadFile($files['pdf']);
-		$pathSWF = $this->uploadFile($files['html_swf']);
 		$mysqli = DataBase::connex();
 		$query = '
 			INSERT INTO 
@@ -39,7 +38,7 @@ class Revista
 				revistas.description = "'. $mysqli->real_escape_string($revista['descripcion']) .'",
 				revistas.edition = "'. $mysqli->real_escape_string(date($revista['edicion'])) .'",
 				revistas.pdf = "'. $mysqli->real_escape_string($pathFile).'",
-				revistas.swf = "'. $mysqli->real_escape_string($pathSWF).'",
+				revistas.swf = "'. $mysqli->real_escape_string($files['html_swf']).'",
 				revistas.status = "'. $mysqli->real_escape_string($revista['status']).'"
 			';
 		$mysqli->query($query);
@@ -297,11 +296,6 @@ class Revista
   	} else {
   		$pathPDF = $revista['name_pdf'];
   	}
-  	if($files['html_swf']['name'] != ''){
-  		$pathSWF = $this->updateFile($files['html_swf'], $revista['name_swf']);
-  	} else {
-  		$pathSWF = $revista['name_swf'];
-  	}
   	$mysqli = DataBase::connex();
   	$q = '
   		UPDATE 
@@ -312,7 +306,7 @@ class Revista
 			revistas.description = "'. $mysqli->real_escape_string($revista['descripcion']) .'",
 			revistas.edition = "'. $mysqli->real_escape_string(date($revista['edicion'])) .'",
 			revistas.pdf = "'. $mysqli->real_escape_string($pathPDF).'",
-			revistas.swf = "'. $mysqli->real_escape_string($pathSWF).'",
+			revistas.swf = "'. $mysqli->real_escape_string($revista['html_swf']).'",
 			revistas.status = "'. $mysqli->real_escape_string($revista['status']).'"
   		WHERE 
   			revistas.id = "' . $revista['revistaid'] . '" 

@@ -67,13 +67,14 @@
               </div>
        </div>
       <div class="separdorC"></div>
-       <aside class="banner_publ">
-      	<a  title="publicidad" href="#" ><img title="banner_publi"  src="imagenes/blue_blue_puff.jpg"  width="907" height="105"/></a>
-      </aside>
+      <?php 
+        $publicidad = new Publicidad();
+        $publicidad->viewPublicidad('grande');
+      ?>
       <div class="sombra2PuB"></div>
       
       <section>
-		
+    
         <article class="revista">
           <?php 
             $revista = new Revista();
@@ -106,7 +107,7 @@
           </div>
         </article>
         <article class="exposiciones">
-        	<div class="cont-art">
+          <div class="cont-art">
               <a href="expos.html" >
                 <img alt="imag"  border="0px" width="144" height="173" src="upload_images/fiesta.jpg"></a>
               <header>
@@ -142,10 +143,8 @@
       </div>    
       <div class="separdor"></div>
       <?php
-        $publicidad = new Publicidad();
-        print $publicidad->viewPublicidad();
+        $publicidad->viewPublicidad('chica');
       ?>
-
     </div>
   </div>
   <footer>

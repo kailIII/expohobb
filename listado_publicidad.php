@@ -22,9 +22,23 @@
         </ul>
       </nav>  
     </header>
+    <?php
+      include_once 'includes.php';
+      $listado_publicidad = new Publicidad();
+      $listados = $listado_publicidad->getPublicidads();
+    ?>
     <div id="cont-all"> 
       <div id="cont-section"> 
-		<a title="Agregar Publicidad"  class="bnt-ver Cmarg" href="agregar_publicidad.php">+ Agregar Publicidad</a>
+        <a title="Agregar Publicidad"  class="bnt-ver Cmarg" href="agregar_publicidad.php">+ Agregar Publicidad</a>
+        <table class="tb" border="0" cellpadding="0" cellspacing="0">
+            <td class="tbtitulos">URL</td>
+            <td class="tbtitulos">Estado</td>
+            <td class="tbtitulos">Editar</td>
+            <td class="tbtitulos">Borrar</td>
+          </tr>
+            <?php print  $listados['grande']; ?>
+        </table>
+
         <table class="tb" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="tbtitulos">Imagen</td>
@@ -33,11 +47,7 @@
             <td class="tbtitulos">Editar</td>
             <td class="tbtitulos">Borrar</td>
           </tr>
-          <?php
-            include_once 'includes.php';
-            $listado_publicidad = new Publicidad();
-            print $listado_publicidad->getPublicidads();
-          ?>
+            <?php print  $listados['chica']; ?>
         </table>
       </div>
     </div>          

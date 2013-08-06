@@ -46,7 +46,7 @@
           </div>
           <div class="input_wapper">
             <label>HTML SWF</label>
-            <input id="html_swf" type="file" name="html_swf" required="required" class="input_file_revista input_file" />
+            <input id="html_swf" type="text" name="html_swf" required="required" class="input_file_revista input_file" />
           </div>
           <div class="input_wapper">
             <label>Estado</label>

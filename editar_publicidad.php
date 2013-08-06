@@ -37,6 +37,13 @@
             <input id="url" value="<?php echo $newPublicidad['url'];?>" type="text" name="url" required="required" class="input_text_publicidad input_text" />
           </div>
           <div class="input_wapper">
+            <label>Tipo</label>
+            <select id="tipo" class="label_reg" required="required" name="tipo">
+              <option <?php if($newPublicidad['tipo'] == 'chica'){ echo 'selected'; }?> value="chica">Chica</option>
+              <option <?php if($newPublicidad['tipo'] == 'grande'){ echo 'selected'; }?> value="grande">Grande</option>
+            </select>
+          </div>
+          <div class="input_wapper">
             <label>Imagen</label>
             <div id="preview_image"><img alt="<?php echo $newPublicidad['url'];?>" title="<?php echo $newPublicidad['url'];?>" src="<?php echo $newPublicidad['image'];?>"/></div>
             <input type="hidden" name="name_image" value="<?php echo $newPublicidad['image'];?>" />

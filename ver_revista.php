@@ -98,7 +98,7 @@
                       hspace="0" 
                       vspace="0"
                       frameborder="0"  
-                      src="http://www.joomag.com/magazine/expohobby-test-1-1/0895520001375518971?p=1&e=1&embedInfo=;image,http://www.joomag.com/Frontend/flash/gui/themes/default_new/thumbnail.png,fill">
+                      src="<?php echo $revista['swf'];?>">
                   </iframe>
                   </div>
                   <div class="cont-btn-pdf">
@@ -119,12 +119,8 @@
         </article>
     </div>
    </div>
-	
-<footer>
+  <footer>
     <?php include_once 'footer.php'; ?>
   </footer>
-<script type="text/javascript">
-swfobject.registerObject("FlashID");
-  </script>
 </body>
 </html>

@@ -31,6 +31,13 @@
            <input id="url" type="text" name="url" required="required" class="input_text_publicidad input_text" />
           </div>
           <div class="input_wapper">
+            <label>Tipo</label>
+            <select id="tipo" class="label_reg" required="required" name="tipo">
+              <option value="chica">Chica</option>
+              <option value="grande">Grande</option>
+            </select>
+          </div>
+          <div class="input_wapper">
             <label>Imagen</label>
             <input id="image" type="file" name="image" required="required" class="input_file_publicidad input_file" />
           </div>

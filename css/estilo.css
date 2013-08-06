@@ -1645,11 +1645,17 @@ color:#14ADAF;
 	margin-top:4px;
 	
 }
+#publ_grande img{
+	width: 890px !important;
+	height: 83px !important;
+}
+
 .tb td img{
-	width: 139px !important;
-height: 83px !important;
+	width: 139px;
+	height: 83px;
 	
 }
+
 #preview_image img{
 		width: 139px !important;
 height: 83px !important;

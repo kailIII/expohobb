@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 23-07-2013 a las 01:31:31
+-- Tiempo de generación: 06-08-2013 a las 02:54:00
 -- Versión del servidor: 5.1.53
 -- Versión de PHP: 5.3.4
 
@@ -71,6 +71,36 @@ INSERT INTO `marquee` (`id`, `title`, `small_image`, `big_image`, `queue`, `desc
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `publicidad`
+--
+
+CREATE TABLE IF NOT EXISTS `publicidad` (
+  `id` smallint(3) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `url` varchar(250) DEFAULT NULL,
+  `image` varchar(150) DEFAULT NULL,
+  `position` smallint(3) DEFAULT NULL,
+  `status` varchar(15) DEFAULT NULL,
+  `tipo` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+--
+-- Volcar la base de datos para la tabla `publicidad`
+--
+
+INSERT INTO `publicidad` (`id`, `url`, `image`, `position`, `status`, `tipo`) VALUES
+(002, 'http://www.expohobby.net', 'upload_images/9a57c68652950c73cc27fccbaf33fb02.jpg', 2, 'Publicado', 'chica'),
+(003, 'http://www.expohobby.net', 'upload_images/3be3772b0222626dc5a9f9d8e7f80b1a.jpg', 1, 'Publicado', 'chica'),
+(004, 'http://www.expohobby.net', 'upload_images/69e1b71a2bc2ab9da9f508779adb0884.jpg', 3, 'Publicado', 'chica'),
+(005, 'http://www.google.com.ar', 'upload_images/dc779a1e69fd3eabb2c371a43914035b.jpg', 4, 'Publicado', 'chica'),
+(006, 'http://www.google.com.ar', 'upload_images/512caf17e9e9466c30d1a316ee699634.jpg', 5, 'Publicado', 'chica'),
+(007, 'http://www.expohobby.net', 'upload_images/c325af839492f004ec95c242b8415f0a.jpg', 6, 'Publicado', 'chica'),
+(009, 'http://www.google.com.ar', 'upload_images/a03e6bafee252d6c8a3fc1a798a944c3.jpg', 1, 'Publicado', 'grande'),
+(010, 'http://www.expohobby.net', 'upload_images/44ed3df34e5db01f8686bb5ee6a26a28.jpg', 2, 'Despublicado', 'grande');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `registro`
 --
 
@@ -82,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `registro` (
   `codigo` varchar(150) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mail` (`mail`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15499 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15501 ;
 
 --
 -- Volcar la base de datos para la tabla `registro`
@@ -15614,7 +15644,7 @@ INSERT INTO `registro` (`id`, `mail`, `fecha`, `estado`, `codigo`) VALUES
 (15495, 'zabotveronica@gmail.com', '2009-12-15', 'valido', '0d422b24638bbe9efb30a2530eedcd55'),
 (15496, 'zorysq@hotmail.com', '2009-12-15', 'valido', 'ba096a61f24521f4778e533020602b81'),
 (15497, 'zv_alexander_j@hotmail.com', '2009-12-15', 'valido', 'e0e4772b1bb352c306c87941519bab6e'),
-(15498, '', '1970-01-01', 'valido', 'd41d8cd98f00b204e9800998ecf8427e');
+(15500, 'asda@qweqw.com', '0000-00-00', 'no_validado', 'fbf0bc94576e408a732e87b8c9464238');
 
 -- --------------------------------------------------------
 
@@ -15629,7 +15659,7 @@ CREATE TABLE IF NOT EXISTS `revistas` (
   `description` mediumtext,
   `edition` date DEFAULT NULL,
   `pdf` varchar(150) DEFAULT NULL,
-  `swf` varchar(150) DEFAULT NULL,
+  `swf` varchar(250) DEFAULT NULL,
   `status` varchar(15) CHARACTER SET latin1 COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
@@ -15639,7 +15669,7 @@ CREATE TABLE IF NOT EXISTS `revistas` (
 --
 
 INSERT INTO `revistas` (`id`, `title`, `image`, `description`, `edition`, `pdf`, `swf`, `status`) VALUES
-(007, 'Test 1', 'upload_images/f0bb1a7ff4a69cf0e29e3f63f6e066c3.jpg', '<p>asdsad</p>\r\n', '2013-06-08', 'upload_revistas_pdf/a8732939cd62674b7c5f5a865c21123f.pdf', 'upload_revistas_swf/a8732939cd62674b7c5f5a865c21123f.swf', 'Publicado');
+(007, 'Test 1', 'upload_images/f0bb1a7ff4a69cf0e29e3f63f6e066c3.jpg', '<p>asdsad</p>\r\n', '2013-07-01', '', 'http://www.joomag.com/magazine/expohobby-test-1-1/0895520001375518971?p=1&e=1&embedInfo=;image,http://www.joomag.com/Frontend/flash/gui/themes/default_new/thumbnail.png,fill', 'Publicado');
 
 -- --------------------------------------------------------
 

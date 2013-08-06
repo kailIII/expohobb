@@ -63,14 +63,7 @@
           </div>
           <div class="input_wapper">
             <label>HTML SWF</label>
-            <div>
-              <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10.0.0.0" width="550" height="400">
-                <param name="quality" value="high" />
-                <embed src="<?php echo $newRevista['swf'];?>" quality="high" type="application/x-shockwave-flash" width="550" height="400" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
-              </object>
-            </div>
-            <input type="hidden" name="name_swf" value="<?php echo $newRevista['swf'];?>" />
-            <input id="html_swf" type="file" name="html_swf" class="input_file_revista input_file" />
+            <input id="html_swf" value="<?php echo $newRevista['swf'];?>" type="text" name="html_swf" required="required" class="input_text_revista input_text" />
           </div>
           <div class="input_wapper">
             <label>Estado</label>
