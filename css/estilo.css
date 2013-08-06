@@ -1655,3 +1655,32 @@ height: 83px !important;
 height: 83px !important;
 	
 }
+.banner_publ{
+background:#FFF;
+	border:#c3c1c2 solid thin;
+	padding:7px 7px 4px;
+	-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+display: inline-block;
+width:907px;
+}
+.banner_publ img{
+	background:#000;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+.banner_publ a{
+	border:none;
+	text-decoration:none;
+	
+}
+
+.sombra2PuB{
+	background: url(../imagenes/sombraprin.jpg) no-repeat;
+	width:924px;
+	height:11px;
+	display:block;
+	margin-bottom:15px;
+}

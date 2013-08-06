@@ -41,8 +41,9 @@
     <?php include_once 'main_menu.php'; ?>
   </header>
   <div id="cont-all">
-
+ 
     <div class="cont-slider">
+    
       <?php include('slider/fotosprincipales.php'); ?>
     </div>
     
@@ -66,9 +67,13 @@
               </div>
        </div>
       <div class="separdorC"></div>
+       <aside class="banner_publ">
+      	<a  title="publicidad" href="#" ><img title="banner_publi"  src="imagenes/blue_blue_puff.jpg"  width="907" height="105"/></a>
+      </aside>
+      <div class="sombra2PuB"></div>
       
       <section>
-
+		
         <article class="revista">
           <?php 
             $revista = new Revista();
@@ -134,7 +139,7 @@
         <div class="fb-like-box" data-href="http://www.facebook.com/pages/EXPOHOBBY/130321180395748" data-width="256" data-height="382" data-show-faces="false" data-stream="true" data-header="false"></div>
       </aside>
       <div class="sombra6"></div> 
-      </div>
+      </div>    
       <div class="separdor"></div>
       <?php
         $publicidad = new Publicidad();
