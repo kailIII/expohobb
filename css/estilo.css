@@ -1063,11 +1063,11 @@ background:#FFF;
 }
 .ContMult img{
 	width:227px;
-	height:246px;
+	height:289px;
 	
 }
 .contHover:hover .clsContenedorAll{
- height: 301px;
+ height: 294px;
 
 }
 section .contHover:hover{
@@ -1079,7 +1079,7 @@ background:none !important;
 margin-left:46px;
 float:left;
 display:block;
-height:333px;
+height:358px;
 }
 .clsContenedorAll{
 background: url(../imagenes/bg.png) repeat;
@@ -1088,7 +1088,7 @@ background: url(../imagenes/bg.png) repeat;
 height: 0px;
 left:-6px;
 position: relative;
- top:-308px;
+ top:-301px;
 overflow: hidden;
 
     -webkit-transition: all 0.5s ease-out;
@@ -1218,7 +1218,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#539b9e', end
 }
 .con-swf{
 	display:block;
-	background:#333 !important;
+	background:#FAFDFF !important;
 	border:#FFF solid thin;
 	padding:15px;
 	 height: auto;
@@ -1230,7 +1230,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#539b9e', end
 .con-swf section {
 	margin:0px auto !important;
 	float:none !important;
-    width:800px !important;
+    width:858px !important;
 	display:block  !important;
 	
 }
@@ -1249,12 +1249,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#539b9e', end
     background: none repeat scroll 0 0 transparent;
 	margin:0px auto !important;
     float: none !important;
-    width:800px;
+    width:858px;
 	display:table !important;
 	color:#14ADAF;
 }
 .descripcion-swf span{
-	color:#FFF !important;
+	color:#333 !important;
 	font-size:12px !important;
 }
 .descripcion-swf p{
@@ -1262,7 +1262,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#539b9e', end
 	margin-left:5px;
 }
 .descripcion-swf{
-	color:#FFF !important;
+	color:#333 !important;
 	font-size:16px;
 	
 }
@@ -1272,7 +1272,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#539b9e', end
 	border:#CCC solid thin;
 	padding:10px;
 	margin-top:15px;
-	box-shadow: 0 0 2px #000000;
+	box-shadow: 0 0 20px #ccc;
 }
 .cont-btn-pdf{
 	text-align:right;

@@ -36,7 +36,7 @@
             <td class="tbtitulos">Editar</td>
             <td class="tbtitulos">Borrar</td>
           </tr>
-            <?php print  $listados['grande']; ?>
+            <?php if(isset ($listados['grande'])){print  $listados['grande'];} ?>
         </table>
 
         <table class="tb" border="0" cellpadding="0" cellspacing="0">
@@ -47,7 +47,7 @@
             <td class="tbtitulos">Editar</td>
             <td class="tbtitulos">Borrar</td>
           </tr>
-            <?php print  $listados['chica']; ?>
+            <?php if(isset($listados['chica'])){print $listados['chica'];} ?>
         </table>
       </div>
     </div>          

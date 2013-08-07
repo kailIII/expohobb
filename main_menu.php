@@ -4,7 +4,7 @@
       <a title="Inicio" id="inicio" href="index.php">Inicio</a>
     </li>
     <li>
-      <a title="Exposiciones" id="exposiciones" href="#">Exposiciones</a>
+      <a title="Exposiciones" id="exposiciones" href="expos.html">Exposiciones</a>
     </li>
     <li>
       <a title="Revista" id="revista" href="revistas.php">Revista</a>
@@ -44,7 +44,7 @@
     }
   ?>
 </nav>
-
+<!-- 
 <div class="deplegablemenu" style="display:none;">
   <div class="pico"></div>
   <div class="cont-listado">
@@ -105,3 +105,4 @@ necesarios para el desarrollo de los diferentes.
 
   </div>
 </div>
+-->

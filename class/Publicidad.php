@@ -354,7 +354,7 @@ class Publicidad
 		}
 		$result->free();
 		$mysqli->close();
-		return $this->formatViewPublicidad($publicidades, $tipo);
+		if(!empty($publicidades)){return $this->formatViewPublicidad($publicidades, $tipo);}else{ return '';}
   }
 
   private function formatViewPublicidad($publicidades, $tipo){
@@ -362,14 +362,15 @@ class Publicidad
 		if($tipo == 'grande'){
 			$publicidad = $publicidades[0];
 			$html = '<aside class="banner_publ">';
-		    	$html .= '<a  title="'.$publicidad['url'].'" href="'.$publicidad['url'].'" ><img  alt="'.$publicidad['url'].'" src="'.$publicidad['image'].'"  width="907" height="105"/></a>';
+		    	$html .= '<a target="_blank"  title="'.$publicidad['url'].'" href="'.$publicidad['url'].'" ><img  alt="'.$publicidad['url'].'" src="'.$publicidad['image'].'"  width="907" height="105"/></a>';
 		    $html .= '</aside>';
+			$html .= '<div class="sombra2PuB"></div>';
 		}else{
 			$html = '<aside class="galeria-pub"><div>';
 			foreach ($publicidades as $publicidad) {
 				$html .= '<div style="float:left; display:block; ">';
 					$html .= '<div class="cont-img-publ">';
-						$html .= '<a target="_blank" href="'.$publicidad['url'].'">';
+						$html .= '<a target="_blank"  title="'.$publicidad['url'].'"  href="'.$publicidad['url'].'">';
 							$html .= '<img alt="'.$publicidad['url'].'" border="0" src="'.$publicidad['image'].'" width="139">';
 						$html .= '</a>';
 					$html .= '</div>';
@@ -377,8 +378,9 @@ class Publicidad
 				$html .= '</div>';
 			}
 			$html .= '</div></aside>';
+			
 		}
-		echo $html;
+		return $html;
   }
 }
 ?>

@@ -69,9 +69,9 @@
       <div class="separdorC"></div>
       <?php 
         $publicidad = new Publicidad();
-        $publicidad->viewPublicidad('grande');
+        echo $publicidad->viewPublicidad('grande');
       ?>
-      <div class="sombra2PuB"></div>
+      
       
       <section>
     
@@ -143,7 +143,7 @@
       </div>    
       <div class="separdor"></div>
       <?php
-        $publicidad->viewPublicidad('chica');
+       echo $publicidad->viewPublicidad('chica');
       ?>
     </div>
   </div>

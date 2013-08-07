@@ -72,14 +72,17 @@ class Usuario
 	private function registrar_mail($mail, $id) {
 		$mysqli = DataBase::connex();
 		$codigo = md5($mail);
+		$FechR	= date("Ymd");
 		$query = '
 			INSERT INTO 
 				registro 
 			SET
 				registro.id = NULL,
 				registro.mail = "'. $mysqli->real_escape_string($mail) .'",
+				registro.fecha = "'. $FechR .'",
 				registro.estado = "no_validado",
 				registro.codigo = "'. $codigo .'"
+				
 			';
 		$result = $mysqli->query($query);
 		$this->enviar_mail_validacion($mail, $codigo, $id);
@@ -176,7 +179,7 @@ class Usuario
 							<div id='contentrada'>
 								<div id='contnf'>
 									<p>
-										<a class='link' href='http://localhost/expohobb/validar_mail.php?mail=$email&codigo=$codigo&id=$id'>Haga click</a><br><br>
+										<a class='link' href='http://expohobby.net/validar_mail.php?mail=$email&codigo=$codigo&id=$id'>Haga click</a><br><br>
 									</p>
 								</div>
 							</div>

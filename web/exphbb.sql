@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-08-2013 a las 02:54:00
+-- Tiempo de generación: 07-08-2013 a las 23:53:29
 -- Versión del servidor: 5.1.53
 -- Versión de PHP: 5.3.4
 
@@ -57,16 +57,19 @@ CREATE TABLE IF NOT EXISTS `marquee` (
   `status` varchar(15) DEFAULT NULL,
   `type_marquee` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Volcar la base de datos para la tabla `marquee`
 --
 
 INSERT INTO `marquee` (`id`, `title`, `small_image`, `big_image`, `queue`, `description`, `status`, `type_marquee`) VALUES
-(001, 'Test 2', 'upload_images/ddfd1bfecbe5a0ddb59480b68283d05e.jpg', 'http://www.youtube.com/embed/xjm80oTTfoA', 003, '<h2 style="font-style:italic">Titulo</h2>\r\n\r\n<p>bla bla bla</p>\r\n\r\n<ul>\r\n	<li>bulet</li>\r\n	<li>bulet</li>\r\n	<li>bulet</li>\r\n</ul>\r\n', 'Publicado', 'video'),
-(006, 'Test', 'upload_images/4c29ebeac862b8fd4c3c7fd889270a1a.jpg', 'upload_images/57a41ae504af2029d667d1502489bfe6.jpg', 001, '<h1><strong>Test</strong></h1>\r\n\r\n<h3>esto es un test</h3>\r\n\r\n<ul>\r\n	<li>test 1</li>\r\n	<li>test 2</li>\r\n	<li>test 3</li>\r\n</ul>\r\n', 'Publicado', 'imagen'),
-(007, 'Otro Test', 'upload_images/85815592615ffc3cb5f40ebbc4886781.jpg', 'upload_images/ccc3b7cc62f25b5ba47a491eacfa97ea.jpg', 004, '<h2 style="font-style:italic">Titulo</h2>\r\n\r\n<p>bla bla bla</p>\r\n\r\n<ul>\r\n	<li>bulet</li>\r\n	<li>bulet</li>\r\n	<li>bulet</li>\r\n</ul>\r\n', 'Publicado', 'imagen');
+(011, 'EXPO SEPTIEMBRE 2013 ', 'upload_images/770afb596ab659fcf27bf5ca22251d0d.jpg', 'upload_images/e682d7cff7a2fc89e160712c53c2dd73.jpg', 002, '', 'Publicado', 'imagen'),
+(012, 'REVISTA 01 / FOTO 01', 'upload_images/ae37a89d88ccb08ddea331f093410566.jpg', 'upload_images/c245c80d55ad771067d8519d8c967fbe.jpg', 003, '<h2 style="font-style:italic"><em><strong>Ya lleg&oacute;...</strong></em></h2>\r\n\r\n<ul>\r\n	<li>&quot;EXPOHOBBY DECO DIGITAL&quot; la primer revista digital gratuita de la web...&nbsp;</li>\r\n	<li>Los m&aacute;s destacados profesores del Arte y la Decoraci&oacute;n reunidos para compartir todo su talento&nbsp;y originalidad.</li>\r\n</ul>\r\n\r\n<p style="margin-left:40px"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &iexcl;&iexcl;&iexcl;&nbsp;No te la pierdas !!!!&nbsp;</strong></p>\r\n\r\n<p><a href="http://www.expohobby.net/prueba/revistas.php">(Clik aqu&iacute; para ira a la revista)</a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'Publicado', 'imagen'),
+(016, 'REVISTA 01 / FOTO 02', 'upload_images/1955651e8529365560f45da99124d651.jpg', 'upload_images/9b22192e03ceaab30657748126c60fb4.jpg', 005, '', 'Publicado', 'imagen'),
+(017, 'REVISTA 01 / FOTO 03', 'upload_images/d196e949d4518c842bddb4f7f5631532.jpg', 'upload_images/2348d4c0ffc112ed987d7541bd37293e.jpg', 004, '', 'Publicado', 'imagen'),
+(019, 'REVISTA 01 / FOTO 05', 'upload_images/475b21dc4541b0ee532ebe42c9d8fe6b.jpg', 'upload_images/a77f336b26e351664950f348fdb92c20.jpg', 006, '', 'Publicado', 'imagen'),
+(022, 'REVISTA 01 / FOTO 04', 'upload_images/1aa37139c4d47d6833807e6213e98162.jpg', 'upload_images/c942513b00d1eda54043d83bc012938b.jpg', 005, '<h2 style="font-style:italic"><em><strong>Ya lleg&oacute;...</strong></em></h2>\r\n\r\n<ul>\r\n	<li>&quot;EXPOHOBBY DECO DIGITAL&quot; la primer revista digital gratuita de la web...&nbsp;</li>\r\n	<li>Los m&aacute;s destacados profesores del Arte y la Decoraci&oacute;n reunidos para compartir todo su talento&nbsp;y originalidad.</li>\r\n</ul>\r\n\r\n<p style="margin-left:40px"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &iexcl;&iexcl;&iexcl;&nbsp;No te la pierdas !!!!&nbsp;</strong></p>\r\n\r\n<p><a href="http://www.expohobby.net/prueba/revistas.php">(Clik aqu&iacute; para ira a la revista)</a></p>\r\n', 'Publicado', 'imagen');
 
 -- --------------------------------------------------------
 
@@ -82,21 +85,20 @@ CREATE TABLE IF NOT EXISTS `publicidad` (
   `status` varchar(15) DEFAULT NULL,
   `tipo` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Volcar la base de datos para la tabla `publicidad`
 --
 
 INSERT INTO `publicidad` (`id`, `url`, `image`, `position`, `status`, `tipo`) VALUES
-(002, 'http://www.expohobby.net', 'upload_images/9a57c68652950c73cc27fccbaf33fb02.jpg', 2, 'Publicado', 'chica'),
-(003, 'http://www.expohobby.net', 'upload_images/3be3772b0222626dc5a9f9d8e7f80b1a.jpg', 1, 'Publicado', 'chica'),
-(004, 'http://www.expohobby.net', 'upload_images/69e1b71a2bc2ab9da9f508779adb0884.jpg', 3, 'Publicado', 'chica'),
-(005, 'http://www.google.com.ar', 'upload_images/dc779a1e69fd3eabb2c371a43914035b.jpg', 4, 'Publicado', 'chica'),
-(006, 'http://www.google.com.ar', 'upload_images/512caf17e9e9466c30d1a316ee699634.jpg', 5, 'Publicado', 'chica'),
-(007, 'http://www.expohobby.net', 'upload_images/c325af839492f004ec95c242b8415f0a.jpg', 6, 'Publicado', 'chica'),
-(009, 'http://www.google.com.ar', 'upload_images/a03e6bafee252d6c8a3fc1a798a944c3.jpg', 1, 'Publicado', 'grande'),
-(010, 'http://www.expohobby.net', 'upload_images/44ed3df34e5db01f8686bb5ee6a26a28.jpg', 2, 'Despublicado', 'grande');
+(002, 'http://www.alejandragutierrez.com.ar', 'upload_images/68a002de319d136f9635cea4f5043447.jpg', 2, 'Publicado', 'chica'),
+(003, 'http://www.artisticaartcraft.com.ar', 'upload_images/55eadfd958b258b7fe85166994ccd4b5.jpg', 1, 'Publicado', 'chica'),
+(004, 'http://www.elnuevoemporio.com.ar/', 'upload_images/30d4e65c383d4e697fb79ec749913e81.jpg', 3, 'Publicado', 'chica'),
+(005, 'http://www.eviaediciones.com/', 'upload_images/eea4e4502cbd23b40f843ec7fd9fd843.jpg', 4, 'Publicado', 'chica'),
+(006, 'https://www.facebook.com/pages/El-Taller-de-Mariela-L%C3%B6pez/112183968810240', 'upload_images/6679ef590a7f9734db982efd8dafaa9f.jpg', 5, 'Publicado', 'chica'),
+(007, 'http://www.parpen.com.ar', 'upload_images/d48eb868c00b51c41e2ecb4b8ae66bee.jpg', 6, 'Publicado', 'chica'),
+(008, 'http://www.expohobby.net/expoleticia/', 'upload_images/61572d7d087227bfd5d08d95b573b51c.jpg', 1, 'Publicado', 'grande');
 
 -- --------------------------------------------------------
 
@@ -112,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `registro` (
   `codigo` varchar(150) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mail` (`mail`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15501 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15562 ;
 
 --
 -- Volcar la base de datos para la tabla `registro`
@@ -15644,7 +15646,60 @@ INSERT INTO `registro` (`id`, `mail`, `fecha`, `estado`, `codigo`) VALUES
 (15495, 'zabotveronica@gmail.com', '2009-12-15', 'valido', '0d422b24638bbe9efb30a2530eedcd55'),
 (15496, 'zorysq@hotmail.com', '2009-12-15', 'valido', 'ba096a61f24521f4778e533020602b81'),
 (15497, 'zv_alexander_j@hotmail.com', '2009-12-15', 'valido', 'e0e4772b1bb352c306c87941519bab6e'),
-(15500, 'asda@qweqw.com', '0000-00-00', 'no_validado', 'fbf0bc94576e408a732e87b8c9464238');
+(15500, 'ALISON95@GMAIL.COM', '2013-08-07', 'valido', 'ac6b6bc7cdf3227fb89419ca89033307'),
+(15501, 'ROSITA.BELLUSCIO@HOTMAIL.COM', '2013-08-07', 'valido', 'a950330c1479e22c73ce871d098de903'),
+(15502, 'NORAMV@HOTMAIL.COM', '2013-08-07', 'valido', 'fdacbef24b2372666b1557b2cac806c3'),
+(15503, 'btrz.aquino@gmail.com', '2013-08-07', 'valido', '64179dacd4ef7dd58368a3076317af43'),
+(15504, 'HUHOCAMPANA@HOTMAIL.COM', '2013-08-07', 'valido', '739a62ac1fc9ff7ff3cd4a22018b4c12'),
+(15505, 'julieta@mediabros.com.ar', '2013-08-07', 'valido', 'cfd94746cae3f0ac38a6952b3b3e8ad9'),
+(15506, 'ivankuehnelabodic@vtr.com', '2013-08-07', 'valido', '41c32c70a95936855c49cc8358d33967'),
+(15507, 'VENTAS@PRODUCTOSCREACIONES.COM.AR', '2013-08-07', 'valido', '88c8a57dc5fb68b62bd41449a3d66f42'),
+(15508, 'analulymartinez@hotmail.com', '2013-08-07', 'valido', '694f5a24e16632176925fe248f02e389'),
+(15512, 'lauproco@hotmail.com', '2013-08-07', 'valido', '42d69b6d03093bb12f47bbfe069cf2cf'),
+(15513, 'lucianalulymartinez@hotmail.com', '2013-08-07', 'valido', 'bd8aaeb31e2453294e56c47766db87c2'),
+(15514, 'arteanivel@hotmail.com', '2013-08-07', 'valido', 'f62d53bb3f0c838cf81df96c3a014bf2'),
+(15517, 'graciela.zacarias@gmail.com', '2013-08-07', 'no_validado', 'a5efd4c9938c9367735bf5131a2fb104'),
+(15518, 'sorrentino.mariaines@gmail.com', '2013-08-07', 'valido', '05f165afbc6a6d86f7485e30a408bec5'),
+(15519, 'lgarciac05@gmail.com', '2013-08-07', 'valido', '44f4ee6559ae8de481d48d8f0f72b76c'),
+(15521, 'marycarreiras@live.com.ar', '2013-08-07', 'valido', '74c0089976607df0b77cee0dea8370ce'),
+(15522, 'normarosa59@yahoo.es', '2013-08-07', 'no_validado', 'a02d68997d11af53250b0d4b2e302728'),
+(15523, 'stesaen567@hotmail.com', '2013-08-07', 'no_validado', '9ff54d359238100e7da5e30e7f4f7809'),
+(15524, 'san_v25@hotmail.com', '2013-08-07', 'valido', '095d0706992c63183c3efbaa429e5040'),
+(15525, 'juliarortega@hotmail.com', '2013-08-07', 'valido', '091d9f8832188dd84136a9e4b3e61ffc'),
+(15526, 'anizaarab@gmail.com', '2013-08-07', 'no_validado', 'ce9d51b481f5c6d67914dfec05a43a36'),
+(15527, 'stellam.saenz@gmail.com', '2013-08-07', 'valido', '7fd357dff9bf7730daab565f018fbedb'),
+(15528, 'sorrentino.maria@gmail.com', '2013-08-07', 'no_validado', '1f815ac220f5cecde6e0a326f497fcf9'),
+(15530, 'andrea.mignani@yahoo.com.ar', '2013-08-07', 'valido', '0ba453a44650ccfdbbd425f9d79cfd93'),
+(15531, 'maby_mabel4@hotmail.com', '2013-08-07', 'no_validado', '3466b297586588261d14d8e47cf66e90'),
+(15532, 'krn.snchz@gmail.com', '2013-08-07', 'valido', 'e185564ad5cfff547a52c349c2b9a6a1'),
+(15533, 'arival_95@hotmail.com', '2013-08-07', 'no_validado', 'c0155a8e25d2209d92f72b3e4f882e55'),
+(15535, 'camargo_paula@hotmail.com', '2013-08-07', 'valido', '88019e9afc86b6793cfd50a51c193ab5'),
+(15536, 'patysoto05@yahoo.com.ar', '2013-08-07', 'no_validado', '2051805acad061fe59b82d8e914b0891'),
+(15537, 'enagorita@hotmail.com', '2013-08-07', 'no_validado', 'aafea9954b7af44ab19874ea0e0f598a'),
+(15538, 'vidalina_floresal@hotmail.com', '2013-08-07', 'no_validado', '8633eeca1f59f013eff80a3228899cc4'),
+(15539, 'andres_pimpinela_245@hotmail.com', '2013-08-07', 'no_validado', '8b6bd3608365aa216ab85e1c6750ee84'),
+(15540, 'cristmarq_79@hotmail.com', '2013-08-07', 'valido', '12b457a926e346f8ee28545a7259ef00'),
+(15541, 'megobjetos@hotmail.com', '2013-08-07', 'no_validado', '24425accf48fbaa74a3329026ad47a42'),
+(15542, 'vaninag_210805@hotmal.com', '2013-08-07', 'no_validado', '8c0b8f8300da37db98002d8a70a58685'),
+(15543, 'martagasser@gmail.com.ar', '2013-08-07', 'no_validado', 'f23c43f724dff8de8d4fc9f8d9ed20a2'),
+(15544, 'MONICA_S23_10@HOTMAIL.COM', '2013-08-07', 'valido', 'd791c9cf211c5f1dc127b26148cb445a'),
+(15545, 'monica.i.c@hotmail.com', '2013-08-07', 'no_validado', '011c447d3a29d4e14c6be9c162bcaac8'),
+(15546, 'mgrusconi@gmail.com', '2013-08-07', 'valido', '5fd33136ba6e59c1468cf7191c2747f6'),
+(15547, 'ellie_soto@hotmail.com', '2013-08-07', 'valido', '217ff6536c76c2a8b257f5fe8a2f859e'),
+(15548, 'puchunitos@yahoo.com.ar', '2013-08-07', 'valido', 'f6ddcae6fdc1cb6ca77a8ab4169d94be'),
+(15549, 'gcasoy@elconquistador.com.ar', '2013-08-07', 'no_validado', 'fe524cc77c3e88d696d7263a9a580d05'),
+(15550, 'mcrisfor@hotmail.com', '2013-08-07', 'no_validado', '41a47e227dfd5bc3e4834edc3b548b4b'),
+(15551, 'ELEARTESANIAS@HOTMAIL.COM', '2013-08-07', 'no_validado', '1754051e696e45adb5966a296bafa4dc'),
+(15552, 'robertolaura@live.com.mx', '2013-08-07', 'no_validado', 'f01c94bbc41a5055479c32ae86b797a3'),
+(15553, 'sorrentino_merlo@yaoo.com.ar', '2013-08-07', 'no_validado', '582975c94c384d3d4a3dd92b4ef88e1e'),
+(15554, 'alejalhajas@hotmail.com', '2013-08-07', 'no_validado', 'e21a8a88bfb3972bd78b23c665879fb6'),
+(15555, 'kennedyolga@yaoo.com.ar', '2013-08-07', 'no_validado', '7dcb7455a07dfebdda1e67da2ae0d413'),
+(15556, 'claudiacori@hotmail.com', '2013-08-07', 'valido', '570c470d7b6e1644367e9e8f0282a23b'),
+(15557, 'leticiaestevez@yahoo.com.ar', '2013-08-07', 'valido', 'c8c5705911bddad4c224164be1ffeb24'),
+(15558, 'dmrocca@yahoo.com', '2013-08-07', 'no_validado', '353073face990b85e3c98c47b17b2eb1'),
+(15559, 'mirta_canosa@yahoo.com.ar', '2013-08-07', 'valido', 'd6a392aa9ca157d000164889c4ef8c5b'),
+(15560, 'superlili86@yahoo.com.ar', '2013-08-07', 'no_validado', '547ca92ebf2357c4dcda4c096dab1dfc'),
+(15561, 'jmcer@latinmial.com', '2013-08-07', 'no_validado', '5908831be3657dbd86b7e232651f4ac1');
 
 -- --------------------------------------------------------
 
@@ -15662,14 +15717,14 @@ CREATE TABLE IF NOT EXISTS `revistas` (
   `swf` varchar(250) DEFAULT NULL,
   `status` varchar(15) CHARACTER SET latin1 COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Volcar la base de datos para la tabla `revistas`
 --
 
 INSERT INTO `revistas` (`id`, `title`, `image`, `description`, `edition`, `pdf`, `swf`, `status`) VALUES
-(007, 'Test 1', 'upload_images/f0bb1a7ff4a69cf0e29e3f63f6e066c3.jpg', '<p>asdsad</p>\r\n', '2013-07-01', '', 'http://www.joomag.com/magazine/expohobby-test-1-1/0895520001375518971?p=1&e=1&embedInfo=;image,http://www.joomag.com/Frontend/flash/gui/themes/default_new/thumbnail.png,fill', 'Publicado');
+(012, 'Estilo RomÃ¡ntica y Vintage', 'upload_images/f091be555466305da2282dc8feb05a0d.jpg', '<p>Compartamos todo el arte de la decoraci&oacute;n con estilo Romantico y Vintage, los&nbsp;mejores proyectos para regalar y regalarte.&nbsp;</p>\r\n', '2013-07-01', '', 'http://www.joomag.com/magazine/expohobby-test-1-1/0895520001375518971', 'Publicado');
 
 -- --------------------------------------------------------
 
@@ -15690,4 +15745,4 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `mail`, `pass`, `token`) VALUES
-(00003, 'admin@expohobby.net', '704b037a97fa9b25522b7c014c300f8a', 'bacca93b8f5323e00ac3800f6fd3e389');
+(00003, 'admin@expohobby.net', 'd11671fce53ad678cc51d70f27983c99', 'bacca93b8f5323e00ac3800f6fd3e389');

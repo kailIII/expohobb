@@ -8,6 +8,8 @@
   }else{
     header( "Location:revistas.php");	
   }
+  $descrip = ereg_replace(("<p>"), " ", $revista['description']);  
+	$descrip = ereg_replace( ("</p>"), " ", $descrip ); 
 ?>
 <!DOCTYPE html>
 <head>
@@ -18,6 +20,7 @@
 <link href="css/estilo.css" type="text/css" rel="stylesheet">
 <link href="css/modals.css" type="text/css" rel="stylesheet">
 <link href="css/jquery.ui.all.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" type="image/x-icon" href="imagenes/favicon.ico">
 <!-- CSS -->
 <!-- JS -->
 <script type='text/javascript' src='slider/js/comment-reply.js?ver=20090102'></script>
@@ -32,15 +35,15 @@
 <script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
 <!-- JS -->
 <meta property="og:title" content="<?php echo $revista['title'];?> | Expohobby" />
-<meta property="og:description" content="<?php echo $revista['edition'];?>, <?php echo $revista['description'];?>. " />
+<meta property="og:description" content="<?php echo $revista['edition'].' '.$descrip;?>"/>
 <meta property="og:image" content="<?php echo $revista['image'];?>" />
 <meta http-equiv="title" content="<?php echo $revista['title'];?>"> 
     <meta name="DC.Creator" content="www.emafilms.com.ar"> 
     <meta name="keywords" content="revista, Revistas, digital, paso a paso, EXPOHOBBY Deco Digital ">
     <meta http-equiv="keywords" content="revista, Revistas, digital, paso a paso, EXPOHOBBY Deco Digital ">
-    <meta name="description" content="<?php echo $revista['description'];?>">
-    <meta http-equiv="description" content="<?php echo $revista['description'];?>"> 
-    <meta http-equiv="DC.Description" content="<?php echo $revista['description'];?>"> 
+    <meta name="description" content="<?php echo $descrip;?>">
+    <meta http-equiv="description" content="<?php echo $descrip;?>"> 
+    <meta http-equiv="DC.Description" content="<?php echo $descrip;?>"> 
     <meta name="author" content="Expohobby">
     <meta name="DC.Creator" content="Estudio multimedia EB "> 
     <meta name="vw96.objectype" content="Document">
@@ -92,24 +95,25 @@
                   <div class="cont-arch">
                   	<iframe 
                       name="Joomag_embed_56b6d485-04ea-4288-b1f6-c3769ceb55e7"
-                      style="width:750px;height:500px" 
-                      width="750px" 
-                      height="500px" 
+                      style="width:830px;height:505px" 
+                      width="830px" 
+                      height="505px" 
                       hspace="0" 
                       vspace="0"
                       frameborder="0"  
                       src="<?php echo $revista['swf'];?>">
                   </iframe>
                   </div>
+                  <!--
                   <div class="cont-btn-pdf">
-                   <a class="btn-classic" href="<?php echo $revista['pdf'];?>" target="_blank" title="Descargar <?php echo $revista['title'];?> en formato PDF"> Descargar <?php echo $revista['title'];?> en formato PDF</a>
-                  </div>
+                   <a class="btn-classic" href="<?php //echo $revista['pdf'];?>" target="_blank" title="Descargar <?php //echo $revista['title'];?> en formato PDF"> Descargar <?php //echo $revista['title'];?> en formato PDF</a>
+                  </div>-->
               <?php else: ?>
                   <div id="modal_registration" class="modal_registration">
                   <h3>Revista Expohobby</h3>
                     <p>Para poder acceder a nuestras revistas usted debera estar ingresar un mail valido</p>
                     <div id="form_registro_email">
-                      <input id="registration_mail" type="email" onblur="" name="registration_mail" required="required" class="input_text_mail input_text" />
+                      <input id="registration_mail" type="email" onBlur="" name="registration_mail" required="required" class="input_text_mail input_text" />
                       <input id="revista_id" type="hidden" name="revista_id" class="input_text_mail input_text" value="<?php echo $_GET['q'];?>"/>
                       <input id="btn_registrar_mail" class="btn-classic" type="submit" value="Enviar" name="btn_registrar_mail" />
                     </div>
