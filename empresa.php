@@ -85,7 +85,7 @@
       
      <?php
         $publicidad = new Publicidad();
-        print $publicidad->viewPublicidad();
+        print $publicidad->viewPublicidad('chica');
       ?>
 
     </div>

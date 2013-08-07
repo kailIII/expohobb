@@ -86,7 +86,7 @@ Te esperamos y que las disfrutes!">
       <div class="separdor"></div>
         <?php
         $publicidad = new Publicidad();
-        print $publicidad->viewPublicidad();
+        print $publicidad->viewPublicidad('chica');
       ?>
 
     </div>
