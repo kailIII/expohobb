@@ -178,11 +178,17 @@ class Usuario
 							<div id='titulo'><h1>Registro Expohobby</h1></div> 
 							<div id='contentrada'>
 								<div id='contnf'>
-									<p>
-										<a class='link' href='http://expohobby.net/validar_mail.php?mail=$email&codigo=$codigo&id=$id'>Haga click</a><br><br>
-									</p>
+                                <center><img   width='150' src='http://expohobby.net/imagenes/expohobby.png'></center>
+								<p><strong>Excelente!!</strong>, solo falta este último paso, por favor haz click en siguiente link para terminar de validar tu cuenta.</p><br>
+									<center><p>
+										<a class='link' href='http://expohobby.net/validar_mail.php?mail=$email&codigo=$codigo&id=$id'>Haga click</a><br>
+									</p><br></center>
+									<p>Si el link anterior no funciona,  por favor copia esta dirección y pégala en la url de tu navegador.</p><br>
+									<strong>http://expohobby.net/validar_mail.php?mail=$email&codigo=$codigo&id=$id </strong>
+									
 								</div>
 							</div>
+							
 						</div>
 						<p>Lo saluda atentamente <strong>Coordinadores de EXPOHOBBY 2013 </strong>info@expohobby.net<br><br></p>
 					</center>

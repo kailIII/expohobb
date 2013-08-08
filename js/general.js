@@ -62,7 +62,7 @@
       }).done(function( msg ) {
         if(msg == 'ok_registro'){
           text = '<h3>Revista Expohobby</h3>';
-          text += '<p>Gracias Por registrarse, para terminar debe acceder a su mail y validar la misma.<br /><br />Desde ya muchas gracias.</p>';
+          text += '<p>Gracias Por registrarse, para terminar <strong>debe acceder a su e-mail</strong> y validar la misma.<br /><br />Desde ya muchas gracias.</p>';
           text += '<input type="hidden" id="estado_registro" value="medio" />';
           text += '<button title="Close (Esc)" type="button" class="mfp-close">×</button></div>';
           $('div.modal_registration').html(text);
