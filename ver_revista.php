@@ -8,8 +8,8 @@
   }else{
     header( "Location:revistas.php");	
   }
-  $descrip = ereg_replace(("<p>"), " ", $revista['description']);  
-	$descrip = ereg_replace( ("</p>"), " ", $descrip ); 
+  $descrip = str_replace("<p>", " ", $revista['description']);  
+  $descrip = str_replace("</p>", " ", $descrip ); 
 ?>
 <!DOCTYPE html>
 <head>

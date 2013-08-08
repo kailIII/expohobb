@@ -9,6 +9,8 @@
     set_cookie();
     validar_mail();
     registro_mail();
+    initRegistro();
+    initMarquee();
   });
    
   function set_cookie(){
@@ -67,6 +69,11 @@
           text += '<button title="Close (Esc)" type="button" class="mfp-close">×</button></div>';
           $('div.modal_registration').html(text);
           $.cookie('expohobby_revista', mail);
+          alert('kb afuera');
+          setTimeout(function() {
+            alert('kb adentro');
+            window.location.reload();
+          }, 1000);
         } else if(msg == 'a_verificar'){
           text = '<h3>Revista Expohobby</h3>';
           text += '<p>Usted ya esta registrado, para terminar debe acceder a su mail y validar la misma.<br /><br />Desde ya muchas gracias.</p>';
@@ -214,23 +221,22 @@
       }
     })
   }
-  $(document).ready(function(){
-				$("#editar_marquee").click(function(){
-					$("#editar_marquee").hide("slow");
-					$("#cargador").show("slow");
-	});  
-  });
-   $(document).ready(function(){
-				$("#enviar_contacto").click(function(){
-					var mail=$("#registration_mail").attr('title');
-					var nombre=$("#nombre").attr('value');
-					var comentario=$("#comentario").attr('value');
-					if(mail=="Mail valido" && nombre!="" && comentario!=""){
-					$("#enviar_contacto").hide("slow");
-					$("#cargador2").show("slow");
-					 }
-					
-	});  
-  });
+  function initMarquee(){
+		$("#editar_marquee").click(function(){
+			$("#editar_marquee").hide("slow");
+			$("#cargador").show("slow");
+    });  
+  }
+  function initRegistro(){
+    $("#enviar_contacto").click(function(){
+      var mail=$("#registration_mail").attr('title');
+      var nombre=$("#nombre").attr('value');
+      var comentario=$("#comentario").attr('value');
+      if(mail=="Mail valido" && nombre!="" && comentario!=""){
+        $("#enviar_contacto").hide("slow");
+        $("#cargador2").show("slow");
+      }
+    });
+  }
   
 })(jQuery);
