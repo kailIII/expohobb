@@ -69,9 +69,7 @@
           text += '<button title="Close (Esc)" type="button" class="mfp-close">×</button></div>';
           $('div.modal_registration').html(text);
           $.cookie('expohobby_revista', mail);
-          alert('kb afuera');
           setTimeout(function() {
-            alert('kb adentro');
             window.location.reload();
           }, 1000);
         } else if(msg == 'a_verificar'){
