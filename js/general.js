@@ -50,6 +50,11 @@
   function registro_mail(){
     $('#btn_registrar_mail').click(function(){
       var mail = $('#registration_mail').val();
+	   var mails=$("#registration_mail").attr('title');
+      if(mails=="Mail valido"){
+        $("#btn_registrar_mail").hide("slow");
+        $("#cargador3").show("slow");
+      }
       $.ajax({
         type: "POST",
         url: "controllers.php",
@@ -63,7 +68,8 @@
           $('div.modal_registration').html(text);
         }else if(msg == 'ok_verificacion'){
           text = '<h3>Revista Expohobby</h3>';
-          text += '<p>Gracias Por ingresar, ya puede acceder nuestros contenidos</p>';
+          text += '<p>Gracias por ingresar, ya puede acceder a nuestros contenidos, en unos segundos será redireccionado</p><br>';
+		  text += '<div id="cargador4"></div>';
           text += '<input type="hidden" id="estado_registro" value="fin" />';
           text += '<input type="hidden" id="revista_id" value="' + $('#revista_id').val() + '" />';
           text += '<button title="Close (Esc)" type="button" class="mfp-close">×</button></div>';
@@ -71,7 +77,7 @@
           $.cookie('expohobby_revista', mail);
           setTimeout(function() {
             window.location.reload();
-          }, 1000);
+          }, 3000);
         } else if(msg == 'a_verificar'){
           text = '<h3>Revista Expohobby</h3>';
           text += '<p>Usted ya esta registrado, para terminar debe acceder a su mail y validar la misma.<br /><br />Desde ya muchas gracias.</p>';
@@ -236,5 +242,6 @@
       }
     });
   }
+  
   
 })(jQuery);

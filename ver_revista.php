@@ -116,6 +116,7 @@
                       <input id="registration_mail" type="email" onBlur="" name="registration_mail" required="required" class="input_text_mail input_text" />
                       <input id="revista_id" type="hidden" name="revista_id" class="input_text_mail input_text" value="<?php echo $_GET['q'];?>"/>
                       <input id="btn_registrar_mail" class="btn-classic" type="submit" value="Enviar" name="btn_registrar_mail" />
+                      <div id="cargador3" style="display:none;"></div>
                     </div>
                   </div>
               <?php endif; ?>

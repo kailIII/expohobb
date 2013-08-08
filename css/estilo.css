@@ -1690,3 +1690,22 @@ width:907px;
 	display:block;
 	margin-bottom:15px;
 }
+#cargador3{
+	 width:187px !important; 
+	 display:inline-block;
+	 background:url("../imagenes/carga.gif") no-repeat scroll 9px 4px #FFFFFF;
+	  height:38px;
+	  vertical-align:bottom;
+	  
+	
+}
+#cargador4{
+	 width:557px !important; 
+	 display:inline-block;
+	 background:url("../imagenes/carga.gif") no-repeat scroll 197px 4px #FFFFFF;
+	  height:38px;
+	  vertical-align:bottom;
+	  margin:0px auto;
+	  
+	
+}
