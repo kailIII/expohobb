@@ -53,7 +53,7 @@
 			showPaginator: true,
 			showThumbnails: 'hover',
 			showTimer: true,
-			thumbnailHoverColor: "#40B9FF",
+			thumbnailHoverColor: "#910C7F",
 			slides: {
 				<?php print $marquees['js']; ?>
 			}

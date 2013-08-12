@@ -344,7 +344,7 @@ class Marquee
 				}
 				$js .= $count.':{
 									linkTarget: "",
-									delay: 10000,
+									delay: 5000,
 									transition: "slide",
 									direction: "left",
 									bgColor: "transparent",
@@ -423,7 +423,7 @@ class Marquee
 			$view .= '</div>';
 			$js .= $count.':{
 								linkTarget: "",
-								delay: 10000,
+								delay: 5000,
 								transition: "fade",
 								direction: "bottom",
 								bgColor: "transparent",
