@@ -1,33 +1,27 @@
 <nav>
   <ul>
-    <li>
+    <li class="ac_inici">
       <a title="Inicio" id="inicio" href="index.php">Inicio</a>
     </li>
-    <li>
+    <li class="ac_expo">
       <a title="Exposiciones" id="exposiciones" href="expos.html">Exposiciones</a>
     </li>
-    <li>
+    <li class="ac_rev">
       <a title="Revista" id="revista" href="revistas.php">Revista</a>
     </li>
-    <li>
+    <li class="ac_empres">
       <a title="Empresa" id="empresa" href="empresa.php">Empresa</a>
     </li>
-    <li>
+    <!--
+    <li class="ac_news">
+      <a title="Suscríbete aquí a nuestro Newsletter" id="empresa" href="newsletter.php">Newsletter</a>
+    </li>-->
+    <li class="ac_cont">
       <a title="Contacto" id="contacto" href="concatenos.php">Contacto</a>
     </li>
   </ul>
 
-  <div id="redes-sociales">
-    <a href="http://www.facebook.com/pages/EXPOHOBBY/130321180395748" title="Facebook Expohobby" class="face">
-      <span>Facebook"</span>
-    </a>
-    <a href="https://twitter.com/EXPOHOBBY" title="Twitter Expohobby" class="twit">
-      <span>Twitter"</span>
-    </a>
-    <a href="http://www.youtube.com/user/ExpoHobby" title="Youtube Expohobby" class="youtube">
-      <span>Youtube"</span>
-    </a>
-  </div>
+  
 
   <?php 
     if(isset($_SESSION['usuario'])){

@@ -17,4 +17,31 @@
 <script type='text/javascript' src="js/jquery.ui.datepicker.js"></script>
 <script type='text/javascript' src="js/jquery.cookie.js"></script>
 <script src="ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+    ( function($) {
+        // we can now rely on $ within the safety of our "bodyguard" function
+        $(document).ready( function() { 
+		var name=document.title; 
+		switch(name)
+				{
+				case 'Expohobby': $(".ac_inici").addClass( "activa" );
+				break;
+				case '': $(".ac_expo").addClass( "activa" );
+				break;
+				case 'Revistas | Expohobby': $(".ac_rev").addClass( "activa" );
+				break;
+				case 'Empresa | Expohobby': $(".ac_empres").addClass( "activa" );
+				break;
+				case 'Newsletter | Expohobby': $(".ac_news").addClass( "activa" );
+				break;
+				case 'Contacto | Expohobby': $(".ac_cont").addClass( "activa" );
+				break;
+				default: $(".ac_inici").addClass( "activa" );
+				}
+				 
+		 } );
+    } ) ( jQuery );
+
+  
+    </script>
 <!-- JS -->

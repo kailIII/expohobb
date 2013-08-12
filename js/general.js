@@ -137,12 +137,12 @@
   }
 
   function initSocialNetworks(){
-    $('#redes-sociales a').fadeTo('slow', 0.5);
-    $('#redes-sociales a').hover(function() {
+    /*$('#redes-sociales sd').fadeTo('slow', 0.5);
+    $('#redes-sociales sd').hover(function() {
       $(this).fadeTo('slow', 1.0);
     }, function() {
       $(this).fadeTo('slow', 0.5);
-    });
+   });*/ 
   }
 
   function initModals(){
