@@ -272,10 +272,10 @@ class Usuario
 	{
 		if($page == 1){
 			$start = 0;
-			$end = 100;
+			$end = 200;
 		}else{
-			$start = $page * 100 + 1;
-			$end = $page * 100 + 100;
+			$start = $page * 200 + 1;
+			$end = $page * 200 + 200;
 		}
 		if(strpos($fecha, '/')){
 			$fechaFinal = explode('/', $fecha);
@@ -306,12 +306,26 @@ class Usuario
 			$result->free();
 			$mysqli->close();
 			$rows['list'] = $this->format_list_usuarios($usuarios);
+			$rows['email'] = $this->format_list_usuarios_email($usuarios);
+			
 	    return $rows;
 		}else{
 			return false;
 		}
 	}
-
+	/********************************************************
+	Muestra solo los mails  para seleccionar
+	********************************************************/
+	private function format_list_usuarios_email($email){
+		$rows = '';
+		foreach ($email as $usuario) {
+				$rows .= $usuario['mail'].'<br>';
+		}
+		return $rows;
+	}
+	/********************************************************
+	Genera el listado de mails de cada dia
+	********************************************************/
 	private function format_list_usuarios($list){
 		$rows = '';
 		foreach ($list as $usuario) {
