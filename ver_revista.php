@@ -33,6 +33,9 @@
 <script type='text/javascript' src="js/jquery.cookie.js"></script>
 <script src="ckeditor/ckeditor.js"></script>
 <script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/turn.js"></script>
+<script type="text/javascript" src='js/jquery.zoom.js'></script>
 <!-- JS -->
 <meta property="og:title" content="<?php echo $revista['title'];?> | Expohobby" />
 <meta property="og:description" content="<?php echo $revista['edition'].' '.$descrip;?>"/>
@@ -93,21 +96,8 @@
                   <?php echo $revista['description'];?>
                 </div>
                   <div class="cont-arch">
-                  	<iframe 
-                      name="Joomag_embed_56b6d485-04ea-4288-b1f6-c3769ceb55e7"
-                      style="width:830px;height:505px" 
-                      width="830px" 
-                      height="505px" 
-                      hspace="0" 
-                      vspace="0"
-                      frameborder="0"  
-                      src="<?php echo $revista['swf'];?>">
-                  </iframe>
+                   <?php include_once 'revista'.$revista['id'].'/index.php'; ?>
                   </div>
-                  <!--
-                  <div class="cont-btn-pdf">
-                   <a class="btn-classic" href="<?php //echo $revista['pdf'];?>" target="_blank" title="Descargar <?php //echo $revista['title'];?> en formato PDF"> Descargar <?php //echo $revista['title'];?> en formato PDF</a>
-                  </div>-->
               <?php else: ?>
                   <div id="modal_registration" class="modal_registration">
                   <h3>Revista Expohobby</h3>

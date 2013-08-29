@@ -66,8 +66,7 @@ article section{
 			 }
 	
 article img{
-	width:144px;
-	height:173px;
+
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
@@ -76,6 +75,10 @@ article img{
 	float:left;
 	display:inline;
 	
+}
+.revista .cont-art a img{
+	width:144px;
+	height:173px;
 }
 
 header{
@@ -114,9 +117,8 @@ background:url(../imagenes/blue_blue_puff.jpg) no-repeat scroll 0 0 #000;
 	border-left:#afadad solid thin;
 	border-right:#afadad solid thin;
 	padding:5px;
-	position:relative;
    display:block;
-	z-index:100;
+	
 
 	
 	
@@ -1293,7 +1295,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c96eb4', end
 .con-swf section {
 	margin:0px auto !important;
 	float:none !important;
-    width:858px !important;
+    width:884px !important;
 	display:block  !important;
 	
 }
@@ -1312,7 +1314,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c96eb4', end
     background: none repeat scroll 0 0 transparent;
 	margin:0px auto !important;
     float: none !important;
-    width:858px;
+    width:872px;
 	display:table !important;
 	/*color:#14ADAF;*/
 	color:#910C7F;
@@ -1774,3 +1776,166 @@ width:907px;
 	  
 	
 }
+/* SIMULADOR REVISTA  */
+#contmag{
+	width:862px;
+	background: #eeeeee; /* Old browsers */
+background: -moz-linear-gradient(top,  #eeeeee 0%, #cccccc 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #eeeeee 0%,#cccccc 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+}
+
+.ex1 img{
+	
+	 background: none !important;
+    border:none !important;
+    border-radius:0px !important;
+    display:block !important;
+    float:none !important;
+
+}
+
+#magazine{
+ margin-left: 2px;
+ padding-bottom: 2px;
+}
+.contzoom{
+	display:block;
+	float:left;
+	
+}
+.ver:hover{
+	cursor:pointer;
+	background: url(../imagenes/lupahover.png)no-repeat  1px 0;
+}
+.ver{
+	background: url(../imagenes/lupa.png)no-repeat  1px 0;
+    padding: 30px;
+    width: 1px;
+	float:left;
+	display:block;
+}
+.stop:hover{
+	cursor:pointer;
+	background: url(../imagenes/lupanohover.png)no-repeat  1px 0;
+}
+.stop{
+	background: url(../imagenes/lupano.png)no-repeat  1px 0;
+    padding: 30px;
+    width: 1px;
+	float:left;
+	display:block;
+}
+.des:hover{
+	cursor:pointer;
+	background: url(../imagenes/deshover.png)no-repeat  1px 0;
+}
+.des{
+	background: url(../imagenes/des.png)no-repeat  1px 0;
+    padding: 30px;
+    width: 1px;
+	float:left;
+	display:block;
+}
+#menuzoom{
+  box-shadow: 0 0 2px #000000;
+    padding: 10px;
+    width: 839px;
+	background: url(../imagenes/bg.png) repeat;
+    box-shadow: 0 0 2px #000000;
+	margin-bottom:5px;
+	border-bottom:#A71498 solid medium;
+	display:inline-block;
+	
+}
+#menuzoom a{
+	float: right;
+	
+}
+#menuzoom a img{
+	width:62px !important;
+	height:auto !important;
+	
+}
+.zoom{
+ 	
+}
+#magazine .turn-page{
+	background-color:#ccc;
+	background-size:100% 100%;
+}
+/* styles unrelated to zoom */
+		
+
+		/* these styles are for the demo, but are not required for the plugin */
+		.zoom {
+			display:inline-block;
+			position: relative;
+		}
+		
+		/* magnifying glass icon */
+		.zoom:after {
+		
+		}
+
+		.zoom img {
+			display: block !important;
+		}
+
+		.zoom img::selection { background-color: transparent; }
+
+		#ex2 img:hover { cursor: url(grab.cur), default; }
+		#ex2 img:active { cursor: url(grabbed.cur), default; }
+		#mycursor {
+			cursor: none;
+			width: 97px;
+			height: 137px;
+			background: url(../imagenes/lupamouse.png) no-repeat left top;
+			position: absolute;
+			display: none;
+			top: 0;
+			left: 0;
+			z-index: 10000;
+}
+#follower span{
+color:#910C7F;	
+}
+#follower p{
+font-size:10px;	
+color:#333;
+padding:0px;
+margin:0px;
+ line-height:15px;
+ top:0px !important;
+ left:0px !important;
+}
+#follower{
+  position :absolute;
+  width:150px;
+  z-index:777;
+  text-align:left;
+ 
+  background: rgba(238, 238, 238, 0.9);
+padding:10px;
+border: #333 solid thin;
+-webkit-border-radius: 7px;
+-moz-border-radius: 7px;
+border-radius: 7px;
+color:#333;
+font-family:Verdana, Geneva, sans-serif;
+font-size:10px;
+ box-shadow: 0 0 5px #999;
+
+}
+
+
+.container
+{  
+    overflow:hidden;
+}
+
+/* FIN DE SIMULADOR  */
