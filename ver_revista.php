@@ -65,6 +65,8 @@
     js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
+  
+	
   </script>
   <header>
     <?php include_once 'logo.php'; ?>
@@ -92,6 +94,24 @@
             <section>
               <?php if (isset($_SESSION['mail'])): ?>  
               	<div class="descripcion-swf">
+                <script>
+					var mouseX = 0, mouseY = 0, limitX = 2000-1, limitY = 2000-1;
+	$(window).mousemove(function(e){
+	  	 mouseX = Math.min(e.pageX, limitX);
+	   	 mouseY = Math.min(e.pageY, limitY);
+	});
+
+	// cache the selector
+	var follower = $("#follower");
+	var xp =0, yp = 0;
+	var loop = setInterval(function(){
+		// change 12 to alter damping higher is slower
+		xp += (mouseX - xp) / 2;
+		yp += (mouseY - yp) / 2;
+		follower.css({left:xp, top:yp});
+		
+	}, 30);
+				</script>
                   <p><span><?php echo $revista['edition'];?></span></p>
                   <?php echo $revista['description'];?>
                 </div>

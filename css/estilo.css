@@ -1802,6 +1802,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 #magazine{
  margin-left: 2px;
  padding-bottom: 2px;
+ width:860px;
 }
 .contzoom{
 	display:block;
@@ -1935,6 +1936,7 @@ font-size:10px;
 
 .container
 {  
+
     overflow:hidden;
 }
 

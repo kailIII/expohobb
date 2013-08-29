@@ -262,6 +262,7 @@
 			$("#cargador").show("slow");
     });  
   }
+  
   function initRegistro(){
     $("#enviar_contacto").click(function(){
       var mail=$("#registration_mail").attr('title');
