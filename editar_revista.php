@@ -27,7 +27,7 @@
           include_once 'includes.php';
           $revista = new Revista();
           $newRevista = $revista->getRevista($_POST['id']);
-          $newDate = explode('-', $newRevista['edition']);
+          $newDate = explode('-', $newRevista['edition_date']);
         ?>
         <form id="form_reg" action="controllers.php" method="POST" enctype="multipart/form-data">
           <div class="input_wapper">
@@ -52,7 +52,7 @@
           <script>
             (function ($) {
               $("#edicion").datepicker();
-              $("#edicion").datepicker( "setDate", "<?php echo $newDate[1] .'/'. $newDate[2] .'/'. $newDate[0];?>" );
+              $("#edicion").datepicker( "setDate", <?php echo '"' . $newDate[1] .'/'. $newDate[2] .'/'. $newDate[0]. '"';?> );
             })(jQuery);
           </script>
           <div class="input_wapper">
