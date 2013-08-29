@@ -271,6 +271,7 @@ class Revista
 			$revista['title'] = $row['title'];
 			$revista['image'] = $row['image'];
 			$revista['description'] = $row['description'];
+			$revista['edition_date'] = $row['edition'];	
 			$revista['edition'] = $this->format_edition($row['edition']);	
 			$revista['pdf'] = $row['pdf'];
 			$revista['swf'] = $row['swf'];

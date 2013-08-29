@@ -85,6 +85,54 @@
 		$publicidad->deletePublicidad($_POST['id']);
 		header("Location: listado_publicidad.php");
 	}
+	if(isset($_POST['agregar_expo']))
+	{
+		$expo = new Expo();
+		$expo->insetExpo($_POST, $_FILES);
+		header("Location: listado_expo.php");	
+	}
+	if(isset($_POST['editar_expo']))
+	{
+		$expo = new Expo();
+		$expo->updateExpo($_POST, $_FILES);
+		header("Location: listado_expo.php");	
+	}
+	if(isset($_POST['btn_expo_eliminar']))
+	{
+		$expo = new Expo();
+		$expo->deleteExpo($_POST['id']);
+		header("Location: listado_expo.php");	
+	}
+	if(isset($_POST['btn_empresa_eliminar']))
+	{
+		$expo = new Expo();
+		$expo->deleteEmpresa($_POST['id']);
+		header("Location: listado_empresas.php");
+	}
+	if(isset($_POST['agregar_empresa']))
+	{
+		$expo = new Expo();
+		$expo->insetEmpresa($_POST, $_FILES);
+		header("Location: listado_empresas.php");
+	}
+	if(isset($_POST['btn_empresa_administrar']))
+	{
+		$expo = new Expo();
+		$expo->insetEmpresa($_POST);
+		header("Location: listado_empresas.php");
+	}
+	if(isset($_POST['editar_empresa']))
+	{
+		$expo = new Expo();
+		$expo->updateEmpresa($_POST, $_FILES['image_empresa']);
+		header("Location: listado_empresas.php");
+	}
+	if(isset($_POST['agregar_actividad']))
+	{
+		$expo = new Expo();
+		$expo->insertImagesActivities($_POST, $_FILES);
+		header("Location: subir_image.php");	
+	}
 
 
 

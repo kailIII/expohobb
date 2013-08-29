@@ -11,6 +11,20 @@
     registro_mail();
     initRegistro();
     initMarquee();
+
+
+    var count_image = 0;
+    var agregar_image = '<div class="add-image"><input id="agregar_image" type="file" name="agregar_image" class="input_file_publicidad input_file" /></div>';
+    var sacar_image = '<input id="sacar-image" class="btn_general btn-classic2" type="button" value="-" name="sacar_image" />';
+    $('#agregar_image').live('change', function(){
+      $(this).parent().append(sacar_image);
+      count_image++;
+      $('#agregar_image').attr("id","agregar_image_" + count_image).attr("name","agregar_image_" + count_image);
+      $('.input_wapper_image').append(agregar_image);
+    });
+    $('#sacar-image').live('click', function(){
+      $(this).parent().remove();
+    });
   });
    
   function set_cookie(){
@@ -102,6 +116,15 @@
     $('#image_publicidad').change(function (){
      $('#preview_image').remove();
     });
+    $('#image_empresa').change(function (){ 
+      $('#preview_image_empresa').remove();
+    });
+    $('#image').change(function (){ 
+      $('#preview_image_expo').remove();
+    });
+    $('#plano').change(function (){ 
+      $('#preview_plano').remove();
+    });
   }
 
   function initPuginsForms(){
@@ -117,6 +140,14 @@
     $(function() {
       $("#edicion").datepicker();
       $("#edicion").datepicker( "option", "dateFormat", "yy-mm-dd");
+    });
+    $(function() {
+      $("#inicio").datepicker();
+      $("#inicio").datepicker( "option", "dateFormat", "yy-mm-dd");
+    });
+    $(function() {
+      $("#fin").datepicker();
+      $("#fin").datepicker( "option", "dateFormat", "yy-mm-dd");
     });
   }
 
