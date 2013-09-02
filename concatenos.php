@@ -76,6 +76,7 @@
               <p><a href="https://twitter.com/EXPOHOBBY" target="_blank"title="Twitter">Twitter</a></p>
               <p><a href="http://www.youtube.com/user/ExpoHobby" target="_blank" title="Youtube">Youtube</a></p>
             </div>
+           
             <?php if (!isset($_SESSION['mail_expo'])): ?>
               <form id="form_reg" action="controllers.php" method="POST" enctype="multipart/form-data">
                 <div class="input_wappers">
@@ -110,10 +111,19 @@
               <?php endif; ?>
               <?php unset($_SESSION['mail_expo']); ?>
             <?php endif; ?>
+            
           </section>
         </article>
         <div class="sombra4"></div> 
-      </section>    
+      </section>
+      <div class="contayd">
+         <div class="ayuda">
+              	<img  src="imagenes/atencion.png" width="82"/>
+            	<p>Si presenta algún inconveniente técnico en la navegación o registro de la web</p>
+              <a href="http://www.emafilms.com.ar/servistec.php"  target="_blank" class="btn_general btn-classic3" title="Estudio Multimedia EB">Aquí solucionaremos su problema </a>
+            </div>    
+       </div>  
+       <div class="sombra4"></div>    
       <div class="separdor"></div>
       <?php
         $publicidad = new Publicidad();
