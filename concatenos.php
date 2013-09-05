@@ -120,7 +120,7 @@
          <div class="ayuda">
               	<img  src="imagenes/atencion.png" width="82"/>
             	<p>Si presenta algún inconveniente técnico en la navegación o registro de la web</p>
-              <a href="http://www.emafilms.com.ar/servistec.php"  target="_blank" class="btn_general btn-classic3" title="Estudio Multimedia EB">Aquí solucionaremos su problema </a>
+              <a href="http://www.estudiomultimediaeb.com.ar/servistec.php"  target="_blank" class="btn_general btn-classic3" title="Estudio Multimedia EB">Aquí solucionaremos su problema </a>
             </div>    
        </div>  
        <div class="sombra4"></div>    
