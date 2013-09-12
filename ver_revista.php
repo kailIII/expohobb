@@ -116,7 +116,16 @@
                   <?php echo $revista['description'];?>
                 </div>
                   <div class="cont-arch">
-                   <?php include_once 'revista'.$revista['id'].'/index.php'; ?>
+					 <?php
+							$nombre_fichero = 'revista'.$revista['id'].'/index.php';
+							
+							if (file_exists($nombre_fichero)) {
+							include_once 'revista'.$revista['id'].'/index.php'; 
+							} else {
+								echo "<div id='contmag' class='container'><div style='margin: 10px auto 0px; width: 412px; display: inline-block; height: 481px;'><img  style='margin:0px auto; background:none; border:none;' alt='proximamente' src='imagenes/foto-no-revista.png'/></div></div>";
+							}
+                    ?>
+                   
                   </div>
               <?php else: ?>
                   <div id="modal_registration" class="modal_registration">

@@ -229,8 +229,21 @@
       fixedContentPos: true
     });
 
+
     $('#btn_cancelar').live('click',function(){
       $.magnificPopup.close();
+    });
+	  $('.btn_abrir_pop_up').magnificPopup({
+      type: 'inline',
+      fixedBgPos: true,
+      overflowY: 'auto',
+      closeBtnInside: true,
+      preloader: false,   
+      midClick: true,
+      removalDelay: 300,
+      mainClass: 'my-mfp-slide-bottom',
+      alignTop: true,
+      fixedContentPos: true
     });
   }
 
@@ -262,7 +275,6 @@
 			$("#cargador").show("slow");
     });  
   }
-  
   function initRegistro(){
     $("#enviar_contacto").click(function(){
       var mail=$("#registration_mail").attr('title');
