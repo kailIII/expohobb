@@ -133,7 +133,7 @@
         var newHTML = '<label>Imagen Grande</label><input id="big_image" type="file" name="big_image" required="required" class="input_file_marquee input_file" />';
         $('#wrapper_type_marquee').html(newHTML);
       }else if($(this).val() == 'video'){
-        var newHTML = '<label>URL del Video</label><input id="big_image" name="big_image" type="text" required="required" class="input_text_revista input_text" />';
+        var newHTML = '<label>URL del Video</label><input id="big_image" name="big_image"  type="text" required="required" class="input_text_revista input_text" />';
         $('#wrapper_type_marquee').html(newHTML);
       }
     });
@@ -271,8 +271,8 @@
   }
   function initMarquee(){
 		$("#editar_marquee").click(function(){
-			$("#editar_marquee").hide("slow");
-			$("#cargador").show("slow");
+			//$("#editar_marquee").hide("slow");
+			//$("#cargador").show("slow");
     });  
   }
   function initRegistro(){

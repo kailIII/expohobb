@@ -26,7 +26,7 @@ class Marquee
 		$pathIgame = $this->uploadImage($images);	
 		
 		if($marquee['type_marquee'] != 'imagen'){
-			$pathIgame['big_image'] = $marquee['type_marquee'];
+			$pathIgame['big_image'] = $marquee['big_image'];
 		}
 
 		$mysqli = DataBase::connex();
