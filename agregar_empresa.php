@@ -32,7 +32,11 @@
           </div>
           <div class="input_wapper">
             <label>E-Mail</label>
-           <input id="mail" type="text" name="mail" required="required" class="input_text_publicidad input_text" />
+           <input id="mail" type="email" name="mail" required="required" class="input_text_publicidad input_text" />
+          </div>
+          <div class="input_wapper">
+            <label>Website</label>
+           <input id="web" type="text" name="web" class="input_text_publicidad input_text" />
           </div>
           <div class="input_wapper">
             <label>Imagen</label>

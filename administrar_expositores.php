@@ -23,29 +23,26 @@
       </nav>  
     </header>
     <div id="cont-all"> 
-      <div id="cont-section"> 
+      <div id="cont-section">
         <nav>
           <ul>
             <?php include_once 'expo_menu.php'; ?>
           </ul>
-        </nav>
-		    <a title="Agregar Expo"  class="bnt-ver Cmarg" href="agregar_expo.php">+ Agregar Exposicion</a>
-        <table class="tb" border="0" cellpadding="0" cellspacing="0">
-          <tr>
-            <td class="tbtitulos">Titulo</td>
-            <td class="tbtitulos">Estado</td>
-            <td class="tbtitulos">Ver</td>
-            <td class="tbtitulos">Editar</td>
-            <td class="tbtitulos">Empresas y Expositores</td>
-            <td class="tbtitulos">Imagenes</td>
-            <td class="tbtitulos">Borrar</td>
-          </tr>
-          <?php
-            include_once 'includes.php';
-            $expo = new Expo();
-            print $expo->getExpos($_POST, $_FILES);
-          ?>
-        </table>
+        </nav> 
+		    <a title="Agregar Marquee"  class="bnt-ver Cmarg" href="agregar_empresa.php">+ Agregar Empresa</a>
+          <table class="tb" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="tbtitulos">Autorizacion</td>
+              <td class="tbtitulos">Nombre</td>
+              <td class="tbtitulos">Tipo</td>
+              <td class="tbtitulos">Administrar</td>
+            </tr>
+            <?php
+              include_once 'includes.php';
+              $listado_empresas = new Expo();
+              print $listado_empresas->getListExpoEmpresas($_POST['id']);
+            ?>
+          </table>
       </div>
     </div>          
     <footer>

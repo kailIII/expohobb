@@ -116,7 +116,19 @@ class Expo
 				$rows .= '<td>';
 					$rows .= '<form id="expo_editar" action="editar_expo.php" method="POST">';
 						$rows .= '<input type="hidden" name="id" value="'.$expo['id'].'"/>';
+						$rows .= '<input id="btn_expo_editar" class="btn-classic" type="submit" value="Editar" name="btn_expo_editar" />';
+					$rows .= '</form>';
+				$rows .= '</td>';
+				$rows .= '<td>';
+					$rows .= '<form id="expo_editar" action="administrar_expositores.php" method="POST">';
+						$rows .= '<input type="hidden" name="id" value="'.$expo['id'].'"/>';
 						$rows .= '<input id="btn_expo_editar" class="btn-classic" type="submit" value="Administrar" name="btn_expo_editar" />';
+					$rows .= '</form>';
+				$rows .= '</td>';
+				$rows .= '<td>';
+					$rows .= '<form id="expo_editar" action="editar_expo.php" method="POST">';
+						$rows .= '<input type="hidden" name="id" value="'.$expo['id'].'"/>';
+						$rows .= '<input id="btn_expo_editar" class="btn-classic" type="submit" value="Agregar o Quiter" name="btn_expo_editar" />';
 					$rows .= '</form>';
 				$rows .= '</td>';
 				$rows .= '<td>';
@@ -246,6 +258,7 @@ class Expo
 	********************************************************/
 	public function insetEmpresa($empresa, $images)
 	{
+
 		$pathIgame = $this->uploadImage($images);	
 		
 		$mysqli = DataBase::connex();
@@ -256,6 +269,7 @@ class Expo
 				empresas.id = NULL,
 				empresas.name = "'. $mysqli->real_escape_string($empresa['name']) .'",
 				empresas.email = "'. $mysqli->real_escape_string($empresa['mail']) .'",
+				empresas.web = "'. $mysqli->real_escape_string($empresa['web']) .'",
 				empresas.description = "'. $mysqli->real_escape_string($empresa['descripcion']) .'",
 				empresas.image = "'. $mysqli->real_escape_string($pathIgame[0]) .'"
 			';
@@ -403,6 +417,7 @@ class Expo
 			$empresa['id'] = $row['id'];
 			$empresa['name'] = $row['name'];
 			$empresa['email'] = $row['email'];
+			$empresa['web'] = $row['web'];
 			$empresa['description'] = $row['description'];
 			$empresa['image'] = $row['image'];
 		}
@@ -431,6 +446,7 @@ class Expo
 				empresas.name = "'. $mysqli->real_escape_string($empresa['name']) .'",
 				empresas.email = "'. $mysqli->real_escape_string($empresa['mail']) .'",
 				empresas.description = "'. $mysqli->real_escape_string($empresa['descripcion']) .'",
+				empresas.web = "'. $mysqli->real_escape_string($empresa['web']) .'",
 				empresas.image = "'. $pathImage .'"
 			WHERE 
     			empresas.id = "' . $empresa['id'] . '" 
@@ -541,7 +557,118 @@ class Expo
 			echo '<br />';*/
 		$mysqli->query($query);
 		$mysqli->close();
+	}
+	/********************************************************
+	Este metodo todas las Empresa en la base de datos
+	lo que recibe de parametro es un array
+	********************************************************/
+	public function getListExpoEmpresas($expoId){
+		
+		$mysqli = DataBase::connex();
+		$queryEmpresas = '
+			SELECT * FROM
+				empresas 
+			';
+		$result = $mysqli->query($queryEmpresas);
+		$empresas = array();
+		while ($row = $result->fetch_assoc()) 
+		{
+			$empresa['id'] = $row['id'];
+			$empresa['name'] = $row['name'];
+			$empresa['email'] = $row['email'];
+			$empresas[] = $empresa;
+		}
+		$result->free();
+		$queryExpoEmpresas = '
+			SELECT * FROM
+				expo_empresa 
+			WHERE 
+    			expo_empresa.id = "' . $expoId . '" 
+			';
+		$result = $mysqli->query($queryExpoEmpresas);
+		$expoEmpresas = array();
+		while ($row = $result->fetch_assoc()) 
+		{
+			$expoEmpresa['id'] = $row['id'];
+			$expoEmpresa['id_expo'] = $row['id_expo'];
+			$expoEmpresa['id_empresa'] = $row['id_empresa'];
+			$expoEmpresa['es_expositor'] = $row['es_expositor'];
+			$expoEmpresa['pass'] = $row['pass'];
+			$expoEmpresas[] = $expoEmpresa;
+		}
+		$result->free();
+		$mysqli->close();
+		$mergeExpoEmpresa = array();
+		$mergeExpoEmpresas = array();
+		foreach ($empresas as $keyEmpresa => $empresa) {
+			foreach ($expoEmpresas as $keyExpoEmpresas => $expoEmpresa) {
+				$mergeExpoEmpresa['id'] = $empresa['id'];
+				$mergeExpoEmpresa['name'] = $empresa['name'];
+				if($empresa['id'] == $expoEmpresa['id_empresa']){
+					$mergeExpoEmpresa['id_expo'] = $expoEmpresa['id_expo'];
+					$mergeExpoEmpresa['es_expositor'] = $expoEmpresa['es_expositor'];
+				}else{
+					$mergeExpoEmpresa['id_expo'] = '';
+					$mergeExpoEmpresa['es_expositor'] = '';
+				}
+			}
+			$mergeExpoEmpresas[] = $mergeExpoEmpresa;
+		}
+		return $this->formatListAdministrarEmpresa($mergeExpoEmpresas);
+	}
+	private function formatListAdministrarEmpresa($ExpoEmpresas){
+  		$rows = '';
+		foreach ($ExpoEmpresas as $key => $ExpoEmpresa) {
+			$rows .= '<tr>';
+				$rows .= '<td>Pendiente</td>';
+				$rows .= '<td>'.$ExpoEmpresa['name'].'</td>';
+				$rows .= '<td>';
+	              if($ExpoEmpresa['es_expositor'] == 'si'){
+	              	$rows .= 'Expositor';
+	              }else{
+	              	$rows .= 'Empresa';
+	              }
+				$rows .= '</td>';
+				$rows .= '<td>';
+					$rows .= '<form id="contenido_expositores" action="administrar_empresa.php" method="POST">';
+						$rows .= '<input type="hidden" name="id_empresa" value="'.$ExpoEmpresa['id'].'"/>';
+						$rows .= '<input type="hidden" name="id_expo" value="'.$ExpoEmpresa['id_expo'].'"/>';
+						$rows .= '<input id="btn_contenido_expositores" class="btn-classic" type="submit" value="Administrar" name="btn_contenido_expositores" />';
+					$rows .= '</form>';
+				$rows .= '</td>';
+			$rows .= '</tr>';
+		}
+		return $rows;
+  	}
 
+  	/********************************************************
+	Este metodo devuelve una Empresa especifica de la base de datos
+	lo que recibe de parametro es el id de la Empresa
+	********************************************************/
+    public function getExpoEmpresa($id_expo, $id_empresa)
+	{
+		$mysqli = DataBase::connex();
+		$query = '
+			SELECT emp.id as id, emp.name as name, ee.es_expositor as es_expositor, ee.pass as pass FROM 
+				empresas emp , expo_empresa ee
+			WHERE 
+				emp.id = "' . $id_empresa . '"
+			AND
+				emp.id = ee.id_empresa
+			AND
+				ee.id_expo= "' . $id_expo . '"
+		';
+		$result = $mysqli->query($query);
+		while ($row = $result->fetch_assoc()) 
+		{
+			$empresa['id'] = $row['id'];
+			$empresa['name'] = $row['name'];
+			$empresa['es_expositor'] = $row['es_expositor'];
+			$empresa['pass'] = $row['pass'];
+		}
+		$result->free();
+		$mysqli->close();
+        return $empresa;
 	}
 }
 ?>

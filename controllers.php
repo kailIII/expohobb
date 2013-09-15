@@ -133,6 +133,13 @@
 		$expo->insertImagesActivities($_POST, $_FILES);
 		header("Location: subir_image.php");	
 	}
+	if(isset($_POST['btn_contenido_expositores']))
+	{
+		echo '<pre>';
+			print_r($_POST);
+		echo '</pre>';
+		die;
+	}
 
 
 
