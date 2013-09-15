@@ -2229,3 +2229,43 @@ border-left:#7a0368 solid thin;
 .Sulerror a:hover{
 	color:#B83DD1;
 }
+.cont-exp{
+	display:inline-block;
+margin: 0px auto;
+width: 539px;}
+.cont_exp{
+	width:516px;
+	height:auto;
+	display:inline-block;
+	border:#dee0e0 solid thin;
+	-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+padding:10px;
+float: left;
+}
+.conttext{
+	float:left;
+	margin-left:15px;
+	display:block;
+	width:379px;
+	text-align:left;
+	
+}
+.cont_exp p span{
+	font-size:13px;
+	margin-bottom:10px;
+	
+}
+.cont_exp p{
+	font-size:14px;
+	margin:0px;
+	
+}
+.sombra8{
+    background: url("../imagenes/sombra8.jpg") no-repeat scroll -173px 0 transparent;
+    display: block;
+    height: 15px;
+    width: 535px;
+	float:left;
+}

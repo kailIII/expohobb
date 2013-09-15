@@ -119,7 +119,31 @@
                         <li><a href="#">Alojamiento</a></li>
                         <li class="ultli"><a href="#">Prensa</a></li>
                     </ul>
-                    <div class="cont-arch">
+                    <div class="cont-arch" style="width:838px; display:inline-block">
+                    <!-- empieza expositores -->
+                    <div class="cont-exp">
+                    	<div class="cont_exp">
+                        	<img class="img_exp" src="upload_images/revista.jpg" width="110"/>
+                           	 <div  class="conttext">
+                             	<p><span><strong>Stand 003 - Creaciones Marolio</strong></span></p>
+                                <p>Una breve descripcion de la empresa que participa en el evento. nada de otro mundo provando capacidad de textp en este  recuadro hay que ver si queda mejor este con cuadrado o sin cuadrado</p>
+                            </div>
+                          </div>
+                          <div class="sombra8"></div>
+                    </div>
+                    <!-- Termina expositores-->
+                      <!-- empieza expositores -->
+                    <div class="cont-exp">
+                    	<div class="cont_exp">
+                        	<img class="img_exp" src="upload_images/revista.jpg" width="110"/>
+                           	 <div  class="conttext">
+                             	<p><span><strong>Stand 003 - Creaciones Marolio</strong></span></p>
+                                <p>Una breve descripcion de la empresa que participa en el evento. nada de otro mundo provando capacidad de textp en este  recuadro hay que ver si queda mejor este con cuadrado o sin cuadrado</p>
+                            </div>
+                          </div>
+                          <div class="sombra8"></div>
+                    </div>
+                    <!-- Termina expositores-->
                     </div>	
                   </div>	
             </section>
