@@ -41,7 +41,7 @@ es_expocitor varchar(2),
 PRIMARY KEY (`id`),
 FOREIGN KEY (id_expo) REFERENCES expo(id),
 FOREIGN KEY (id_empresa) REFERENCES empresas(id)
-) TYPE = INNODB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 CREATE TABLE fotos_expositores(
 id INT NOT NULL AUTO_INCREMENT,
@@ -52,7 +52,7 @@ autorizado varchar(2) DEFAULT NULL,
 PRIMARY KEY (`id`),
 FOREIGN KEY (id_expo) REFERENCES expo(id),
 FOREIGN KEY (id_expositor) REFERENCES empresas(id)
-) TYPE = INNODB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 CREATE TABLE actividades_expositores(
 id INT NOT NULL AUTO_INCREMENT,
@@ -63,4 +63,4 @@ autorizado varchar(2) DEFAULT NULL,
 PRIMARY KEY (`id`),
 FOREIGN KEY (id_expo) REFERENCES expo(id),
 FOREIGN KEY (id_expositor) REFERENCES empresas(id)
-) TYPE = INNODB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
