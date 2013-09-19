@@ -140,6 +140,13 @@
 		echo '</pre>';
 		die;
 	}
+	if(isset($_POST['asignar_empresas']))
+	{
+		echo '<pre>';
+			print_r($_POST);
+		echo '</pre>';
+		die;
+	}
 
 
 

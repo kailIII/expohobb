@@ -64,7 +64,7 @@
   function registro_mail(){
     $('#btn_registrar_mail').click(function(){
       var mail = $('#registration_mail').val();
-	   var mails=$("#registration_mail").attr('title');
+	    var mails=$("#registration_mail").attr('title');
       if(mails=="Mail valido"){
         $("#btn_registrar_mail").hide("slow");
         $("#cargador3").show("slow");

@@ -336,7 +336,7 @@ class Expo
 		
 		$mysqli = DataBase::connex();
 		$query = '
-			SELECT id, name FROM
+			SELECT id, name, email FROM
 				empresas 
 			';
 		$result = $mysqli->query($query);
@@ -345,11 +345,13 @@ class Expo
 		{
 			$empresa['id'] = $row['id'];
 			$empresa['name'] = $row['name'];
+			$empresa['email'] = $row['email'];
 			$empresas[] = $empresa;
 		}
 		$result->free();
 		$mysqli->close();
 		return $this->formatListEmpresa($empresas);
+
 	}
 
 	private function formatListEmpresa($empresas){
@@ -374,6 +376,76 @@ class Expo
 							$rows .= '<input id="btn_empresa_eliminar" class="btn-classic" type="submit" value="Eliminar" name="btn_empresa_eliminar" />';
 						$rows .= '</form>';
 					$rows .= '</div>';
+				$rows .= '</td>';
+			$rows .= '</tr>';
+		}
+		return $rows;
+  	}
+
+  	public function getListAsignarEmpresa($expoId){
+		
+		$mysqli = DataBase::connex();
+		$query = '
+			SELECT 
+				emp.id as empid, 
+				emp.name as name, 
+				emp.email as email,
+				exp.id_expo as id_expo,
+				exp.id_empresa as id_empresa,
+				exp.es_expositor as es_expositor
+			FROM
+				empresas emp
+			LEFT JOIN
+				expo_empresa exp
+			ON
+				emp.id = exp.id
+			';
+		$result = $mysqli->query($query);
+		$expoEmpresas = array();
+		while ($row = $result->fetch_assoc()) 
+		{
+			$expoEmpresa['id'] = $row['empid'];
+			$expoEmpresa['name'] = $row['name'];
+			$expoEmpresa['email'] = $row['email'];
+			$expoEmpresa['id_expo'] = $row['id_expo'];
+			$expoEmpresa['es_expositor'] = $row['es_expositor'];
+			$expoEmpresas[] = $expoEmpresa;
+		}
+		$result->free();
+		$mysqli->close();
+		return $this->listAsignarEmpresa($expoEmpresas);
+	}
+
+  	private function listAsignarEmpresa($empresas){
+  		$rows = '';
+		foreach ($empresas as $empresa) {
+			$rows .= '<tr>';
+				$rows .= '<td>';
+					$rows .= '<input type="hidden" name="expoEmpresas['.$empresa['id'].'][id_empresa]" value="'.$empresa['id'].'"/>';
+					$rows .= $empresa['name'];
+				$rows .= '</td>';
+				$rows .= '<td>'.$empresa['email'].'</td>';
+				$rows .= '<td>';
+					$rows .= '<select id="asignar" class="label_reg" name="expoEmpresas['.$empresa['id'].'][asignar]">';
+						if($empresa['id_expo']){
+							$rows .= '<option value="no">No</option>';
+		              		$rows .= '<option selected value="si">Si</option>';
+						}else{
+		              		$rows .= '<option selected value="no">No</option>';
+		              		$rows .= '<option value="si">Si</option>';
+						}
+		            $rows .= '</select>';
+				$rows .= '</td>';
+				$rows .= '<td>';
+					$rows .= '<select id="es_expositor" class="label_reg" name="expoEmpresas['.$empresa['id'].'][es_expositor]">';
+						if($empresa['es_expositor'] == 'si'){
+							$rows .= '<option value="no">No</option>';
+		              		$rows .= '<option selected value="si">Si</option>';
+						}else{
+		              		$rows .= '<option selected value="no">No</option>';
+		              		$rows .= '<option value="si">Si</option>';
+						}
+		            $rows .= '</select>';
 				$rows .= '</td>';
 			$rows .= '</tr>';
 		}
@@ -565,56 +637,39 @@ class Expo
 	public function getListExpoEmpresas($expoId){
 		
 		$mysqli = DataBase::connex();
-		$queryEmpresas = '
-			SELECT * FROM
-				empresas 
-			';
-		$result = $mysqli->query($queryEmpresas);
-		$empresas = array();
-		while ($row = $result->fetch_assoc()) 
-		{
-			$empresa['id'] = $row['id'];
-			$empresa['name'] = $row['name'];
-			$empresa['email'] = $row['email'];
-			$empresas[] = $empresa;
-		}
-		$result->free();
-		$queryExpoEmpresas = '
-			SELECT * FROM
-				expo_empresa 
+		$query = '
+			SELECT 
+				emp.id as id, 
+				emp.name as name, 
+				emp.email as email,
+				exp.id_expo as id_expo,
+				exp.id_empresa as id_empresa,
+				exp.es_expositor as es_expositor,
+				exp.pass as pass
+			FROM
+				empresas emp,
+				expo_empresa exp
 			WHERE 
-    			expo_empresa.id = "' . $expoId . '" 
+    			id_expo = "' . $expoId . '"
+    		AND
+    			id_empresa = emp.id
 			';
-		$result = $mysqli->query($queryExpoEmpresas);
+		$result = $mysqli->query($query);
 		$expoEmpresas = array();
 		while ($row = $result->fetch_assoc()) 
 		{
 			$expoEmpresa['id'] = $row['id'];
+			$expoEmpresa['name'] = $row['name'];
+			$expoEmpresa['email'] = $row['email'];
 			$expoEmpresa['id_expo'] = $row['id_expo'];
-			$expoEmpresa['id_empresa'] = $row['id_empresa'];
 			$expoEmpresa['es_expositor'] = $row['es_expositor'];
 			$expoEmpresa['pass'] = $row['pass'];
 			$expoEmpresas[] = $expoEmpresa;
 		}
 		$result->free();
 		$mysqli->close();
-		$mergeExpoEmpresa = array();
-		$mergeExpoEmpresas = array();
-		foreach ($empresas as $keyEmpresa => $empresa) {
-			foreach ($expoEmpresas as $keyExpoEmpresas => $expoEmpresa) {
-				$mergeExpoEmpresa['id'] = $empresa['id'];
-				$mergeExpoEmpresa['name'] = $empresa['name'];
-				if($empresa['id'] == $expoEmpresa['id_empresa']){
-					$mergeExpoEmpresa['id_expo'] = $expoEmpresa['id_expo'];
-					$mergeExpoEmpresa['es_expositor'] = $expoEmpresa['es_expositor'];
-				}else{
-					$mergeExpoEmpresa['id_expo'] = '';
-					$mergeExpoEmpresa['es_expositor'] = '';
-				}
-			}
-			$mergeExpoEmpresas[] = $mergeExpoEmpresa;
-		}
-		return $this->formatListAdministrarEmpresa($mergeExpoEmpresas);
+		
+		return $this->formatListAdministrarEmpresa($expoEmpresas);
 	}
 	private function formatListAdministrarEmpresa($ExpoEmpresas){
   		$rows = '';

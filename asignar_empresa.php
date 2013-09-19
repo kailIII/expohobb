@@ -29,23 +29,22 @@
             <?php include_once 'expo_menu.php'; ?>
           </ul>
         </nav> 
-        <form action="asignar_empresa.php" method="POST">
-          <input name="id" type="hidden" value="<?php echo $_POST['id'];?>" />
-		      <input type="submit" class="btn-classic" value="+ Asignar Empresa"/>
-        </form>
+        <form id="expo_eliminar" action="controllers.php" method="POST">
           <table class="tb" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td class="tbtitulos">Autorizacion</td>
               <td class="tbtitulos">Nombre</td>
-              <td class="tbtitulos">Tipo</td>
-              <td class="tbtitulos">Administrar</td>
+              <td class="tbtitulos">Email</td>
+              <td class="tbtitulos">Expositor</td>
+              <td class="tbtitulos">Asignar</td>
             </tr>
             <?php
               include_once 'includes.php';
               $listado_empresas = new Expo();
-              print $listado_empresas->getListExpoEmpresas($_POST['id']);
+              print $listado_empresas->getListAsignarEmpresa($_POST['id']);
             ?>
           </table>
+          <input name="asignar_empresas" type="submit" value="guardar"/>
+        </form>
       </div>
     </div>          
     <footer>
