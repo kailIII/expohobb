@@ -135,17 +135,14 @@
 	}
 	if(isset($_POST['btn_contenido_expositores']))
 	{
-		echo '<pre>';
-			print_r($_POST);
-		echo '</pre>';
-		die;
+		$expo = new Expo();
+		$expo->setExpoEmpresas($_POST);
 	}
 	if(isset($_POST['asignar_empresas']))
 	{
-		echo '<pre>';
-			print_r($_POST);
-		echo '</pre>';
-		die;
+		$expo = new Expo();
+		$expo->setExpoEmpresas($_POST);
+		header("Location: administrar_expositores.php?id=".$_POST['expo_id']);	
 	}
 
 

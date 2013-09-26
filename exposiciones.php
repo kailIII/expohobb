@@ -1,47 +1,52 @@
-<?php   
- // $descrip = str_replace("<p>", " ", $revista['description']);  
- // $descrip = str_replace("</p>", " ", $descrip ); 
+<?php include_once 'sesion.php'; ?>
+<?php
+  include_once 'includes.php';
+  $expo = new Expo();
+  $newExpo = $expo->getOneExpo($_GET['id']);
+  echo '<pre>';
+  print_r($newExpo);
+  echo '</pre>';
 ?>
 <!DOCTYPE html>
 <head>
-<title><?php //echo $revista['title'];?> | Expohobby</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="profile" href="http://gmpg.org/xfn/11" />
-<!-- CSS -->
-<link href="css/estilo.css" type="text/css" rel="stylesheet">
-<link href="css/modals.css" type="text/css" rel="stylesheet">
-<link href="css/jquery.ui.all.css" type="text/css" rel="stylesheet">
-<link rel="shortcut icon" type="image/x-icon" href="imagenes/favicon.ico">
-<!-- CSS -->
-<!-- JS -->
-<script type='text/javascript' src='slider/js/comment-reply.js?ver=20090102'></script>
-<script type='text/javascript' src='slider/js/jquery/jquery.js?ver=1.7.1'></script>
-<script type='text/javascript' src='js/general.js'></script>
-<script type='text/javascript' src="js/jquery.ui.core.js"></script>
-<script type='text/javascript' src="js/jquery.ui.widget.js"></script>
-<script type='text/javascript' src="js/jquery.ui.datepicker.js"></script>
-<script type='text/javascript' src="js/jquery.cookie.js"></script>
-<script src="ckeditor/ckeditor.js"></script>
-<script type='text/javascript' src="js/magnific-popup.js"></script>
+  <title><?php //echo $revista['title'];?> | Expohobby</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="profile" href="http://gmpg.org/xfn/11" />
+  <!-- CSS -->
+  <link href="css/estilo.css" type="text/css" rel="stylesheet">
+  <link href="css/modals.css" type="text/css" rel="stylesheet">
+  <link href="css/jquery.ui.all.css" type="text/css" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="imagenes/favicon.ico">
+  <!-- CSS -->
+  <!-- JS -->
+  <script type='text/javascript' src='slider/js/comment-reply.js?ver=20090102'></script>
+  <script type='text/javascript' src='slider/js/jquery/jquery.js?ver=1.7.1'></script>
+  <script type='text/javascript' src='js/general.js'></script>
+  <script type='text/javascript' src="js/jquery.ui.core.js"></script>
+  <script type='text/javascript' src="js/jquery.ui.widget.js"></script>
+  <script type='text/javascript' src="js/jquery.ui.datepicker.js"></script>
+  <script type='text/javascript' src="js/jquery.cookie.js"></script>
+  <script src="ckeditor/ckeditor.js"></script>
+  <script type='text/javascript' src="js/magnific-popup.js"></script>
 
-<!-- JS -->
-<meta property="og:title" content="<?php //echo $revista['title'];?> | Expohobby" />
-<meta property="og:description" content="<?php //echo $revista['edition'].' '.$descrip;?>"/>
-<meta property="og:image" content="<?php //echo $revista['image'];?>" />
-<meta http-equiv="title" content="<?php //echo $revista['title'];?>"> 
-    <meta name="DC.Creator" content="www.estudiomultimedieaeb.com.ar"> 
-    <meta name="keywords" content="revista, Revistas, digital, paso a paso, EXPOHOBBY Deco Digital ">
-    <meta http-equiv="keywords" content="revista, Revistas, digital, paso a paso, EXPOHOBBY Deco Digital ">
-    <meta name="description" content="<?php //echo $descrip;?>">
-    <meta http-equiv="description" content="<?php //echo $descrip;?>"> 
-    <meta http-equiv="DC.Description" content="<?php //echo $descrip;?>"> 
-    <meta name="author" content="Expohobby">
-    <meta name="DC.Creator" content="Estudio multimedia EB "> 
-    <meta name="vw96.objectype" content="Document">
-    <meta name="resource-type" content="Document"> 
-    <meta name="distribution" content="all"> 
-    <meta name="robots" content="all"> 
-    <meta name="revisit" content="30 days">
+  <!-- JS -->
+  <meta property="og:title" content="<?php //echo $revista['title'];?> | Expohobby" />
+  <meta property="og:description" content="<?php //echo $revista['edition'].' '.$descrip;?>"/>
+  <meta property="og:image" content="<?php //echo $revista['image'];?>" />
+  <meta http-equiv="title" content="<?php //echo $revista['title'];?>"> 
+  <meta name="DC.Creator" content="www.estudiomultimedieaeb.com.ar"> 
+  <meta name="keywords" content="revista, Revistas, digital, paso a paso, EXPOHOBBY Deco Digital ">
+  <meta http-equiv="keywords" content="revista, Revistas, digital, paso a paso, EXPOHOBBY Deco Digital ">
+  <meta name="description" content="<?php //echo $descrip;?>">
+  <meta http-equiv="description" content="<?php //echo $descrip;?>"> 
+  <meta http-equiv="DC.Description" content="<?php //echo $descrip;?>"> 
+  <meta name="author" content="Expohobby">
+  <meta name="DC.Creator" content="Estudio multimedia EB "> 
+  <meta name="vw96.objectype" content="Document">
+  <meta name="resource-type" content="Document"> 
+  <meta name="distribution" content="all"> 
+  <meta name="robots" content="all"> 
+  <meta name="revisit" content="30 days">
 </head>
 <body>
 
@@ -66,7 +71,7 @@
       
 		<article class="con-swf">
             <header>
-              <h2 class="titexpo">Titulo de la exposicion </h2>
+              <h2 class="titexpo"><?php echo $newExpo['title'];?></h2>
               <div class="cont-redes">
                 <!-- AddThis Button BEGIN -->
                 <div class="addthis_toolbox addthis_default_style ">
@@ -86,13 +91,13 @@
              
               	  <div class="descripcion-expo">
 
-                  	<p><span>Septiembre 2013 V, S, D de 13:00hs a 20:00hs</span></p>
+                  	<p><span><?php echo $newExpo['dias_horarios'];?></span></p>
                   
                   </div>
                   <div class="cont-descrpexp">
                   		<div class="contimg_fot">
                           <div class="cont-img">
-                            <img  src="imagenes/exposiciones.png"  />
+                            <img title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="<?php echo $newExpo['image'];?>"  />
                           </div>
                           <div class="sombra7"></div>
                       </div>

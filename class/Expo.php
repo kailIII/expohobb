@@ -390,6 +390,7 @@ class Expo
 				emp.id as empid, 
 				emp.name as name, 
 				emp.email as email,
+				exp.id as id_relacion,
 				exp.id_expo as id_expo,
 				exp.id_empresa as id_empresa,
 				exp.es_expositor as es_expositor
@@ -398,7 +399,7 @@ class Expo
 			LEFT JOIN
 				expo_empresa exp
 			ON
-				emp.id = exp.id
+				emp.id = exp.id_empresa
 			';
 		$result = $mysqli->query($query);
 		$expoEmpresas = array();
@@ -407,48 +408,63 @@ class Expo
 			$expoEmpresa['id'] = $row['empid'];
 			$expoEmpresa['name'] = $row['name'];
 			$expoEmpresa['email'] = $row['email'];
+			$expoEmpresa['id_relacion'] = $row['id_relacion'];
 			$expoEmpresa['id_expo'] = $row['id_expo'];
 			$expoEmpresa['es_expositor'] = $row['es_expositor'];
-			$expoEmpresas[] = $expoEmpresa;
+			if($expoEmpresa['es_expositor'] == 'si'){
+				$expoEmpresas['expositores'][] = $expoEmpresa;
+			}elseif($expoEmpresa['id_relacion']){
+				$expoEmpresas['empresa'][] = $expoEmpresa;
+			} else {
+				$expoEmpresas['asignar'][] = $expoEmpresa;
+			}
 		}
 		$result->free();
 		$mysqli->close();
-		return $this->listAsignarEmpresa($expoEmpresas);
+		return $this->listAsignarEmpresa($expoId, $expoEmpresas);
 	}
 
-  	private function listAsignarEmpresa($empresas){
+  	private function listAsignarEmpresa($expoId, $empresas){
   		$rows = '';
-		foreach ($empresas as $empresa) {
-			$rows .= '<tr>';
-				$rows .= '<td>';
-					$rows .= '<input type="hidden" name="expoEmpresas['.$empresa['id'].'][id_empresa]" value="'.$empresa['id'].'"/>';
-					$rows .= $empresa['name'];
-				$rows .= '</td>';
-				$rows .= '<td>'.$empresa['email'].'</td>';
-				$rows .= '<td>';
-					$rows .= '<select id="asignar" class="label_reg" name="expoEmpresas['.$empresa['id'].'][asignar]">';
-						if($empresa['id_expo']){
-							$rows .= '<option value="no">No</option>';
-		              		$rows .= '<option selected value="si">Si</option>';
+		$rows .= '<input type="hidden" name="expo_id" value="'.$expoId.'"/>';
+  		foreach ($empresas as $tipo => $empresasPorTipo) {
+			foreach ($empresasPorTipo as $empresa) {
+				$rows .= '<tr>';
+					$rows .= '<td>';
+						if($tipo != 'asignar'){
+							$rows .= '<input type="hidden" name="expoEmpresas['.$empresa['id'].'][id_relacion]" value="'.$empresa['id_relacion'].'"/>';
 						}else{
-		              		$rows .= '<option selected value="no">No</option>';
-		              		$rows .= '<option value="si">Si</option>';
+							$rows .= '<input type="hidden" name="expoEmpresas['.$empresa['id'].'][id_relacion]" value=""/>';
 						}
-		            $rows .= '</select>';
-				$rows .= '</td>';
-				$rows .= '<td>';
-					$rows .= '<select id="es_expositor" class="label_reg" name="expoEmpresas['.$empresa['id'].'][es_expositor]">';
-						if($empresa['es_expositor'] == 'si'){
-							$rows .= '<option value="no">No</option>';
-		              		$rows .= '<option selected value="si">Si</option>';
-						}else{
-		              		$rows .= '<option selected value="no">No</option>';
-		              		$rows .= '<option value="si">Si</option>';
-						}
-		            $rows .= '</select>';
-				$rows .= '</td>';
-			$rows .= '</tr>';
-		}
+						$rows .= '<input type="hidden" name="expoEmpresas['.$empresa['id'].'][id_empresa]" value="'.$empresa['id'].'"/>';
+						$rows .= $empresa['name'];
+					$rows .= '</td>';
+					$rows .= '<td>'.$empresa['email'].'</td>';
+					$rows .= '<td>';
+						$rows .= '<select id="asignar" class="label_reg" name="expoEmpresas['.$empresa['id'].'][asignar]">';
+							if($empresa['id_expo']){
+								$rows .= '<option value="no">No</option>';
+			              		$rows .= '<option selected value="si">Si</option>';
+							}else{
+			              		$rows .= '<option selected value="no">No</option>';
+			              		$rows .= '<option value="si">Si</option>';
+							}
+			            $rows .= '</select>';
+					$rows .= '</td>';
+					$rows .= '<td>';
+						$rows .= '<select id="es_expositor" class="label_reg" name="expoEmpresas['.$empresa['id'].'][es_expositor]">';
+							if($empresa['es_expositor'] == 'si'){
+								$rows .= '<option value="no">No</option>';
+			              		$rows .= '<option selected value="si">Si</option>';
+							}else{
+			              		$rows .= '<option selected value="no">No</option>';
+			              		$rows .= '<option value="si">Si</option>';
+							}
+			            $rows .= '</select>';
+					$rows .= '</td>';
+				$rows .= '</tr>';
+			}
+  		}
 		return $rows;
   	}
 
@@ -704,7 +720,7 @@ class Expo
 	{
 		$mysqli = DataBase::connex();
 		$query = '
-			SELECT emp.id as id, emp.name as name, ee.es_expositor as es_expositor, ee.pass as pass FROM 
+			SELECT emp.id as id, emp.name as name, ee.es_expositor as es_expositor, ee.id as ee.pass as pass FROM 
 				empresas emp , expo_empresa ee
 			WHERE 
 				emp.id = "' . $id_empresa . '"
@@ -724,6 +740,49 @@ class Expo
 		$result->free();
 		$mysqli->close();
         return $empresa;
+	}
+
+	public function setExpoEmpresas($expoEmpresas){
+		$mysqli = DataBase::connex();
+		foreach ($expoEmpresas['expoEmpresas'] as $empresa) {
+			if($empresa['id_relacion'] != ''){
+				if($empresa['asignar'] == 'no'){
+					//borra
+					$query = 'DELETE FROM expo_empresa WHERE expo_empresa.id = ' . $empresa['id_relacion'] . '	LIMIT 1;';
+					echo $query . '<br />';
+					$mysqli->query($query);
+				}else{
+					//actualiza
+					$query = '
+			    		UPDATE  
+			    			expo_empresa 
+			    		SET  
+			    			expo_empresa.es_expositor =  "'. $mysqli->real_escape_string($empresa['es_expositor']) .'" 
+			    		WHERE  
+			    			expo_empresa.id = "' . $empresa['id_relacion'] . '"
+			    	;';
+					echo $query . '<br />';
+					$mysqli->query($query);
+				}
+			}else{
+				if($empresa['asignar'] == 'si'){
+					//guarda
+					$query = '
+						INSERT INTO 
+							expo_empresa 
+						SET
+							expo_empresa.id = NULL,
+							expo_empresa.id_expo = "'. $mysqli->real_escape_string($expoEmpresas['expo_id']) .'",
+							expo_empresa.id_empresa = "'. $mysqli->real_escape_string($empresa['id_empresa']) .'",
+							expo_empresa.es_expositor = "'. $mysqli->real_escape_string($empresa['es_expositor']) .'",
+							expo_empresa.pass = ""
+						;';
+					echo $query . '<br />';
+					$mysqli->query($query);
+				}
+			}
+		}
+		$mysqli->close();
 	}
 }
 ?>

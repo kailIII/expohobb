@@ -7,6 +7,13 @@
   }else{
     header("Location: index.php");
   }
+  if(isset($_POST['id'])){
+    $expoId = $_POST['id'];
+  }elseif(isset($_GET['id'])){
+    $expoId = $_GET['id'];
+  }else{
+    header("Location: listado_expo.php");
+  }
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,7 +37,7 @@
           </ul>
         </nav> 
         <form action="asignar_empresa.php" method="POST">
-          <input name="id" type="hidden" value="<?php echo $_POST['id'];?>" />
+          <input name="id" type="hidden" value="<?php echo $expoId;?>" />
 		      <input type="submit" class="btn-classic" value="+ Asignar Empresa"/>
         </form>
           <table class="tb" border="0" cellpadding="0" cellspacing="0">
@@ -43,7 +50,7 @@
             <?php
               include_once 'includes.php';
               $listado_empresas = new Expo();
-              print $listado_empresas->getListExpoEmpresas($_POST['id']);
+              print $listado_empresas->getListExpoEmpresas($expoId);
             ?>
           </table>
       </div>
