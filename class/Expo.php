@@ -385,7 +385,67 @@ class Expo
   	public function getListAsignarEmpresa($expoId){
 		
 		$mysqli = DataBase::connex();
+		
 		$query = '
+			SELECT 
+				exp.id as id_relacion,
+				exp.id_expo as id_expo,
+				exp.id_empresa as id_empresa,
+				exp.es_expositor as es_expositor
+			FROM
+				expo_empresa exp
+			WHERE
+				id_expo = ' . $expoId . '
+		';
+		$result = $mysqli->query($query);
+		$expoEmpresas = array();
+		while ($row = $result->fetch_assoc()){
+			$expoEmpresa['id_relacion'] = $row['id_relacion'];
+			$expoEmpresa['id_empresa'] = $row['id_empresa'];
+			$expoEmpresa['id_expo'] = $row['id_expo'];
+			$expoEmpresa['es_expositor'] = $row['es_expositor'];
+			$expoEmpresas[] = $expoEmpresa;
+		}
+
+		$query = '
+			SELECT 
+				emp.id as empid, 
+				emp.name as name, 
+				emp.email as email
+			FROM
+				empresas emp
+		';
+		$result = $mysqli->query($query);
+		$arrayEmpresas = array();
+		while ($row = $result->fetch_assoc()){
+			$arrayEmpresa['id'] = $row['empid'];
+			$arrayEmpresa['name'] = $row['name'];
+			$arrayEmpresa['email'] = $row['email'];
+			$arrayEmpresa['id_relacion'] = '';
+			$arrayEmpresa['id_expo'] = '';
+			$arrayEmpresa['es_expositor'] = '';
+
+			foreach ($expoEmpresas as $expoEmpresa) {
+				if($expoEmpresa['id_empresa'] == $arrayEmpresa['id']){
+					$arrayEmpresa['id_relacion'] = $expoEmpresa['id_relacion'];
+					$arrayEmpresa['id_expo'] = $expoEmpresa['id_expo'];
+					$arrayEmpresa['es_expositor'] = $expoEmpresa['es_expositor'];
+				}
+			}
+			$arrayEmpresas[] = $arrayEmpresa;
+		}
+		$mergeArrayEmpresas = array();
+		foreach ($arrayEmpresas as $empresa) {
+			if($empresa['es_expositor'] == 'si'){
+				$mergeArrayEmpresas['expositores'][] = $empresa;
+			}elseif($empresa['id_relacion']){
+				$mergeArrayEmpresas['empresa'][] = $empresa;
+			} else {
+				$mergeArrayEmpresas['asignar'][] = $empresa;
+			}
+		}
+		return $this->listAsignarEmpresa($expoId, $mergeArrayEmpresas);
+		/*$query = '
 			SELECT 
 				emp.id as empid, 
 				emp.name as name, 
@@ -421,7 +481,7 @@ class Expo
 		}
 		$result->free();
 		$mysqli->close();
-		return $this->listAsignarEmpresa($expoId, $expoEmpresas);
+		*/
 	}
 
   	private function listAsignarEmpresa($expoId, $empresas){

@@ -251,7 +251,7 @@
     $('#btn_registrar_mail').prop("disabled", true);
     $('#registration_mail').keyup(function(){
       validar = $('#registration_mail').val();
-      regex = /^[^0-9][A-z0-9_]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_]+)*[.][A-z]{2,4}$/;
+      regex = /^[^0-9][A-z0-9_\-]+([.][A-z0-9_\-]+)*[@][A-z0-9_\-]+([.][A-z0-9_\-]+)*[.][A-z]{2,4}$/;
       resultado = regex.test(validar);
       if (resultado) {
         $('#registration_mail').css('border-color','green');
