@@ -24,6 +24,15 @@
   
 
   <?php 
+    if(isset($_SESSION['empresa'])){
+      print '
+        <ul>
+          <li>
+            <a title="Inicio" href="admin_actividades.php">Actividades</a>
+          </li>
+        </ul>
+      ';
+    }
     if(isset($_SESSION['usuario'])){
       $validador = new Validador();
       if($validador->cookieValidator($_SESSION['usuario'],$_SESSION['token']) == 'ok'){

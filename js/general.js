@@ -125,6 +125,9 @@
     $('#plano').change(function (){ 
       $('#preview_plano').remove();
     });
+    $('#image_actividad').change(function (){ 
+      $('#preview_image').remove();
+    });
   }
 
   function initPuginsForms(){

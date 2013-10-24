@@ -127,12 +127,6 @@
 		$expo->updateEmpresa($_POST, $_FILES['image_empresa']);
 		header("Location: listado_empresas.php");
 	}
-	if(isset($_POST['agregar_actividad']))
-	{
-		$expo = new Expo();
-		$expo->insertImagesActivities($_POST, $_FILES);
-		header("Location: subir_image.php");	
-	}
 	if(isset($_POST['btn_contenido_expositores']))
 	{
 		$expo = new Expo();
@@ -143,6 +137,29 @@
 		$expo = new Expo();
 		$expo->setExpoEmpresas($_POST);
 		header("Location: administrar_expositores.php?id=".$_POST['expo_id']);	
+	}
+	if(isset($_POST['ingresar_usuario']))
+	{
+		$empresa = new Empresa();
+		$empresa->login($_POST['mail'], $_POST['pass']);
+	}
+	if(isset($_POST['agregar_actividad']))
+	{
+		$empresa = new Empresa();
+		$empresa->insetActividad($_POST, $_FILES['image']);
+		header("Location: admin_actividades.php");	
+	}
+	if(isset($_POST['btn_actividad_eliminar']))
+	{
+		$empresa = new Empresa();
+		$empresa->deleteActividad($_POST['id']);
+		header("Location: admin_actividades.php");	
+	}
+	if(isset($_POST['editar_actividad']))
+	{
+		$empresa = new Empresa();
+		$empresa->updateActividad($_POST, $_FILES);
+		header("Location: admin_actividades.php");	
 	}
 
 

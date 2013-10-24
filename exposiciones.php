@@ -159,7 +159,7 @@
    <div id="modal_confirmation_ver" class="zoom-anim-dialog mfp-hide modal_confirmation"></div>
    <script type="text/javascript">
                     jQuery(document).ready(function($) {
-                        $("#seleccion1").click(function(){						
+                        $("#seleccion1").click(function(){
                    		$('#modal_confirmation_ver').html('<h3 class="cont_vermap">Cómo llegar a Titulo de la exposicion?</h3><iframe width="573" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.ar/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=Sarmiento+1867&amp;aq=&amp;sll=-34.614562,-58.428726&amp;sspn=0.019178,0.042014&amp;ie=UTF8&amp;hq=&amp;hnear=Sarmiento+1867,+San+Nicol%C3%A1s,+Buenos+Aires&amp;ll=-34.605704,-58.393192&amp;spn=0.002398,0.005252&amp;t=m&amp;z=14&amp;output=embed"></iframe><img src="imagenes/subtes-08.jpg" alt="Subtes"/><button class="mfp-close" type="button" title="Close (Esc)">×</button>');
                         });
 						 $("#seleccion2").click(function(){						

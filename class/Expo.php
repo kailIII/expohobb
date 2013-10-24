@@ -445,43 +445,6 @@ class Expo
 			}
 		}
 		return $this->listAsignarEmpresa($expoId, $mergeArrayEmpresas);
-		/*$query = '
-			SELECT 
-				emp.id as empid, 
-				emp.name as name, 
-				emp.email as email,
-				exp.id as id_relacion,
-				exp.id_expo as id_expo,
-				exp.id_empresa as id_empresa,
-				exp.es_expositor as es_expositor
-			FROM
-				empresas emp
-			LEFT JOIN
-				expo_empresa exp
-			ON
-				emp.id = exp.id_empresa
-			';
-		$result = $mysqli->query($query);
-		$expoEmpresas = array();
-		while ($row = $result->fetch_assoc()) 
-		{
-			$expoEmpresa['id'] = $row['empid'];
-			$expoEmpresa['name'] = $row['name'];
-			$expoEmpresa['email'] = $row['email'];
-			$expoEmpresa['id_relacion'] = $row['id_relacion'];
-			$expoEmpresa['id_expo'] = $row['id_expo'];
-			$expoEmpresa['es_expositor'] = $row['es_expositor'];
-			if($expoEmpresa['es_expositor'] == 'si'){
-				$expoEmpresas['expositores'][] = $expoEmpresa;
-			}elseif($expoEmpresa['id_relacion']){
-				$expoEmpresas['empresa'][] = $expoEmpresa;
-			} else {
-				$expoEmpresas['asignar'][] = $expoEmpresa;
-			}
-		}
-		$result->free();
-		$mysqli->close();
-		*/
 	}
 
   	private function listAsignarEmpresa($expoId, $empresas){
@@ -780,12 +743,20 @@ class Expo
 	{
 		$mysqli = DataBase::connex();
 		$query = '
-			SELECT emp.id as id, emp.name as name, ee.es_expositor as es_expositor, ee.id as ee.pass as pass FROM 
-				empresas emp , expo_empresa ee
+			SELECT 
+				emp.id as id, 
+				emp.name as name, 
+				ee.es_expositor as es_expositor, 
+				ee.id as id_relacion,
+				ee.pass as pass 
+			FROM 
+				empresas emp 
+			JOIN 
+				expo_empresa ee
+			ON 
+				emp.id = ee.id_empresa
 			WHERE 
 				emp.id = "' . $id_empresa . '"
-			AND
-				emp.id = ee.id_empresa
 			AND
 				ee.id_expo= "' . $id_expo . '"
 		';
@@ -794,6 +765,7 @@ class Expo
 		{
 			$empresa['id'] = $row['id'];
 			$empresa['name'] = $row['name'];
+			$empresa['id_relacion'] = $row['id_relacion'];
 			$empresa['es_expositor'] = $row['es_expositor'];
 			$empresa['pass'] = $row['pass'];
 		}

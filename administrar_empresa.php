@@ -35,6 +35,7 @@
           $datosEmpresa = $expo->getExpoEmpresa($_POST['id_expo'], $_POST['id_empresa']);
         ?>
         <h2 class="editartitulo">Administrar <?php print $datosEmpresa['name'];?></h2>
+        <h2 class="editarsubtitulo">Administrar Informacion General</h2>
         <form id="form_reg" action="controllers.php" method="POST" enctype="multipart/form-data">
           <div class="input_wapper">
             <label>Expositor</label>
@@ -52,6 +53,11 @@
             <div id="cargador" style="display:none"></div>
           </div>
         </form>
+        <?php     
+          $empresa = new Empresa();
+          $newEmpresa = $empresa->getActividaddes($_POST['id_expo'], $_POST['id_empresa']);
+        ?>
+        <h2 class="editarsubtitulo">Administrar Adtividades</h2>
       </div>
     </div>          
     <footer>
