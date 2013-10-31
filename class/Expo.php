@@ -126,9 +126,9 @@ class Expo
 					$rows .= '</form>';
 				$rows .= '</td>';
 				$rows .= '<td>';
-					$rows .= '<form id="expo_editar" action="editar_expo.php" method="POST">';
+					$rows .= '<form id="expo_editar" action="agregar_imagen.php" method="POST">';
 						$rows .= '<input type="hidden" name="id" value="'.$expo['id'].'"/>';
-						$rows .= '<input id="btn_expo_editar" class="btn-classic" type="submit" value="Agregar o Quiter" name="btn_expo_editar" />';
+						$rows .= '<input id="btn_expo_agregar_imagen" class="btn-classic" type="submit" value="Agregar o Quiter" name="btn_expo_agregar_imagen" />';
 					$rows .= '</form>';
 				$rows .= '</td>';
 				$rows .= '<td>';
@@ -703,8 +703,26 @@ class Expo
 			$expoEmpresa['id_expo'] = $row['id_expo'];
 			$expoEmpresa['es_expositor'] = $row['es_expositor'];
 			$expoEmpresa['pass'] = $row['pass'];
+			$query2 = '
+				SELECT 
+					COUNT(id) AS cantidad 
+				FROM 
+					actividades_expositores
+				WHERE
+					id_expo = ' . $row['id_expo'] . '
+				AND
+					id_expositor = ' . $row['id'] . '
+				AND
+					autorizado = "no"
+			';
+			$result2 = $mysqli->query($query2);
+			while ($row2 = $result2->fetch_assoc())
+			{
+					$expoEmpresa['cantidad'] = $row2['cantidad'];
+			}
 			$expoEmpresas[] = $expoEmpresa;
 		}
+
 		$result->free();
 		$mysqli->close();
 		
@@ -714,7 +732,11 @@ class Expo
   		$rows = '';
 		foreach ($ExpoEmpresas as $key => $ExpoEmpresa) {
 			$rows .= '<tr>';
-				$rows .= '<td>Pendiente</td>';
+				if($ExpoEmpresa['cantidad'] == 0){
+					$rows .= '<td class="nada_autorizar">OK</td>';
+				}else{
+					$rows .= '<td class="cosas_para_autorizar">Pendientes</td>';
+				}
 				$rows .= '<td>'.$ExpoEmpresa['name'].'</td>';
 				$rows .= '<td>';
 	              if($ExpoEmpresa['es_expositor'] == 'si'){
@@ -793,7 +815,6 @@ class Expo
 			    		WHERE  
 			    			expo_empresa.id = "' . $empresa['id_relacion'] . '"
 			    	;';
-					echo $query . '<br />';
 					$mysqli->query($query);
 				}
 			}else{

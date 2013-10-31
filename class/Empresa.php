@@ -46,7 +46,7 @@ class Empresa
 		}
 	}
 
-	public function getActividades($id_expo, $id_empresa)
+	public function getActividades($id_expo, $id_empresa, $formato)
 	{
 		$mysqli = DataBase::connex();
 		$query = '
@@ -65,15 +65,44 @@ class Empresa
 				$actividad['foto'] = $row['foto'];
 				$actividad['actividad'] = $row['actividad'];
 				$actividad['autorizado'] = $row['autorizado'];
-				$actividades[] = $actividad;
+				$actividad['autorizado'] = $row['autorizado'];
+				$actividades[$row['id']] = $actividad;
 			}
 			$result->free();
 			$mysqli->close();
-			$rows = $this->format_list_actividad($actividades);
-	    return $rows;
+			if($formato == 'admin'){
+				$rows = $this->list_actividad_admin($actividades);
+			}else{
+				$rows = $this->format_list_actividad($actividades);
+			}
+	    	return $rows;
 		}else{
 			return false;
 		}
+	}
+
+	private function list_actividad_admin($list){
+		$rows = '';
+		$numeroActividad = 1;
+		foreach ($list as $actividad) {
+			$rows .= '<div class="wrapper-activity input_wapper">';
+				$rows .= '<h2>Actividad '.$numeroActividad.'</h2>';
+				$rows .= '<div id="actividad-'.$actividad['id'].'"></div>';
+				$rows .= '<img src="'.$actividad['foto'].'" />';
+				$rows .= '<p>' . $actividad['actividad'] . '</p>';
+				$rows .= '<select id="autorizar" class="label_reg" name="autorizado['.$actividad['id'].']">';
+					if($actividad['autorizado'] == 'si'){
+						$rows .= '<option value="no">No</option>';
+	              		$rows .= '<option selected value="si">Si</option>';
+					}else{
+	              		$rows .= '<option selected value="no">No</option>';
+	              		$rows .= '<option value="si">Si</option>';
+					}
+	            $rows .= '</select>';
+			$rows .= '</div>';
+			$numeroActividad++;
+		}
+		return $rows;
 	}
 
 	private function format_list_actividad($list){
@@ -81,7 +110,7 @@ class Empresa
 		foreach ($list as $actividad) {
 			$rows .= '<tr>';
 				if($actividad['autorizado']=="si"){
-						$rows .= '<td class="autorizado">Autorizado</td>';
+					$rows .= '<td class="autorizado">Autorizado</td>';
 				}else{
 					$rows .= '<td class="pendiente">Pendiente</td>';
 				}
@@ -243,6 +272,37 @@ class Empresa
 			}
 		}
 		return $path;
+	}
+
+	public function updatePassTipo($datos){
+		$mysqli = DataBase::connex();
+		$query = '
+    		UPDATE  
+    			expo_empresa 
+    		SET  
+    			expo_empresa.es_expositor =  "'. $mysqli->real_escape_string($datos['tipo']) .'",
+    			expo_empresa.pass =  "'. $mysqli->real_escape_string($datos['pass']) .'"
+    		WHERE  
+    			expo_empresa.id = "' . $datos['id_relacion'] . '"
+    	;';
+		$mysqli->query($query);
+		$mysqli->close();
+	}
+
+	public function autorizarActividad($actividades){
+		$mysqli = DataBase::connex();
+		foreach ($actividades as $actividad => $autorizar) {
+			$query = '
+	    		UPDATE  
+	    			actividades_expositores 
+	    		SET  
+	    			actividades_expositores.autorizado = "' . $autorizar . '"
+	    		WHERE  
+	    			actividades_expositores.id = "' . $actividad . '"
+	    	;';
+			$mysqli->query($query);
+		}
+		$mysqli->close();
 	}
 }
 ?>

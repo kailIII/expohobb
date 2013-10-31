@@ -161,6 +161,16 @@
 		$empresa->updateActividad($_POST, $_FILES);
 		header("Location: admin_actividades.php");	
 	}
+	if(isset($_POST['administrar_empresa']))
+	{
+		$datos['id_relacion'] = $_POST['id_relacion'];
+		$datos['tipo'] = $_POST['es_expositor'];
+		$datos['pass'] = $_POST['pass'];
+		$empresa = new Empresa();
+		$empresa->updatePassTipo($datos);
+		$empresa->autorizarActividad($_POST['autorizado']);
+		header("Location: listado_expo.php");
+	}
 
 
 
