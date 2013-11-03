@@ -8,8 +8,14 @@
   }else{
     header( "Location:revistas.php");	
   }
-  $descrip = str_replace("<p>", " ", $revista['description']);  
+  $descrip = str_replace("<p>", " ", strip_tags($revista['description']));  
   $descrip = str_replace("</p>", " ", $descrip ); 
+  $descrip = str_replace("<em>", " ", $descrip ); 
+  $descrip = str_replace("</em>", " ", $descrip );
+  $descrip = str_replace("<strong>", " ", $descrip );
+  $descrip = str_replace("</strong>", " ", $descrip );
+  
+  
 ?>
 <!DOCTYPE html>
 <head>
@@ -39,8 +45,8 @@
 <!-- JS -->
 <meta property="og:title" content="<?php echo $revista['title'];?> | Expohobby" />
 <meta property="og:description" content="<?php echo $revista['edition'].' '.$descrip;?>"/>
-<meta property="og:image" content="<?php echo $revista['image'];?>" />
-<meta http-equiv="title" content="<?php echo $revista['title'];?>"> 
+<meta property="og:image" content="<?php echo $revista['image'];?>"/>
+<meta http-equiv="title" content="<?php echo $revista['title'];?>"/> 
     <meta name="DC.Creator" content="www.emafilms.com.ar"> 
     <meta name="keywords" content="revista, Revistas, digital, paso a paso, EXPOHOBBY Deco Digital ">
     <meta http-equiv="keywords" content="revista, Revistas, digital, paso a paso, EXPOHOBBY Deco Digital ">
@@ -117,10 +123,10 @@
                 </div>
                   <div class="cont-arch">
 					 <?php
-							$nombre_fichero = 'revista'.$revista['id'].'/index.php';
+							$nombre_fichero = 'revistas/revista'.$revista['id'].'/index.php';
 							
 							if (file_exists($nombre_fichero)) {
-							include_once 'revista'.$revista['id'].'/index.php'; 
+							include_once 'revistas/revista'.$revista['id'].'/index.php'; 
 							} else {
 								echo "<div id='contmag' class='container'><div style='margin: 10px auto 0px; width: 412px; display: inline-block; height: 481px;'><img  style='margin:0px auto; background:none; border:none;' alt='proximamente' src='imagenes/foto-no-revista.png'/></div></div>";
 							}

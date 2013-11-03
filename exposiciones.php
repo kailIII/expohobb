@@ -112,6 +112,32 @@
                     
                     </ul>				
                   </div>
+                  <div class="con-act">
+                  	<div class="titi-act">
+                    	<h3>Actividades Recientes / <a href="actividades.php?id=<?php echo $_GET['id'];?>" target="_blank">Ver todas</a></h3>
+                    </div>
+                    <div class="cont-act-tull">
+                    	<div class="cont-act-prev">
+                      		<div class="contImgs">
+                        		<img class="img_exp" src="upload_images/revista.jpg" width="150"/>
+                             </div> 
+                            <div class="cont-act-prev-text">
+                            	<p><span><strong>Stand 003 - Creaciones Marolio</strong></span></p>
+								<p>Esta es una descripcion de la actividad puede ser que sea de esta forma y solo con esta cantidad despues sigue con...</p>
+                            </div>
+                        </div>
+                       <!-- --> 
+                      <div class="cont-act-prev">
+                      		<div class="contImgs">
+                        		<img class="img_exp" src="upload_images/revista.jpg" width="150"/>
+                             </div>   
+                            <div class="cont-act-prev-text">
+                            	<p><span><strong>Stand 003 - Creaciones Marolio</strong></span></p>
+								<p>Esta es una descripcion de la actividad puede ser que sea de esta forma y solo con esta cantidad despues sigue con...</p>
+                            </div>
+                        </div>  
+  			
+                    </div>
                   <div class="cont-opc-exp">
                  	
                   	<ul class="optdes_expo taman">
