@@ -26,9 +26,12 @@
   <script type='text/javascript' src="js/jquery.ui.datepicker.js"></script>
   <script type='text/javascript' src="js/jquery.cookie.js"></script>
   <script src="ckeditor/ckeditor.js"></script>
-  
+
   <script type='text/javascript' src="js/magnific-popup.js"></script>
+      <script src="js/imagesloaded.pkgd.js"></script>
+        <script src="js/modernizr-transitions.js"></script>
   <script type='text/javascript' src='js/jquery-1.7.1.min.js'></script>
+
    <script src="js/jquery.masonry.min.js"></script>
 
   <!-- JS -->
@@ -209,7 +212,7 @@ var $container = $('#container').masonry();
 $container.imagesLoaded( function() {
   $container.masonry({
       itemSelector: '.item',
-      columnWidth:10,
+      columnWidth:1,
       isAnimated: !Modernizr.csstransitions
     });
 });
