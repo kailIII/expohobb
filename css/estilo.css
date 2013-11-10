@@ -687,7 +687,7 @@ border-radius: 5px;
 	position:absolute;
 z-index:9999;
 display:block;
-top: 144px;
+top: 191px;
 margin-left: 18px;
 	
 }
@@ -1376,7 +1376,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c96eb4', end
 	
 }
 .cont-arch{
-	text-align:center;
 	background:#FFF;
 	border:#CCC solid thin;
 	padding:10px;
@@ -2241,7 +2240,7 @@ border-left:#7a0368 solid thin;
 	color:#B83DD1;
 }
 .cont-exp{
-	display:inline-block;
+	display:block;
 margin: 0px auto;
 width:783px;}
 .cont_exp{
@@ -2512,5 +2511,45 @@ max-width: 126px;
 .right{
 	float:right;
 	margin:10px;
+	
+}
+.cont-arch{
+	
+	/* Chrome / Safari */
+    -webkit-transition-property: all;
+    -webkit-transition-duration: 1s;
+    -webkit-transition-timing-function: ease;
+    -webkit-transition-delay: 0.2s;
+ 
+ 
+    /* Opera */
+    -o-transition-property: all;
+    -o-transition-duration: 1s;
+    -o-transition-timing-function: ease;
+    -o-transition-delay: 0.2s;
+ 
+ 
+    /* Default */
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease;
+    transition-delay: 0.2s;
+}
+.planoImg{
+	margin:0px auto;
+	  background:none;
+    border:none;
+    border-radius:none;
+    display:block;
+    float:none;
+	max-width:833px;
+	
+}
+#preview_image_expo img{
+	max-width:600px;
+	
+}
+.ui-tabs-panel{
+	padding:20px;
 	
 }

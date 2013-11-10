@@ -26,7 +26,7 @@
 				{
 				case 'Expohobby': $(".ac_inici").addClass( "activa" );
 				break;
-				case '': $(".ac_expo").addClass( "activa" );
+				case 'Expociciones | Expohobby': $(".ac_expo").addClass( "activa" );
 				break;
 				case 'Revistas | Expohobby': $(".ac_rev").addClass( "activa" );
 				break;

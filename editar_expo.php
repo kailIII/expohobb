@@ -47,8 +47,8 @@
            <input value="<?php echo $newExpo['dias_horarios'];?>" id="dias_horarios" type="text" name="dias_horarios" required="required" class="input_text_revista input_text" />
           </div>
           <div class="input_wapper">
-            <label>Iframe del Mapa</label>
-            <input value="<?php echo $newExpo['maps'];?>" id="maps" type="text" name="maps" required="required" class="input_text_revista input_text" />
+            <label>Iframe del Mapa (Medidas aconsejables width="573" height="350")</label>
+            <input value='<?php echo $newExpo['maps'];?>' id="maps" type="text" name="maps" required="required" class="input_text_revista input_text" />
           </div>
           <div class="input_wapper">
             <label>Plano</label>
