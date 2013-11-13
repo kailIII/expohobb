@@ -51,6 +51,10 @@
             <label>Contraseña</label>
             <input value="<?php print $datosEmpresa['pass'];?>" id="pass" type="text" name="pass"class="input_text_publicidad input_text" />
           </div>
+          <div class="input_wapper">
+            <label>Stand</label>
+            <input value="<?php print $datosEmpresa['stand'];?>" id="stand" type="text" name="stand"class="input_text_publicidad input_text" />
+          </div>
           <h2 class="editarsubtitulo">Administrar Adtividades</h2>
           <?php echo $actividades; ?>
           <div class="input_wapper">

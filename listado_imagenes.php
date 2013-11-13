@@ -15,18 +15,20 @@
     </header>
     <div id="cont-all"> 
       <div id="cont-section"> 
-		<a title="Agregar Actividad"  class="bnt-ver Cmarg" href="agregar_actividad.php">+ Agregar Actividad</a>
+        <form action="agregar_imagen.php" method="POST">
+          <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>"/>
+		      <input type="submit" class="bnt-ver Cmarg" value="+ Agregar Imagen" />
+        </form>
         <table class="tb" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="tbtitulos">Estado</td>
             <td class="tbtitulos">Imagen</td>
-            <td class="tbtitulos">Editar</td>
+            <td class="tbtitulos">Ver</td>
             <td class="tbtitulos">Borrar</td>
           </tr>
           <?php
             include_once 'includes.php';
-            $listado_actividades = new Empresa();
-            print $listado_actividades->getActividades($_SESSION['empresa']['id'], $_SESSION['empresa']['expo'], 'usuario');
+            $expo = new Expo();
+            print $expo->getListImages($_GET['id']);
           ?>
         </table>
       </div>

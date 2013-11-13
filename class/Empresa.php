@@ -65,7 +65,6 @@ class Empresa
 				$actividad['foto'] = $row['foto'];
 				$actividad['actividad'] = $row['actividad'];
 				$actividad['autorizado'] = $row['autorizado'];
-				$actividad['autorizado'] = $row['autorizado'];
 				$actividades[$row['id']] = $actividad;
 			}
 			$result->free();
@@ -137,6 +136,7 @@ class Empresa
 		}
 		return $rows;
 	}
+
 	/********************************************************
 	Este metodo da de alta a una nueva actividad en la base de datos
 	lo que recibe de parametro es un array
@@ -281,7 +281,8 @@ class Empresa
     			expo_empresa 
     		SET  
     			expo_empresa.es_expositor =  "'. $mysqli->real_escape_string($datos['tipo']) .'",
-    			expo_empresa.pass =  "'. $mysqli->real_escape_string($datos['pass']) .'"
+    			expo_empresa.pass =  "'. $mysqli->real_escape_string($datos['pass']) .'",
+    			expo_empresa.stand =  "'. $mysqli->real_escape_string($datos['stand']) .'"
     		WHERE  
     			expo_empresa.id = "' . $datos['id_relacion'] . '"
     	;';

@@ -30,7 +30,7 @@
           </div>
           <div class="input_wapper">
             <label>Descripcion</label>
-            <textarea id="descripcion" name="descripcion" class="ckeditor"></textarea>
+            <textarea id="descripcion" name="descripcion" class="descripcion_actividad"></textarea>
           </div>
           <div class="input_wapper">
             <input id="agregar_actividad" class="btn_general btn-classic2" type="submit" value="Guardar" name="agregar_actividad" />

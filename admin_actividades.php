@@ -9,7 +9,7 @@
       <?php include_once 'logo.php'; ?>
       <nav>
         <ul>
-          <?php include_once 'admin_menu.php'; ?>
+          <?php include_once 'main_menu.php'; ?>
         </ul>
       </nav>  
     </header>
