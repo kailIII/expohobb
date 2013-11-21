@@ -122,7 +122,7 @@
                      <!--  comienza repit de actividades-->
                      <div class="item">
 
-                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="<?php echo $newExpo['image'];?>"  width="450" />
+                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="<?php echo $newExpo['image'];?>"  width="340" />
                           <div class="cont-art-act-exp">
                             
                                   <img class="img_exp" src="upload_images/revista.jpg" width="45"/>
@@ -142,7 +142,7 @@
                        <!--  comienza repit de actividades-->
                      <div class="item">
 
-                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="upload_images/5977a30fe176cfb8c513ea007269dd84.jpg"  width="450" />
+                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="upload_images/5977a30fe176cfb8c513ea007269dd84.jpg"  width="340" />
                           <div class="cont-art-act-exp">
                             
                                   <img class="img_exp" src="upload_images/revista.jpg" width="45"/>
@@ -162,7 +162,7 @@
                        <!--  comienza repit de actividades-->
                      <div class="item">
 
-                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="upload_images/f091be555466305da2282dc8feb05a0d.jpg"  width="450" />
+                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="upload_images/f091be555466305da2282dc8feb05a0d.jpg"  width="340" />
                           <div class="cont-art-act-exp">
                             
                                   <img class="img_exp" src="upload_images/revista.jpg" width="45"/>
@@ -182,7 +182,7 @@
                        <!--  comienza repit de actividades-->
                      <div class="item">
 
-                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="<?php echo $newExpo['image'];?>"  width="450" />
+                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="<?php echo $newExpo['image'];?>"  width="340" />
                           <div class="cont-art-act-exp">
                             
                                   <img class="img_exp" src="upload_images/revista.jpg" width="45"/>
@@ -212,7 +212,7 @@ var $container = $('#container').masonry();
 $container.imagesLoaded( function() {
   $container.masonry({
       itemSelector: '.item',
-      columnWidth:1,
+      columnWidth:3,
       isAnimated: !Modernizr.csstransitions
     });
 });
