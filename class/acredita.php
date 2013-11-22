@@ -29,8 +29,14 @@ class Acred
 		}else{
 			
 			session_start();
-		
-			require("class/PHPmailer.php");
+		    $codigo=  md5(date("Y-m-d-". "H:i:s").$acreditacion['dni'].$acreditacion['apellido']);
+			$codigoC=md5(date("Y-m-d-". "H:i:s").$acreditacion['dni'].$acreditacion['apellido'].$acreditacion['nombre']."7");
+			$nombre=$acreditacion['nombre'];
+			$apellido=$acreditacion['apellido'];
+			$dni=$acreditacion['dni'];
+			
+			 
+			require("PHPmailer.php");
 			$mysqli = DataBase::connex();
 			$classMail = new PHPMailer(); 
 
@@ -44,8 +50,8 @@ class Acred
 			 
 			$classMail->Host = "mail.expohobby.net"; 
 	
-			$classMail->From = $_POST['mail']; 
-			$classMail->FromName = $_POST['nombre'].' | Comento en la web '; 
+			$classMail->From = $acreditacion['mail']; 
+			$classMail->FromName = $acreditacion['nombre'].' | Comento en la web '; 
 			$classMail->Subject = "Contacto de Expohobby"; 
 			$classMail->AddAddress("info@expohobby.net");
 			$classMail->Port = 25;
@@ -140,8 +146,7 @@ class Acred
 			if(!$classMail->Send()){ 
 			$_SESSION['Acredit'] = "mal";
 			}else{
-			 $codigo=  md5(date("Y-m-d-". "H:i:s").$acreditacion['dni'].$acreditacion['apellido']);
-			  $codigoC=md5(date("Y-m-d-". "H:i:s").$acreditacion['dni'].$acreditacion['apellido'].$acreditacion['nombre']."7");
+
 				$mysqli = DataBase::connex();
 				$query = '
 					INSERT INTO 
