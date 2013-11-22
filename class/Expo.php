@@ -126,9 +126,9 @@ class Expo
 					$rows .= '</form>';
 				$rows .= '</td>';
 				$rows .= '<td>';
-					$rows .= '<form id="expo_editar" action="agregar_imagen.php" method="POST">';
+					$rows .= '<form id="expo_editar" action="listado_imagenes.php" method="GET">';
 						$rows .= '<input type="hidden" name="id" value="'.$expo['id'].'"/>';
-						$rows .= '<input id="btn_expo_agregar_imagen" class="btn-classic" type="submit" value="Agregar o Quiter" name="btn_expo_agregar_imagen" />';
+						$rows .= '<input id="btn_expo_agregar_imagen" class="btn-classic" type="submit" value="Agregar o Quiter" />';
 					$rows .= '</form>';
 				$rows .= '</td>';
 				$rows .= '<td>';
@@ -276,6 +276,25 @@ class Expo
 		$mysqli->query($query);
 		$mysqli->close();
 
+	}
+
+	public function getImages($id_expo){
+		$mysqli = DataBase::connex();
+		$query = '
+			SELECT * FROM 
+				expo
+			WHERE 
+				expo.id = "' . $id . '"
+			LIMIT 1
+		';
+		$result = $mysqli->query($query);
+		while ($row = $result->fetch_assoc()) 
+		{
+			
+		}
+		$result->free();
+		$mysqli->close();
+        return $expo;
 	}
 
 	/********************************************************
@@ -768,6 +787,7 @@ class Expo
 			SELECT 
 				emp.id as id, 
 				emp.name as name, 
+				ee.stand as stand, 
 				ee.es_expositor as es_expositor, 
 				ee.id as id_relacion,
 				ee.pass as pass 
@@ -789,6 +809,7 @@ class Expo
 			$empresa['name'] = $row['name'];
 			$empresa['id_relacion'] = $row['id_relacion'];
 			$empresa['es_expositor'] = $row['es_expositor'];
+			$empresa['stand'] = $row['stand'];
 			$empresa['pass'] = $row['pass'];
 		}
 		$result->free();
@@ -837,5 +858,84 @@ class Expo
 		}
 		$mysqli->close();
 	}
+
+	public function getListImages($id_expo){
+		$mysqli = DataBase::connex();
+		$query = '
+			SELECT * FROM 
+				expo_images
+			WHERE
+				id_expo = ' . $id_expo . '
+		';
+		$result = $mysqli->query($query);
+		while ($row = $result->fetch_assoc()) 
+		{
+			$image['id'] = $row['id'];
+			$image['id_expo'] = $row['id_expo'];
+			$image['image'] = $row['image'];
+			$images[] = $image;
+		}
+		$result->free();
+		$mysqli->close();
+		if(isset($images)){
+			return $this->formatListImages($images);
+		}
+	}
+
+	private function formatListImages($images){
+  		$rows = '';
+		foreach ($images as $image) {
+			$rows .= '<tr>';
+				$rows .= '<td><img src="'.$image['image'].'" /></td>';
+				$rows .= '<td><a href="'.$image['image'].'" target="_blank" class="btn-classic">Ver</a></td>';
+				$rows .= '<td>';
+				$rows .= '<a href="#modal_confirmation_'.$image['id'].'" class="btn-classic eliminar_publicidad">Eliminar</a>';
+					$rows .= '<div id="modal_confirmation_'.$image['id'].'" class="zoom-anim-dialog mfp-hide modal_confirmation">';
+						$rows .= '<h3>Eliminar Imagen</h3>';
+						$rows .= '<p>Estas seguro que deceas elimiar esta imagen?</p>';
+						$rows .= '<form action="controllers.php" method="POST">';
+							$rows .= '<input type="hidden" name="id_expo" value="'.$image['id_expo'].'"/>';
+							$rows .= '<input type="hidden" name="id" value="'.$image['id'].'"/>';
+							$rows .= '<input id="btn_cancelar" class="btn-classic" type="button" value="Cancelar" name="btn_cancelar" />'; 
+							$rows .= '<input id="btn_imagen_eliminar" class="btn-classic" type="submit" value="Eliminar" name="btn_imagen_eliminar" />';
+						$rows .= '</form>';
+					$rows .= '</div>';
+				$rows .= '</td>';
+			$rows .= '</tr>';
+		}
+		return $rows;
+  	}
+
+  	public function addImage($id_expo, $images){
+
+  		$pathIgame = $this->uploadImage($images);
+		$mysqli = DataBase::connex();
+		$query = '
+			INSERT INTO  
+				expo_images 
+			SET
+				expo_images.id = NULL ,
+				expo_images.id_expo = '.$id_expo.',
+				expo_images.image = "'.$pathIgame[0].'"
+		';
+		$mysqli->query($query);
+		$mysqli->close();
+	}
+	public function deleteImage($id){
+
+  		$pathIgame = $this->uploadImage($images);
+		$mysqli = DataBase::connex();
+		$query = '
+			DELETE FROM 
+				expo_images 
+			WHERE 
+				expo_images.id = '.$id.'
+			LIMIT
+				1
+		';
+		$mysqli->query($query);
+		$mysqli->close();
+	}
+
 }
 ?>

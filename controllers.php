@@ -103,6 +103,18 @@
 		$expo->deleteExpo($_POST['id']);
 		header("Location: listado_expo.php");	
 	}
+	if(isset($_POST['agregar_imagen']))
+	{
+		$expo = new Expo();
+		$expo->addImage($_POST['id_expo'], $_FILES);
+		header("Location: listado_imagenes.php?id=".$_POST['id_expo']);	
+	}
+	if(isset($_POST['btn_imagen_eliminar']))
+	{
+		$expo = new Expo();
+		$expo->deleteImage($_POST['id']);
+		header("Location: listado_imagenes.php?id=".$_POST['id_expo']);	
+	}
 	if(isset($_POST['btn_empresa_eliminar']))
 	{
 		$expo = new Expo();
@@ -166,6 +178,7 @@
 		$datos['id_relacion'] = $_POST['id_relacion'];
 		$datos['tipo'] = $_POST['es_expositor'];
 		$datos['pass'] = $_POST['pass'];
+		$datos['stand'] = $_POST['stand'];
 		$empresa = new Empresa();
 		$empresa->updatePassTipo($datos);
 		$empresa->autorizarActividad($_POST['autorizado']);

@@ -3,6 +3,7 @@
   include_once 'includes.php';
   $expo = new Expo();
   $newExpo = $expo->getOneExpo($_GET['id']);
+  header('Content-Type: text/html; charset=UTF-8'); 
 ?>
 <!DOCTYPE html>
 <head>
