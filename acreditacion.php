@@ -120,6 +120,8 @@
                   <div class="contac acrForm">
                         <form id="formID" class="formular" method="post" action="controllers.php">
                         <input type="hidden" name="id_expo" value="<?php echo $newExpo['id'];?>"/>
+                        <input type="hidden" name="nomExp" value="<?php echo $newExpo['title'];?>"/>
+                        <input type="hidden" name="fechExp" value="<?php echo $newExpo['fecha_inicio'];?>"/>
                         <div class="nomAp">
                         <fieldset class="mrigth leftForm ">
                             <label>
@@ -164,7 +166,10 @@
                                 </fieldset>
                        		 </div>
                         <input class="submit btn-classic" type="submit"  value="Generar cupón" name="acreditacion" id="acreditacion"/>
+                        <div class="textLoad" style="display:none; ">Enviando email, por favor aguarde…</div>
+                        <div id="cargador2" style="display:none; "></div>
                         </form>
+                        
                 <div class="ayuda2">
               	<img width="32" src="imagenes/atencion.png">
             	<p>Si presenta algún inconveniente técnico al generar la acreditación <a title="Estudio Multimedia EB" target="_blank" href="http://www.estudiomultimediaeb.com.ar/servistec.php">Click Aquí</a></p>

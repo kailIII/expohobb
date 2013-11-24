@@ -60,6 +60,7 @@
       });
     }
   }
+  
 
   function registro_mail(){
     $('#btn_registrar_mail').click(function(){

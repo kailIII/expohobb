@@ -34,6 +34,7 @@
 				});
 			}
 			return this;
+			
 		 },
 		/**
 		* Attachs jQuery.validationEngine to form.submit and field.blur events
@@ -263,6 +264,7 @@
 				if (submitButton){
 					if (submitButton.length > 0){
 						if (submitButton.hasClass("validate-skip") || submitButton.attr("data-validation-engine-skip") == "true")
+	
 							return true;
 					}
 				}
@@ -1473,6 +1475,7 @@
 								 // If a submit form triggered this, we want to re-submit the form
 								 if (options.eventTrigger == "submit")
 									field.closest("form").submit();
+									
 							 }
 						 }
 						 errorField.trigger("jqv.field.result", [errorField, options.isError, msg]);

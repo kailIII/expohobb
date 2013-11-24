@@ -189,7 +189,7 @@
 	if(isset($_POST['acreditacion']))
 	{
 		$acreditacion = new Acred();
-		$acreditacion->insetAcred($_POST);
+		echo $acreditacion->insetAcred($_POST);
 		//header("Location: acreditacion.php?id=".$_POST['id_expo']);	
 	}
 
