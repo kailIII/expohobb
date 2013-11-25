@@ -61,7 +61,9 @@
     }
   }
   
+ function acredita_mail(){ 
 
+ }
   function registro_mail(){
     $('#btn_registrar_mail').click(function(){
       var mail = $('#registration_mail').val();
