@@ -27,19 +27,33 @@ class Acred
 			$acreD= "vacio";
 			return $acreD;
 		}else{
-			
+		$mysqli = DataBase::connex();
+		$email=$mysqli->real_escape_string($acreditacion['mail']);
+		$query = '
+				SELECT * FROM 
+					acreditacion
+				WHERE 
+					email = "' . $email . '"
+			';
+		$result = $mysqli->query($query);
+		if($result->num_rows == 0)
+		{		
 			$datosAcre=array();
 		    $datAcre['codigo']=md5(date("Y-m-d-". "H:i:s").$acreditacion['dni'].$acreditacion['apellido']);
 			$datAcre['codigoC']=md5(date("Y-m-d-". "H:i:s").$acreditacion['dni'].$acreditacion['apellido'].$acreditacion['nombre']."7");
-			$datAcre['nombre']=$acreditacion['nombre'];
-			$datAcre['apellido']=$acreditacion['apellido'];
-			$datAcre['dni']=$acreditacion['dni'];
-			$datAcre['email']=$acreditacion['mail'];
-			$datAcre['nomExp']=$acreditacion['nomExp'];
-			$datAcre['fechExpo']=$acreditacion['fechExp'];
+			$datAcre['nombre']=$mysqli->real_escape_string($acreditacion['nombre']);
+			$datAcre['apellido']=$mysqli->real_escape_string($acreditacion['apellido']);
+			$datAcre['dni']=$mysqli->real_escape_string($acreditacion['dni']);
+			$datAcre['email']=$mysqli->real_escape_string($acreditacion['mail']);
+			$datAcre['nomExp']=$mysqli->real_escape_string($acreditacion['nomExp']);
+			$datAcre['fechExpo']=$mysqli->real_escape_string($acreditacion['fechExp']);
 			$datosAcre[]=$datAcre;
 			$rows = $this->format_acredt($datosAcre);
 			return $rows;
+		}else{
+			$rows='repetido';
+		  return $rows;	
+		}
 		}
 	}
 	
