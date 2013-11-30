@@ -728,7 +728,7 @@ background:#ffffff;
 	-moz-box-shadow: 0px 0px 0px 2px #ffffff;
     -webkit-box-shadow: 0px 0px 0px 2px #ffffff;
     box-shadow: inset 0px 0px 0px 2px #ffffff;
-	background:#dedede;
+	background:#f8eff9;
 	
 	}
 .cont-datos{
@@ -773,8 +773,9 @@ border:#b2b1b1 solid thin;
 	
 }
 .abril a{
-	font-size:14.5px !important;
+	font-size:12.5px !important;
 	color:#930c7e !important;
+	line-height:1px;
 
 }
 .abril{
@@ -825,7 +826,7 @@ background:#ffffff;
 	-moz-box-shadow: 0px 0px 0px 2px #ffffff;
     -webkit-box-shadow: 0px 0px 0px 2px #ffffff;
     box-shadow: inset 0px 0px 0px 2px #ffffff;
-	background:#dedede;
+	background:#fdefff;
 	
 	}
 .pico{
@@ -859,7 +860,7 @@ padding: 11px 155px;
 .cont-bon-list{
 	border:#000 solid thin;
 	width:473px;
-	background:#f2f2f2;
+	background:#FFF;
 	display:block;
 margin:3px 0px 0px 0px;
 		-webkit-border-radius: 5px;
@@ -888,7 +889,7 @@ height:35px;
 
 }
 .cont-bon-list:hover{
-	background:#dedede;
+	background:#f8eff9;
 }
 #redes-sociales{
 	

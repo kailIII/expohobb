@@ -188,7 +188,7 @@ class Acred
 						acreditacion.email = "'. $mysqli->real_escape_string($datAcre['email']).'",
 						acreditacion.codigo = "'.$datAcre['codigo'].'",
 						acreditacion.codigoC = "'.$datAcre['codigoC'].'",
-						acreditacion.nomExp = "'.$datAcre['nomExp'].'",
+						acreditacion.nomExp = "'.$mysqli->real_escape_string($datAcre['nomExp']).'",
 						acreditacion.fechaExp = "'.$fechaExp.'"
 					';
 

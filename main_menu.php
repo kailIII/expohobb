@@ -58,7 +58,7 @@
   <div class="cont-listado">
     <?php foreach ($expos as $expo): ?>
       <div class="list">
-        <a href="exposiciones.php?id=<?php echo $expo['id']; ?>" title="<?php echo $expo['title'];?>">
+        <a href="exposiciones.php?id=<?php echo $expo['id']; ?>" title='<?php echo $expo['title'];?>'>
           <img alt="<?php echo $expo['title'];?>" border="0" src="<?php echo $expo['image'];?>" width="86" height="113">
         </a>
         <div class="cont-datos">
@@ -67,8 +67,8 @@
               <?php echo $expo['dias_horarios'];?>
             </p>
           </div>
-          <h2 class="<?php echo $expo['class'];?>">
-            <a href="exposiciones.php?id=<?php echo $expo['id']; ?>" title="<?php echo $expo['title'];?>"><?php echo $expo['title'];?></a>
+          <h2 class="abril">
+            <a href="exposiciones.php?id=<?php echo $expo['id']; ?>" title='<?php echo $expo['title'];?>'><?php echo $expo['title'];?></a>
           </h2>
           <div class="decript-list">
             <p>
