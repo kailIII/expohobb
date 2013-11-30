@@ -1,3 +1,8 @@
+<?php
+  include_once 'includes.php';
+  $expoClass = new Expo();
+  $expos = $expoClass->expoPorMesMenu();
+?>
 <nav>
   <ul>
     <li class="ac_inici">
@@ -51,57 +56,32 @@
 <div class="deplegablemenu" style="display:none;">
   <div class="pico"></div>
   <div class="cont-listado">
-    <div class="list">
-      <a href="#" title="Nombre de la expo">
-        <img alt="expo" border="0" src="imagenes/nonelist.jpg" width="86" height="113"></a>
-      <div class="cont-datos">
-        <div class="fecha-list">
-          <p>
-            Expo: <strong>Abril  2013</strong>
-            Mi, V, J, S, D de 18:00hs a 20:00hs
-          </p>
-        </div>
-        <h2 class="abril">
-          <a href="#" title="Nombre de la expo">Todo el arte en un solo lugar</a>
-        </h2>
-        <div class="decript-list">
-          <p>
-            El evento tiene como objetivo el mercado Empresarial
-y Artístico. Por un lado están las empresas que publicitan 
-sus marcas, los comercios que nos proveen de los materiales 
-necesarios para el desarrollo de los diferentes.
-          </p>
-        </div>
-      </div>
-
-    </div>
-    <div class="list-invert">
-      <a href="#" title="Nombre de la expo">
-        <img alt="expo" border="0" width="86" height="113" src="imagenes/nonelist.jpg"></a>
-      <div class="cont-datos">
-        <div class="fecha-list">
-          <p>
-            Expo: <strong>Sep  2013</strong>
-            Mi, V, J, S, D de 18:00hs a 20:00hs
-          </p>
-        </div>
-        <h2 class="septiembre">
-          <a href="#" title="Nombre de la expo">Todo el arte en un solo lugar</a>
-        </h2>
-        <div class="decript-list">
-          <p>
-            El evento tiene como objetivo el mercado Empresarial
-y Artístico. Por un lado están las empresas que publicitan 
-sus marcas, los comercios que nos proveen de los materiales 
-necesarios para el desarrollo de los diferentes.
-          </p>
+    <?php foreach ($expos as $expo): ?>
+      <div class="list">
+        <a href="exposiciones.php?id=<?php echo $expo['id']; ?>" title="<?php echo $expo['title'];?>">
+          <img alt="<?php echo $expo['title'];?>" border="0" src="<?php echo $expo['image'];?>" width="86" height="113">
+        </a>
+        <div class="cont-datos">
+          <div class="fecha-list">
+            <p>
+              <?php echo $expo['dias_horarios'];?>
+            </p>
+          </div>
+          <h2 class="<?php echo $expo['class'];?>">
+            <a href="exposiciones.php?id=<?php echo $expo['id']; ?>" title="<?php echo $expo['title'];?>"><?php echo $expo['title'];?></a>
+          </h2>
+          <div class="decript-list">
+            <p>
+              <?php echo $expo['teaser'];?>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    <?php endforeach ?>
   </div>
 
   <div class="cont-bon-list">
-    <a href="#" class="ver-todas-menu">
+    <a href="exposicion.php" class="ver-todas-menu">
       <strong>Ver todas las</strong>
       <span class="color-inst">Expohobby's</span>
     </a>

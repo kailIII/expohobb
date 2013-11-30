@@ -65,6 +65,9 @@ class Expo
 		$query = '
 			SELECT * FROM 
 				expo
+			ORDER BY
+				fecha_inicio 
+					ASC 
 		';
 		$result = $mysqli->query($query);
 		if($result->num_rows > 0){
@@ -146,6 +149,90 @@ class Expo
 			$rows .= '</tr>';
 		}
 		return $rows;
+	}
+
+	private function expoPorMesQuery($order){
+		$mysqli = DataBase::connex();
+		$query = '
+			SELECT * FROM 
+				expo
+			WHERE
+				status = "Publicado"
+			ORDER BY
+				fecha_inicio 
+					'.$order.' 
+		';
+		$result = $mysqli->query($query);
+		if($result->num_rows > 0){
+			while ($row = $result->fetch_assoc()){
+				$expo['id'] = $row['id'];
+				$expo['title'] = $row['title'];
+				$expo['maps'] = $row['maps'];
+				$expo['image'] = $row['image'];
+				$expo['dias_horarios'] = $row['dias_horarios'];
+				$expo['plano'] = $row['plano'];
+				$expo['reglamento'] = $row['reglamento'];
+				$expo['como_participar'] = $row['como_participar'];
+				$expo['alojamiento'] = $row['alojamiento'];
+				$expo['prensa'] = $row['prensa'];
+				$expo['body'] = $row['body'];
+				$expo['teaser'] = $row['teaser'];
+				$expo['fecha_inicio'] = $row['fecha_inicio'];
+				$expo['fecha_fin'] = $row['fecha_fin'];
+				$expo['status'] = $row['status'];	
+				$expos[] = $expo;
+			}
+			$result->free();
+			$mysqli->close();
+			return $expos;
+		}else{
+			return false;
+		}
+	}
+
+	public function expoPorMes(){
+		$expos = $this->expoPorMesQuery('ASC');
+		if($expos){
+			foreach ($expos as $expo) {
+				$fecha = strtotime($expo['fecha_inicio']);
+				$mes = date('m', $fecha);
+				$tmp['id'] = $expo['id'];
+				$tmp['title'] = $expo['title'];
+				$exposOrdenadas[$mes][] = $tmp;
+			}
+			return $exposOrdenadas;
+		}else{
+			
+			return false;
+		}
+	}
+
+	public function expoPorMesMenu(){
+		$expos = $this->expoPorMesQuery('ASC');
+		if($expos){
+			foreach ($expos as $expo) {
+				$fecha = strtotime($expo['fecha_inicio']);
+				$mes = date('m', $fecha);
+				if($mes == '04'){
+					$mesLetras = 'Abril';
+					$class = 'abril';
+				}else{
+					$mesLetras = 'Sep';
+					$class = 'septiembre';
+				}
+				$tmp['id'] = $expo['id'];
+				$tmp['title'] = $expo['title'];
+				$tmp['dias_horarios'] = '<b>Expo: ' . $mesLetras . ' ' . date('Y', $fecha) . '</b> ' . $expo['dias_horarios'];
+				$tmp['teaser'] = $expo['teaser'];
+				$tmp['class'] = $class;
+				$tmp['image'] = $expo['image'];
+				$exposOrdenadas[$mes] = $tmp;
+			}
+			return $exposOrdenadas;
+		}else{
+			
+			return false;
+		}
 	}
 
 	/********************************************************

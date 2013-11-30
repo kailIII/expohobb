@@ -1,6 +1,6 @@
-<?php include_once 'sesion.php'; ?>
 <?php
-  include_once 'includes.php';
+  include_once 'sesion.php';
+  header('Content-Type: text/html; charset=UTF-8'); 
 ?>
 <!DOCTYPE html>
 <head>
@@ -38,8 +38,11 @@
   }(document, 'script', 'facebook-jssdk'));
   </script>
   <header>
-    <?php include_once 'logo.php'; ?>
-    <?php include_once 'main_menu.php'; ?>
+    <?php 
+      include_once 'logo.php'; 
+      include_once 'main_menu.php'; 
+      $expos = $expoClass->expoPorMes();
+    ?>
   </header>
   <div id="cont-all">
 
@@ -50,7 +53,7 @@
     <div id="cont-section">
     <div class="sombra2"></div>
      <div class="contredesysecc">
-   		<p class="Cseccion"> Estas en > Exposiciones</p>
+      <p class="Cseccion"> Estas en > Exposiciones</p>
          <div class="cont-redes">
                 <!-- AddThis Button BEGIN -->
                 <div class="addthis_toolbox addthis_default_style ">
@@ -79,12 +82,11 @@
             <section>
               <img src="imagenes/exposiciones.png" width="350"/>
               <ul class="list-exp">
-               <li><a href="#" title="titulo">Titulo de la expo 15/04/2013</a></li>
-               <li><a href="#" title="titulo">Titulo de la expo 15/04/2013</a></li>
-               <li><a href="#" title="titulo">Titulo de la expo 15/04/2013</a></li>
-               <li><a href="#" title="titulo">Titulo de la expo 15/04/2013</a></li>
-               <li><a href="#" title="titulo">Titulo de la expo 15/04/2013</a></li>
-               <li><a href="#" title="titulo">Titulo de la expo 15/04/2013</a></li>
+                <?php 
+                  foreach ($expos['04'] as $expo) {
+                    echo '<li><a href="exposiciones.php?id=' . $expo['id'] . '" title="' . $expo['title'] . '">' . $expo['title'] . '</a></li>';
+                  }
+                ?>
               </ul>
 			</section>
             
@@ -104,12 +106,11 @@
             <section>
               <img src="imagenes/exposiciones.png" width="350"/>
               <ul class="list-exp">
-               <li><a href="#" title="titulo">Titulo de la expo 15/09/2013</a></li>
-               <li><a href="#" title="titulo">Titulo de la expo 15/09/2013</a></li>
-               <li><a href="#" title="titulo">Titulo de la expo 15/09/2013</a></li>
-               <li><a href="#" title="titulo">Titulo de la expo 15/09/2012</a></li>
-               <li><a href="#" title="titulo">Titulo de la expo 15/09/2011</a></li>
-               <li><a href="#" title="titulo">Titulo de la expo 15/09/2010</a></li>
+               <?php 
+                  foreach ($expos['09'] as $expo) {
+                    echo '<li><a href="exposiciones.php?id=' . $expo['id'] . '" title="' . $expo['title'] . '">' . $expo['title'] . '</a></li>';
+                  }
+                ?>
               </ul>
 			</section>
            </div>

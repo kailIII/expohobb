@@ -2669,6 +2669,7 @@ width:172px
 }
 .list-exp li {
 	margin:5px;
+	width: 300px
 }
 .list-exp li a{
 	text-decoration:none;
