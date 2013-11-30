@@ -172,7 +172,7 @@
                       <div id="tabs-2">
                          <!-- empieza expositores -->
                          <?php $empresas = $expoClass->traerExpositores($_GET['id']); ?>
-                         <?php if($expositores):?>
+                         <?php if($empresas):?>
                             <?php  foreach ($empresas as $empresa): ?>
                               <div class="cont-exp">
                                   <div class="cont_exp">
