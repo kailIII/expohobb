@@ -117,10 +117,17 @@
                   	<p><span><?php echo $newExpo['dias_horarios'];?></span></p>
                   
                   </div>
+                  <?php if(isset($_GET['bien'])){ ?>
+                   <div class="mail_gracias">
+					  <h3>Gracias!!</h3>
+					  <p>Ya esta acreditado para <strong><?php echo $newExpo['title'];?></strong> en unos minutos llegara un mail a su casilla de correo, Atencion! si no recibio el mail asegurece de que no haya caido como espam o correo no deseado </p>
+					  <span></span>
+                	</div>
+                   <?php }else{?>
                   <div class="contac acrForm">
                         <form id="formID" class="formular" method="post" action="controllers.php">
                         <input type="hidden" name="id_expo" value="<?php echo $newExpo['id'];?>"/>
-                        <input type="hidden" name="nomExp" value="<?php echo $newExpo['title'];?>"/>
+                        <input type="hidden" name="nomExp" value='<?php echo $newExpo['title'];?>'/>
                         <input type="hidden" name="fechExp" value="<?php echo $newExpo['fecha_inicio'];?>"/>
                         <div class="nomAp">
                         <fieldset class="mrigth leftForm ">
@@ -176,6 +183,7 @@
              
             </div>
                   </div>
+                  <?php } ?>
             </section>
         </article>
     </div>

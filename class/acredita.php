@@ -24,8 +24,7 @@ class Acred
 	public function insetAcred($acreditacion)
 	{
 		if($acreditacion['nombre']=="" ||$acreditacion['apellido']=="" || $acreditacion['dni']=="" || $acreditacion['mail']=="" ){
-			$acreD= "vacio";
-			return $acreD;
+		header("Location: acredita.php?id=".$acreditacion['id']."&error='camp_vacio'");
 		}else{
 		$mysqli = DataBase::connex();
 		$email=$mysqli->real_escape_string($acreditacion['mail']);
@@ -47,13 +46,13 @@ class Acred
 			$datAcre['email']=$mysqli->real_escape_string($acreditacion['mail']);
 			$datAcre['nomExp']=$mysqli->real_escape_string($acreditacion['nomExp']);
 			$datAcre['fechExpo']=$mysqli->real_escape_string($acreditacion['fechExp']);
+			$datAcre['id_expo']=$mysqli->real_escape_string($acreditacion['id_expo']);
 			$datosAcre[]=$datAcre;
 			$rows = $this->format_acredt($datosAcre);
 			return $rows;
 		}else{
-			$rows='repetido';
-		  return $rows;	
-		}
+			header("Location: acredita.php?id=".$acreditacion['id_expo']."&error='camp_repetido'");	
+			}
 		}
 	}
 	
@@ -172,8 +171,7 @@ class Acred
 		// Notificamos al usuario del estado del mensaje 
 			
 			if(!$classMail->Send()){ 
-			 $acreD= "malEmail";
-			return $acreD;
+			header("Location: acredita.php?id=".$datAcre['id_expo']."&error='camp_email_mal'");	
 			}else{
 
 				$mysqli = DataBase::connex();
@@ -194,8 +192,7 @@ class Acred
 
 		$mysqli->query($query);
 		$mysqli->close();
-		$acreD= "bien";	
-		return $acreD;
+		header("Location: acredita.php?id=".$datAcre['id_expo']."&bien='mail_ok'");	
 			}
 		}
 	}
