@@ -1025,5 +1025,89 @@ class Expo
 		$mysqli->close();
 	}
 
+	public function ultimosDosExpositores($expoId){
+		$mysqli = DataBase::connex();
+		$query = '
+			SELECT 
+				EE.id_expo as id_expo, 
+				E.name as name, 
+				E.description as description, 
+				E.image as image
+			FROM 
+				expo_empresa as EE
+			JOIN 
+				empresas as E ON E.id = EE.id_empresa
+			WHERE 
+				id_expo = "'.$expoId.'"
+			ORDER BY
+				id_expo
+					DESC
+			LIMIT 2
+		';
+		$result = $mysqli->query($query);
+		if($result->num_rows > 0){
+			while ($row = $result->fetch_assoc()){
+				$empresa['id'] = $row['id_expo'];
+				$empresa['name'] = $row['name'];
+				$empresa['description'] = $row['description'];
+				$empresa['image'] = $row['image'];
+				$empresas[] = $empresa;
+			}
+			$result->free();
+			$mysqli->close();
+	    	return $empresas;
+		}else{
+			return false;
+		}
+	}
+
+	private function traerExpositoresQuery($expoId, $expositor = ''){
+		$mysqli = DataBase::connex();
+		$query = '
+			SELECT 
+				EE.id_expo as id_expo, 
+				E.name as name, 
+				E.description as description, 
+				E.image as image
+			FROM 
+				expo_empresa as EE
+			JOIN 
+				empresas as E ON E.id = EE.id_empresa
+			WHERE 
+				id_expo = "'.$expoId.'"';
+			if($expositor == "si"){
+				$query .= ' AND es_expositor = "si" ';
+			}
+		$query .= '
+			ORDER BY
+				name
+					ASC
+		';
+		$result = $mysqli->query($query);
+		if($result->num_rows > 0){
+			while ($row = $result->fetch_assoc()){
+				$empresa['id'] = $row['id_expo'];
+				$empresa['name'] = $row['name'];
+				$empresa['description'] = $row['description'];
+				$empresa['image'] = $row['image'];
+				$empresas[] = $empresa;
+			}
+			$result->free();
+			$mysqli->close();
+	    	return $empresas;
+		}else{
+			return false;
+		}
+	}
+
+	public function traerEmpresas($expoId){
+		return $this->traerExpositoresQuery($expoId);
+	}
+
+	public function traerExpositores($expoId){
+		return $this->traerExpositoresQuery($expoId, "si");
+	}
+
+
 }
 ?>

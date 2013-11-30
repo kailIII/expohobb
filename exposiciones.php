@@ -119,90 +119,93 @@
                   </div>
                   <div class="con-act">
                   	<div class="titi-act">
-                    	<h3>Actividades Recientes / <a href="actividades.php?id=<?php echo $_GET['id'];?>" target="_blank">Ver todas</a></h3>
+                    	<h3>Actividades Recientes</h3>
                     </div>
-                    <div class="cont-act-tull">
-                    	<div class="cont-act-prev">
-                      		<div class="contImgs">
-                        		<img class="img_exp" src="upload_images/revista.jpg" width="150"/>
-                             </div> 
-                            <div class="cont-act-prev-text">
-                            	<p><span><strong>Stand 003 - Creaciones Marolio</strong></span></p>
-								<p>Esta es una descripcion de la actividad puede ser que sea de esta forma y solo con esta cantidad despues sigue con...</p>
+                    <?php $actividadesRecientes = $expoClass->ultimosDosExpositores($_GET['id']);?>
+                      <?php if($actividadesRecientes):?>
+                        <?php  foreach ($actividadesRecientes as $key => $actividad): ?>
+                          <div class="cont-act-tull">
+                            <div class="cont-act-prev">
+                              <div class="contImgs">
+                                <img class="img_exp" src="<?php echo $actividad['image'];?>" width="150"/>
+                              </div> 
+                              <div class="cont-act-prev-text">
+                                <p><span><strong><?php echo $actividad['name'];?></strong></span></p>
+                                <p><?php echo $actividad['description'];?></p>
+                              </div>
                             </div>
-                        </div>
-                       <!-- --> 
-                      <div class="cont-act-prev">
-                      		<div class="contImgs">
-                        		<img class="img_exp" src="upload_images/revista.jpg" width="150"/>
-                             </div>   
-                            <div class="cont-act-prev-text">
-                            	<p><span><strong>Stand 003 - Creaciones Marolio</strong></span></p>
-								<p>Esta es una descripcion de la actividad puede ser que sea de esta forma y solo con esta cantidad despues sigue con...</p>
-                            </div>
-                        </div>  
-  			
-                    </div>
+                          </div>
+                      <?php endforeach ?>
+                    <?php endif ?>
                   <div class="cont-opc-exp">
                  	<div id="tabs">
-                            <ul class="optdes_expo taman">
-                                
-                                <li class="prili"><a href="#tabs-1">Expositores</a></li>
-                                <li><a href="#tabs-2">Empresas Participantes</a></li>
-                                <li><a href="#tabs-3">Planos</a></li>
-                                <li><a href="#tabs-4">Cómo participar?</a></li>
-                                <li><a href="#tabs-5">Reglamento</a></li>
-                                <li><a href="#tabs-6">Alojamiento</a></li>
-                                <li class="ultli"><a href="#tabs-7">Prensa</a></li>
-                            </ul>
-                            <div class="cont-arch" style="width:838px; display:inline-block">
-                                    <div id="tabs-1">
-                                    <!-- empieza expositores -->
-                                    <div class="cont-exp">
-                                        <div class="cont_exp">
-                                            <img class="img_exp" src="upload_images/revista.jpg" width="110"/>
-                                             <div  class="conttext">
-                                                <p><span><strong>Stand 003 - Creaciones Marolio</strong></span></p>
-                                                <p>Una breve descripcion de la empresa que participa en el evento. nada de otro mundo provando capacidad de textp en este  recuadro hay que ver si queda mejor este con cuadrado o sin cuadrado</p>
-                                            </div>
-                                          </div>
-                                          <div class="sombra8"></div>
+                    <ul class="optdes_expo taman">
+                        
+                        <li class="prili"><a href="#tabs-1">Expositores</a></li>
+                        <li><a href="#tabs-2">Empresas Participantes</a></li>
+                        <li><a href="#tabs-3">Planos</a></li>
+                        <li><a href="#tabs-4">Cómo participar?</a></li>
+                        <li><a href="#tabs-5">Reglamento</a></li>
+                        <li><a href="#tabs-6">Alojamiento</a></li>
+                        <li class="ultli"><a href="#tabs-7">Prensa</a></li>
+                    </ul>
+                    <div class="cont-arch" style="width:838px; display:inline-block">
+                      <div id="tabs-1">
+                        <!-- empieza expositores -->
+                        <?php $expositores = $expoClass->traerEmpresas($_GET['id']); ?>
+                          <?php if($expositores):?>
+                            <?php  foreach ($expositores as $expositor): ?>
+                              <div class="cont-exp">
+                                  <div class="cont_exp">
+                                      <img class="img_exp" src="<?php echo $expositor['image'];?>" width="110"/>
+                                       <div  class="conttext">
+                                          <p><span><strong><?php echo $expositor['name'];?></strong></span></p>
+                                          <p><?php echo $expositor['description'];?></p>
+                                      </div>
                                     </div>
-                                    <!-- Termina expositores-->
-                                   
-                            	 </div>
-                                 <div id="tabs-2">
-                                   <!-- empieza expositores -->
-                                    <div class="cont-exp">
-                                        <div class="cont_exp">
-                                            <img class="img_exp" src="upload_images/revista.jpg" width="110"/>
-                                             <div  class="conttext">
-                                                <p><span><strong>Stand 233 - Cotillon Eva</strong></span></p>
-                                                <p>Una breve descripcion de la empresa que participa en el evento. nada de otro mundo provando capacidad de textp en este  recuadro hay que ver si queda mejor este con cuadrado o sin cuadrado</p>
-                                            </div>
-                                          </div>
-                                          <div class="sombra8"></div>
+                                    <div class="sombra8"></div>
+                              </div>
+                            <?php endforeach ?>
+                          <?php endif ?>
+                        <!-- Termina expositores-->
+                      </div>
+                      <div id="tabs-2">
+                         <!-- empieza expositores -->
+                         <?php $empresas = $expoClass->traerExpositores($_GET['id']); ?>
+                         <?php if($expositores):?>
+                            <?php  foreach ($empresas as $empresa): ?>
+                              <div class="cont-exp">
+                                  <div class="cont_exp">
+                                      <img class="img_exp" src="<?php echo $empresa['image'];?>" width="110"/>
+                                       <div  class="conttext">
+                                          <p><span><strong><?php echo $empresa['name'];?></strong></span></p>
+                                          <p><?php echo $empresa['description'];?></p>
+                                      </div>
                                     </div>
-                                    <!-- Termina expositores-->
-                            	 </div>
-                                 <div id="tabs-3">
-                                  <img  class="planoImg" src="<?php echo $newExpo['plano'];?>" alt="Plano de <?php echo $newExpo['title'];?>"/>
-                            	 </div>
-                                 <div id="tabs-4">
-                                   <?php echo $newExpo['como_participar'];?>
-                            	 </div>
-                                 <div id="tabs-5">
-                                   <?php echo $newExpo['reglamento'];?>
-                            	 </div>
-                                 <div id="tabs-6">
-                                   <?php echo $newExpo['alojamiento'];?>
-                            	 </div>
-                                 <div id="tabs-7">
-                                   <?php echo $newExpo['prensa'];?>
-                            	 </div>
-                    	 </div>
-                     </div>	
+                                    <div class="sombra8"></div>
+                              </div>
+                            <?php endforeach ?>
+                          <?php endif ?>
+                          <!-- Termina expositores-->
+                      </div>
+                      <div id="tabs-3">
+                        <img  class="planoImg" src="<?php echo $newExpo['plano'];?>" alt="Plano de <?php echo $newExpo['title'];?>"/>
+                      </div>
+                      <div id="tabs-4">
+                        <?php echo $newExpo['como_participar'];?>
+                      </div>
+                      <div id="tabs-5">
+                        <?php echo $newExpo['reglamento'];?>
+                      </div>
+                      <div id="tabs-6">
+                        <?php echo $newExpo['alojamiento'];?>
+                      </div>
+                      <div id="tabs-7">
+                        <?php echo $newExpo['prensa'];?>
+                      </div>
+                    </div>
                   </div>	
+                </div>	
             </section>
         </article>
     </div>
