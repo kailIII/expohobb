@@ -117,14 +117,37 @@
                   	<p><span><?php echo $newExpo['dias_horarios'];?></span></p>
                   
                   </div>
-                  <?php if(isset($_GET['bien'])){ ?>
+                  <?php if(isset($_GET['bien']) and $_GET['bien']=='mail_ok'){ ?>
                    <div class="mail_gracias">
-					  <h3>Gracias!!</h3>
-					  <p>Ya esta acreditado para <strong><?php echo $newExpo['title'];?></strong> en unos minutos llegara un mail a su casilla de correo, Atencion! si no recibio el mail asegurece de que no haya caido como espam o correo no deseado </p>
+					  <h3>Felicitaciones!!</h3>
+					  <p>Ya está acreditado para <strong><?php echo $newExpo['title'];?></strong> en unos minutos llegara un mail a su casilla de correo, <strong>Atencion!</strong> si no recibió el mail asegúrese de que no esté como spam o como correo no deseado. 
+						</p>
 					  <span></span>
                 	</div>
                    <?php }else{?>
                   <div class="contac acrForm">
+                  <?php if(isset($_GET['error']) and $_GET['error']=='camp_email_mal'){ 
+                    echo "<div class='alert-error'>
+  						
+  								<p><strong>Ocurrió un problema!</strong> No se ha podido enviar la acreditación a ese email, por favor intente nuevamente.</p>
+							</div>";
+                  
+				  }else{ if($_GET['error']=='camp_repetido'){
+					  echo "<div class='alert-error'>
+  						
+  								<p><strong>Ocurrió un problema!</strong> Este email ya fue registrado para esta exposición, por favor intente nuevamente con otro</p>
+							</div>";
+					  
+					  }else{ if($_GET['error']=='camp_vacio'){
+						echo "<div class='alert-error'>
+  						
+  								<p><strong>Ocurrió un problema!</strong> Campos vacíos? , por favor complete nuevamente el formulario</p>
+							</div>";
+						  
+					  }
+						  
+					  }
+					  } ?>
                         <form id="formID" class="formular" method="post" action="controllers.php">
                         <input type="hidden" name="id_expo" value="<?php echo $newExpo['id'];?>"/>
                         <input type="hidden" name="nomExp" value='<?php echo $newExpo['title'];?>'/>
