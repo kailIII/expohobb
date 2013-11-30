@@ -110,7 +110,7 @@ class Expo
 				$rows .= '<td>';
 					$rows .= '<form id="expo_ver" method="POST">';
 						$rows .= '<input type="hidden" name="id" value="'.$expo['id'].'"/>';
-						$rows .= '<input id="btn_expo_ver" class="btn-classic" type="submit" value="Ver" name="btn_expo_ver" />';
+						$rows .= '<a href="exposiciones.php?id='.$expo['id'].'" class="ver"></a>';
 					$rows .= '</form>';
 				$rows .= '</td>';
 				$rows .= '<td>';

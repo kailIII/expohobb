@@ -34,11 +34,11 @@
           <div class="input_wapper">
             <label>Titulo</label>
             <input id="expo_id" type="hidden" name="expo_id" value="<?php echo $newExpo['id'];?>"/>
-           <input value="<?php echo $newExpo['title'];?>" id="titulo" type="text" name="titulo" required="required" class="input_text_revista input_text" />
+            <input value = '<?php echo $newExpo['title'];?>' id="titulo" type="text" name="titulo" required="required" class="input_text_revista input_text" />
           </div>
           <div class="input_wapper">
             <label>Imagen</label>
-            <div id="preview_image_expo"><img alt="<?php echo $newExpo['title'];?>" title="<?php echo $newExpo['title'];?>" src="<?php echo $newExpo['image'];?>"/></div>
+            <div id="preview_image_expo"><img alt='<?php echo $newExpo['title'];?>' title='<?php echo $newExpo['title'];?>' src="<?php echo $newExpo['image'];?>"/></div>
             <input type="hidden" name="name_image" value="<?php echo $newExpo['image'];?>" />
             <input id="image" type="file" name="image" class="input_file_revista input_file" />
           </div>
@@ -52,7 +52,7 @@
           </div>
           <div class="input_wapper">
             <label>Plano</label>
-            <div id="preview_plano"><img alt="<?php echo $newExpo['title'];?>" title="<?php echo $newExpo['title'];?>" src="<?php echo $newExpo['plano'];?>"/></div>
+            <div id="preview_plano"><img alt='<?php echo $newExpo['title'];?>' title='<?php echo $newExpo['title'];?>' src="<?php echo $newExpo['plano'];?>"/></div>
             <input type="hidden" name="name_plano" value="<?php echo $newExpo['plano'];?>" />
             <input id="plano" type="file" name="plano" class="input_file_revista input_file" />
           </div>
