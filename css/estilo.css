@@ -2328,33 +2328,33 @@ float:left;
 margin-right:5px;
 }
 .cont_actividad{
-	background:#FFF;
-	width:100%;
-	display:block;
-	border-bottom: medium solid #CCC;
-    padding-bottom: 30px;
+	border:#7b7b7b solid thin;
+	background: rgba(62, 61, 61, 0.4);
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+padding:12px;
+clear:right;
+height:inherit;
+margin:0px auto;
+
 	
 }
-.actividadBody{
-	width:100% !important;
-	
-}
+
 .balanse{
 	width: 960px;
 	margin:0px auto;
 	
 }
 .cont_actividad article{
-	display:inline-block;
-	width:100%;
-background: #f5f9f0; /* Old browsers */
-background: -moz-linear-gradient(top,  #f5f9f0 0%, #f9fcf7 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f9f0), color-stop(100%,#f9fcf7)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #f5f9f0 0%,#f9fcf7 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #f5f9f0 0%,#f9fcf7 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #f5f9f0 0%,#f9fcf7 100%); /* IE10+ */
-background: linear-gradient(to bottom,  #f5f9f0 0%,#f9fcf7 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f9f0', endColorstr='#f9fcf7',GradientType=0 ); /* IE6-9 */
+
+	-webkit-border-radius: 10px  10px  10px;
+	-moz-border-radius: 10px  10px  10px;
+	border-radius: 10px  10px  10px;
+padding:12px;
+clear:right;
+height:inherit;
+margin:0px auto;
 
 
 }
@@ -2432,7 +2432,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f9f0', end
 /* Homepage */
 
 .homepage .item {
-  width: 340px;
+  width: 250px;
   float: left;
   margin: 10px;
   background:#FFF;
@@ -2476,8 +2476,17 @@ border:none;
 .cont-art-act-exp p{
 	float:left;
 	margin:0px;
-	width:276px
+	width:186px
 	
+}
+.vol-exp{
+	 display: block;
+    float: right;
+    height: 44px;
+    width: 556px;
+}
+.vol-exp a{
+	margin:0px !important;
 }
 .descrip-act{
 	float:left;
@@ -2501,11 +2510,11 @@ max-width: 126px;
 
 	   margin: 0 auto 10px;
     padding: 20px 20px 0;
-    width: 69%;
+    width: 81%;
 }
 #container{ 
-    margin: 0 auto;
-    width:1458px;
+    margin: 10px auto;
+    width:827px;
 }
 
 .right{

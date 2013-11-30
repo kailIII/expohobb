@@ -67,22 +67,20 @@
   
 	
   </script>
+
   <div class="balanse">
-      
+   <header>
+    <?php include_once 'logo.php'; ?>
+    <?php include_once 'main_menu.php'; ?>
+  </header>
   </div>
 	<div class="cont_actividad">
     
              <div class="libret">
             </div>
 		<article  class="homepage">
-
-          <div class="logoexhohobby right ">
-              <h1>
-                <a href="index.php">
-                  <span>Expohobby</span>
-                </a>
-              </h1>
-      </div>
+	
+  
    
             <header>
             <div class="title-act">
@@ -113,6 +111,7 @@
                          <p>Los mejores exponentes de la decoración de fiestas, decoración de tortas, modelado en porcelana fría, souvenirs, desayunos y mucho más... Te esperamos desde el viernes 13 al domingo 15 de septiembre en Sarmiento 1867 C. de Buenos Aires de 13 a 20hs</p>
                      
                    </div>   
+                   <div class="vol-exp"> <a class="btn-classic" title="<?php echo $newExpo['title'];?>" href="exposiciones.php?id=<?php echo $newExpo['id'];?>">Volver a <?php echo $newExpo['title'];?></a></div>
             </div>          
            </header>
    
@@ -122,7 +121,7 @@
                      <!--  comienza repit de actividades-->
                      <div class="item">
 
-                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="<?php echo $newExpo['image'];?>"  width="340" />
+                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="<?php echo $newExpo['image'];?>"  width="250" />
                           <div class="cont-art-act-exp">
                             
                                   <img class="img_exp" src="upload_images/revista.jpg" width="45"/>
@@ -142,7 +141,7 @@
                        <!--  comienza repit de actividades-->
                      <div class="item">
 
-                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="upload_images/5977a30fe176cfb8c513ea007269dd84.jpg"  width="340" />
+                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="upload_images/5977a30fe176cfb8c513ea007269dd84.jpg"  width="250" />
                           <div class="cont-art-act-exp">
                             
                                   <img class="img_exp" src="upload_images/revista.jpg" width="45"/>
@@ -162,7 +161,7 @@
                        <!--  comienza repit de actividades-->
                      <div class="item">
 
-                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="upload_images/f091be555466305da2282dc8feb05a0d.jpg"  width="340" />
+                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="upload_images/f091be555466305da2282dc8feb05a0d.jpg"  width="250" />
                           <div class="cont-art-act-exp">
                             
                                   <img class="img_exp" src="upload_images/revista.jpg" width="45"/>
@@ -182,7 +181,7 @@
                        <!--  comienza repit de actividades-->
                      <div class="item">
 
-                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="<?php echo $newExpo['image'];?>"  width="340" />
+                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="<?php echo $newExpo['image'];?>"  width="250" />
                           <div class="cont-art-act-exp">
                             
                                   <img class="img_exp" src="upload_images/revista.jpg" width="45"/>
