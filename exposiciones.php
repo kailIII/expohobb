@@ -112,7 +112,7 @@
                      <ul class="optdes_expo">
                      	<div class="itm1"></div>
                         <li><a href="#modal_confirmation_ver" id="seleccion1" class="seleccionar_us">Cómo llegar?</a></li>
-                        <li><a href="#modal_confirmation_ver" id="seleccion2"  class="seleccionar_us">Acreditación</a></li>
+                        <li><a href="acreditacion.php?id=<?php echo $newExpo['id'];?>" id="acreditacion"  class="acreditacion">Acreditación</a></li>
                         <li class="ultli"><a href="actividades.php?id=<?php echo $_GET['id'];?>">Actividades</a></li>
                     
                     </ul>				
