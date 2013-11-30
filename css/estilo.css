@@ -671,13 +671,16 @@ nav ul li a{
 }
 .cont-listado{
 	width:473px;
-	height:345px;
+	height:341px;
 	display:block;
-	border:#000 solid thin;
+	border:#999 solid thin;
 	background:none;
 	-webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
+    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.22);
 
 
 	
@@ -722,7 +725,7 @@ background:#ffffff;
     transition-timing-function: ease;
     transition-delay: 0.2s;
    padding:10px 0px;
-   margin-bottom:3px;
+  
 }
 .list:hover{
 	-moz-box-shadow: 0px 0px 0px 2px #ffffff;
@@ -858,11 +861,11 @@ padding: 11px 155px;
 }
 
 .cont-bon-list{
-	border:#000 solid thin;
+	border:#999 solid thin;
 	width:473px;
 	background:#FFF;
 	display:block;
-margin:3px 0px 0px 0px;
+margin:0px;
 		-webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
