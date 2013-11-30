@@ -356,7 +356,7 @@ class Expo
 		$mysqli = DataBase::connex();
 		$query = '
 			SELECT id, name, email FROM
-				empresas 
+				empresas ORDER BY name ASC
 			';
 		$result = $mysqli->query($query);
 		$empresas = array();
@@ -414,7 +414,7 @@ class Expo
 			FROM
 				expo_empresa exp
 			WHERE
-				id_expo = ' . $expoId . '
+				id_expo = ' . $expoId . ' 
 		';
 		$result = $mysqli->query($query);
 		$expoEmpresas = array();
@@ -432,7 +432,7 @@ class Expo
 				emp.name as name, 
 				emp.email as email
 			FROM
-				empresas emp
+				empresas emp ORDER BY emp.name ASC
 		';
 		$result = $mysqli->query($query);
 		$arrayEmpresas = array();
@@ -710,7 +710,8 @@ class Expo
 			WHERE 
     			id_expo = "' . $expoId . '"
     		AND
-    			id_empresa = emp.id
+    			id_empresa = emp.id 
+			ORDER BY emp.name ASC
 			';
 		$result = $mysqli->query($query);
 		$expoEmpresas = array();
