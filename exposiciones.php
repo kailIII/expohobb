@@ -107,13 +107,15 @@
                           <div class="sombra7"></div>
                       </div>
                       <div class="descripcion-expo2">
-                         <p>Los mejores exponentes de la decoración de fiestas, decoración de tortas, modelado en porcelana fría, souvenirs, desayunos y mucho más... Te esperamos desde el viernes 13 al domingo 15 de septiembre en Sarmiento 1867 C. de Buenos Aires de 13 a 20hs</p>
+                         <?php echo $newExpo['body'];?>
                       </div>
                      <ul class="optdes_expo">
                      	<div class="itm1"></div>
-                        <li><a href="#modal_confirmation_ver" id="seleccion1" class="seleccionar_us">Cómo llegar?</a></li>
-                        <li><a href="acreditacion.php?id=<?php echo $newExpo['id'];?>" id="acreditacion"  class="acreditacion">Acreditación</a></li>
-                        <li class="ultli"><a href="actividades.php?id=<?php echo $_GET['id'];?>">Actividades</a></li>
+                        <?php if(!empty($newExpo['maps'])): ?>
+                          <li><a href="#modal_confirmation_ver" id="seleccion1" class="seleccionar_us">Cómo llegar?</a></li>
+                        <?php endif?>
+                        <li><a href="actividades.php?id=<?php echo $_GET['id'];?>">Actividades</a></li>
+                        <li class="ultli"><a href="acreditacion.php?id=<?php echo $newExpo['id'];?>" id="acreditacion"  class="acreditacion">Acreditación</a></li>
                     
                     </ul>				
                   </div>
@@ -138,21 +140,36 @@
                       <?php endforeach ?>
                     <?php endif ?>
                   <div class="cont-opc-exp">
-                 	<div id="tabs">
+                  <div id="tabs">
                     <ul class="optdes_expo taman">
-                        
+                      <?php $expositores = $expoClass->traerEmpresas($_GET['id']); ?>
+                      <?php $empresas = $expoClass->traerExpositores($_GET['id']); ?>  
+                      <?php if($expositores):?>
                         <li class="prili"><a href="#tabs-1">Expositores</a></li>
+                      <?php endif; ?>
+                      <?php if($empresas): ?>
                         <li><a href="#tabs-2">Empresas Participantes</a></li>
+                      <?php endif; ?>
+                      <?php if(!empty($newExpo['plano'])): ?>
                         <li><a href="#tabs-3">Planos</a></li>
+                      <?php endif; ?>
+                      <?php if(!empty($newExpo['como_participar'])): ?>
                         <li><a href="#tabs-4">Cómo participar?</a></li>
+                      <?php endif; ?>
+                      <?php if(!empty($newExpo['reglamento'])): ?>
                         <li><a href="#tabs-5">Reglamento</a></li>
+                      <?php endif; ?>
+                      <?php if(!empty($newExpo['alojamiento'])): ?>
                         <li><a href="#tabs-6">Alojamiento</a></li>
+                      <?php endif; ?>
+                      <?php if(!empty($newExpo['prensa'])): ?>
                         <li class="ultli"><a href="#tabs-7">Prensa</a></li>
+                      <?php endif; ?>
                     </ul>
                     <div class="cont-arch" style="width:838px; display:inline-block">
+                      <?php if($expositores): ?>
                       <div id="tabs-1">
                         <!-- empieza expositores -->
-                        <?php $expositores = $expoClass->traerEmpresas($_GET['id']); ?>
                           <?php if($expositores):?>
                             <?php  foreach ($expositores as $expositor): ?>
                               <div class="cont-exp">
@@ -169,9 +186,10 @@
                           <?php endif ?>
                         <!-- Termina expositores-->
                       </div>
+                      <?php endif ?>
+                      <?php if($empresas && !empty($empresas)): ?>
                       <div id="tabs-2">
                          <!-- empieza expositores -->
-                         <?php $empresas = $expoClass->traerExpositores($_GET['id']); ?>
                          <?php if($empresas):?>
                             <?php  foreach ($empresas as $empresa): ?>
                               <div class="cont-exp">
@@ -188,21 +206,32 @@
                           <?php endif ?>
                           <!-- Termina expositores-->
                       </div>
+                      <?php endif?>
+                      <?php if(!empty($newExpo['plano'])): ?>
                       <div id="tabs-3">
                         <img  class="planoImg" src="<?php echo $newExpo['plano'];?>" alt="Plano de <?php echo $newExpo['title'];?>"/>
                       </div>
+                      <?php endif?>
+                      <?php if(!empty($newExpo['como_participar'])): ?>
                       <div id="tabs-4">
                         <?php echo $newExpo['como_participar'];?>
                       </div>
+                      <?php endif?>
+                      <?php if(!empty($newExpo['reglamento'])): ?>
                       <div id="tabs-5">
                         <?php echo $newExpo['reglamento'];?>
                       </div>
+                      <?php endif?>
+                      <?php if(!empty($newExpo['alojamiento'])): ?>
                       <div id="tabs-6">
                         <?php echo $newExpo['alojamiento'];?>
                       </div>
+                      <?php endif?>
+                      <?php if(!empty($newExpo['prensa'])): ?>
                       <div id="tabs-7">
                         <?php echo $newExpo['prensa'];?>
                       </div>
+                      <?php endif?>
                     </div>
                   </div>	
                 </div>	
