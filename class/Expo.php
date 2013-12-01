@@ -819,6 +819,7 @@ class Expo
 		$mysqli->query($query);
 		$mysqli->close();
 	}
+
 	/********************************************************
 	Este metodo todas las Empresa en la base de datos
 	lo que recibe de parametro es un array
@@ -1069,37 +1070,84 @@ class Expo
 		$mysqli->close();
 	}
 
-	public function ultimosDosExpositores($expoId){
+	public function ultimasDosActividades($expoId){
 		$mysqli = DataBase::connex();
 		$query = '
 			SELECT 
-				EE.id_expo as id_expo, 
-				E.name as name, 
-				E.description as description, 
-				E.image as image
+				AE.id AS id, 
+				AE.foto AS foto, 
+				AE.actividad AS actividad,
+				E.name,
+				EE.stand
 			FROM 
-				expo_empresa as EE
+				actividades_expositores AS AE
 			JOIN 
-				empresas as E ON E.id = EE.id_empresa
+				empresas as E ON e.id = AE.id_expositor
+			JOIN 
+				expo_empresa as EE ON EE.id_empresa = AE.id_expositor
 			WHERE 
-				id_expo = "'.$expoId.'"
+				AE.id_expo =  "' . $expoId . '"
+			AND 
+				EE.id_expo=  "' . $expoId . '"
+			AND 
+				autorizado =  "si"
 			ORDER BY
-				id_expo
+				id
 					DESC
 			LIMIT 2
 		';
 		$result = $mysqli->query($query);
 		if($result->num_rows > 0){
 			while ($row = $result->fetch_assoc()){
-				$empresa['id'] = $row['id_expo'];
-				$empresa['name'] = $row['name'];
-				$empresa['description'] = $row['description'];
-				$empresa['image'] = $row['image'];
-				$empresas[] = $empresa;
+				$actividad['id'] = $row['id'];
+				$actividad['foto'] = $row['foto'];
+				$actividad['actividad'] = $row['actividad'];
+				$actividad['name'] = $row['name'];
+				$actividad['stand'] = $row['stand'];
+				$actividades[] = $actividad;
 			}
 			$result->free();
 			$mysqli->close();
-	    	return $empresas;
+	    	return $actividades;
+		}else{
+			return false;
+		}
+	}
+	public function actividadesExpo($expoId){
+		$mysqli = DataBase::connex();
+		$query = '
+			SELECT 
+				AE.id AS id, 
+				AE.foto AS foto, 
+				AE.actividad AS actividad,
+				E.name,
+				EE.stand
+			FROM 
+				actividades_expositores AS AE
+			JOIN 
+				empresas as E ON e.id = AE.id_expositor
+			JOIN 
+				expo_empresa as EE ON EE.id_empresa = AE.id_expositor
+			WHERE 
+				AE.id_expo =  "' . $expoId . '"
+			AND 
+				EE.id_expo=  "' . $expoId . '"
+			AND 
+				autorizado =  "si"
+		';
+		$result = $mysqli->query($query);
+		if($result->num_rows > 0){
+			while ($row = $result->fetch_assoc()){
+				$actividad['id'] = $row['id'];
+				$actividad['foto'] = $row['foto'];
+				$actividad['actividad'] = $row['actividad'];
+				$actividad['name'] = $row['name'];
+				$actividad['stand'] = $row['stand'];
+				$actividades[] = $actividad;
+			}
+			$result->free();
+			$mysqli->close();
+	    	return $actividades;
 		}else{
 			return false;
 		}

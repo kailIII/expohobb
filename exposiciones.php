@@ -123,17 +123,18 @@
                   	<div class="titi-act">
                     	<h3>Actividades Recientes</h3>
                     </div>
-                    <?php $actividadesRecientes = $expoClass->ultimosDosExpositores($_GET['id']);?>
+                    <?php $actividadesRecientes = $expoClass->ultimasDosActividades($_GET['id']);?>
                       <?php if($actividadesRecientes):?>
                         <?php  foreach ($actividadesRecientes as $key => $actividad): ?>
                           <div class="cont-act-tull">
                             <div class="cont-act-prev">
                               <div class="contImgs">
-                                <img class="img_exp" src="<?php echo $actividad['image'];?>" width="150"/>
+                                <img class="img_exp" src="<?php echo $actividad['foto'];?>" width="150"/>
                               </div> 
                               <div class="cont-act-prev-text">
                                 <p><span><strong><?php echo $actividad['name'];?></strong></span></p>
-                                <p><?php echo $actividad['description'];?></p>
+                                <p><span><strong><?php echo $actividad['stand'];?></strong></span></p>
+                                <p><?php echo $actividad['actividad'];?></p>
                               </div>
                             </div>
                           </div>
@@ -187,7 +188,7 @@
                         <!-- Termina expositores-->
                       </div>
                       <?php endif ?>
-                      <?php if($empresas && !empty($empresas)): ?>
+                      <?php if($empresas): ?>
                       <div id="tabs-2">
                          <!-- empieza expositores -->
                          <?php if($empresas):?>

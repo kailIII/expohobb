@@ -1,8 +1,6 @@
 <?php include_once 'sesion.php'; ?>
-<?php
-  include_once 'includes.php';
-  $expo = new Expo();
-  $newExpo = $expo->getOneExpo($_GET['id']);
+<?php include_once 'includes.php';
+  
 
 ?>
 <!DOCTYPE html>
@@ -54,176 +52,103 @@
   <meta name="revisit" content="30 days">
 </head>
 <body class="actividadBody">
-
- <div id="fb-root"></div>
+  <div id="fb-root"></div>
   <script>
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-  
-	
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
   </script>
 
   <div class="balanse">
-   <header>
-    <?php include_once 'logo.php'; ?>
-    <?php include_once 'main_menu.php'; ?>
-  </header>
+    <header>
+      <?php include_once 'logo.php'; ?>
+      <?php include_once 'main_menu.php'; ?>
+      <?php 
+        $newExpo = $expoClass->getOneExpo($_GET['id']); 
+        $actividades = $expoClass->actividadesExpo($_GET['id']);
+      ?>
+    </header>
   </div>
-	<div class="cont_actividad">
-    
-             <div class="libret">
-            </div>
-		<article  class="homepage">
-	
+  <div class="cont_actividad">
   
-   
-            <header>
-            <div class="title-act">
-                <h1>Actividades para <span><?php echo $newExpo['title'];?></span></h1>
-                <p><span><?php echo $newExpo['dias_horarios'];?></span></p>
-                 <div class="cont-redes">
-                    <!-- AddThis Button BEGIN -->
-                    <div class="addthis_toolbox addthis_default_style ">
-                      <a class="addthis_button_preferred_1"></a>
-                      <a class="addthis_button_preferred_2"></a>
-                      <a class="addthis_button_preferred_3"></a>
-                      <a class="addthis_button_preferred_4"></a>
-                      <a class="addthis_button_compact"></a>
-                      <a class="addthis_counter addthis_bubble_style"></a>
-                    </div>
-               		 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-51d0a20b5fc67a28"></script>
-                <!-- AddThis Button END -->
-              </div>
+    <div class="libret">
+    </div>
+  
+    <article  class="homepage">
+      <header>
+        <div class="title-act">
+          <h1>Actividades para <span><?php echo $newExpo['title'];?></span></h1>
+          <p><span><?php echo $newExpo['dias_horarios'];?></span></p>
+          <div class="cont-redes">
+            <!-- AddThis Button BEGIN -->
+            <div class="addthis_toolbox addthis_default_style ">
+              <a class="addthis_button_preferred_1"></a>
+              <a class="addthis_button_preferred_2"></a>
+              <a class="addthis_button_preferred_3"></a>
+              <a class="addthis_button_preferred_4"></a>
+              <a class="addthis_button_compact"></a>
+              <a class="addthis_counter addthis_bubble_style"></a>
             </div>
-           <div class="cont-descrpexp">
-                  		<div class="contimg_fot">
-                          <div class="cont-img">
-                            <img title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="<?php echo $newExpo['image'];?>"  />
-                          </div>
-                        
-                      </div>
-                      <div class="descripcion-expo2">
-                         <p>Los mejores exponentes de la decoración de fiestas, decoración de tortas, modelado en porcelana fría, souvenirs, desayunos y mucho más... Te esperamos desde el viernes 13 al domingo 15 de septiembre en Sarmiento 1867 C. de Buenos Aires de 13 a 20hs</p>
-                     
-                   </div>   
-                   <div class="vol-exp"> <a class="btn-classic" title="<?php echo $newExpo['title'];?>" href="exposiciones.php?id=<?php echo $newExpo['id'];?>">Volver a <?php echo $newExpo['title'];?></a></div>
-            </div>          
-           </header>
-   
-            
-             <section>
-                 <div id="container">
-                     <!--  comienza repit de actividades-->
-                     <div class="item">
-
-                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="<?php echo $newExpo['image'];?>"  width="250" />
-                          <div class="cont-art-act-exp">
-                            
-                                  <img class="img_exp" src="upload_images/revista.jpg" width="45"/>
-                                   
-                                        <p><span><strong>Stand 003</strong></span></p><br>
-                                        <p><span>Creaciones Marolio</span></p>
-                                       
-                                    
-                        
-						</div>
-                         <div class="descrip-act"> 
-                         	<p>Los mejores exponentes de la decoración de fiestas, decoración de tortas, modelado en porcelana fría, souvenirs, desayunos y mucho más... Te esperamos desde el viernes 13 al domingo 15 de septiembre en Sarmiento 1867 C. de Buenos Aires de 13 a 20hs</p>
-                             
-                       </div> 
-                     </div>
-                      <!--  fin repit de actividades-->
-                       <!--  comienza repit de actividades-->
-                     <div class="item">
-
-                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="upload_images/5977a30fe176cfb8c513ea007269dd84.jpg"  width="250" />
-                          <div class="cont-art-act-exp">
-                            
-                                  <img class="img_exp" src="upload_images/revista.jpg" width="45"/>
-                                   
-                                        <p><span><strong>Stand 003</strong></span></p><br>
-                                        <p><span>Creaciones Marolio</span></p>
-                                       
-                                    
-                        
-						</div>
-                         <div class="descrip-act"> 
-                         	<p>Los mejores exponentes de la decoración de fiestas, decoración de tortas, modelado en porcelana fría, souvenirs, desayunos y mucho más... Te esperamos desde el viernes 13 al domingo 15 de septiembre en Sarmiento 1867 C. de Buenos Aires de 13 a 20hs</p>
-                             
-                       </div> 
-                     </div>
-                      <!--  fin repit de actividades-->
-                       <!--  comienza repit de actividades-->
-                     <div class="item">
-
-                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="upload_images/f091be555466305da2282dc8feb05a0d.jpg"  width="250" />
-                          <div class="cont-art-act-exp">
-                            
-                                  <img class="img_exp" src="upload_images/revista.jpg" width="45"/>
-                                   
-                                        <p><span><strong>Stand 003</strong></span></p><br>
-                                        <p><span>Creaciones Marolio</span></p>
-                                       
-                                    
-                        
-						</div>
-                         <div class="descrip-act"> 
-                         	<p>Los mejores exponentes de la decoración de fiestas, decoración de tortas, modelado en porcelana fría, souvenirs, desayunos y mucho más... Te esperamos desde el viernes 13 al domingo 15 de septiembre en Sarmiento 1867 C. de Buenos Aires de 13 a 20hs</p>
-                             
-                       </div> 
-                     </div>
-                      <!--  fin repit de actividades-->
-                       <!--  comienza repit de actividades-->
-                     <div class="item">
-
-                     	 <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="<?php echo $newExpo['image'];?>"  width="250" />
-                          <div class="cont-art-act-exp">
-                            
-                                  <img class="img_exp" src="upload_images/revista.jpg" width="45"/>
-                                   
-                                        <p><span><strong>Stand 003</strong></span></p><br>
-                                        <p><span>Creaciones Marolio</span></p>
-                                       
-                                    
-                        
-						</div>
-                         <div class="descrip-act"> 
-                         	<p>Los mejores exponentes de la decoración de fiestas, decoración de tortas, modelado en porcelana fría, souvenirs, desayunos y mucho más... Te esperamos desde el viernes 13 al domingo 15 de septiembre en Sarmiento 1867 C. de Buenos Aires de 13 a 20hs</p>
-                             
-                       </div> 
-                     </div>
-                      <!--  fin repit de actividades-->
-                 </div>
-            </section>
-        
-        </article>
+            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-51d0a20b5fc67a28"></script>
+            <!-- AddThis Button END -->
+          </div>
+        </div>
+        <div class="cont-descrpexp">
+          <div class="contimg_fot">
+            <div class="cont-img">
+              <img title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="<?php echo $newExpo['image'];?>"  />
+            </div>
+          </div>
+          <div class="descripcion-expo2">
+            <p>Los mejores exponentes de la decoración de fiestas, decoración de tortas, modelado en porcelana fría, souvenirs, desayunos y mucho más... Te esperamos desde el viernes 13 al domingo 15 de septiembre en Sarmiento 1867 C. de Buenos Aires de 13 a 20hs</p>
+          </div>   
+          <div class="vol-exp"> <a class="btn-classic" title="<?php echo $newExpo['title'];?>" href="exposiciones.php?id=<?php echo $newExpo['id'];?>">Volver a <?php echo $newExpo['title'];?></a>
+          </div>
+        </div>   
+      </header>
+      <section>
+        <div id="container">
+          <!--  comienza repit de actividades-->
+          <?php foreach ($actividades as $actividad): ?>
+          <div class="item">
+            <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="<?php echo $actividad['foto'];?>"  width="250" />
+            <div class="cont-art-act-exp">
+              <img class="img_exp" src="upload_images/revista.jpg" width="45"/>
+              <p><span><strong><?php echo $actividad['stand'];?></strong></span></p><br>
+              <p><span><?php echo $actividad['name'];?></span></p>
+            </div>
+            <div class="descrip-act"> 
+              <p><?php echo $actividad['actividad'];?></p>
+            </div> 
+          </div>
+        <?php endforeach; ?>
+          <!--  fin repit de actividades-->
+        </div>
+      </section>
+    </article>
 </div>
-   <!-- modal -->
+
 <script>
- $(function(){
-var $container = $('#container').masonry();
-// layout Masonry again after all images have loaded
-$container.imagesLoaded( function() {
-  $container.masonry({
-      itemSelector: '.item',
-      columnWidth:3,
-      isAnimated: !Modernizr.csstransitions
+  $(function(){
+    var $container = $('#container').masonry();
+    // layout Masonry again after all images have loaded
+    $container.imagesLoaded( function() {
+      $container.masonry({
+          itemSelector: '.item',
+          columnWidth:3,
+          isAnimated: !Modernizr.csstransitions
+        });
     });
-});
-
-
-});
+  });
 </script>
-   <div class="balanse"> 
-      <footer>
-     	
-        <?php include_once 'footer.php'; ?>
-      </footer>
-  </div>
+<div class="balanse"> 
+  <footer>
+    <?php include_once 'footer.php'; ?>
+  </footer>
+</div>
 </body>
 </html>
