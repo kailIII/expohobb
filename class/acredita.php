@@ -24,7 +24,7 @@ class Acred
 	public function insetAcred($acreditacion)
 	{
 		if($acreditacion['nombre']=="" ||$acreditacion['apellido']=="" || $acreditacion['dni']=="" || $acreditacion['mail']=="" ){
-		header("Location: acredita.php?id=".$acreditacion['id']."&error='camp_vacio'");
+		header("Location: acredita.php?id=".$acreditacion['id']."&error=camp_vacio");
 		}else{
 		$mysqli = DataBase::connex();
 		$email=$mysqli->real_escape_string($acreditacion['mail']);
@@ -47,11 +47,28 @@ class Acred
 			$datAcre['nomExp']=$mysqli->real_escape_string($acreditacion['nomExp']);
 			$datAcre['fechExpo']=$mysqli->real_escape_string($acreditacion['fechExp']);
 			$datAcre['id_expo']=$mysqli->real_escape_string($acreditacion['id_expo']);
+			$mysqli = DataBase::connex();
+			$query = '
+				SELECT text_acr FROM 
+					expo
+				WHERE 
+					id = "' . $datAcre['id_expo'] . '"
+			';
+			$result = $mysqli->query($query);
+			while ($row = $result->fetch_assoc()) 
+			{
+			$datAcre['text_acr'] = $row['text_acr'];	
+			
+			}
+
 			$datosAcre[]=$datAcre;
 			$rows = $this->format_acredt($datosAcre);
+			$result->free();
+			$mysqli->close();
 			return $rows;
+			
 		}else{
-			header("Location: acreditacion.php?id=".$acreditacion['id_expo']."&error='camp_repetido'");	
+			header("Location: acreditacion.php?id=".$acreditacion['id_expo']."&error=camp_repetido");	
 			}
 		}
 	}
@@ -62,6 +79,7 @@ class Acred
 	********************************************************/
 	private function format_acredt($datosAcre){
 		foreach ($datosAcre as $datAcre) {
+			
 			$fechaExp= $this->format_edition($datAcre['fechExpo']);
 			require("PHPmailer.php");
 			$mysqli = DataBase::connex();
@@ -151,13 +169,8 @@ class Acred
 								Hola <strong>".$datAcre['nombre']." ".$datAcre['apellido'].":</strong><br>
 								Gracias por acreditarse a <strong>Expohobby ".$fechaExp." ".$datAcre['nomExp'].".</strong><br><br>
 								<a class='link' href='http://www.expohobby.net/descargar.php?codigo=".$datAcre['codigo']."-".$datAcre['dni']."'> Haga click aqu&iacute; para visualizar su cup&oacute;n</a><br><br>
-								Este link le servir&aacute; para modificar el D.N.I en caso de haberse equivocado:<br>
-								<a class='link' href='http://www.expohobby.net/entradaC.php?codigoC=".$datAcre['codigoC']."&codigo=".$datAcre['codigo']."'> Haga click aqu&iacute; para cambiar el D.N.I</a><br><br>
-								* Cup&oacute;n con 50% de descuento, personal e intransferible, v&aacute;lida presentando D.N.I o Cedula de identidad.<br /> 
-								* Menores de 6 a&ntilde;os entrada sin cargo.<br />
-								* No valida para el dia Domingo ".$fechaExp."<br/>
-								* <strong>Expohobby</strong> se reserva el derecho de admisi&oacute;n y permanencia.<br>
-								* Prohibida su reproducci&oacute;n y comercializaci&oacute;n
+								
+								<p>".$datAcre['text_acr']."</p>
 							</div>
 						</div>
 					</div>
@@ -171,7 +184,7 @@ class Acred
 		// Notificamos al usuario del estado del mensaje 
 			
 			if(!$classMail->Send()){ 
-			header("Location: acreditacion.php?id=".$datAcre['id_expo']."&error='camp_email_mal'");	
+			header("Location: acreditacion.php?id=".$datAcre['id_expo']."&error=camp_email_mal");	
 			}else{
 
 				$mysqli = DataBase::connex();
@@ -187,12 +200,13 @@ class Acred
 						acreditacion.codigo = "'.$datAcre['codigo'].'",
 						acreditacion.codigoC = "'.$datAcre['codigoC'].'",
 						acreditacion.nomExp = "'.$mysqli->real_escape_string($datAcre['nomExp']).'",
-						acreditacion.fechaExp = "'.$fechaExp.'"
+						acreditacion.fechaExp = "'.$fechaExp.'",
+						acreditacion.idExp = '.$datAcre['id_expo'].'
 					';
 
 		$mysqli->query($query);
 		$mysqli->close();
-		header("Location: acreditacion.php?id=".$datAcre['id_expo']."&bien='mail_ok'");	
+		header("Location: acreditacion.php?id=".$datAcre['id_expo']."&bien=mail_ok");	
 			}
 		}
 	}
@@ -216,15 +230,21 @@ Este metodo devuelve todas las acreditaciones por su dni y codigo
 		$mysqli = DataBase::connex();
 		if($AcredDni != '' and $codigo != ''){
 			$query = '
-				SELECT * FROM 
-					 acreditacion
-				WHERE
-					 acreditacion.dni ="' .$AcredDni. '"  AND  acreditacion.codigo ="' .$codigo. '" 
-				LIMIT 1
+				SELECT 
+				  A.* ,
+				  E.img_acr,
+				  E.text_acr
+				 FROM 
+				  acreditacion as A
+				 JOIN
+				  expo as E ON E.id = A.idExp
+				 WHERE
+				  A.dni ="' .$AcredDni. '"  
+				 AND  
+				  A.codigo ="' .$codigo. '"
 			';
 		}else{
-			$dat='no hay canpos';
-			return $dat;
+			header("Location: index.php");	
 		}
 		$result = $mysqli->query($query);
 		if($result->num_rows > 0){
@@ -240,6 +260,10 @@ Este metodo devuelve todas las acreditaciones por su dni y codigo
 			$acreditacion['codigoC'] = $row['codigoC'];
 			$acreditacion['nomExp'] = $row['nomExp'];
 			$acreditacion['fechaExp'] = $row['fechaExp'];
+			$acreditacion['img_acr'] = $row['img_acr'];
+			$acreditacion['text_acr'] = $row['text_acr'];
+
+
 			$acreditaciones[]=$acreditacion;
 		}
 		$result->free();
@@ -247,8 +271,7 @@ Este metodo devuelve todas las acreditaciones por su dni y codigo
     	$rows = $this->format_acredt_des($acreditaciones);
 		return $rows;
 		}else{
-			$dat='0 base de datos';
-			return $dat;
+		echo 'no existe';
 		}
 	}
 	private function format_acredt_des($acreditaciones){
@@ -260,7 +283,7 @@ Este metodo devuelve todas las acreditaciones por su dni y codigo
 					$rows .= " </div> ";
 					$rows .= "<div id='contentrada'>";
 						$rows .= "<div id='entrada'>";
-							$rows .= "<img src='acreditacion/img/entradaDES.jpg'>";
+							$rows .= "<img src='".$acreditacion['img_acr']."'>";
 							$rows .="<img  id='marcaag' src='acreditacion/img/body.png'>";
 							$rows .="<div id='nombre'>";
 							$rows .= $acreditacion['nombre']." ".$acreditacion['apellido'];
@@ -279,11 +302,7 @@ Este metodo devuelve todas las acreditaciones por su dni y codigo
 						$rows .= "<p>Hola <strong> ".$acreditacion['nombre']." ".$acreditacion['apellido'].":</strong><br>
 							Gracias por acreditarse  a <strong>Expohobby ".$acreditacion['fechaExp']." ".$acreditacion['nomExp']." </strong>.<br>
 							Corte la entrada por las l&iacute;neas discontinuas, esta entrada es personal y deber&aacute; presentarse con su DNI o Cedula de identidad en mano para 		que tenga validez.<br><br>
-							* Cup&oacute;n con 50% de descuento, personal e intransferible.<br> 
-							* Menores de 6 a&ntilde;os entrada sin cargo.<br>
-							* <strong>Expohobby</strong> se reserva el derecho de admisi&oacute;n y permanencia.<br>
-							* No valida para el d&iacute;a Domingo ".$acreditacion['fechaExp'].".<br>
-							* Prohibida su reproducci&oacute;n y comercializaci&oacute;n";
+							<p> ".$acreditacion['text_acr']."</p>";
 					$rows .= "</div>";
 				$rows .= "</div>";
 				$rows .="<div id='contemafilms'>";
