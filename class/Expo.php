@@ -226,11 +226,55 @@ class Expo
 				$tmp['teaser'] = $expo['teaser'];
 				$tmp['class'] = $class;
 				$tmp['image'] = $expo['image'];
-				$exposOrdenadas[$mes] = $tmp;
+				$tmp['fecha_inicio'] = $expo['fecha_inicio'];
+				$exposOrdenadasMes[$mes] = $tmp;
 			}
+			foreach ($exposOrdenadasMes as $expo) {
+				$exposOrdenadas[$expo['fecha_inicio']] = $expo;
+			}
+			sort($exposOrdenadas);
 			return $exposOrdenadas;
 		}else{
-			
+			return false;
+		}
+	}
+
+	public function getLastExpo(){
+		$mysqli = DataBase::connex();
+		$query = '
+			SELECT * FROM 
+				expo
+			WHERE
+				status = "Publicado"
+			ORDER BY
+				fecha_inicio 
+					DESC
+			LIMIT
+				1 
+		';
+		$result = $mysqli->query($query);
+		if($result->num_rows > 0){
+			while ($row = $result->fetch_assoc()){
+				$expo['id'] = $row['id'];
+				$expo['title'] = $row['title'];
+				$expo['maps'] = $row['maps'];
+				$expo['image'] = $row['image'];
+				$expo['dias_horarios'] = $row['dias_horarios'];
+				$expo['plano'] = $row['plano'];
+				$expo['reglamento'] = $row['reglamento'];
+				$expo['como_participar'] = $row['como_participar'];
+				$expo['alojamiento'] = $row['alojamiento'];
+				$expo['prensa'] = $row['prensa'];
+				$expo['body'] = $row['body'];
+				$expo['teaser'] = $row['teaser'];
+				$expo['fecha_inicio'] = $row['fecha_inicio'];
+				$expo['fecha_fin'] = $row['fecha_fin'];
+				$expo['status'] = $row['status'];	
+			}
+			$result->free();
+			$mysqli->close();
+			return $expo;
+		}else{
 			return false;
 		}
 	}

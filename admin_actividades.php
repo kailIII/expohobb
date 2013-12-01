@@ -26,8 +26,7 @@
           <?php
             include_once 'includes.php';
             $listado_actividades = new Empresa();
-
-            print $listado_actividades->getActividades($_SESSION['empresa']['id'], $_SESSION['empresa']['expo'], 'usuario');
+            print $listado_actividades->getActividades( $_SESSION['empresa']['expo'], $_SESSION['empresa']['id'],'usuario');
           ?>
         </table>
       </div>

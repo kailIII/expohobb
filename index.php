@@ -106,28 +106,25 @@
             </div>
           </div>
         </article>
+        <?php $lastExpo = $expoClass->getLastExpo(); ;?>
         <article class="exposiciones">
           <div class="cont-art">
-              <a href="expos.html" >
-                <img alt="imag"  border="0px" width="144" height="173" src="upload_images/fiesta.jpg"></a>
+              <a href="exposiciones.php?id=<?php echo $lastExpo['id']; ?>" >
+                <img alt="imag"  border="0px" width="144" height="173" src="<?php echo $lastExpo['image'] ?>"></a>
               <header>
                 <h2>
-                  <a href="expos.html">"Expohobby" Fiesta y decoración </a>
+                  <a href="exposiciones.php?id=<?php echo $lastExpo['id']; ?>"><?php echo $lastExpo['title'] ?></a>
                 </h2>
               </header>
               <section>
                 <p class="subtitulo">
-                  Expo: <strong>Septiembre 2013</strong> V, S, D de 13:00hs a 20:00hs
-                  
+                  <?php echo $lastExpo['dias_horarios']; ?>
                 </p>
                 <div class="descripcion">
-                  <p>
-                    Los mejores exponentes de la decoración de fiestas, decoración de tortas, modelado en porcelana fría, souvenirs, desayunos y mucho más... Te esperamos desde el viernes 13 al domingo 15 de septiembre en Sarmiento 1867 C. de Buenos Aires de 13 a 20hs
-                  </p>
+                  <?php echo $lastExpo['teaser']; ?>
                 </div>
-                <a href="#" title="Link no disponible" class="btn-classic2">
-                  Ver todas las
-                  <span class="color-inst">Expohobby's</span>
+                <a href="exposicion.php" title="Link no disponible" class="btn-classic2">
+                  Ver todas las <span class="color-inst">Expohobby's</span>
                 </a>
               </section>
             </div>
