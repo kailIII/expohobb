@@ -51,7 +51,7 @@ class Acred
 			$rows = $this->format_acredt($datosAcre);
 			return $rows;
 		}else{
-			header("Location: acredita.php?id=".$acreditacion['id_expo']."&error='camp_repetido'");	
+			header("Location: acreditacion.php?id=".$acreditacion['id_expo']."&error='camp_repetido'");	
 			}
 		}
 	}
@@ -171,7 +171,7 @@ class Acred
 		// Notificamos al usuario del estado del mensaje 
 			
 			if(!$classMail->Send()){ 
-			header("Location: acredita.php?id=".$datAcre['id_expo']."&error='camp_email_mal'");	
+			header("Location: acreditacion.php?id=".$datAcre['id_expo']."&error='camp_email_mal'");	
 			}else{
 
 				$mysqli = DataBase::connex();
@@ -192,7 +192,7 @@ class Acred
 
 		$mysqli->query($query);
 		$mysqli->close();
-		header("Location: acredita.php?id=".$datAcre['id_expo']."&bien='mail_ok'");	
+		header("Location: acreditacion.php?id=".$datAcre['id_expo']."&bien='mail_ok'");	
 			}
 		}
 	}
@@ -294,6 +294,162 @@ Este metodo devuelve todas las acreditaciones por su dni y codigo
 				
 		}
 		return $rows;
+	}
+	
+		/********************************************************
+	paginador
+	********************************************************/
+	private function getPager($page)
+	{
+		$mysqli = DataBase::connex();
+		$query = '
+			SELECT COUNT(*) as acreditaciones FROM 
+				acreditacion
+			
+		';
+		$result = $mysqli->query($query);
+		if($result->num_rows > 0){
+			while ($row = $result->fetch_assoc()) 
+			{
+				$registros = $row['acreditaciones'];
+			}
+			$result->free();
+			$mysqli->close();
+			$paginas = $registros / 100;
+			if($registros > 100){
+				$form = $this->makeSelect(floor($paginas), $page);
+				return $form;
+			}
+			return false;
+		}else{
+			return false;
+		}
+	}
+
+	private function makeSelect($pages, $page)
+	{
+		$options = '';
+		for ($i=1; $i <= $pages; $i++) { 
+			$options .= '<option value="'.$i.'"';
+			if($i==$page){
+				$options .= ' selected ';
+			}
+			 $options .= '>'.$i.'</option>';
+		}
+		$form = 'Pagina <select id="selector_pagina" name="selector_pagina">';
+			$form .= $options;
+		$form .='</select>';
+        return $form;
+	}
+	/********************************************************
+	Este metodo devuelve todos los Usuarios de la base de datos
+	********************************************************/
+	public function getUsuarios($page)
+	{
+		if($page == 1){
+			$start = 0;
+			$end = 200;
+		}else{
+			$start = $page * 200 + 1;
+			$end = $page * 200 + 200;
+		}
+		
+		$rows['pager'] = $this->getPager($page);
+		$mysqli = DataBase::connex();
+		$query = '
+			SELECT * FROM 
+				acreditacion
+			ORDER BY id DESC
+			LIMIT '.$start.' , '. $end
+		;
+		$result = $mysqli->query($query);
+		if($result->num_rows > 0){
+			while ($row = $result->fetch_assoc()) 
+			{
+				$usuario['id'] = $row['id'];
+				$usuario['email'] = $row['email'];
+				$usuario['nombre'] = $row['nombre'];
+				$usuario['apellido'] = $row['apellido'];
+				$usuario['dni'] = $row['dni'];
+				
+				
+				$usuarios[] = $usuario;
+			}
+			$result->free();
+			$mysqli->close();
+			$rows['list'] = $this->format_list_usuarios($usuarios);
+			$rows['email'] = $this->format_list_usuarios_email($usuarios);
+			
+	    return $rows;
+		}else{
+			return false;
+		}
+	}
+	/********************************************************
+	Muestra solo los mails  para seleccionar
+	********************************************************/
+	private function format_list_usuarios_email($email){
+		$rows = '';
+		foreach ($email as $usuario) {
+				$rows .= $usuario['email'].'<br>';
+		}
+		return $rows;
+	}
+	/********************************************************
+	Genera el listado de mails de cada dia
+	********************************************************/
+	private function format_list_usuarios($list){
+		$rows = '';
+		foreach ($list as $usuario) {
+			$rows .= '<tr>';
+				$rows .= '<td class="copymail">'.$usuario['email'].' </td>';
+				$rows .= '<td>'.$usuario['nombre'].' '.$usuario['apellido'].'</td>';
+				$rows .= '<td>'.$usuario['dni'].'</td>';
+	
+	
+				$rows .= '<td>';
+				$rows .= '<a href="#modal_confirmation_'.$usuario['id'].'" class="btn-classic eliminar_revista">Eliminar</a>';
+					$rows .= '<div id="modal_confirmation_'.$usuario['id'].'" class="zoom-anim-dialog mfp-hide modal_confirmation">';
+						$rows .= '<h3>Eliminar Usuario</h3>';
+						$rows .= '<p>Estas seguro que deceas eliminar este Usuario?</p>';
+						$rows .= '<form id="usuario_eliminar" action="controllers.php" method="POST">';
+							$rows .= '<input type="hidden" name="id" value="'.$usuario['id'].'"/>';
+							$rows .= '<input id="btn_cancelar" class="btn-classic" type="button" value="Cancelar" name="btn_cancelar" />'; 
+							$rows .= '<input id="btn_usuario_eliminar" class="btn-classic" type="submit" value="Eliminar" name="btn_usuario_eliminar2" />';
+						$rows .= '</form>';
+					$rows .= '</div>';
+				$rows .= '</td>';
+			$rows .= '</tr>';
+		}
+		return $rows;
+	}
+	/********************************************************
+	Este metodo elimina un Usuario especifico
+	********************************************************/
+ 	public function deleteUsuario($id){
+	   	$mysqli = DataBase::connex();
+		$query = '
+			DELETE FROM 
+				acreditacion 
+			WHERE 
+				acreditacion.id = '.$id.'
+			LIMIT
+				1
+		';
+		$mysqli->query($query);
+		$mysqli->close();
+	}
+	/********************************************************
+	Este metodo elimina todos los usuarios
+	********************************************************/
+ 	public function deleteacred(){
+	   	$mysqli = DataBase::connex();
+		$query = '
+			TRUNCATE TABLE 
+				acreditacion 
+		';
+		$mysqli->query($query);
+		$mysqli->close();
 	}
 }
 ?>

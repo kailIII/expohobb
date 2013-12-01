@@ -4,5 +4,6 @@
 	<li><a title="Revista" href="listado_revistas.php">Revistas</a></li>
 	<li><a title="Revista" href="listado_usuarios.php">Usuarios</a></li>
 	<li><a title="Revista" href="listado_publicidad.php">Publicidad</a></li>
+    <li><a title="Revista" href="listado_usuarios_acr.php">Acreditación</a></li>
 	<li><a title="Salir" href="logout.php">Salir</a></li>
 </ul>

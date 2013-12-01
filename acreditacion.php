@@ -132,13 +132,13 @@
   								<p><strong>Ocurrió un problema!</strong> No se ha podido enviar la acreditación a ese email, por favor intente nuevamente.</p>
 							</div>";
                   
-				  }else{ if($_GET['error']=='camp_repetido'){
+				  }else{ if(isset($_GET['error']) and $_GET['error']=='camp_repetido'){
 					  echo "<div class='alert-error'>
   						
   								<p><strong>Ocurrió un problema!</strong> Este email ya fue registrado para esta exposición, por favor intente nuevamente con otro</p>
 							</div>";
 					  
-					  }else{ if($_GET['error']=='camp_vacio'){
+					  }else{ if(isset($_GET['error']) and $_GET['error']=='camp_vacio'){
 						echo "<div class='alert-error'>
   						
   								<p><strong>Ocurrió un problema!</strong> Campos vacíos? , por favor complete nuevamente el formulario</p>

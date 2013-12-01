@@ -67,6 +67,7 @@
 		$user->deleteUsuario($_POST['id']);
 		header("Location: listado_usuarios.php");
 	}
+	
 	if(isset($_POST['agregar_publicidad']))
 	{
 		$publicidad = new Publicidad();
@@ -193,8 +194,18 @@
 		//header("Location: acreditacion.php?id=".$_POST['id_expo']);	
 	}
 
-
-
+   if(isset($_POST['btn_usuario_eliminar2']))
+	{
+		$user = new Acred();
+		$user->deleteUsuario($_POST['id']);
+		header("Location: listado_usuarios_acr.php");
+	}
+	if(isset($_POST['btn_usuario_eliminar_todos']))
+	{
+		$user = new Acred();
+		$user->deleteacred();
+		header("Location: listado_usuarios_acr.php");
+	}
 
 
 
