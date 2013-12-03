@@ -35,11 +35,9 @@ CREATE TABLE IF NOT EXISTS `acreditacion` (
   `codigoC` varchar(250) NOT NULL,
   `nomExp` varchar(250) NOT NULL,
   `fechaExp` varchar(50) NOT NULL,
+  `idExp` smallint(6) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
-
---
--- Volcar la base de datos para la tabla `acreditacion`
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2;
 --
 

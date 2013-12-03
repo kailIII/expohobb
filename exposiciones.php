@@ -95,7 +95,16 @@
             <section class="secexpo">
              
               	  <div class="descripcion-expo">
-
+                    <?php
+                      $ahora = date('Y-m-d');
+                      $fin = $newExpo['fecha_fin'];
+                      if($ahora > $fin){
+                        $vigente = true;
+                      }else{
+                        $vigente = false;
+                      }
+                      var_dump($vigente);
+                    ?>
                   	<p><span><?php echo $newExpo['dias_horarios'];?></span></p>
                   
                   </div>
@@ -109,17 +118,20 @@
                       <div class="descripcion-expo2">
                          <?php echo $newExpo['body'];?>
                       </div>
-                     <ul class="optdes_expo">
-                     	<div class="itm1"></div>
-                        <?php if(!empty($newExpo['maps'])): ?>
-                          <li><a href="#modal_confirmation_ver" id="seleccion1" class="seleccionar_us">Cómo llegar?</a></li>
-                        <?php endif?>
-                        <li><a href="actividades.php?id=<?php echo $_GET['id'];?>">Actividades</a></li>
-                        <li class="ultli"><a href="acreditacion.php?id=<?php echo $newExpo['id'];?>" id="acreditacion"  class="acreditacion">Acreditación</a></li>
-                    
-                    </ul>				
+                    <?php if($vigente): ?>
+                      <ul class="optdes_expo">
+                       	<div class="itm1"></div>
+                          <?php if(!empty($newExpo['maps'])): ?>
+                            <li><a href="#modal_confirmation_ver" id="seleccion1" class="seleccionar_us">Cómo llegar?</a></li>
+                          <?php endif?>
+                          <li><a href="actividades.php?id=<?php echo $_GET['id'];?>">Actividades</a></li>
+                          <li class="ultli"><a href="acreditacion.php?id=<?php echo $newExpo['id'];?>" id="acreditacion"  class="acreditacion">Acreditación</a></li>
+                      </ul>
+                    <?php endif;?>	
                   </div>
                   <div class="con-act">
+                    <?php if($vigente): ?>
+
                   	<div class="titi-act">
                     	<h3>Actividades Recientes</h3>
                     </div>
@@ -236,19 +248,37 @@
                     </div>
                   </div>	
                 </div>	
+              <?php else:?>
+                <div class="titi-act">
+                  <h3>Imagenes</h3>
+                </div>
+                <div id="container">
+                <!--  comienza repit de actividades-->
+                <?php $images = $expoClass->traerImagenes($_GET['id']); ?>
+                <?php if($images): ?>
+                  <div class="zoom-gallery">
+                  <?php foreach ($images as $image): ?>
+                    <a href="<?php echo $image['image'];?>" title='<?php echo $newExpo['title'];?>'>
+                      <img class="imgact" title='<?php echo $newExpo['title'];?>' alt="<?php echo $newExpo['title'];?>" src="<?php echo $image['image'];?>"  width="250" />
+                    </a>
+                  <?php endforeach; ?>
+                  </div>
+                <?php endif?>
+                <!--  fin repit de actividades-->
+              </div>
+              <?php endif?>
+              </div>
             </section>
         </article>
-    </div>
    </div>
    <!-- modal -->
    <div id="modal_confirmation_ver" class="zoom-anim-dialog mfp-hide modal_confirmation"></div>
    <script type="text/javascript">
-                    jQuery(document).ready(function($) {
-                        $("#seleccion1").click(function(){
-                   		$('#modal_confirmation_ver').html('<h3 class="cont_vermap">Cómo llegar a <?php echo $newExpo['title'];?>?</h3><?php echo $newExpo['maps'];?><img src="imagenes/subtes-08.jpg" alt="Subtes"/><button class="mfp-close" type="button" title="Close (Esc)">×</button>');
-                        });
-						
-                    });
+      jQuery(document).ready(function($) {
+        $("#seleccion1").click(function(){
+          $('#modal_confirmation_ver').html('<h3 class="cont_vermap">Cómo llegar a <?php echo $newExpo['title'];?>?</h3><?php echo $newExpo['maps'];?><img src="imagenes/subtes-08.jpg" alt="Subtes"/><button class="mfp-close" type="button" title="Close (Esc)">×</button>');
+        });
+      });
   </script>
   <footer>
     <?php include_once 'footer.php'; ?>

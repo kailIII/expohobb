@@ -1199,7 +1199,26 @@ class Expo
 	public function traerExpositores($expoId){
 		return $this->traerExpositoresQuery($expoId, "si");
 	}
-
+	public function traerImagenes($expoId){
+		$mysqli = DataBase::connex();
+		$query = '
+			SELECT * FROM 
+				expo_images
+			WHERE
+				id_expo = ' . $expoId . '
+		';
+		$result = $mysqli->query($query);
+		while ($row = $result->fetch_assoc()) 
+		{
+			$image['id'] = $row['id'];
+			$image['id_expo'] = $row['id_expo'];
+			$image['image'] = $row['image'];
+			$images[] = $image;
+		}
+		$result->free();
+		$mysqli->close();
+		return $images;
+	}
 
 }
 ?>
