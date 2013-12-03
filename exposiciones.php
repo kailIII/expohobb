@@ -97,8 +97,8 @@
               	  <div class="descripcion-expo">
                     <?php
                       $ahora = date('Y-m-d');
-                      $fin = $newExpo['fecha_fin'];
-                      if($ahora > $fin){
+                      $fin = $newExpo['fecha_fin']; 
+                      if($ahora < $fin){
                         $vigente = true;
                       }else{
                         $vigente = false;
