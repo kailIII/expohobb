@@ -37,6 +37,7 @@ class Expo
 				expo.title = "'. $mysqli->real_escape_string($expo['titulo']) .'",
 				expo.maps = "'. $mysqli->real_escape_string($expo['maps']) .'",
 				expo.image = "'. $pathIgame[0] .'",
+				expo.video = "'. $mysqli->real_escape_string($expo['video']) .'",
 				expo.dias_horarios = "'. $mysqli->real_escape_string($expo['dias_horarios']) .'",
 				expo.plano = "'.  $pathIgame[1] .'",
 				expo.reglamento = "'. $mysqli->real_escape_string($expo['reglamento']).'",
@@ -47,6 +48,8 @@ class Expo
 				expo.teaser = "'. $mysqli->real_escape_string($expo['descripcion_corta']).'",
 				expo.fecha_inicio = "'. $mysqli->real_escape_string($expo['inicio']).'",
 				expo.fecha_fin = "'. $mysqli->real_escape_string($expo['fin']).'",
+				expo.img_acr = "'. $pathIgame[2] .'",
+				expo.text_acr = "'. $mysqli->real_escape_string($expo['text_acr']).'",
 				expo.status = "'. $mysqli->real_escape_string($expo['status']).'"
 			';
 		$mysqli->query($query);
@@ -76,6 +79,7 @@ class Expo
 				$expo['title'] = $row['title'];
 				$expo['maps'] = $row['maps'];
 				$expo['image'] = $row['image'];
+				$expo['video'] = $row['video'];
 				$expo['dias_horarios'] = $row['dias_horarios'];
 				$expo['plano'] = $row['plano'];
 				$expo['reglamento'] = $row['reglamento'];
@@ -86,6 +90,8 @@ class Expo
 				$expo['teaser'] = $row['teaser'];
 				$expo['fecha_inicio'] = $row['fecha_inicio'];
 				$expo['fecha_fin'] = $row['fecha_fin'];
+				$expo['img_acr'] = $row['img_acr'];
+				$expo['text_acr'] = $row['text_acr'];
 				$expo['status'] = $row['status'];
 				
 				$expos[] = $expo;
@@ -131,7 +137,7 @@ class Expo
 				$rows .= '<td>';
 					$rows .= '<form id="expo_editar" action="listado_imagenes.php" method="GET">';
 						$rows .= '<input type="hidden" name="id" value="'.$expo['id'].'"/>';
-						$rows .= '<input id="btn_expo_agregar_imagen" class="btn-classic" type="submit" value="Agregar o Quiter" />';
+						$rows .= '<input id="btn_expo_agregar_imagen" class="btn-classic" type="submit" value="Agregar o Quitar" />';
 					$rows .= '</form>';
 				$rows .= '</td>';
 				$rows .= '<td>';
@@ -169,6 +175,7 @@ class Expo
 				$expo['title'] = $row['title'];
 				$expo['maps'] = $row['maps'];
 				$expo['image'] = $row['image'];
+				$expo['video'] = $row['video'];
 				$expo['dias_horarios'] = $row['dias_horarios'];
 				$expo['plano'] = $row['plano'];
 				$expo['reglamento'] = $row['reglamento'];
@@ -179,6 +186,8 @@ class Expo
 				$expo['teaser'] = $row['teaser'];
 				$expo['fecha_inicio'] = $row['fecha_inicio'];
 				$expo['fecha_fin'] = $row['fecha_fin'];
+				$expo['img_acr'] = $row['img_acr'];
+				$expo['text_acr'] = $row['text_acr'];
 				$expo['status'] = $row['status'];	
 				$expos[] = $expo;
 			}
@@ -259,6 +268,7 @@ class Expo
 				$expo['title'] = $row['title'];
 				$expo['maps'] = $row['maps'];
 				$expo['image'] = $row['image'];
+				$expo['video'] = $row['video'];
 				$expo['dias_horarios'] = $row['dias_horarios'];
 				$expo['plano'] = $row['plano'];
 				$expo['reglamento'] = $row['reglamento'];
@@ -269,6 +279,8 @@ class Expo
 				$expo['teaser'] = $row['teaser'];
 				$expo['fecha_inicio'] = $row['fecha_inicio'];
 				$expo['fecha_fin'] = $row['fecha_fin'];
+				$expo['img_acr'] = $row['img_acr'];
+				$expo['text_acr'] = $row['text_acr'];
 				$expo['status'] = $row['status'];	
 			}
 			$result->free();
@@ -301,6 +313,7 @@ class Expo
 			$expo['title'] = $row['title'];
 			$expo['maps'] = $row['maps'];
 			$expo['image'] = $row['image'];
+			$expo['video'] = $row['video'];
 			$expo['dias_horarios'] = $row['dias_horarios'];
 			$expo['plano'] = $row['plano'];
 			$expo['reglamento'] = $row['reglamento'];
@@ -311,6 +324,8 @@ class Expo
 			$expo['teaser'] = $row['teaser'];
 			$expo['fecha_inicio'] = $row['fecha_inicio'];
 			$expo['fecha_fin'] = $row['fecha_fin'];
+			$expo['img_acr'] = $row['img_acr'];
+			$expo['text_acr'] = $row['text_acr'];
 			$expo['status'] = $row['status'];
 		}
 		$result->free();
@@ -338,6 +353,12 @@ class Expo
     	} else {
     		$pathPlano = $expo['name_plano'];
     	}
+		if($images['img_acr']['name'] != ''){
+    	$pathimg_acr = $this->updateImage($images['img_acr'], $expo['name_img_acr']);
+
+    	} else {
+    		$pathimg_acr = $expo['name_img_acr'];
+    	}
 
     	$mysqli = DataBase::connex();
     	$q = '
@@ -347,6 +368,7 @@ class Expo
     			expo.title = "'. $mysqli->real_escape_string($expo['titulo']) .'",
 				expo.maps = "'. $mysqli->real_escape_string($expo['maps']) .'",
 				expo.image = "'. $pathImage .'",
+				expo.video = "'. $mysqli->real_escape_string($expo['video']) .'",
 				expo.dias_horarios = "'. $mysqli->real_escape_string($expo['dias_horarios']) .'",
 				expo.plano = "'.  $pathPlano .'",
 				expo.reglamento = "'. $mysqli->real_escape_string($expo['reglamento']).'",
@@ -357,6 +379,8 @@ class Expo
 				expo.teaser = "'. $mysqli->real_escape_string($expo['descripcion_corta']).'",
 				expo.fecha_inicio = "'. $mysqli->real_escape_string($expo['inicio']).'",
 				expo.fecha_fin = "'. $mysqli->real_escape_string($expo['fin']).'",
+				expo.img_acr = "'. $pathimg_acr .'",
+				expo.text_acr = "'. $mysqli->real_escape_string($expo['text_acr']).'",
 				expo.status = "'. $mysqli->real_escape_string($expo['status']).'"
     		WHERE 
     			expo.id = "' . $expo['expo_id'] . '" 
@@ -1121,7 +1145,9 @@ class Expo
 				AE.foto AS foto, 
 				AE.actividad AS actividad,
 				E.name,
+				E.image,
 				EE.stand
+				
 			FROM 
 				actividades_expositores AS AE
 			JOIN 
@@ -1142,6 +1168,7 @@ class Expo
 				$actividad['foto'] = $row['foto'];
 				$actividad['actividad'] = $row['actividad'];
 				$actividad['name'] = $row['name'];
+				$actividad['image'] = $row['image'];
 				$actividad['stand'] = $row['stand'];
 				$actividades[] = $actividad;
 			}
@@ -1208,16 +1235,20 @@ class Expo
 				id_expo = ' . $expoId . '
 		';
 		$result = $mysqli->query($query);
+		if($result->num_rows > 0){
 		while ($row = $result->fetch_assoc()) 
 		{
 			$image['id'] = $row['id'];
 			$image['id_expo'] = $row['id_expo'];
 			$image['image'] = $row['image'];
 			$images[] = $image;
+			
+		}
+		return $images;
 		}
 		$result->free();
 		$mysqli->close();
-		return $images;
+		
 	}
 
 }

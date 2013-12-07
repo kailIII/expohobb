@@ -1,11 +1,23 @@
-<?php include_once 'sesion.php'; ?>
-<?php include_once 'includes.php';
-  
-
+<?php  if(isset($_GET['id']) and $_GET['id'] != ""){
+	$id=$_GET['id'];
+ include_once 'sesion.php'; 
+ include_once 'includes.php';
+$expoClass = new Expo();
+$newExpo = $expoClass->getOneExpo($id); 
+$actividades = $expoClass->actividadesExpo($id);
+$descrip = str_replace("<p>", " ", strip_tags($newExpo['teaser']));  
+  $descrip = str_replace("</p>", " ", $descrip ); 
+  $descrip = str_replace("<em>", " ", $descrip ); 
+  $descrip = str_replace("</em>", " ", $descrip );
+  $descrip = str_replace("<strong>", " ", $descrip );
+  $descrip = str_replace("</strong>", " ", $descrip );
+  }else{
+    header( "Location:exposicon.php");	
+  }
 ?>
 <!DOCTYPE html>
 <head>
-  <title><?php //echo $revista['title'];?> | Expohobby</title>
+  <title>Actividades para <?php echo $newExpo['title'];?> | Expohobby</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link rel="profile" href="http://gmpg.org/xfn/11" />
   <!-- CSS -->
@@ -33,16 +45,16 @@
    <script src="js/jquery.masonry.min.js"></script>
 
   <!-- JS -->
-  <meta property="og:title" content="<?php //echo $revista['title'];?> | Expohobby" />
-  <meta property="og:description" content="<?php //echo $revista['edition'].' '.$descrip;?>"/>
-  <meta property="og:image" content="<?php //echo $revista['image'];?>" />
-  <meta http-equiv="title" content="<?php //echo $revista['title'];?>"> 
+  <meta property="og:title" content='<?php echo $newExpo['title'];?> | Expohobby' />
+  <meta property="og:description" content='<?php echo $descrip;?>'/>
+  <meta property="og:image" content="<?php echo $newExpo['image'];?>" />
+  <meta http-equiv="title" content='<?php echo $newExpo['title'];?>'> 
   <meta name="DC.Creator" content="www.estudiomultimedieaeb.com.ar"> 
   <meta name="keywords" content="revista, Revistas, digital, paso a paso, EXPOHOBBY Deco Digital ">
   <meta http-equiv="keywords" content="revista, Revistas, digital, paso a paso, EXPOHOBBY Deco Digital ">
-  <meta name="description" content="<?php //echo $descrip;?>">
-  <meta http-equiv="description" content="<?php //echo $descrip;?>"> 
-  <meta http-equiv="DC.Description" content="<?php //echo $descrip;?>"> 
+  <meta name="description" content='<?php echo $descrip;?>'>
+  <meta http-equiv="description" content='<?php echo $descrip;?>'> 
+  <meta http-equiv="DC.Description" content='<?php echo $descrip;?>'> 
   <meta name="author" content="Expohobby">
   <meta name="DC.Creator" content="Estudio multimedia EB "> 
   <meta name="vw96.objectype" content="Document">
@@ -67,10 +79,7 @@
     <header>
       <?php include_once 'logo.php'; ?>
       <?php include_once 'main_menu.php'; ?>
-      <?php 
-        $newExpo = $expoClass->getOneExpo($_GET['id']); 
-        $actividades = $expoClass->actividadesExpo($_GET['id']);
-      ?>
+
     </header>
   </div>
   <div class="cont_actividad">
@@ -104,7 +113,7 @@
             </div>
           </div>
           <div class="descripcion-expo2">
-            <p>Los mejores exponentes de la decoración de fiestas, decoración de tortas, modelado en porcelana fría, souvenirs, desayunos y mucho más... Te esperamos desde el viernes 13 al domingo 15 de septiembre en Sarmiento 1867 C. de Buenos Aires de 13 a 20hs</p>
+            <p><?php echo $newExpo['body'];?></p>
           </div>   
           <div class="vol-exp"> <a class="btn-classic" title="<?php echo $newExpo['title'];?>" href="exposiciones.php?id=<?php echo $newExpo['id'];?>">Volver a <?php echo $newExpo['title'];?></a>
           </div>
@@ -112,21 +121,25 @@
       </header>
       <section>
         <div id="container">
-          <!--  comienza repit de actividades-->
-          <?php foreach ($actividades as $actividad): ?>
-          <div class="item">
-            <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="<?php echo $actividad['foto'];?>"  width="250" />
-            <div class="cont-art-act-exp">
-              <img class="img_exp" src="upload_images/revista.jpg" width="45"/>
-              <p><span><strong><?php echo $actividad['stand'];?></strong></span></p><br>
-              <p><span><?php echo $actividad['name'];?></span></p>
-            </div>
-            <div class="descrip-act"> 
-              <p><?php echo $actividad['actividad'];?></p>
-            </div> 
-          </div>
-        <?php endforeach; ?>
-          <!--  fin repit de actividades-->
+		  <?php if(!empty($actividades)){ ?>
+                  <!--  comienza repit de actividades-->
+                  <?php foreach ($actividades as $actividad): ?>
+                  <div class="item">
+                    <img class="imgact" title="<?php echo $newExpo['title'];?>" alt="<?php echo $newExpo['title'];?>" src="<?php echo $actividad['foto'];?>"  width="250" />
+                    <div class="cont-art-act-exp">
+                      <img class="img_exp" src="<?php echo $actividad['image'];?>" width="45"/>
+                      <p><span><strong><?php echo $actividad['stand'];?></strong></span></p><br>
+                      <p><span><?php echo $actividad['name'];?></span></p>
+                    </div>
+                    <div class="descrip-act"> 
+                      <p><?php echo $actividad['actividad'];?></p>
+                    </div> 
+                  </div>
+                <?php endforeach; ?>
+                  <!--  fin repit de actividades-->
+		   <?php }else{
+			  			 echo '<p class="vacioAct">Aun no se generó ninguna actividad sobre esta exposición  :(</p>';
+		  			 }?> 
         </div>
       </section>
     </article>

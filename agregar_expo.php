@@ -29,20 +29,25 @@
            <input id="titulo" type="text" name="titulo" required="required" class="input_text_revista input_text" />
           </div>
           <div class="input_wapper">
-            <label>Imagen</label>
+            <label>Imagen (227x307)</label>
             <input id="image" type="file" name="image" required="required" class="input_file_revista input_file" />
           </div>
+           <div class="input_wapper">
+            <label>Video (width="800" height="450")</label>
+            <input id="video" type="text" name="video"  class="input_text_revista input_text" />
+          </div>
+          
           <div class="input_wapper">
             <label>Dias y Horarios</label>
            <input id="dias_horarios" type="text" name="dias_horarios" required="required" class="input_text_revista input_text" />
           </div>
           <div class="input_wapper">
-            <label>Iframe del Mapa</label>
-           <input id="maps" type="text" name="maps" required="required" class="input_text_revista input_text" />
+            <label>Iframe del Mapa (width="573" height="350")</label>
+           <input id="maps" type="text" name="maps"  class="input_text_revista input_text" />
           </div>
           <div class="input_wapper">
-            <label>Plano</label>
-            <input id="plano" type="file" name="plano" required="required" class="input_file_revista input_file" />
+            <label>Plano ( ancho de 800px)</label>
+            <input id="plano" type="file" name="plano"  class="input_file_revista input_file" />
           </div>
           <div class="input_wapper">
             <label>Reglamento</label>
@@ -62,11 +67,11 @@
           </div>
           <div class="input_wapper">
             <label>Descripcion Larga</label>
-            <textarea id="descripcion_larga" name="descripcion_larga" class="ckeditor"></textarea>
+            <textarea id="descripcion_larga" name="descripcion_larga"  required="required" class="ckeditor"></textarea>
           </div>
           <div class="input_wapper">
             <label>Descripcion Corta</label>
-            <textarea id="descripcion_corta" name="descripcion_corta" class="ckeditor"></textarea>
+            <textarea id="descripcion_corta" name="descripcion_corta" required="required" class="ckeditor"></textarea>
           </div>
           <div class="input_wapper">
             <label>Fecha de Inicio</label>
@@ -75,6 +80,14 @@
           <div class="input_wapper">
             <label>Fecha de Finalizacion</label>
            <input id="fin" type="text" name="fin" required="required" class="input_text_revista input_text" />
+          </div>
+           <div class="input_wapper">
+            <label>Acreditacion (medida unica! 600x201)</label>
+            <input id="img_acr" type="file" name="img_acr"  class="input_file_revista input_file" />
+          </div>
+           <div class="input_wapper">
+            <label>Reglamento acreditacion</label>
+            <textarea id="text_acr" name="text_acr"  class="ckeditor"></textarea>
           </div>
           <div class="input_wapper">
             <label>Estado</label>

@@ -37,10 +37,15 @@
             <input value = '<?php echo $newExpo['title'];?>' id="titulo" type="text" name="titulo" required="required" class="input_text_revista input_text" />
           </div>
           <div class="input_wapper">
-            <label>Imagen</label>
+            <label>Imagen (227x307)</label>
             <div id="preview_image_expo"><img alt='<?php echo $newExpo['title'];?>' title='<?php echo $newExpo['title'];?>' src="<?php echo $newExpo['image'];?>"/></div>
             <input type="hidden" name="name_image" value="<?php echo $newExpo['image'];?>" />
             <input id="image" type="file" name="image" class="input_file_revista input_file" />
+          </div>
+          <div class="input_wapper">
+            <label>Video (width="800" height="450")</label>
+            <div id="preview_image_expo"><?php echo $newExpo['video'];?></div>
+            <input value='<?php echo $newExpo['video'];?>' id="video" type="text" name="video"  class="input_text_revista input_text" />
           </div>
           <div class="input_wapper">
             <label>Dias y Horarios</label>
@@ -48,10 +53,10 @@
           </div>
           <div class="input_wapper">
             <label>Iframe del Mapa (Medidas aconsejables width="573" height="350")</label>
-            <input value='<?php echo $newExpo['maps'];?>' id="maps" type="text" name="maps" required="required" class="input_text_revista input_text" />
+            <input value='<?php echo $newExpo['maps'];?>' id="maps" type="text" name="maps"  class="input_text_revista input_text" />
           </div>
           <div class="input_wapper">
-            <label>Plano</label>
+            <label>Plano ( ancho de 800px)</label>
             <div id="preview_plano"><img alt='<?php echo $newExpo['title'];?>' title='<?php echo $newExpo['title'];?>' src="<?php echo $newExpo['plano'];?>"/></div>
             <input type="hidden" name="name_plano" value="<?php echo $newExpo['plano'];?>" />
             <input id="plano" type="file" name="plano" class="input_file_revista input_file" />
@@ -96,6 +101,16 @@
               $("#fin").datepicker( "setDate", <?php echo '"' . $newEndDate[1] .'/'. $newEndDate[2] .'/'. $newEndDate[0]. '"';?> );
             })(jQuery);
           </script>
+          <div class="input_wapper">
+            <label>Acreditacion (medida unica! 600x201)</label>
+            <div id="preview_image_expo"><img alt='<?php echo $newExpo['img_acr'];?>' title='<?php echo $newExpo['title'];?>' src="<?php echo $newExpo['img_acr'];?>"/></div>
+            <input type="hidden" name="name_image" value="<?php echo $newExpo['img_acr'];?>" />
+            <input id="img_acr" type="file" name="img_acr" class="input_file_revista input_file" />
+          </div>
+           <div class="input_wapper">
+            <label>Reglamento acreditacion</label>
+            <textarea id="text_acr" name="text_acr" class="ckeditor"><?php echo $newExpo['text_acr'];?></textarea>
+          </div>
           <div class="input_wapper">
             <label>Estado</label>
             <select id="status" class="label_reg" required="required" name="status">
