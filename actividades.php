@@ -1,19 +1,30 @@
-<?php  if(isset($_GET['id']) and $_GET['id'] != ""){
-	$id=$_GET['id'];
- include_once 'sesion.php'; 
- include_once 'includes.php';
-$expoClass = new Expo();
-$newExpo = $expoClass->getOneExpo($id); 
-$actividades = $expoClass->actividadesExpo($id);
-$descrip = str_replace("<p>", " ", strip_tags($newExpo['teaser']));  
-  $descrip = str_replace("</p>", " ", $descrip ); 
-  $descrip = str_replace("<em>", " ", $descrip ); 
-  $descrip = str_replace("</em>", " ", $descrip );
-  $descrip = str_replace("<strong>", " ", $descrip );
-  $descrip = str_replace("</strong>", " ", $descrip );
-  }else{
-    header( "Location:exposicon.php");	
-  }
+<?php if(isset($_GET['id']) and $_GET['id'] != ""){
+		include_once 'sesion.php'; 
+		include_once 'includes.php';
+		  $expo = new Expo();
+		  $expoClass= new Expo();
+		  if(isset($_SESSION['usuario'])){
+   			 if($validador->cookieValidator($_SESSION['usuario'],$_SESSION['token']) == 'ok'){
+				$newExpo = $expo->getOneExpo($_GET['id'],1);
+				$actividades = $expoClass->actividadesExpo($_GET['id']);	 
+			}else{
+				$newExpo = $expo->getOneExpo($_GET['id'],0);
+				$actividades = $expoClass->actividadesExpo($_GET['id']);
+			}
+		  }else{
+			 $newExpo = $expo->getOneExpo($_GET['id'],0); 
+			 $actividades = $expoClass->actividadesExpo($_GET['id']);
+		  }
+
+			$descrip = str_replace("<p>", " ", strip_tags($newExpo['teaser']));  
+		  $descrip = str_replace("</p>", " ", $descrip ); 
+		  $descrip = str_replace("<em>", " ", $descrip ); 
+		  $descrip = str_replace("</em>", " ", $descrip );
+		  $descrip = str_replace("<strong>", " ", $descrip );
+		  $descrip = str_replace("</strong>", " ", $descrip );
+	}else{
+			header( "Location:exposicion.php");	
+		}
 ?>
 <!DOCTYPE html>
 <head>

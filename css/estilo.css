@@ -102,7 +102,7 @@ background:url(../imagenes/blue_blue_puff.jpg) no-repeat scroll 0 0 #000;
 	border-right:#afadad solid thin;
 	padding:0px 5px 5px;
 	position:relative;
-   display:block;
+   display:inline-block;
 	z-index:100;
 
 	
@@ -718,6 +718,13 @@ top: 191px;
 margin-left: 18px;
 	
 }
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { background: #B351A9; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { background: #B351A9; color: white; }
+
+
+
+
 .list{
 	width:473px;
 	height:150px;
@@ -1549,6 +1556,7 @@ border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
  width: 762px;
+ height:391px;
  margin:0px auto;
 	
 }

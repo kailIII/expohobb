@@ -46,6 +46,8 @@
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
+
+
   <!-- JS -->
   <meta property="og:title" content='<?php echo $newExpo['title'];?> | Expohobby' />
   <meta property="og:description" content='<?php echo $descrip;?>'/>
@@ -83,7 +85,11 @@
   $(function() {
     $( "#tabs" ).tabs();
   });
+    $(function() {
+    $( "#optdes_expo" ).selectable();
+  });
   </script>
+
   <header>
     <?php include_once 'logo.php'; ?>
     <?php include_once 'main_menu.php'; ?>
@@ -179,25 +185,25 @@
                       <?php $expositores = $expoClass->traerEmpresas($_GET['id']); ?>
                       <?php $empresas = $expoClass->traerExpositores($_GET['id']); ?>  
                       <?php if($expositores):?>
-                        <li class="prili"><a href="#tabs-1">Expositores</a></li>
+                        <li class="prili ui-widget-content"><a href="#tabs-1">Expositores</a></li>
                       <?php endif; ?>
                       <?php if($empresas): ?>
-                        <li><a href="#tabs-2">Empresas Participantes</a></li>
+                        <li class="ui-widget-content"><a href="#tabs-2">Empresas Participantes</a></li>
                       <?php endif; ?>
                       <?php if(!empty($newExpo['plano'])): ?>
-                        <li><a href="#tabs-3">Planos</a></li>
+                        <li class="ui-widget-content"><a href="#tabs-3">Planos</a></li>
                       <?php endif; ?>
                       <?php if(!empty($newExpo['como_participar'])): ?>
-                        <li><a href="#tabs-4">Cómo participar?</a></li>
+                        <li class="ui-widget-content"><a href="#tabs-4">Cómo participar?</a></li>
                       <?php endif; ?>
                       <?php if(!empty($newExpo['reglamento'])): ?>
                         <li><a href="#tabs-5">Reglamento</a></li>
                       <?php endif; ?>
                       <?php if(!empty($newExpo['alojamiento'])): ?>
-                        <li><a href="#tabs-6">Alojamiento</a></li>
+                        <li class="ui-widget-content"><a href="#tabs-6">Alojamiento</a></li>
                       <?php endif; ?>
                       <?php if(!empty($newExpo['prensa'])): ?>
-                        <li class="ultli"><a href="#tabs-7">Prensa</a></li>
+                        <li class="ultli ui-widget-content"><a href="#tabs-7">Prensa</a></li>
                       <?php endif; ?>
                     </ul>
                     <div class="cont-arch" style="width:838px; display:inline-block">
