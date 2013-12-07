@@ -200,7 +200,7 @@ class Expo
 	}
 
 	public function expoPorMes(){
-		$expos = $this->expoPorMesQuery('ASC');
+		$expos = $this->expoPorMesQuery('DESC');
 		if($expos){
 			foreach ($expos as $expo) {
 				$fecha = strtotime($expo['fecha_inicio']);
@@ -295,18 +295,29 @@ class Expo
 	Este metodo devuelve una Expo especifica de la base de datos
 	lo que recibe de parametro es el id de la Expo
 	********************************************************/
-    public function getOneExpo($id)
+    public function getOneExpo($id,$permission)
 	{
-
+		
 		$mysqli = DataBase::connex();
+		if($permission==1){
 		$query = '
 			SELECT * FROM 
 				expo
 			WHERE 
-				expo.id = "' . $id . '"
+				expo.id = "' . $id . '" 
 			LIMIT 1
 		';
+		}else{
+		$query = '
+			SELECT * FROM 
+				expo
+			WHERE 
+				expo.id = "' . $id . '" and expo.status="Publicado"
+			LIMIT 1
+		';
+		}
 		$result = $mysqli->query($query);
+		if($result->num_rows > 0){
 		while ($row = $result->fetch_assoc()) 
 		{
 			$expo['id'] = $row['id'];
@@ -328,6 +339,10 @@ class Expo
 			$expo['text_acr'] = $row['text_acr'];
 			$expo['status'] = $row['status'];
 		}
+		}else{
+		header("Location: exposicion.php");	
+		}
+		
 		$result->free();
 		$mysqli->close();
         return $expo;
