@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="input_wapper">
-            <input id="agregar_imagen" class="btn_general btn-classic2" type="submit" value="Guardar" name="agregar_imagen" />
+            <input id="agregar_imagen" class="btn_general btn-classic2" type="submit" value="Subir Imagenes" name="agregar_imagen" />
             <div id="cargador" style="display:none"></div>
           </div>
         </form>
