@@ -104,7 +104,7 @@
           <div class="input_wapper">
             <label>Acreditacion (medida unica! 600x201)</label>
             <div id="preview_image_expo"><img alt='<?php echo $newExpo['img_acr'];?>' title='<?php echo $newExpo['title'];?>' src="<?php echo $newExpo['img_acr'];?>"/></div>
-            <input type="hidden" name="name_image" value="<?php echo $newExpo['img_acr'];?>" />
+            <input type="hidden" name="name_img_acr" value="<?php echo $newExpo['img_acr'];?>" />
             <input id="img_acr" type="file" name="img_acr" class="input_file_revista input_file" />
           </div>
            <div class="input_wapper">

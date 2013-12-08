@@ -1199,12 +1199,14 @@ class Expo
 		$mysqli = DataBase::connex();
 		$query = '
 			SELECT 
-				EE.id_expo as id_expo, 
+				EE.id_expo as id_expo,
+				EE.stand as stand, 
 				E.name as name, 
 				E.description as description, 
 				E.image as image
 			FROM 
 				expo_empresa as EE
+				
 			JOIN 
 				empresas as E ON E.id = EE.id_empresa
 			WHERE 
@@ -1221,6 +1223,7 @@ class Expo
 		if($result->num_rows > 0){
 			while ($row = $result->fetch_assoc()){
 				$empresa['id'] = $row['id_expo'];
+				$empresa['stand'] = $row['stand'];
 				$empresa['name'] = $row['name'];
 				$empresa['description'] = $row['description'];
 				$empresa['image'] = $row['image'];

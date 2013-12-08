@@ -611,8 +611,11 @@ border-top-right-radius: 10px;
 border-bottom-right-radius: 10px;
 }
 .imgGal{
-	margin-left:10px;
+	margin:0px 0px 10px 10px;
 	
+}
+.ubStand{
+color:#910C7F;	
 }
 .vacioAct{
 	background:#F0F0F0;
@@ -2115,7 +2118,7 @@ article .secexpo{
 	float:right;
 	display:block;
 	width:556px;
-	height:126px;
+	height:auto;
 	
 }
 .descripcion-expo2 p{

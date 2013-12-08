@@ -216,7 +216,7 @@
                                   <div class="cont_exp">
                                       <img class="img_exp" src="<?php echo $expositor['image'];?>" width="110"/>
                                        <div  class="conttext">
-                                          <p><span><strong><?php echo $expositor['name'];?></strong></span></p>
+                                          <p>  <span><strong><?php echo $expositor['name'];?></strong></span> <br><span class="ubStand"><strong><?php echo $expositor['stand'];?></strong></</span></p>
                                           <p><?php echo $expositor['description'];?></p>
                                       </div>
                                     </div>
@@ -236,7 +236,7 @@
                                   <div class="cont_exp">
                                       <img class="img_exp" src="<?php echo $empresa['image'];?>" width="110"/>
                                        <div  class="conttext">
-                                          <p><span><strong><?php echo $empresa['name'];?></strong></span></p>
+                                          <p><span><strong><?php echo $empresa['name'];?></strong></span>  <br> <span class="ubStand"><strong><?php echo $expositor['stand'];?></strong></</span></p>
                                           <p><?php echo $empresa['description'];?></p>
                                       </div>
                                     </div>
@@ -298,7 +298,7 @@
                           <div class="zoom-gallery">
                           <?php foreach ($images as $image): ?>
                             <a href="<?php echo $image['image'];?>" title='<?php echo $newExpo['title'];?>'>
-                              <img class="imgGal" title='<?php echo $newExpo['title'];?>' alt="<?php echo $newExpo['title'];?>" src="<?php echo $image['image'];?>"  width="150" />
+                              <img class="imgGal" title='<?php echo $newExpo['title'];?>' alt="<?php echo $newExpo['title'];?>" src="<?php echo $image['image'];?>"  width="185" />
                             </a>
                           <?php endforeach; ?>
                           </div>

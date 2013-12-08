@@ -413,7 +413,9 @@ margin-top:-36px;
  .mfp-title {
 text-align:left;
  line-height:18px;
- color:#f3f3f3
+ color:#f3f3f3;
+ font-size: 13px;
+width: 307px;
 }
  .mfp-figure small {
 color:#bdbdbd;
