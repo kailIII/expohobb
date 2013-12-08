@@ -1080,17 +1080,21 @@ class Expo
 
   	public function addImage($id_expo, $images){
 
-  		$pathIgame = $this->uploadImage($images);
+  		$pathIgames = $this->uploadImage($images);
 		$mysqli = DataBase::connex();
-		$query = '
-			INSERT INTO  
-				expo_images 
-			SET
-				expo_images.id = NULL ,
-				expo_images.id_expo = '.$id_expo.',
-				expo_images.image = "'.$pathIgame[0].'"
-		';
-		$mysqli->query($query);
+		foreach ($pathIgames as $key => $pathIgame) {
+			$query = '
+				INSERT INTO  
+					expo_images 
+				SET
+					expo_images.id = NULL ,
+					expo_images.id_expo = '.$id_expo.',
+					expo_images.image = "'.$pathIgame.'"
+			';
+			echo $query .'<br />';
+			$mysqli->query($query);
+		}
+	
 		$mysqli->close();
 	}
 	public function deleteImage($id){

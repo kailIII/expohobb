@@ -15,7 +15,7 @@
 
     var count_image = 0;
     var agregar_image = '<div class="add-image"><input id="agregar_image" type="file" name="agregar_image" class="input_file_publicidad input_file" /></div>';
-    var sacar_image = '<input id="sacar-image" class="btn_general btn-classic2" type="button" value="-" name="sacar_image" />';
+    var sacar_image = '<input id="sacar-image" class="quitar-imagen" type="button" value="Quitar Imagen" name="sacar_image" />';
     $('#agregar_image').live('change', function(){
       $(this).parent().append(sacar_image);
       count_image++;

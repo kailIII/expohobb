@@ -15,9 +15,18 @@
     </header>
     <div id="cont-all"> 
       <div id="cont-section"> 
-        <form action="agregar_imagen.php" method="POST">
-          <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>"/>
-		      <input type="submit" class="bnt-ver Cmarg" value="+ Agregar Imagen" />
+        <h2 class="editartitulo">Agregar Imagen</h2>
+        <form id="form_reg" action="controllers.php" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="id_expo" value="<?php echo $_GET['id']; ?>"/>
+          <div class="input_wapper_image">
+            <div class = "add-image">
+              <input id="agregar_image" type="file" name="agregar_image" class="input_file_publicidad input_file" />
+            </div>
+          </div>
+          <div class="input_wapper">
+            <input id="agregar_imagen" class="btn_general btn-classic2" type="submit" value="Guardar" name="agregar_imagen" />
+            <div id="cargador" style="display:none"></div>
+          </div>
         </form>
         <table class="tb" border="0" cellpadding="0" cellspacing="0">
           <tr>
