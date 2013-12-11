@@ -40,7 +40,7 @@
         <h2 class="editarsubtitulo">Administrar Informacion General</h2>
         <form id="form_reg" action="controllers.php" method="POST" enctype="multipart/form-data">
           <div class="input_wapper">
-            <label>Expositor</label>
+            <label>Empresas Participantes</label>
             <input type="hidden" name="id_relacion" value="<?php echo $datosEmpresa['id_relacion']; ?>"/>
             <select id="es_expositor" class="label_reg" required="required" name="es_expositor">
               <option <?php if($datosEmpresa['es_expositor'] == 'no'){ echo 'selected'; }?> value="no">No</option>

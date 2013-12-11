@@ -26,7 +26,7 @@
         <?php
           include_once 'includes.php';
           $expo = new Expo();
-          $newExpo = $expo->getOneExpo($_POST['id']);
+          $newExpo = $expo->getOneExpo($_POST['id'],1);
           $newStartDate = explode('-', $newExpo['fecha_inicio']);
           $newEndDate = explode('-', $newExpo['fecha_fin']);
         ?>

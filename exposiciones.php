@@ -139,7 +139,7 @@
                       </div>
                       <div class="descripcion-expo2">
                          <?php echo $newExpo['body'];?>
-                      </div>
+                      
                     <?php if($vigente): ?>
                       <ul class="optdes_expo">
                        	<div class="itm1"></div>
@@ -153,6 +153,7 @@
                           <?php endif?> 
                         </div> 
                       </ul>
+                      </div>
                     <?php endif;?>	
                   </div>
                   <div class="con-act">
@@ -236,7 +237,7 @@
                                   <div class="cont_exp">
                                       <img class="img_exp" src="<?php echo $empresa['image'];?>" width="110"/>
                                        <div  class="conttext">
-                                          <p><span><strong><?php echo $empresa['name'];?></strong></span>  <br> <span class="ubStand"><strong><?php echo $expositor['stand'];?></strong></</span></p>
+                                          <p><span><strong><?php echo $empresa['name'];?></strong></span>  <br> <span class="ubStand"><strong><?php echo $empresa['stand'];?></strong></</span></p>
                                           <p><?php echo $empresa['description'];?></p>
                                       </div>
                                     </div>

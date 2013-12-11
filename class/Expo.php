@@ -231,7 +231,7 @@ class Expo
 				}
 				$tmp['id'] = $expo['id'];
 				$tmp['title'] = $expo['title'];
-				$tmp['dias_horarios'] = '<b>Expo: ' . $mesLetras . ' ' . date('Y', $fecha) . '</b> ' . $expo['dias_horarios'];
+				$tmp['dias_horarios'] = '<b>' . $mesLetras . ' ' . date('Y', $fecha) . '</b> ' . $expo['dias_horarios'];
 				$tmp['teaser'] = $expo['teaser'];
 				$tmp['class'] = $class;
 				$tmp['image'] = $expo['image'];
@@ -249,15 +249,14 @@ class Expo
 	}
 
 	public function getLastExpo(){
+		$hoyFecha=date("Y/m/d");
 		$mysqli = DataBase::connex();
 		$query = '
 			SELECT * FROM 
 				expo
 			WHERE
-				status = "Publicado"
-			ORDER BY
-				fecha_inicio 
-					DESC
+				status = "Publicado" and fecha_inicio > '.$hoyFecha .'
+			
 			LIMIT
 				1 
 		';
@@ -931,9 +930,9 @@ class Expo
 				$rows .= '<td>'.$ExpoEmpresa['name'].'</td>';
 				$rows .= '<td>';
 	              if($ExpoEmpresa['es_expositor'] == 'si'){
-	              	$rows .= 'Expositor';
+	              	$rows .= 'Empresas Participantes';
 	              }else{
-	              	$rows .= 'Empresa';
+	              	$rows .= 'Expositor';
 	              }
 				$rows .= '</td>';
 				$rows .= '<td>';

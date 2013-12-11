@@ -106,7 +106,7 @@
             </div>
           </div>
         </article>
-        <?php $lastExpo = $expoClass->getLastExpo(); ;?>
+        <?php $lastExpo = $expoClass->getLastExpo();?>
         <article class="exposiciones">
           <div class="cont-art">
               <a href="exposiciones.php?id=<?php echo $lastExpo['id']; ?>" >
@@ -132,7 +132,7 @@
         </article>
        <div class="sombra3"></div>  
       </section>
-      <div style="width: 278px; float: right; display:block;">
+      <div style="width: 278px; float: right; display:inline-block;">
       <aside class="facebook">
         <div class="fb-like-box" data-href="http://www.facebook.com/pages/EXPOHOBBY/130321180395748" data-width="256" data-height="382" data-show-faces="false" data-stream="true" data-header="false"></div>
       </aside>
