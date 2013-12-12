@@ -55,7 +55,7 @@
 	}
 	if(isset($_POST['registration_mail']))
 	{
-		if(preg_match("/^[^0-9][A-z0-9_]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_]+)*[.][A-z]{2,4}$/i", $_POST['registration_mail'])) {
+		if(preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/i", $_POST['registration_mail'])) {
 			$user = new Usuario();
 			$user->verificar_mail_repetido($_POST['registration_mail'], $_POST['revista_id']);
 		} else {
