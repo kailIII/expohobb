@@ -1242,6 +1242,7 @@ class Expo
 		$query = '
 			SELECT 
 				EE.id_expo as id_expo, 
+				EE.stand as stand,
 				E.name as name, 
 				E.description as description, 
 				E.image as image
@@ -1265,6 +1266,7 @@ class Expo
 		$query = '
 			SELECT 
 				EE.id_expo as id_expo, 
+				EE.stand as stand,
 				E.name as name, 
 				E.description as description, 
 				E.image as image

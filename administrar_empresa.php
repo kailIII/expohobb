@@ -39,7 +39,9 @@
         <h2 class="editartitulo">Administrar <?php print $datosEmpresa['name'];?></h2>
         <h2 class="editarsubtitulo">Administrar Informacion General</h2>
         <form id="form_reg" action="controllers.php" method="POST" enctype="multipart/form-data">
+         <input value="<?php print $datosEmpresa['id_relacion'];?>" id="id_relacion"  type="hidden" name="id_relacion" />
           <div class="input_wapper">
+          
             <label>Contraseña</label>
             <input value="<?php print $datosEmpresa['pass'];?>" id="pass" type="text" name="pass"class="input_text_publicidad input_text" />
           </div>
