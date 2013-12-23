@@ -34,8 +34,8 @@
             <tr>
               <td class="tbtitulos">Nombre</td>
               <td class="tbtitulos">Email</td>
-              <td class="tbtitulos">Asignar</td>
               <td class="tbtitulos">Expositor</td>
+              <td class="tbtitulos">Empresas Participantes</td>
             </tr>
             <?php
               include_once 'includes.php';

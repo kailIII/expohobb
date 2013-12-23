@@ -11,11 +11,11 @@
     registro_mail();
     initRegistro();
     initMarquee();
-
+    galeriaImagenes();
 
     var count_image = 0;
     var agregar_image = '<div class="add-image"><input id="agregar_image" type="file" name="agregar_image" class="input_file_publicidad input_file" /></div>';
-    var sacar_image = '<input id="sacar-image" class="btn_general btn-classic2" type="button" value="-" name="sacar_image" />';
+    var sacar_image = '<input id="sacar-image" class="quitar-imagen" type="button" value="Quitar Imagen" name="sacar_image" />';
     $('#agregar_image').live('change', function(){
       $(this).parent().append(sacar_image);
       count_image++;
@@ -290,6 +290,29 @@
         $("#enviar_contacto").hide("slow");
         $("#cargador2").show("slow");
       }
+    });
+  }
+  function galeriaImagenes(){
+    $('.zoom-gallery').magnificPopup({
+      delegate: 'a',
+      type: 'image',
+      closeOnContentClick: false,
+      closeBtnInside: false,
+      mainClass: 'mfp-with-zoom mfp-img-mobile',
+      image: {
+        verticalFit: true
+      },
+      gallery: {
+        enabled: true
+      },
+      zoom: {
+        enabled: true,
+        duration: 300, // don't foget to change the duration also in CSS
+        opener: function(element) {
+          return element.find('img');
+        }
+      }
+      
     });
   }
  

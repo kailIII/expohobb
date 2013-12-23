@@ -1,8 +1,26 @@
-<?php include_once 'sesion.php'; ?>
-<?php
-  include_once 'includes.php';
-  $expo = new Expo();
-  $newExpo = $expo->getOneExpo($_GET['id']);
+<?php if(isset($_GET['id']) and $_GET['id'] != ""){
+		include_once 'sesion.php'; 
+		include_once 'includes.php';
+		  $expo = new Expo();
+		  if(isset($_SESSION['usuario'])){
+   			 if($validador->cookieValidator($_SESSION['usuario'],$_SESSION['token']) == 'ok'){
+				$newExpo = $expo->getOneExpo($_GET['id'],1);	 
+			}else{
+				$newExpo = $expo->getOneExpo($_GET['id'],0);
+			}
+		  }else{
+			 $newExpo = $expo->getOneExpo($_GET['id'],0); 
+		  }
+
+			$descrip = str_replace("<p>", " ", strip_tags($newExpo['teaser']));  
+		  $descrip = str_replace("</p>", " ", $descrip ); 
+		  $descrip = str_replace("<em>", " ", $descrip ); 
+		  $descrip = str_replace("</em>", " ", $descrip );
+		  $descrip = str_replace("<strong>", " ", $descrip );
+		  $descrip = str_replace("</strong>", " ", $descrip );
+	}else{
+			header( "Location:exposicion.php");	
+		}
 ?>
 <!DOCTYPE html>
 <head>

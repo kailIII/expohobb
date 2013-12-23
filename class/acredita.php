@@ -103,10 +103,10 @@ class Acred
 			$classMail->WordWrap =200;
 			
 			 
-			$body  = "<html> 
+			$body  = '<html> 
 			
 			<head> 
-			<style type='text/css'>
+			<style type="text/css">
 				#todomens{
 				margin:5px auto;
 				height:auto;
@@ -162,19 +162,19 @@ class Acred
 			</head> 
 			<body> 
 				<center>
-					<div id='todomens'>
-						<div id='titulo'><h1>Expohobby".$fechaExp."<br />".$datAcre['nomExp']."</h1></div> 
-						<div id='contentrada'>
-							<div id='contnf'>
-								Hola <strong>".$datAcre['nombre']." ".$datAcre['apellido'].":</strong><br>
-								Gracias por acreditarse a <strong>Expohobby ".$fechaExp." ".$datAcre['nomExp'].".</strong><br><br>
-								<a class='link' href='http://www.expohobby.net/descargar.php?codigo=".$datAcre['codigo']."-".$datAcre['dni']."'> Haga click aqu&iacute; para visualizar su cup&oacute;n</a><br><br>
+					<div id="todomens">
+						<div id="titulo"><h1>Expohobby '.$fechaExp.'<br />'.$datAcre["nomExp"].'</h1></div> 
+						<div id="contentrada">
+							<div id="contnf">
+								Hola <strong>'.$datAcre['nombre'].' '.$datAcre['apellido'].':</strong><br>
+								Gracias por acreditarse a <strong>Expohobby '.$fechaExp.' '.$datAcre['nomExp'].'.</strong><br><br>
+								<a class="link" href="http://www.expohobby.net/descargar.php?codigo='.$datAcre['codigo'].'-'.$datAcre['dni'].'"> Haga click aqu&iacute; para visualizar su cup&oacute;n</a><br><br>
 								
-								<p>".$datAcre['text_acr']."</p>
+								<p>'.$datAcre['text_acr'].'</p>
 							</div>
 						</div>
 					</div>
-					"; 
+					'; 
 					$body .= "Lo saluda atentamente <strong>Coordinadores de EXPOHOBBY </strong>info@expohobby.net<br><br>
 				</center>
 			</body>
@@ -299,10 +299,10 @@ Este metodo devuelve todas las acreditaciones por su dni y codigo
 						$rows .= "</form>";
 					$rows .= "</div>";
 					$rows .= "<div id='contnf'>";
-						$rows .= "<p>Hola <strong> ".$acreditacion['nombre']." ".$acreditacion['apellido'].":</strong><br>
-							Gracias por acreditarse  a <strong>Expohobby ".$acreditacion['fechaExp']." ".$acreditacion['nomExp']." </strong>.<br>
+						$rows .= '<p>Hola <strong> '.$acreditacion['nombre'].' '.$acreditacion['apellido'].':</strong><br>
+							Gracias por acreditarse  a <strong>Expohobby '.$acreditacion['fechaExp'].' '.$acreditacion['nomExp'].' </strong>.<br>
 							Corte la entrada por las l&iacute;neas discontinuas, esta entrada es personal y deber&aacute; presentarse con su DNI o Cedula de identidad en mano para 		que tenga validez.<br><br>
-							<p> ".$acreditacion['text_acr']."</p>";
+							<p> '.$acreditacion['text_acr'].'</p>';
 					$rows .= "</div>";
 				$rows .= "</div>";
 				$rows .="<div id='contemafilms'>";

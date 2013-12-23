@@ -1,5 +1,5 @@
 <?php   
-  if(isset($_GET['q'])){
+  if(isset($_GET['q']) and $_GET['q'] != ""){
     include_once 'sesion.php';
     include_once 'includes.php';
     $q=$_GET['q'];

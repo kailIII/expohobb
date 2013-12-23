@@ -75,12 +75,12 @@
           	<header class="con-exp-header">
               <div class="cont-exp-ind-tit">
               
-                <h2>Expohobby Abril</h2>
-                <p>Aqui encontraras todo nuestro historial sobre las exposiciones de Abril</p>
+                <h2>"Expohobby" Todo el arte manual en un solo lugar...</h2>
+                <p>Evento de arte dedicado a difundir la actividad de diversos hobbystas y artesanos, se desarrolla en el mes de abril, lo que es una oportunidad única para el lanzamiento de productos, comienzo de talleres o actividades comerciales.</p>
               </div>
             </header>
             <section>
-              <img src="imagenes/exposiciones.png" width="350"/>
+              <img src="imagenes/expo_abril.jpg" width="350"/>
               <ul class="list-exp">
                 <?php 
                   foreach ($expos['04'] as $expo) {
@@ -99,12 +99,12 @@
           	<header class="con-exp-header">
               <div class="cont-exp-ind-tit">
               
-                <h2>Expohobby Septiembre</h2>
-                <p>Aqui encontraras todo nuestro historial sobre las exposiciones de Septiembre</p>
+                <h2>"Expohobby" Fiestas y Decoración.</h2>
+                <p>Se desarrolla durante el mes de septiembre, como su nombre lo indica, es un evento temático, dedicado a la difusión de insumos, tendencias y actividades para el desarrollo de las fiestas y la decoración.</p>
               </div>
             </header>
             <section>
-              <img src="imagenes/exposiciones.png" width="350"/>
+              <img src="imagenes/expo_sept.jpg" width="350"/>
               <ul class="list-exp">
                <?php 
                   foreach ($expos['09'] as $expo) {
