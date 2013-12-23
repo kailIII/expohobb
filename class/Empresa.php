@@ -280,7 +280,6 @@ class Empresa
     		UPDATE  
     			expo_empresa 
     		SET  
-    			expo_empresa.es_expositor =  "'. $mysqli->real_escape_string($datos['tipo']) .'",
     			expo_empresa.pass =  "'. $mysqli->real_escape_string($datos['pass']) .'",
     			expo_empresa.stand =  "'. $mysqli->real_escape_string($datos['stand']) .'"
     		WHERE  

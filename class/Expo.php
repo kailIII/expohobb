@@ -541,6 +541,7 @@ class Expo
 				exp.id as id_relacion,
 				exp.id_expo as id_expo,
 				exp.id_empresa as id_empresa,
+				exp.asignar as asignar,
 				exp.es_expositor as es_expositor
 			FROM
 				expo_empresa exp
@@ -553,6 +554,7 @@ class Expo
 			$expoEmpresa['id_relacion'] = $row['id_relacion'];
 			$expoEmpresa['id_empresa'] = $row['id_empresa'];
 			$expoEmpresa['id_expo'] = $row['id_expo'];
+			$expoEmpresa['asignar'] = $row['asignar'];
 			$expoEmpresa['es_expositor'] = $row['es_expositor'];
 			$expoEmpresas[] = $expoEmpresa;
 		}
@@ -574,11 +576,13 @@ class Expo
 			$arrayEmpresa['id_relacion'] = '';
 			$arrayEmpresa['id_expo'] = '';
 			$arrayEmpresa['es_expositor'] = '';
+			$arrayEmpresa['asignar'] = '';
 
 			foreach ($expoEmpresas as $expoEmpresa) {
 				if($expoEmpresa['id_empresa'] == $arrayEmpresa['id']){
 					$arrayEmpresa['id_relacion'] = $expoEmpresa['id_relacion'];
 					$arrayEmpresa['id_expo'] = $expoEmpresa['id_expo'];
+					$arrayEmpresa['asignar'] = $expoEmpresa['asignar'];
 					$arrayEmpresa['es_expositor'] = $expoEmpresa['es_expositor'];
 				}
 			}
@@ -588,7 +592,7 @@ class Expo
 		foreach ($arrayEmpresas as $empresa) {
 			if($empresa['es_expositor'] == 'si'){
 				$mergeArrayEmpresas['expositores'][] = $empresa;
-			}elseif($empresa['id_relacion']){
+			}elseif($empresa['asignar'] == 'si'){
 				$mergeArrayEmpresas['empresa'][] = $empresa;
 			} else {
 				$mergeArrayEmpresas['asignar'][] = $empresa;
@@ -602,6 +606,8 @@ class Expo
 		$rows .= '<input type="hidden" name="expo_id" value="'.$expoId.'"/>';
   		foreach ($empresas as $tipo => $empresasPorTipo) {
 			foreach ($empresasPorTipo as $empresa) {
+				/*var_dump($empresa);
+				die;*/
 				$rows .= '<tr>';
 					$rows .= '<td>';
 						if($tipo != 'asignar'){
@@ -615,7 +621,7 @@ class Expo
 					$rows .= '<td>'.$empresa['email'].'</td>';
 					$rows .= '<td>';
 						$rows .= '<select id="asignar" class="label_reg" name="expoEmpresas['.$empresa['id'].'][asignar]">';
-							if($empresa['id_expo']){
+							if($empresa['asignar'] == 'si'){
 								$rows .= '<option value="no">No</option>';
 			              		$rows .= '<option selected value="si">Si</option>';
 							}else{
@@ -952,12 +958,24 @@ class Expo
 
 	public function setExpoEmpresas($expoEmpresas){
 		$mysqli = DataBase::connex();
+			/*var_dump($expoEmpresas);
+			die;*/
 		foreach ($expoEmpresas['expoEmpresas'] as $empresa) {
 			if($empresa['id_relacion'] != ''){
 				if($empresa['asignar'] == 'no'){
-					//borra
-					$query = 'DELETE FROM expo_empresa WHERE expo_empresa.id = ' . $empresa['id_relacion'] . '	LIMIT 1;';
-					echo $query . '<br />';
+					if($empresa['es_expositor']== 'no'){
+						//borra
+						$query = 'DELETE FROM expo_empresa WHERE expo_empresa.id = ' . $empresa['id_relacion'] . '	LIMIT 1;';
+					}else{
+						$query = '
+				    		UPDATE  
+				    			expo_empresa 
+				    		SET  
+				    			expo_empresa.asignar =  "'. $mysqli->real_escape_string($empresa['asignar']) .'" 
+				    		WHERE  
+				    			expo_empresa.id = "' . $empresa['id_relacion'] . '"
+				    	;';
+					}
 					$mysqli->query($query);
 				}else{
 					//actualiza
@@ -972,7 +990,7 @@ class Expo
 					$mysqli->query($query);
 				}
 			}else{
-				if($empresa['asignar'] == 'si'){
+				if($empresa['asignar'] == 'si' || $empresa['es_expositor'] == 'si'){
 					//guarda
 					$query = '
 						INSERT INTO 
@@ -981,7 +999,9 @@ class Expo
 							expo_empresa.id = NULL,
 							expo_empresa.id_expo = "'. $mysqli->real_escape_string($expoEmpresas['expo_id']) .'",
 							expo_empresa.id_empresa = "'. $mysqli->real_escape_string($empresa['id_empresa']) .'",
+							expo_empresa.asignar = "'. $mysqli->real_escape_string($empresa['asignar']) .'",
 							expo_empresa.es_expositor = "'. $mysqli->real_escape_string($empresa['es_expositor']) .'",
+							expo_empresa.stand = "",
 							expo_empresa.pass = ""
 						;';
 					echo $query . '<br />';
@@ -1153,28 +1173,8 @@ class Expo
 		}
 	}
 
-	private function traerExpositoresQuery($expoId, $expositor = ''){
+	private function traerExpositoresQuery($query){
 		$mysqli = DataBase::connex();
-		$query = '
-			SELECT 
-				EE.id_expo as id_expo, 
-				E.name as name, 
-				E.description as description, 
-				E.image as image
-			FROM 
-				expo_empresa as EE
-			JOIN 
-				empresas as E ON E.id = EE.id_empresa
-			WHERE 
-				id_expo = "'.$expoId.'"';
-			if($expositor == "si"){
-				$query .= ' AND es_expositor = "si" ';
-			}
-		$query .= '
-			ORDER BY
-				name
-					ASC
-		';
 		$result = $mysqli->query($query);
 		if($result->num_rows > 0){
 			while ($row = $result->fetch_assoc()){
@@ -1193,11 +1193,48 @@ class Expo
 	}
 
 	public function traerEmpresas($expoId){
-		return $this->traerExpositoresQuery($expoId);
+		$query = '
+			SELECT 
+				EE.id_expo as id_expo, 
+				E.name as name, 
+				E.description as description, 
+				E.image as image
+			FROM 
+				expo_empresa as EE
+			JOIN 
+				empresas as E ON E.id = EE.id_empresa
+			WHERE 
+				id_expo = "'.$expoId.'"
+			AND 
+				asignar = "si"
+			ORDER BY
+				name
+					ASC
+		';
+		return $this->traerExpositoresQuery($query);
+	
 	}
 
 	public function traerExpositores($expoId){
-		return $this->traerExpositoresQuery($expoId, "si");
+		$query = '
+			SELECT 
+				EE.id_expo as id_expo, 
+				E.name as name, 
+				E.description as description, 
+				E.image as image
+			FROM 
+				expo_empresa as EE
+			JOIN 
+				empresas as E ON E.id = EE.id_empresa
+			WHERE 
+				id_expo = "'.$expoId.'"
+			AND 
+				es_expositor = "si"
+			ORDER BY
+				name
+					ASC
+		';
+		return $this->traerExpositoresQuery($query);
 	}
 
 

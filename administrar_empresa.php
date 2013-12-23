@@ -40,14 +40,6 @@
         <h2 class="editarsubtitulo">Administrar Informacion General</h2>
         <form id="form_reg" action="controllers.php" method="POST" enctype="multipart/form-data">
           <div class="input_wapper">
-            <label>Expositor</label>
-            <input type="hidden" name="id_relacion" value="<?php echo $datosEmpresa['id_relacion']; ?>"/>
-            <select id="es_expositor" class="label_reg" required="required" name="es_expositor">
-              <option <?php if($datosEmpresa['es_expositor'] == 'no'){ echo 'selected'; }?> value="no">No</option>
-              <option <?php if($datosEmpresa['es_expositor'] == 'si'){ echo 'selected'; }?> value="si">Si</option>
-            </select>
-          </div>
-          <div class="input_wapper">
             <label>Contraseña</label>
             <input value="<?php print $datosEmpresa['pass'];?>" id="pass" type="text" name="pass"class="input_text_publicidad input_text" />
           </div>
