@@ -216,7 +216,29 @@
                         <input class="submit btn-classic" type="submit"  value="Generar cupón" name="acreditacion" id="acreditacion"/>
                         <div class="textLoad" style="display:none; ">Enviando email, por favor aguarde…</div>
                         <div id="cargador2" style="display:none; "></div>
+                        
                         </form>
+                        <script type="text/javascript">
+
+
+$('#formID').validationEngine('attach', {
+    inlineValidation: false,
+    promptPosition: "centerRight",
+    onValidationComplete: function (form, status) {
+        if (status) {
+            //alert('Form submit');
+            $('.submit').hide();
+			$('.textLoad').show();
+			$('#cargador2').show();
+            $('#formID').submit();
+        }
+        else
+        {
+           
+        }
+    },
+});
+</script>
                         
                 <div class="ayuda2">
               	<img width="32" src="imagenes/atencion.png">

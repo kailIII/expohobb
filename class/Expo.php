@@ -1042,7 +1042,7 @@ class Expo
 							expo_empresa.stand = "",
 							expo_empresa.pass = ""
 						;';
-					echo $query . '<br />';
+					//echo $query . '<br />';
 					$mysqli->query($query);
 				}
 			}
